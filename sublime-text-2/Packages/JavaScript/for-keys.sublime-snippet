@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[Object.keys(${1:obj}).forEach(function (${2:key}) {
+	var ${3:val} = ${1:obj}[${2:key}];
+	${4:}
+});]]></content>
+    <tabTrigger>fork</tabTrigger>
+    <scope>source.js</scope>
+    <description>forEach key</description>
+</snippet>

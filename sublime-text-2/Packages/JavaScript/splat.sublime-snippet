@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[arguments.length > ${1:0} ? ${2:Array.prototype.}slice.call(arguments, ${1:0}) : [];
+$0
+]]></content>
+    <tabTrigger>arg</tabTrigger>
+    <scope>source.js</scope>
+    <description>splat arguments</description>
+</snippet>

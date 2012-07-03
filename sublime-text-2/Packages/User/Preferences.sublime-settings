@@ -1,0 +1,38 @@
+{
+	"auto_complete": true,
+	"auto_complete_commit_on_tab": true,
+	"auto_complete_delay": 50,
+	"auto_match_enabled": true,
+	"color_scheme": "Packages/Color Scheme - Default/Cobalt.tmTheme",
+	"default_encoding": "UTF-8",
+	"default_line_ending": "unix",
+	"dictionary": "Packages/Language - English/en_GB.dic",
+	"drag_text": false,
+	"draw_centered": false,
+	"draw_minimap_border": true,
+	"ensure_newline_at_eof_on_save": true,
+	"fold_buttons": false,
+	"font_size": 10.0,
+	"gutter": true,
+	"highlight_line": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"line_padding_bottom": 0,
+	"line_padding_top": 0,
+	"margin": 0,
+	"overlay_scroll_bars": "enabled",
+	"remember_open_files": true,
+	"save_on_focus_lost": false,
+	"scroll_past_end": false,
+	"scroll_speed": 0,
+	"shift_tab_unindent": true,
+	"tab_completion": true,
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true,
+	"tree_animation_enabled": false,
+	"trim_trailing_white_space_on_save": true,
+	"use_simple_full_screen": true,
+	"use_tab_stops": true
+}
