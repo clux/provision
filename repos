@@ -46,7 +46,6 @@ done
 # non-node modules, just clone
 others=(
   tournament.hs
-  setup
   vitae
 )
 
