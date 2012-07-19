@@ -1,4 +1,7 @@
 # .clux
+Use this if you are clux and you are reinstalling linux.
+
+## Usage
 Get git, clone the repo, then plow through these scripts:
 
 ````bash
@@ -11,17 +14,22 @@ cd .clux
 ./repos
 ````
 
-# Node Setup
-Execute once (asks for sudo pw at the end)
+## Script Description
+### node
+Gets specified version of node, makes, installs and chowns global node_modules folder.
+Last two steps will ask for sudo pw.
 
-# Git Config
-Execute once and paste resulting key to github
+### git
+Initializes the git config and sets up ssh keys to paste to github.
 
-# Copy Configs
+### cpy
 Installs settings for:
 
 - sublime_text2
 - jshint
 
-# Repos Setup
-Verify lists are updated, then execute (must be done after node script so that global modules are chowned). Links all my modules to each other using npm link.
+### repos
+Clones, links and installs all modules, dependencies so that everything's linked together nicely for continued development.
+
+## License
+Licensed to clux exclusively
