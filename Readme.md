@@ -5,7 +5,6 @@ Use this if you are clux and you are reinstalling linux.
 Get git, clone the repo, then plow through these scripts:
 
 ````bash
-
 cd && mkdir repos && cd repos
 git clone https://github.com/clux/.clux.git fix
 cd fix
