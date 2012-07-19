@@ -47,6 +47,7 @@ done
 others=(
   tournament.hs
   vitae
+  .clux
 )
 
 for i in ${others[@]}

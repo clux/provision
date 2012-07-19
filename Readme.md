@@ -5,13 +5,15 @@ Use this if you are clux and you are reinstalling linux.
 Get git, clone the repo, then plow through these scripts:
 
 ````bash
+
 cd && mkdir repos && cd repos
-git clone git@github.com:clux/.clux.git
-cd .clux
+git clone https://github.com/clux/.clux.git fix
+cd fix
 ./node 0.8.3
 ./git
 ./cpy
 ./repos
+cd .. && rm -rf fix
 ````
 
 ## Script Description
