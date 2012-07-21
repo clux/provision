@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="model" mtime="1342630436" type="string">
+		<stringvalue></stringvalue>
+	</entry>
+	<entry name="options" mtime="1342630436" type="list" ltype="string">
+		<li type="string">
+			<stringvalue>grp	grp:shift_caps_toggle</stringvalue>
+		</li>
+		<li type="string">
+			<stringvalue>grp	grp:alt_shift_toggle</stringvalue>
+		</li>
+	</entry>
+	<entry name="layouts" mtime="1342630436" type="list" ltype="string">
+		<li type="string">
+			<stringvalue>us	colemak</stringvalue>
+		</li>
+		<li type="string">
+			<stringvalue>us	altgr-intl</stringvalue>
+		</li>
+	</entry>
+</gconf>

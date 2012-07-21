@@ -1,0 +1,5 @@
+#!/bin/sh
+
+npm install zombie
+node getSublimeUrl.js | xargs curl | tar -xj
+mv Sublime\ Text\ 2/ ~/

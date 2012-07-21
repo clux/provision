@@ -26,7 +26,7 @@ for i in ${modules[@]}
 do
   echo $i
   git clone git@github.com:clux/$i.git
-  cd $i && npm link tap && cd ..
+  cd $i && npm link && npm link tap && cd ..
 done
 
 # # misc dependency linking
