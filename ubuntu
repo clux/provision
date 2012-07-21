@@ -3,7 +3,8 @@
 echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
 echo "deb http://dl.google.com/linux/talkplugin/deb/ stable main" > /etc/apt/sources.list.d/google-talkplugin.list
 sudo add-apt-repository ppa:team-xbmc
-sudo add-apt-repository ppa:webupd8team/gnome3
+#sudo add-apt-repository ppa:webupd8team/gnome3
+sudo add-apt-repository ppa:ferramroberto/gnome3
 
 sudo apt-get update
 sudo apt-get upgrade
@@ -16,6 +17,9 @@ apps=(
   google-talkplugin
   gnome-shell
   gnome-shell-extensions
+  gnome-shell-extensions-common
+  gnome-shell-extensions-user-theme
+  gnome-shell-extensions-alternative-status-menu
   gnome-tweak-tool
   guake
   pidgin
