@@ -3,7 +3,7 @@
 # install all stuff I either use or develop
 # assumes node installed and usr/local/lib/node_modules chowned
 
-npm install -g cdir browserify jshint jsontool nd tap
+npm install -g cdir browserify jshint jsontool nd tap optimist serve
 
 modules=(
   autonomy
@@ -19,7 +19,7 @@ modules=(
   fsx
   tap-pessimist
   logule
-  modul8
+  dye
 )
 
 for i in ${modules[@]}
@@ -34,8 +34,7 @@ cd interlude && npm link operators subset autonomy wrappers && cd ..
 cd autonomy && npm link operators && cd ..
 cd combustion && npm link fsx confortable autonomy operators && cd ..
 cd tap-pessimist && npm link logule && cd ..
-cd logule && npm link autonomy confortable subset && cd ..
-cd modul8 && npm link autonomy logule topiary typr && cd ..
+cd logule && npm link autonomy confortable subset dye && cd ..
 
 for i in ${modules[@]}
 do

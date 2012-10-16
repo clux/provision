@@ -8,7 +8,7 @@ Get git, clone the repo, then plow through these scripts:
 cd && mkdir repos && cd repos
 git clone https://github.com/clux/.clux.git fix
 cd fix
-./node 0.8.3
+./node 0.8.12
 ./git
 ./ubuntu
 ./editor
