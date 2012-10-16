@@ -54,3 +54,13 @@ do
   echo $i
   git clone git@github.com:clux/$i.git
 done
+
+# private bitbucket repos
+others=(
+  deathmatch
+)
+for i in ${privates[@]}
+do
+  echo $i
+  git clone git@bitbucket.org:clux/$i.git
+done
