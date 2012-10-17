@@ -64,3 +64,5 @@ do
   echo $i
   git clone git@bitbucket.org:clux/$i.git
 done
+
+cd deathmatch && npm link tap tournament optimist logule interlude fsx && cd ..
