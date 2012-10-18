@@ -16,7 +16,9 @@ cd fix
 ./cpy
 ./repos
 cd .. && rm -rf fix
-./symlink fsx operators ... deathmatch ..
+npm install symlink
+./node_modules/symlink/symlink.js fsx operators ... symlink deathmatch ..
+npm uninstall symlink
 ```
 
 ## Script Description
@@ -44,8 +46,9 @@ Installs settings for:
 clones all personal modules + installs standard global modules
 
 ### symlink
-npm links together personal modules (they can because node is under HOME and my modules have no cyclical dependencies)
-and installs the remaining dependencies from npm
+npm links together personal modules (they can because node is under HOME and my modules have no cyclical dependencies) and installs the remaining dependencies from npm.
+
+NB: since I want the deps for symlink analyzed as well, I need a temporary non-global install of symlink to do the analyzing.
 
 ## License
 Licensed to clux exclusively
