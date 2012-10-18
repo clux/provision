@@ -2,20 +2,22 @@
 Use this if you are clux and you are reinstalling linux.
 
 ## Usage
-Get git, clone the repo, then plow through these scripts:
+Get git & chrome separately, clone this repo, then plow through these scripts:
 
-````bash
+```bash
 cd && mkdir repos && cd repos
 git clone https://github.com/clux/.clux.git fix
 cd fix
+./linux
 ./node 0.8.12
 ./git
-./ubuntu
+# PASTE SSH KEYS
 ./editor
 ./cpy
 ./repos
 cd .. && rm -rf fix
-````
+./symlink fsx operators ... deathmatch ..
+```
 
 ## Script Description
 ### node
@@ -28,19 +30,22 @@ Initializes the git config and sets up ssh keys to paste to github.
 ### editor
 Scrapes the latest 32bit linux sublime text url and extracts it to HOME dir.
 
-### ubuntu
-Installs stuff needed for ubuntu (requires sudo)
+### linux
+apt-get basics
 
 ### cpy
 Installs settings for:
 
 - sublime_text2
 - jshint
-- guake
-- colemak
+- gconf/keyb
 
 ### repos
-Clones, links and installs all modules, dependencies so that everything's linked together nicely for continued development.
+clones all personal modules + installs standard global modules
+
+### symlink
+npm links together personal modules (they can because node is under HOME and my modules have no cyclical dependencies)
+and installs the remaining dependencies from npm
 
 ## License
 Licensed to clux exclusively

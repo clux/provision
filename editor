@@ -2,4 +2,6 @@
 
 npm install zombie
 node getSublimeUrl.js | xargs curl | tar -xj
-mv Sublime\ Text\ 2/ ~/
+mv Sublime\ Text\ 2/ ~/local
+cd ~/local/bin
+ln -s ../Sublime\ Text\ 2/sublime_text

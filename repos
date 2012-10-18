@@ -1,62 +1,9 @@
 #!/usr/bin/env bash
 
-# install all stuff I either use or develop
-# assumes node installed and usr/local/lib/node_modules chowned
-
-npm install -g cdir browserify jshint jsontool nd tap optimist serve
-
-modules=(
-  autonomy
-  wrappers
-  operators
-  subset
-  interlude
-  typr
-  topiary
-  decay
-  combustion
-  confortable
-  fsx
-  tap-pessimist
-  logule
-  dye
-)
-
-for i in ${modules[@]}
-do
-  echo $i
-  git clone git@github.com:clux/$i.git
-  cd $i && npm link && npm link tap && cd ..
-done
-
-# # misc dependency linking
-cd interlude && npm link operators subset autonomy wrappers && cd ..
-cd autonomy && npm link operators && cd ..
-cd combustion && npm link fsx confortable autonomy operators && cd ..
-cd tap-pessimist && npm link logule && cd ..
-cd logule && npm link autonomy confortable subset dye && cd ..
-
-for i in ${modules[@]}
-do
-  echo $i
-  cd $i && npm install && cd ..
-done
-
-# non-node modules, just clone
-others=(
-  tournament.hs
-  vitae
-  .clux
-)
-
-for i in ${others[@]}
-do
-  echo $i
-  git clone git@github.com:clux/$i.git
-done
+npm install -g cdir jshint jsontool nd tap@0.3.1 serve
 
 # private bitbucket repos
-others=(
+privates=(
   deathmatch
 )
 for i in ${privates[@]}
@@ -65,4 +12,29 @@ do
   git clone git@bitbucket.org:clux/$i.git
 done
 
-cd deathmatch && npm link tap tournament optimist logule interlude fsx && cd ..
+modules=(
+  fsx
+  operators
+  typr
+  topiary
+  wrappers
+  decay
+  subset
+  dye
+  autonomy
+  interlude
+  confortable
+  combustion
+  logule
+  tap-pessimist
+  tournament.hs
+  vitae
+  .clux
+)
+
+for i in ${modules[@]}
+do
+  echo $i
+  git clone git@github.com:clux/$i.git
+done
+

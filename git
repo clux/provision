@@ -19,5 +19,5 @@ git config --global alias.cia "commit -am"
 
 # generate ssh keys
 ssh-keygen -t rsa -C "analsandblaster@gmail.com"
-echo "LOG IN TO DVCS AND PASTE THE FOLLOWING INTO YOUR SSH KEYS SECTION:"
-cat ~/.ssh/id_rsa.pub
+xclip -sel clip < ~/.ssh/id_rsa.pub
+echo "LOG IN TO DVCS AND PASTE RSA KEY (IN CLIPBOARD NOW)"
