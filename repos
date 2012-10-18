@@ -20,6 +20,7 @@ modules=(
   wrappers
   decay
   subset
+  symlink
   dye
   autonomy
   interlude
