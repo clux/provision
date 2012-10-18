@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+sudo apt-get update
+sudo apt-get upgrade
+
+apps=(
+  cheese
+  clementine
+  cowsay
+  guake
+  g++
+  pidgin
+  mercurial
+  vlc
+  xclip
+)
+
+for i in ${apps[@]}
+do
+  echo $i
+  sudo apt-get install -y -qq $i
+done
