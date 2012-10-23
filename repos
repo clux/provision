@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-npm install -g cdir jshint jsontool nd tap@0.3.1 serve
+npm install -g cdir jshint jsontool nd tap@0.3.1 serve pkginit
+pkginit add default pkg.json
 
 # private bitbucket repos
 privates=(
@@ -29,6 +30,7 @@ modules=(
   logule
   tap-pessimist
   tournament.hs
+  tournament
   vitae
   .clux
 )
