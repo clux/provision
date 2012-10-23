@@ -24,6 +24,7 @@
 	"margin": 0,
 	"overlay_scroll_bars": "enabled",
 	"remember_open_files": true,
+	"rulers": [85],
 	"save_on_focus_lost": false,
 	"scroll_past_end": false,
 	"scroll_speed": 0,
