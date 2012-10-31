@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# redis install script
+# usage ./redis 2.6.2
+
+
+cd ~/local
+mkdir redis
+mkdir redis-v$1
+cd redis-v$1
+curl http://redis.googlecode.com/files/redis-$1.tar.gz | tar xz --strip-components=1
+make
+cd ~/local/bin
+ln -s ../redis-v$1/src/redis-server
+cd ~/
+cp repos/.clux/redis.conf .
+echo "'redis-server ~/redis.conf' globally available now"
