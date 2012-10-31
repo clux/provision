@@ -17,6 +17,19 @@ git config --global alias.st "status -s"
 git config --global alias.ci "commit"
 git config --global alias.cia "commit -am"
 
+# rename last commit
+git config --global alias.amend "commit --amend -m"
+
+# empty commit to ping github hooks like travis
+git config --global alias.ping "commit --allow-empty -m \"ping hooks\""
+
+# undo last commit
+git config --global alias.undo "reset --soft HEAD^"
+
+# tj style contributors count
+git config --global alias.count "shortlog -sn"
+
+
 # generate ssh keys
 ssh-keygen -t rsa -C "analsandblaster@gmail.com"
 xclip -sel clip < ~/.ssh/id_rsa.pub
