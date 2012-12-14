@@ -3,7 +3,6 @@
 # node install script
 # usage ./node 0.8.12
 
-echo 'export PATH=$HOME/local/bin:$PATH' >> ~/.bashrc
 . ~/.bashrc
 cd ~/Downloads
 mkdir node-v$1

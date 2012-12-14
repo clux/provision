@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cp .jshintrc ~/
+cp .jshintrc ~/repos
 
 # sublime - erase defaults to get rid of bad snippets
 rm -rf ~/.config/sublime-text-2/Packages/HTML/

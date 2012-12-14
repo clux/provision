@@ -9,6 +9,7 @@ cd && mkdir repos && cd repos
 git clone https://github.com/clux/.clux.git fix
 cd fix
 ./linux
+./rcs
 ./node 0.8.12
 ./git
 # PASTE SSH KEYS
@@ -25,6 +26,9 @@ npm uninstall symlink
 ### node
 Gets specified version of node, makes, installs and chowns global node_modules folder.
 Last two steps will ask for sudo pw.
+
+### rcs
+Adds stuff that's needed to `.bashrc`; texlive, local node bin and npm completion.
 
 ### git
 Initializes the git config and sets up ssh keys to paste to github.
