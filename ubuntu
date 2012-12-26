@@ -3,8 +3,6 @@
 echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
 echo "deb http://dl.google.com/linux/talkplugin/deb/ stable main" > /etc/apt/sources.list.d/google-talkplugin.list
 sudo add-apt-repository ppa:team-xbmc
-sudo add-apt-repository ppa:webupd8team/gnome3
-sudo add-apt-repository ppa:ferramroberto/gnome3
 
 sudo apt-get update
 sudo apt-get upgrade
@@ -15,14 +13,6 @@ apps=(
   cowsay
   google-chrome-stable
   google-talkplugin
-  gnome-shell
-  gnome-tweak-tool
-  gnome-shell-extensions
-  gnome-shell-extensions-common
-  gnome-shell-extensions-pidgin
-  gnome-shell-extensions-mediaplayer
-  gnome-shell-extensions-alternative-status-menu
-  gnome-shell-extensions-windows-navigator
   guake
   pidgin
   mercurial
@@ -35,9 +25,3 @@ do
   echo $i
   sudo apt-get install -y -qq $i
 done
-
-
-#keyboard change to colemak and add shortcut keys
-
-# echo remember notices for certain programs like truecrypt
-
