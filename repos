@@ -6,6 +6,8 @@ pkginit add default pkg.json
 # private bitbucket repos
 privates=(
   deathmatch
+  meshrtc
+  sexify
 )
 for i in ${privates[@]}
 do
