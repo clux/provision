@@ -2,15 +2,16 @@
 Use this if you are clux and you are reinstalling linux.
 
 ## Usage
-Get git & chrome separately, clone this repo, then plow through these scripts:
+Get git first, clone this repo, then plow through these scripts:
 
 ```bash
+sudo apt-get install git
 cd && mkdir repos && cd repos
 git clone https://github.com/clux/.clux.git fix
 cd fix
 ./linux
+./node 0.8.16
 ./rcs
-./node 0.8.12
 ./git
 # PASTE SSH KEYS
 ./editor
