@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# ensure rc exists
+touch ~/.bashrc
+
 # all local installs
 echo 'export PATH=$HOME/local/bin:$PATH' >> ~/.bashrc
 
