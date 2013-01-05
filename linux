@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# google public key
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+# mercurial ppa
+sudo add-apt-repository ppa:mercurial-ppa/releases
+
 sudo apt-get update
 sudo apt-get upgrade
 
@@ -7,9 +12,13 @@ apps=(
   cheese
   clementine
   cowsay
+  curl
+  google-chrome-stable
+  google-talkplugin
   guake
   g++
   pidgin
+  python-yaml
   mercurial
   redshift
   vlc
