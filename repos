@@ -3,6 +3,8 @@
 npm install -g cdir jshint jsontool nd tap@0.3.1 serve pkginit
 pkginit add default pkg.json
 
+cd && cd repos
+
 # private bitbucket repos
 privates=(
   deathmatch
