@@ -19,8 +19,8 @@ cd fix
 ./repos
 cd .. && rm -rf fix
 npm install symlink
-./node_modules/symlink/symlink.js fsx operators ... symlink deathmatch ..
-npm uninstall symlink
+./node_modules/symlink/symlink.js -tr .
+rm -rf node_modules
 ```
 
 ## Script Description
