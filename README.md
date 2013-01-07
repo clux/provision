@@ -2,7 +2,7 @@
 Use this if you are clux and you are reinstalling linux.
 
 ## Usage
-Get git first, clone this repo, then plow through these scripts:
+Follow this, in order listed:
 
 ```bash
 sudo apt-get install git
@@ -17,6 +17,7 @@ sudo ./linux
 # setup chrome, user account picture, pidgin, guake (then continue in guake)
 ./editor
 ./cpy
+# if not at work, install and link local repos
 ./repos
 cd .. && rm -rf fix
 npm install symlink
