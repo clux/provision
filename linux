@@ -21,11 +21,11 @@ apps=(
   guake
   g++
   pidgin
-  python-yaml
   mercurial
   redshift
   vlc
   xclip
+  xchat
 )
 
 for i in ${apps[@]}
