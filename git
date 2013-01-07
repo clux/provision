@@ -34,4 +34,4 @@ git config --global alias.count "shortlog -sn"
 ssh-keygen -t rsa -C "analsandblaster@gmail.com"
 xclip -sel clip < ~/.ssh/id_rsa.pub
 echo "LOG IN TO DVCS AND PASTE RSA KEY (IN CLIPBOARD NOW)"
-echo "VERIFY GITHUB WITH: `ssh -T git@github.com`"
+echo "VERIFY GITHUB WITH: ssh -T git@github.com"

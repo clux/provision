@@ -9,11 +9,12 @@ sudo apt-get install git
 cd && mkdir repos && cd repos
 git clone https://github.com/clux/.clux.git fix
 cd fix
-./linux
+sudo ./linux
 ./node 0.8.16
-./rcs
+./shell
 ./git
 # PASTE SSH KEYS
+# setup chrome, user account picture, pidgin, guake (then continue in guake)
 ./editor
 ./cpy
 ./repos
@@ -25,20 +26,19 @@ rm -rf node_modules
 
 ## Script Description
 ### node
-Gets specified version of node, makes, installs and chowns global node_modules folder.
-Last two steps will ask for sudo pw.
+Gets specified version of node, makes, installs locally.
 
-### rcs
-Adds stuff that's needed to `.bashrc`; texlive, local node bin and npm completion.
+### shell
+Prepares everything related to bashrc; texlive path, local node + npm symlinks to ~/local/bin + paths + npm completion.
 
 ### git
 Initializes the git config and sets up ssh keys to paste to github.
 
 ### editor
-Scrapes the latest 32bit linux sublime text url and extracts it to HOME dir.
+Scrapes the latest 64bit linux sublime text url and extracts it to HOME dir.
 
 ### linux
-apt-get basics
+apt basics
 
 ### cpy
 Installs settings for:
