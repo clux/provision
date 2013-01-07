@@ -22,6 +22,8 @@ cd .. && rm -rf fix
 npm install symlink
 ./node_modules/symlink/symlink.js -tr .
 rm -rf node_modules
+# if at work - get extra dependencies and setup fileserver links
+./work
 ```
 
 ## Script Description
