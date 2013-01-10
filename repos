@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-npm install -g cdir jshint jsontool nd tap@0.3.1 serve pkginit
+npm install -g cdir jshint jsontool nd tap@0.3.1 pkginit
 pkginit add default pkg.json
 
 cd && cd repos
