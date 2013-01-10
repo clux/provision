@@ -3,12 +3,8 @@
 # ensure rc exists
 touch ~/.bashrc
 
-# all local installs
-echo 'export PATH=$HOME/local/bin:$PATH' >> ~/.bashrc
-echo 'export PATH=$HOME/local/node/bin:$PATH' >> ~/.bashrc
-
-# texlive (should probably do a non-admin install of this in the future)
-# echo 'export PATH=/usr/local/texlive/2012/bin/i386-linux:$PATH' >> ~/.bashrc
+# write in what's in our default
+cat bashrc >> ~/.bashrc
 
 # npm tab completion and linking of node executables
 ~/local/node/bin/npm completion >> ~/.bashrc
