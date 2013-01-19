@@ -26,6 +26,9 @@ git config --global alias.ping "commit --allow-empty -m \"ping hooks\""
 # undo last commit
 git config --global alias.undo "reset --soft HEAD^"
 
+# move --cached diffs back out of staging area (add file for specifics)
+git config --global alias.unstage "git reset HEAD"
+
 # tj style contributors count
 git config --global alias.count "shortlog -sn"
 
