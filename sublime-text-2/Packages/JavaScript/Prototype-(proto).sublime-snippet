@@ -1,5 +1,5 @@
 <snippet>
-    <content><![CDATA[${1:Klass}.prototype.${2:method} = function(${3:arg}) {
+    <content><![CDATA[${1:Klass}.prototype.${2:method} = function (${3:arg}) {
 	${0:}
 };
 ]]></content>
