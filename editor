@@ -1,7 +1,11 @@
 #!/bin/sh
 
-npm install zombie
-node getSublimeUrl.js | xargs curl | tar -xj
+wget -q http://www.sublimetext.com/2 -O - | \
+    tr "\t\r\n'" '   "' | \
+    grep -i -o '<a[^>]\+href[ ]*=[ \t]*"\(ht\|f\)tps\?:[^"]\+"' | \
+    sed -e 's/^.*"\([^"]\+\)".*$/\1/g' | \
+    grep "x64.tar.bz2" > sublimeUrl.txt
+node sanitizeSublimeUrl.js | xargs curl | tar -xj
 mv Sublime\ Text\ 2/ ~/local
 cd ~/local/bin
 ln -s ../Sublime\ Text\ 2/sublime_text
