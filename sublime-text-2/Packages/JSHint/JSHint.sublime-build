@@ -7,7 +7,7 @@
   "line_regex": "(\\d+),(\\d+)",
 
   "linux": {
-    "path": "/usr/local/bin:/opt/local/bin:/home/clux/local/node/bin"
+    "path": "/home/clux/local/node/bin"
   },
 
   "windows": {
