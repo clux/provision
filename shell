@@ -10,4 +10,4 @@ cat bashrc >> ~/.bashrc
 ~/local/node/bin/npm completion >> ~/.bashrc
 
 # make local bin for other apps
-mkdir ~/local/bin
+mkdir -p ~/local/bin
