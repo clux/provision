@@ -33,8 +33,8 @@ modules=(
   combustion
   logule
   tap-pessimist
-  tournament.hs
   tournament
+  trials
   vitae
   .clux
 )
