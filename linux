@@ -23,6 +23,7 @@ apps=(
   g++
   pidgin
   mercurial
+  mumble
   redshift
   vlc
   xclip
