@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-npm install -g cdir jshint jsontool nd tap@0.3.1 pkginit
+npm install -g cdir jshint jsontool nd tap pkginit browserify
 pkginit add default pkg.json
 
 cd && cd repos
@@ -18,6 +18,8 @@ do
 done
 
 modules=(
+  blog
+  posts
   fsx
   operators
   typr
@@ -32,9 +34,11 @@ modules=(
   confortable
   combustion
   logule
-  tap-pessimist
   tournament
   trials
+  statesoftheworld
+  tub
+  splitter
   vitae
   .clux
 )
