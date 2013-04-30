@@ -19,7 +19,6 @@ apps=(
   guake
   g++
   pidgin
-  mercurial
   mumble
   redshift
   vlc
