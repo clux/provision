@@ -6,6 +6,7 @@ export PATH=$HOME/local/node/bin:$HOME/local/bin:$PATH
 alias serve="python -m SimpleHTTPServer"
 function cfind() { find "$@" -type f -iregex '.*\(c|cpp|h\)' ;}
 function jsfind() { find "$@" -type f -iregex '.*\(js\)' | grep -v node_modules ;}
+function ejam() { jam -j8 "$@" > /dev/null; }
 
 # git shortlog equivalent
 alias hgshort='hg log --template "{author|person}\n" | sort | uniq -c | sort -nr'
