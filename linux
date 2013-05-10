@@ -13,7 +13,6 @@ apps=(
   clementine
   couchdb
   cowsay
-  curl
   google-chrome-stable
   google-talkplugin
   guake
