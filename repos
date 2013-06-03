@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-npm install -g cdir jshint jsontool nd tap pkginit browserify
+npm install -g cdir jshint jsontool nd tap pkginit browserify sparklines
 pkginit add default pkg.json
 
 cd && cd repos
@@ -18,28 +18,29 @@ do
 done
 
 modules=(
+  autonomy
   blog
-  posts
-  fsx
-  operators
-  typr
-  topiary
-  wrappers
+  cleverbot-irc
+  combustion
+  confortable
   decay
+  dye
+  fsx
+  interlude
+  logule
+  operators
+  posts
+  splitter
+  statesoftheworld
   subset
   symlink
-  dye
-  autonomy
-  interlude
-  confortable
-  combustion
-  logule
+  topiary
   tournament
   trials
-  statesoftheworld
   tub
-  splitter
+  typr
   vitae
+  wrappers
   .clux
 )
 
