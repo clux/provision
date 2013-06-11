@@ -41,6 +41,8 @@ modules=(
   tub
   typr
   vitae
+  wolfram-alpha
+  wolfram-irc
   wrappers
 )
 
