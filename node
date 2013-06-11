@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # node install script
-# usage ./node 0.8.12
+# usage ./node 0.10.10
 
 cd ~/Downloads
 mkdir node-v$1

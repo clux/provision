@@ -1,4 +1,4 @@
-# .clux
+# dotclux
 Use this if you are clux and you are reinstalling linux.
 
 ## Usage
@@ -7,7 +7,7 @@ Follow this, in order listed:
 ```bash
 sudo apt-get install git curl
 cd && mkdir repos && cd repos
-git clone https://github.com/clux/.clux.git fix
+git clone https://github.com/clux/dotclux.git fix
 cd fix
 sudo ./linux
 ./node 0.8.16 # can be in parallel with previous

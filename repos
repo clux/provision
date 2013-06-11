@@ -24,6 +24,7 @@ modules=(
   combustion
   confortable
   decay
+  dotclux
   dye
   fsx
   interlude
@@ -41,7 +42,6 @@ modules=(
   typr
   vitae
   wrappers
-  .clux
 )
 
 for i in ${modules[@]}
