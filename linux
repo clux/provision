@@ -15,6 +15,7 @@ apps=(
   cowsay
   google-chrome-stable
   google-talkplugin
+  grc
   guake
   g++
   pidgin

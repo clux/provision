@@ -9,7 +9,8 @@ function cs() { find "$1" -type f -name *.cpp -o -name *.h -o -name *.c | xargs 
 function hf() { find "$@" -type f -name *.h ;}
 function hs() { find "$1" -type f -name *.h | xargs grep "$2" ;}
 function jf() { find "$@" -type f -name *.js | grep -v node_modules ;}
-function nj() { . ./env_linux-amd64.sh && jam -j8 -q "$@" > /dev/null; }
+alias colorgcc="grc -es -c conf.gcc --colour=on"
+function nj() { . ./env_linux-amd64.sh && colorgcc jam -j8 -q "$@" > /dev/null; }
 
 # git shortlog equivalent
 alias hgshort='hg log --template "{author|person}\n" | sort | uniq -c | sort -nr'
