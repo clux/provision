@@ -14,3 +14,7 @@ function nj() { . ./env_linux-amd64.sh && colorgcc jam -j8 -q "$@" > /dev/null; 
 
 # git shortlog equivalent
 alias hgshort='hg log --template "{author|person}\n" | sort | uniq -c | sort -nr'
+# my last changes (use with say -l 10)
+alias hgselflast="hg log -u ealbrigt --template \"{date(date, '%d.%m @ %H:%M')} - {desc}\n\""
+# ditto but for all users
+alias hglast="hg log --template \"{date(date, '%d.%m @ %H:%M')} - {author|user} - {desc}\n\""
