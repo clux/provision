@@ -9,21 +9,22 @@ apt-get update
 apt-get upgrade
 
 apps=(
-  cheese
-  clementine
-  couchdb
-  cowsay
-  google-chrome-stable
-  google-talkplugin
-  grc
-  guake
-  g++
-  pidgin
-  mumble
-  redshift
-  vlc
-  xclip
-  xchat
+  cheese      # camera tester
+  clementine  # music player
+  couchdb     # json database
+  cowsay      # for piping to `cowsay`
+  google-chrome-stable  # stable chrome from googles repo
+  google-talkplugin     # google talk plugin (still needed?)
+  grc       # generic colouriser
+  guake     # quake like, styleable bash console
+  g++       # C++ compiler
+  pidgin    # shitty XMPP client
+  mumble    # team speak
+  redshift  # monitor coloriser at night
+  sl        # learn to type..
+  vlc       # video player
+  xclip     # for redirecting to clipboard via `<` (used in git file)
+  xchat     # lightweight IRC client
 )
 
 for i in ${apps[@]}

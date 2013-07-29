@@ -1,7 +1,23 @@
 #!/usr/bin/env bash
 
-npm install -g cdir jshint jsontool nd tap pkginit browserify sparklines
+globalModules=(
+  jshint      # static analysis
+  jsontool    # curl jsonUrl | json key
+  nd          # nd `moduleName` for README.md in stdout
+  tap         # for tests
+  pkginit     # for quick making a npm module shell (though bugged atm)
+  browserify  # obviously
+  sparklines  # create histograms in your terminal with `sparkline 2 3 4`
+  grunt-cli   # alternative build tool some things use
+)
+for i in ${globalModules[@]}
+do
+  echo $i
+  npm install -g $i
+done
+
 pkginit add default pkg.json
+
 
 cd && cd repos
 
@@ -31,6 +47,7 @@ modules=(
   logule
   operators
   posts
+  sdp-transform
   splitter
   statesoftheworld
   subset
