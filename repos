@@ -6,9 +6,9 @@ globalModules=(
   nd          # nd `moduleName` for README.md in stdout
   tap         # for tests
   pkginit     # for quick making a npm module shell (though bugged atm)
-  browserify  # obviously
+  browserify  # npm style webapps
   sparklines  # create histograms in your terminal with `sparkline 2 3 4`
-  grunt-cli   # alternative build tool some things use
+  bower       # because web components seem to go in this
 )
 for i in ${globalModules[@]}
 do
