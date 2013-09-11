@@ -39,11 +39,15 @@ modules=(
   cleverbot-irc
   combustion
   confortable
+  curvefever-stats
   decay
   dotclux
   dye
   fsx
+  gu
+  icebreaker
   interlude
+  linkr-components
   logule
   operators
   posts
@@ -54,6 +58,7 @@ modules=(
   symlink
   topiary
   tournament
+  tournament-components
   trials
   tub
   typr
