@@ -1,5 +1,6 @@
 # dotclux
 Use this if you are clux and you are reinstalling linux.
+Last attempted with Mint 15 Cinnamon x64.
 
 ## Usage
 Follow this, in order listed:
@@ -23,6 +24,9 @@ cd .. && rm -rf fix
 npm install symlink
 ./node_modules/symlink/symlink.js -tr .
 rm -rf node_modules
+# while symlinking add sublime license and add guake + redshift to startup apps
+# perhaps tweak the npm dependency tree of your modules i symlinking did something silly
+
 # if at work - get extra dependencies and setup fileserver links
 ./work
 ```
@@ -48,7 +52,7 @@ Installs settings for:
 
 - sublime_text2
 - jshint
-- gconf/keyb
+- redshift
 
 ### repos
 clones all personal modules + installs standard global modules
@@ -56,7 +60,7 @@ clones all personal modules + installs standard global modules
 ### symlink
 npm links together personal modules (they can because node is under HOME and my modules have no cyclical dependencies) and installs the remaining dependencies from npm.
 
-NB: since I want the deps for symlink analyzed as well, I need a temporary non-global install of symlink to do the analyzing.
+NB: since I want the deps for symlink analyzed as well (because it's my module), I need a temporary non-global install of symlink to do the analyzing.
 
 ## License
 Licensed to clux exclusively
