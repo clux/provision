@@ -40,6 +40,7 @@ modules=(
   cleverbot-irc
   combustion
   confortable
+  curvefever-bot
   curvefever-stats
   decay
   dotclux
@@ -48,6 +49,7 @@ modules=(
   gu
   icebreaker
   interlude
+  irc-stream
   linkr-components
   logule
   operators

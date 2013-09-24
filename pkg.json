@@ -16,5 +16,8 @@
   "devDependencies": {
     "tap": "~0.4.4"
   },
+  "bugs": {
+    "url": "http://github.com/clux/" + basename + "/issues"
+  },
   "license": "MIT"
 }
