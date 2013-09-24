@@ -1,0 +1,24 @@
+{
+  "name": "wolfram",
+  "server": "irc.rd.tandberg.com",
+  "chan": "#mario",
+  "apiKey": "YJPA3T-375PLPGA3H",
+  "apiOpts": {
+    "location": "Slough, UK"
+  },
+  "whitelist": [
+    "ea",
+    "eah",
+    "ianp",
+    "uu",
+    "aa",
+    "lutomlin",
+    "jobrandh",
+    "joe_and",
+    "tjw",
+    "aj",
+    "ob",
+    "rgd",
+    "Christina"
+  ]
+}

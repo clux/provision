@@ -14,3 +14,9 @@ cp -R sublime-text-2/ ~/.config/
 
 # redshift
 cp redshift.conf  ~/.config/
+
+
+# bot configs
+cp .curvebot.json ~/repos/
+cp .clvr.json ~/repos/
+cp .wa.json ~/repos/
