@@ -11,6 +11,7 @@ globalModules=(
   bower       # because web components seem to go in this
   hacker-deps # to see what your apps depend on
   asciify     # CLI asciifier
+  ytdl        # streaming youtube downloader
 )
 for i in ${globalModules[@]}
 do
@@ -64,6 +65,7 @@ modules=(
   statesoftheworld
   subset
   symlink
+  tabexplode
   topiary
   tournament
   tournament-components
