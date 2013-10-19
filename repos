@@ -10,6 +10,7 @@ globalModules=(
   sparklines  # create histograms in your terminal with `sparkline 2 3 4`
   bower       # because web components seem to go in this
   hacker-deps # to see what your apps depend on
+  asciify     # CLI asciifier
 )
 for i in ${globalModules[@]}
 do
@@ -44,14 +45,18 @@ modules=(
   curvefever-stats
   decay
   dotclux
+  duel
   dye
+  ffa
   fsx
+  groupstage
   gu
   icebreaker
   interlude
   irc-stream
   linkr-components
   logule
+  masters
   operators
   posts
   sdp-transform
