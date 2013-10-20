@@ -7,6 +7,7 @@ globalModules=(
   tap         # for tests
   pkginit     # for quick making a npm module shell (though bugged atm)
   browserify  # npm style webapps
+  testling    # for browser tests
   sparklines  # create histograms in your terminal with `sparkline 2 3 4`
   bower       # because web components seem to go in this
   hacker-deps # to see what your apps depend on
