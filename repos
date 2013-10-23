@@ -51,6 +51,7 @@ modules=(
   dye
   ffa
   fsx
+  group
   groupstage
   gu
   icebreaker
@@ -66,6 +67,7 @@ modules=(
   statesoftheworld
   subset
   symlink
+  roundrobin
   tabexplode
   topiary
   tournament
