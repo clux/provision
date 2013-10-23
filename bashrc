@@ -8,8 +8,8 @@ function cf() { find "$@" -type f -name *.cpp -o -name *.h -o -name *.c ;}
 function cs() { find "$1" -type f -name *.cpp -o -name *.h -o -name *.c | xargs grep "$2" ;}
 function hf() { find "$@" -type f -name *.h ;}
 function hs() { find "$1" -type f -name *.h | xargs grep "$2" ;}
-function jf() { find "$@" -type f | grep -v node_modules ;}
-function js() { find "$1" -type f | grep -v node_modules | xargs grep "$2" ;}
+function jf() { find "$@" -type f -name *.js | grep -E "node_modules|bower_components|\.min" -v ;}
+function js() { jf "$1" | xargs grep "$2" ;}
 alias colorgcc="grc -es -c conf.gcc --colour=on"
 function nj() { . ./env_linux-amd64.sh && colorgcc jam -j8 -q "$@" > /dev/null; }
 
