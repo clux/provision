@@ -13,9 +13,11 @@ function js() { jf "$1" | xargs grep "$2" ;}
 function mf() { find "$@" -type f -name *.md | grep -vE "node_modules|bower_components" ;}
 function ms() { mf "$1" | xargs grep "$2" ;}
 
-
 alias colorgcc="grc -es -c conf.gcc --colour=on"
-function nj() { . ./env_linux-amd64.sh && colorgcc jam -j8 -q "$@" > /dev/null; }
+function nj() { . ./env_linux-amd64.sh && colorgcc jam -j8 -q "$@" > /dev/null ;}
+
+function validate() { jsonlint package.json > /dev/null ;}
+
 
 # git shortlog equivalent
 alias hgshort='hg log --template "{author|person}\n" | sort | uniq -c | sort -nr'
