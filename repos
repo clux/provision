@@ -2,6 +2,7 @@
 
 globalModules=(
   jshint      # static analysis
+  jsonlint    # analysis of json files
   jsontool    # curl jsonUrl | json key
   nd          # nd `moduleName` for README.md in stdout
   tap         # for tests
