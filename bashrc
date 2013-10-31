@@ -16,7 +16,7 @@ function ms() { mf "$1" | xargs grep "$2" ;}
 alias colorgcc="grc -es -c conf.gcc --colour=on"
 function nj() { . ./env_linux-amd64.sh && colorgcc jam -j8 -q "$@" > /dev/null ;}
 
-function validate() { jsonlint package.json > /dev/null ;}
+function validate() { jsonlint package.json -q ;}
 
 
 # git shortlog equivalent
