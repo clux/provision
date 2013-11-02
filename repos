@@ -70,6 +70,7 @@ modules=(
   symlink
   roundrobin
   tabexplode
+  tiebreaker
   topiary
   tournament
   tournament-components
