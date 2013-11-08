@@ -4,14 +4,16 @@ export PATH=$HOME/local/node/bin:$HOME/local/bin:$PATH
 # export PATH=/usr/local/texlive/2012/bin/i386-linux:$PATH
 
 alias serve="python -m SimpleHTTPServer"
-function cf() { find "$@" -type f -name *.cpp -o -name *.h -o -name *.c ;}
-function cs() { cf "$1" | xargs grep "$2" ;}
-function hf() { find "$@" -type f -name *.h ;}
-function hs() { hf "$1" | xargs grep "$2" ;}
-function jf() { find "$@" -type f -name *.js | grep -vE "node_modules|bower_components|\.min" ;}
-function js() { jf "$1" | xargs grep "$2" ;}
-function mf() { find "$@" -type f -name *.md | grep -vE "node_modules|bower_components" ;}
-function ms() { mf "$1" | xargs grep "$2" ;}
+function xgrep() { xargs grep "$@" 2> /dev/null ;}
+function filefind() { find "$1" -type f -name "$2" 2> /dev/null ;}
+function cf() { find "$@" -type f -name *.cpp -o -name *.h -o -name *.c 2> /dev/null ;}
+function cs() { cf "$1" | xgrep "$2" ;}
+function hf() { filefind "$@" "*.h" ;}
+function hs() { hf "$1" | xgrep "$2" ;}
+function jf() { filefind "$@" "*.js" | grep -vE "node_modules|bower_components|\.min" ;}
+function js() { jf "$1" | xgrep "$2" ;}
+function mf() { filefind "$@" "*.md" | grep -vE "node_modules|bower_components" ;}
+function ms() { mf "$1" | xgrep "$2" ;}
 
 alias colorgcc="grc -es -c conf.gcc --colour=on"
 function nj() { . ./env_linux-amd64.sh && colorgcc jam -j8 -q "$@" > /dev/null ;}
