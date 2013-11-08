@@ -8,15 +8,15 @@ function cf() { find "$@" -type f -name *.cpp -o -name *.h -o -name *.c ;}
 function cs() { cf "$1" | xargs grep "$2" ;}
 function hf() { find "$@" -type f -name *.h ;}
 function hs() { hf "$1" | xargs grep "$2" ;}
-function jf() { find "$@" -type f -name *.js | grep -E "node_modules|bower_components|\.min" -v ;}
+function jf() { find "$@" -type f -name *.js | grep -vE "node_modules|bower_components|\.min" ;}
 function js() { jf "$1" | xargs grep "$2" ;}
-function mf() { find "$@" -type f -name *.md | grep -E "node_modules|bower_components" -v ;}
+function mf() { find "$@" -type f -name *.md | grep -vE "node_modules|bower_components" ;}
 function ms() { mf "$1" | xargs grep "$2" ;}
 
 alias colorgcc="grc -es -c conf.gcc --colour=on"
 function nj() { . ./env_linux-amd64.sh && colorgcc jam -j8 -q "$@" > /dev/null ;}
 
-function validate() { jsonlint package.json > /dev/null ;}
+function validate() { jsonlint package.json -q ;}
 
 
 # git shortlog equivalent
