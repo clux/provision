@@ -4,6 +4,9 @@
 git config --global user.name "clux"
 git config --global user.email "analsandblaster@gmail.com"
 
+# git 2.0 push default
+git config --global push.default simple
+
 # pretty log from http://coderwall.com/p/euwpig?i=3&p=1&t=git
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
