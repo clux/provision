@@ -1,6 +1,6 @@
 # dotclux
 Use this if you are clux and you are reinstalling linux.
-Last attempted with Mint 15 Cinnamon x64.
+Last attempted with Mint 16 Cinnamon x64.
 
 ## Usage
 Follow this, in order listed:
@@ -11,7 +11,7 @@ cd && mkdir repos && cd repos
 git clone https://github.com/clux/dotclux.git fix
 cd fix
 sudo ./linux
-./node 0.10.15 # can be in parallel with previous
+./node 0.10.23 # can be in parallel with previous
 ./shell
 ./git
 # PASTE SSH KEYS
@@ -25,7 +25,7 @@ npm install symlink
 ./node_modules/symlink/symlink.js -tr .
 rm -rf node_modules
 # while symlinking add sublime license and add guake + redshift to startup apps
-# perhaps tweak the npm dependency tree of your modules i symlinking did something silly
+# perhaps tweak the npm dependency tree of your modules if symlinking did something silly
 
 # if at work - get extra dependencies and setup fileserver links
 ./work
