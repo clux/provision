@@ -15,20 +15,22 @@ sudo ./linux
 ./shell
 ./git
 # PASTE SSH KEYS
-# setup chrome, user account picture, pidgin, guake (then continue in guake)
+# setup chrome, guake (then continue in guake)
 ./editor
 ./cpy
 # if not at work, install and link local repos
 ./repos
 cd .. && rm -rf fix
 npm install symlink
-./node_modules/symlink/symlink.js -tr .
+./node_modules/symlink/symlink.js -r . -g tap -d
 rm -rf node_modules
 # while symlinking add sublime license and add guake + redshift to startup apps
 # perhaps tweak the npm dependency tree of your modules if symlinking did something silly
 
 # if at work - get extra dependencies and setup fileserver links
 ./work
+
+# set up user account picture (may be on networked drive), pidgin
 ```
 
 ## Script Description
