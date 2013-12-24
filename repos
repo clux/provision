@@ -12,6 +12,7 @@ globalModules=(
   bower       # because web components seem to go in this
   asciify     # CLI asciifier
   ytdl        # streaming youtube downloader
+  browserify-graph # alternative to npm-graph
 )
 for i in ${globalModules[@]}
 do
@@ -61,8 +62,10 @@ modules=(
   linkr-components
   logule
   masters
+  npm-graph
   operators
   posts
+  preservative
   sdp-transform
   splitter
   statesoftheworld
