@@ -6,48 +6,47 @@ Last attempted with Mint 16 Cinnamon x64.
 Follow this, in order listed:
 
 ```bash
-sudo apt-get install git curl g++
-cd && mkdir repos && cd repos
-git clone https://github.com/clux/dotclux.git fix
-cd fix
+cd && mkdir repos && cd repos && sudo apt-get install -y -qq git curl g++
+git clone https://github.com/clux/dotclux.git fix && cd fix
+
+# run these in parallel
 sudo ./linux
-./node 0.10.23 # can be in parallel with previous
+./node 0.10.23
+# need to wait for node - so setup a few things outside installation:
+# - startup apps: guake, redshift, pidgin, remove caribou
+# - keyboard layout: add "us int dead", alt-shift change, caps compose
+# - guake configure
+# - look and feel of UI
 ./shell
-./git
-# PASTE SSH KEYS
-# setup chrome, guake (then continue in guake)
+# continue in guake (applies new bashrc)
 ./editor
+./git
 ./cpy
-# if not at work, install and link local repos
+# login to chrome and dvcs services and paste ssh keys
 ./repos
-cd .. && rm -rf fix
-npm install symlink
-./node_modules/symlink/symlink.js -r . -g tap -d
-rm -rf node_modules
-# while symlinking add sublime license and add guake + redshift to startup apps
-# perhaps tweak the npm dependency tree of your modules if symlinking did something silly
+# while repos is cloning and setting up their dependencies:
+# - setup sublime text license
+# - user account picture
 
 # if at work - get extra dependencies and setup fileserver links
 ./work
-
-# set up user account picture (may be on networked drive), pidgin
 ```
 
 ## Script Description
+### linux
+apt basics
+
 ### node
-Gets specified version of node, makes, installs locally.
+Gets specified version of node, makes, installs locally. Leaves a pre-compiled folder of that node version in ~/Downloads for quick version switching.
 
 ### shell
-Prepares everything related to bashrc; texlive path, local node + npm symlinks to ~/local/bin + paths + npm completion.
+Prepares shell shortcuts, PATH extensions and npm auto-completion.
 
 ### git
 Initializes the git config and sets up ssh keys to paste to github.
 
 ### editor
-Scrapes the latest 64bit linux sublime text url and extracts it to HOME dir.
-
-### linux
-apt basics
+Scrapes the latest 64bit linux sublime text 3 url and extracts it to ~/local/sublime_text_3.
 
 ### cpy
 Installs settings for:
@@ -57,12 +56,11 @@ Installs settings for:
 - redshift
 
 ### repos
-clones all personal modules + installs standard global modules
+Does a bunch of stuff with my git and npm modules:
 
-### symlink
-npm links together personal modules (they can because node is under HOME and my modules have no cyclical dependencies) and installs the remaining dependencies from npm.
-
-NB: since I want the deps for symlink analyzed as well (because it's my module), I need a temporary non-global install of symlink to do the analyzing.
+- Installs global npm modules
+- Clones all personal modules
+- npm link all my personal modules so they are available globally (in correct order)
 
 ## License
 Licensed to clux exclusively
