@@ -6,8 +6,8 @@ Last attempted with Mint 16 Cinnamon x64.
 Follow this, in order listed:
 
 ```bash
-cd && mkdir repos && cd repos && sudo apt-get install -y -qq git curl g++
-git clone https://github.com/clux/dotclux.git fix && cd fix
+sudo apt-get install -y -qq git curl g++
+mkdir repos && cd repos && git clone https://github.com/clux/dotclux.git df && cd df
 
 # run these in parallel
 sudo ./linux
