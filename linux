@@ -21,7 +21,6 @@ apps=(
   mumble    # team speak
   redshift  # monitor coloriser at night
   screen    # screen manager
-  sl        # learn to type..
   vlc       # video player
   xclip     # for redirecting to clipboard via `<` (used in git file)
   xchat     # lightweight IRC client
