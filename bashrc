@@ -1,7 +1,5 @@
 
 export PATH=$HOME/local/node/bin:$HOME/local/bin:$PATH
-# TODO: texlive x64
-# export PATH=/usr/local/texlive/2012/bin/i386-linux:$PATH
 
 alias serve="python -m SimpleHTTPServer"
 function xgrep() { xargs grep "$@" 2> /dev/null ;}
