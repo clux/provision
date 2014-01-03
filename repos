@@ -12,7 +12,6 @@ globalModules=(
   bower       # because web components seem to go in this
   asciify     # CLI asciifier
   ytdl        # streaming youtube downloader
-  browserify-graph # alternative to npm-graph
 )
 for i in ${globalModules[@]}
 do
@@ -93,3 +92,11 @@ do
   git clone git@github.com:clux/$i.git
 done
 
+echo "Preparing to symlink"
+npm install symlink
+echo "Dry run results:"
+./node_modules/symlink/symlink.js -r . -g tap -d
+echo "Doing it properly:"
+./node_modules/symlink/symlink.js -r . -g tap
+echo "rm -rf fix/ && rm -rf node_modules/" | xclip -sel clip
+echo "if all went well - paste xcliped cleanup command"
