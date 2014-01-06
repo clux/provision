@@ -11,7 +11,7 @@ mkdir repos && cd repos && git clone https://github.com/clux/dotclux.git df && c
 
 # run these in parallel
 sudo ./linux
-./node 0.10.23
+./node 0.10.24
 # need to wait for node - so setup a few things outside installation:
 # - startup apps: guake, redshift, pidgin, remove caribou
 # - keyboard layout: add "us int dead", alt-shift change, caps compose

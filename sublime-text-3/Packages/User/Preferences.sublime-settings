@@ -51,8 +51,8 @@
   // side bar animation off when expanding/collapsing the tree
   "tree_animation_enabled": false,
 
-  // do this at home, but not at work..
-  "trim_trailing_white_space_on_save": false,
+  // just remember to save whitespace changesets first..
+  "trim_trailing_white_space_on_save": true,
 
   // ensure this doesn't change because it would be crazy
   "save_on_focus_lost": false

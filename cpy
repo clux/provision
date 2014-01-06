@@ -2,11 +2,14 @@
 
 cp .jshintrc ~/repos
 
-# sublime - erase defaults to get rid of bad snippets
+# sublime 2 - erase defaults to get rid of bad snippets
 #rm -rf ~/.config/sublime-text-2/Packages/HTML/
 #rm -rf ~/.config/sublime-text-2/Packages/JavaScript/
 #rm -rf ~/.config/sublime-text-2/Packages/JSHint/
-#cp -R sublime-text-2/ ~/.config/
+
+# sublime 3 - done better
+cp -R sublime-text-3/ ~/.config/
+git clone https://github.com/clux/sublime-jshint.git ~/.config/sublime-text-3/Packages/JSHint
 
 
 # keyboard layouts + shortcut keys (broken atm.. TODO: fix)
