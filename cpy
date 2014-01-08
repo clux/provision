@@ -7,7 +7,8 @@ cp .jshintrc ~/repos
 #rm -rf ~/.config/sublime-text-2/Packages/JavaScript/
 #rm -rf ~/.config/sublime-text-2/Packages/JSHint/
 
-# sublime 3 - done better
+# sublime 3 - ditto
+rm -rf ~/.config/sublime-text-3/Cache/JavaScript/
 cp -R sublime-text-3/ ~/.config/
 git clone https://github.com/clux/sublime-jshint.git ~/.config/sublime-text-3/Packages/JSHint
 

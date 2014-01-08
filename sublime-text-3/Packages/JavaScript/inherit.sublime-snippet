@@ -1,0 +1,6 @@
+<snippet>
+    <content><![CDATA[${1:Klass}.prototype = Object.create(${2:SuperKlass}.prototype);]]></content>
+    <tabTrigger>inherit</tabTrigger>
+    <scope>source.js</scope>
+    <description>object create inheritance</description>
+</snippet>
