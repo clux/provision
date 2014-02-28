@@ -17,6 +17,7 @@ apps=(
   google-talkplugin     # google talk plugin (still needed?)
   grc       # generic colouriser
   guake     # quake like, styleable bash console
+  lolcat    # random colouriser of stdin (from ruby gem of same name)
   pidgin    # shitty XMPP client
   mumble    # team speak
   redshift  # monitor coloriser at night
