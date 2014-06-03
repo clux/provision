@@ -26,6 +26,7 @@ sudo ./linux
 ./repos
 # while repos is cloning and setting up their dependencies:
 # - setup sublime text license
+# - setup sublime package control and install clang formater plugin
 # - user account picture
 
 # if at work - get extra dependencies and setup fileserver links
