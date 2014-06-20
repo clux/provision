@@ -5,6 +5,7 @@ wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-ke
 echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
 echo "deb http://dl.google.com/linux/talkplugin/deb/ stable main" > /etc/apt/sources.list.d/google-talkplugin.list
 
+add-apt-repository ppa:staticfloat/juliareleases
 apt-get update
 apt-get upgrade
 
@@ -17,6 +18,7 @@ apps=(
   google-talkplugin     # google talk plugin (still needed?)
   grc       # generic colouriser
   guake     # quake like, styleable bash console
+  julia     # stable releases of the language
   lolcat    # random colouriser of stdin (from ruby gem of same name)
   pidgin    # shitty XMPP client
   mumble    # team speak
