@@ -11,7 +11,7 @@
   "main": "index.js",
   "scripts": {
     "test": "$(npm bin)/nodeunit --reporter=verbose test/*.js",
-    "coveralls": "$(npm bin)/jscoverage lib && DYE_COV=1 $(npm bin)/nodeunit --reporter=lcov test | $(npm bin)/coveralls"
+    "coveralls": "$(npm bin)/jscoverage lib && " + basename.toUpperCase().replace(/\-/g, "_") + "_COV=1 $(npm bin)/nodeunit --reporter=lcov test | $(npm bin)/coveralls"
   },
   "dependencies": {},
   "devDependencies": {
