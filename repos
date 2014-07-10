@@ -3,7 +3,7 @@
 globalModules=(
   jshint      # static analysis
   jsonlint    # analysis of json files
-  jsontool    # curl jsonUrl | json key
+  json        # curl jsonUrl | json key
   nd          # nd `moduleName` for README.md in stdout
   tap         # for tests
   pkginit     # for quick making a npm module shell (though bugged atm)
