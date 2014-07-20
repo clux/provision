@@ -95,8 +95,8 @@ done
 echo "Preparing to symlink"
 npm install symlink
 echo "Dry run results:"
-./node_modules/symlink/symlink.js -r . -g tap -d
+./node_modules/symlink/symlink.js . -d
 echo "Doing it properly:"
-./node_modules/symlink/symlink.js -r . -g tap
+./node_modules/symlink/symlink.js .
 echo "rm -rf fix/ && rm -rf node_modules/" | xclip -sel clip
 echo "if all went well - paste xcliped cleanup command"
