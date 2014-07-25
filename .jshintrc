@@ -4,6 +4,8 @@
     "camelcase"     : true,  // force camelCase or UPPER_CASE var names only
     "curly"         : true,  // force curly braces
     "eqeqeq"        : true,  // force ===
+    "forin"         : true,  // force for in only when hasOwnProperty exists
+    "freeze"        : true,  // prevent modifying built in objets
     "latedef"       : true,  // prevent use of vars before their defs
     "immed"         : true,  // prevent function(){}() without wrapping in parens
     "newcap"        : true,  // prevent uncapitalized constructors
