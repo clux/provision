@@ -1,9 +1,6 @@
 
 export PATH=$HOME/local/node/bin:$HOME/local/bin:$PATH
 
-alias cowsay="cowsay | lolcat"
-alias cat="lolcat"
-
 alias serve="python -m SimpleHTTPServer"
 function xgrep() { xargs grep "$@" 2> /dev/null ;}
 function filefind() { find "$1" -type f -name "$2" 2> /dev/null ;}
