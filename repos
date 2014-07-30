@@ -5,13 +5,15 @@ globalModules=(
   jsonlint    # analysis of json files
   json        # curl jsonUrl | json key
   nd          # nd `moduleName` for README.md in stdout
-  tap         # for tests
   pkginit     # for quick making a npm module shell (though bugged atm)
   browserify  # npm style webapps
   testling    # for browser tests
-  bower       # because web components seem to go in this
   asciify     # CLI asciifier
   ytdl        # streaming youtube downloader
+  # tests
+  nodeunit
+  tap
+  coveralls
 )
 for i in ${globalModules[@]}
 do
@@ -20,7 +22,6 @@ do
 done
 
 pkginit add default pkg.json
-
 
 cd && cd repos
 
