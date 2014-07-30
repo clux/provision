@@ -3,9 +3,9 @@
 # google public key + sources list
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
-echo "deb http://dl.google.com/linux/talkplugin/deb/ stable main" > /etc/apt/sources.list.d/google-talkplugin.list
+#echo "deb http://dl.google.com/linux/talkplugin/deb/ stable main" > /etc/apt/sources.list.d/google-talkplugin.list
 
-add-apt-repository ppa:staticfloat/juliareleases
+#add-apt-repository ppa:staticfloat/juliareleases for package julia
 apt-get update
 apt-get upgrade
 
@@ -13,13 +13,10 @@ apps=(
   cheese      # camera tester
   clementine  # music player
   couchdb     # json database
-  cowsay      # for piping to `cowsay`
   google-chrome-stable  # stable chrome from googles repo
-  google-talkplugin     # google talk plugin (still needed?)
+  #google-talkplugin     # google talk plugin (still needed?)
   grc       # generic colouriser
   guake     # quake like, styleable bash console
-  julia     # stable releases of the language
-  lolcat    # random colouriser of stdin (from ruby gem of same name)
   pidgin    # shitty XMPP client
   mumble    # team speak
   redshift  # monitor coloriser at night
