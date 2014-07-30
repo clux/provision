@@ -1,6 +1,6 @@
 # dotclux
 Use this if you are clux and you are reinstalling linux.
-Last attempted with Mint 16 Cinnamon x64.
+Last attempted with Mint 17 Debian Edition Cinnamon x64.
 
 ## Usage
 Follow this, in order listed:
@@ -11,7 +11,8 @@ mkdir repos && cd repos && git clone https://github.com/clux/dotclux.git df && c
 
 # run these in parallel
 sudo ./linux
-./node 0.10.24
+./node 0.10.29 # non-sudo -> install in ~/local/node
+./llvm 3 4 2 # will require sudo for make install step
 # need to wait for node - so setup a few things outside installation:
 # - startup apps: guake, redshift, pidgin, remove caribou
 # - keyboard layout: add "us int dead", alt-shift change, caps compose
@@ -40,6 +41,9 @@ apt basics
 ### node
 Gets specified version of node, makes, installs locally. Leaves a pre-compiled folder of that node version in ~/Downloads for quick version switching.
 
+### llvm
+The entire llvm toolchain; llvm, clang, clang extras, compiler-rt. Prepares for a global install, and leaves a pre-compiled version in ~/Downloads for version switching.
+
 ### shell
 Prepares shell shortcuts, PATH extensions and npm auto-completion.
 
@@ -52,7 +56,7 @@ Scrapes the latest 64bit linux sublime text 3 url and extracts it to ~/local/sub
 ### cpy
 Installs settings for:
 
-- sublime_text2
+- sublime_text3
 - jshint
 - redshift
 
