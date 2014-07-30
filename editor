@@ -3,8 +3,10 @@ wget -q http://www.sublimetext.com/3 -O - | \
     tr "\t\r\n'" '   "' | \
     grep -i -o '<a[^>]\+href[ ]*=[ \t]*"\(ht\|f\)tps\?:[^"]\+"' | \
     sed -e 's/^.*"\([^"]\+\)".*$/\1/g' | \
-    grep "x64.tar.bz2" > sublimeUrl.txt
-node sanitizeSublimeUrl.js | xargs curl | tar -xj
+    grep "x64.tar.bz2" | \
+    xargs curl | \
+    tar -xj
+
 mv sublime_text_3/ ~/local
 cd ~/local/bin
 ln -s ../sublime_text_3/sublime_text
