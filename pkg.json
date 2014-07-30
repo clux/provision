@@ -10,13 +10,14 @@
   "keywords": [],
   "main": "index.js",
   "scripts": {
-    "test": "$(npm bin)/nodeunit --reporter=verbose test/*.js",
-    "coveralls": "$(npm bin)/jscoverage lib && " + basename.toUpperCase().replace(/\-/g, "_") + "_COV=1 $(npm bin)/nodeunit --reporter=lcov test | $(npm bin)/coveralls"
+    "test": "nodeunit --reporter=verbose test/*.js",
+    "coverage": "jscoverage lib && " + basename.toUpperCase().replace(/\-/g, "_") + "_COV=1 nodeunit --reporter=lcov test/*.js",
+    "coveralls": "npm run coverage | coveralls"
   },
   "dependencies": {},
   "devDependencies": {
     "nodeunit": "~0.9.0",
-    "jscoverage": "~0.5.4",
+    "jscoverage": "~0.5.5",
     "coveralls": "~2.11.1"
   },
   "bugs": {
