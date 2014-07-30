@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+# llvm install script
+# usage ./llvm 3 4 2
+LLVM=http://llvm.org/releases/$1.$2.$3/llvm-$1.$2.$3.src.tar.gz
+CLANG=http://llvm.org/releases/$1.$2.$3/cfe-$1.$2.$3.src.tar.gz
+# These don't seem to release as often
+EXTRA=http://llvm.org/releases/$1.$2/clang-tools-extra-$1.$2.src.tar.gz
+COMPILERRT=http://llvm.org/releases/$1.$2/compiler-rt-$1.$2.src.tar.gz
+
+cd ~/Downloads && mkdir llvm-v$1.$2.$3 && cd llvm-v$1.$2.$3
+echo "curl $LLVM into $(pwd)"
+curl $LLVM | tar xz --strip-components=1
+
+cd tools && mkdir clang && cd clang
+echo "curl $CLANG into $(pwd)"
+curl $CLANG | tar xz --strip-components=1
+
+cd tools && mkdir extra && cd extra
+echo "curl $EXTRA into $(pwd)"
+curl $EXTRA | tar xz --strip-components=1
+
+cd ../../../../projects && mkdir compiler-rt && cd compiler-rt
+echo "curl $COMPILERRT into $(pwd)"
+curl $COMPILERRT | tar xz --strip-components=1
+
+cd ../..
+
+# don't pollute src dir with build stuff
+mkdir build
+cd build
+../configure
+make
+sudo make install
