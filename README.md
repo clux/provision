@@ -30,8 +30,7 @@ sudo ./linux
 # - setup sublime package control and install clang formater plugin
 # - user account picture
 
-# if at work - get extra dependencies and setup fileserver links
-./work
+# if at work - clone work gist and follow that
 ```
 
 ## Script Description
