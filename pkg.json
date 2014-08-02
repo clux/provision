@@ -8,17 +8,17 @@
     "url": "clux/" + basename
   },
   "keywords": [],
-  "main": "index.js",
+  "main": basename + ".js",
   "scripts": {
     "test": "nodeunit --reporter=verbose test/*.js",
-    "coverage": "jscoverage lib && " + basename.toUpperCase().replace(/\-/g, "_") + "_COV=1 nodeunit --reporter=lcov test/*.js",
+    "coverage": "jscoverage " + basename.js + " && " + basename.toUpperCase().replace(/\-/g, "_") + "_COV=1 nodeunit --reporter=lcov test/*.js",
     "coveralls": "npm run coverage | coveralls"
   },
   "dependencies": {},
   "devDependencies": {
-    "nodeunit": "~0.9.0",
-    "jscoverage": "~0.5.5",
-    "coveralls": "~2.11.1"
+    "nodeunit": "^0.9.0",
+    "jscoverage": "^0.5.5",
+    "coveralls": "^2.11.1"
   },
   "bugs": {
     "url": "http://github.com/clux/" + basename + "/issues"
