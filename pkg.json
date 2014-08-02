@@ -8,10 +8,10 @@
     "url": "clux/" + basename
   },
   "keywords": [],
-  "main": basename + ".js",
+  "main": basename.replace(/\-/g, "_") + ".js",
   "scripts": {
     "test": "nodeunit --reporter=verbose test/*.js",
-    "coverage": "jscoverage " + basename.js + " && " + basename.toUpperCase().replace(/\-/g, "_") + "_COV=1 nodeunit --reporter=lcov test/*.js",
+    "coverage": "jscoverage " + basename.replace(/\-/g, "_") + ".js && " + basename.toUpperCase().replace(/\-/g, "_") + "_COV=1 nodeunit --reporter=lcov test/*.js",
     "coveralls": "npm run coverage | coveralls"
   },
   "dependencies": {},
