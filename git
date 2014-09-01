@@ -13,6 +13,9 @@ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Crese
 # pretty diff
 git config --global alias.dif "diff --color"
 
+# pretty diff stat
+git config --global alias.stat = "diff --color --stat"
+
 # hg st equivalent
 git config --global alias.st "status -s"
 
