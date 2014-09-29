@@ -14,7 +14,7 @@ function mf() { filefind "$@" "*.md" | grep -vE "node_modules|bower_components" 
 function ms() { mf "$1" | xgrep "$2" ;}
 
 alias colorgcc="grc -es -c conf.gcc --colour=on"
-function nj() { . ./env_linux-amd64.sh && colorgcc jam -j6 -q "$@" > /dev/null ;}
+function nj() { . ./env_linux-amd64.sh && colorgcc INPUT/jam/host/jam -j6 -q "$@" > /dev/null ;}
 
 function validate() { jsonlint package.json -q ;}
 
