@@ -5,6 +5,7 @@ globalModules=(
   jsonlint    # analysis of json files
   json        # curl jsonUrl | json key
   nd          # nd `moduleName` for README.md in stdout
+  npm         # alwyas update this
   pkginit     # for quick making a npm module shell (though bugged atm)
   browserify  # npm style webapps
   testling    # for browser tests
@@ -94,10 +95,9 @@ do
 done
 
 echo "Preparing to symlink"
-npm install symlink
+npm install -g symlink
 echo "Dry run results:"
-./node_modules/symlink/symlink.js . -d
+symlinks . -d
 echo "Doing it properly:"
-./node_modules/symlink/symlink.js .
-echo "rm -rf fix/ && rm -rf node_modules/" | xclip -sel clip
-echo "if all went well - paste xcliped cleanup command"
+symlink . -g nodeunit -g coveralls
+npm install -g symlink
