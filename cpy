@@ -16,6 +16,9 @@ git clone https://github.com/clux/sublime-jshint.git ~/.config/sublime-text-3/Pa
 # keyboard layouts + shortcut keys (broken atm.. TODO: fix)
 # cp %gconf.xml ~/.gconf/desktop/gnome/peripherals/keyboard/kbd/
 
+# user picture
+cp .face ~/
+
 # redshift
 cp redshift.conf  ~/.config/
 
