@@ -25,6 +25,7 @@ apps=(
   nodejs
   redshift  # monitor coloriser at night
   screen    # screen manager
+  steam     # TF2
   sublime-text # editor
   vlc       # video player
   xclip     # for redirecting to clipboard via `<` (used in git file)
