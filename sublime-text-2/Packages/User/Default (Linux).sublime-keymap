@@ -1,5 +1,0 @@
-[
-  // gnome 3 uses alt+shift+up/down for desktop selection
-  { "keys": ["alt+up"], "command": "select_lines", "args": {"forward": false} },
-  { "keys": ["alt+down"], "command": "select_lines", "args": {"forward": true} }
-]

@@ -1,9 +1,0 @@
-<snippet>
-    <content><![CDATA[for (var ${1:key} in ${2:obj}) {
-	${3:if (!Object.prototype.hasOwnProperty.call(${2:obj}, ${1:key}) continue;}
-	${100:${2:obj}[${1:key}]}$0
-}]]></content>
-    <tabTrigger>fori</tabTrigger>
-    <scope>source.js</scope>
-    <description>for in</description>
-</snippet>
