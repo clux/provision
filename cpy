@@ -2,11 +2,6 @@
 
 cp .jshintrc ~/repos
 
-# sublime 2 - erase defaults to get rid of bad snippets
-#rm -rf ~/.config/sublime-text-2/Packages/HTML/
-#rm -rf ~/.config/sublime-text-2/Packages/JavaScript/
-#rm -rf ~/.config/sublime-text-2/Packages/JSHint/
-
 # sublime 3 - ditto
 rm -rf ~/.config/sublime-text-3/Cache/JavaScript/
 cp -R sublime-text-3/ ~/.config/
