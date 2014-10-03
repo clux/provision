@@ -1,7 +1,6 @@
 
-export PATH=$HOME/local/node/bin:$HOME/local/bin:$PATH
+export PATH=$HOME/npm/bin:$PATH
 
-alias serve="python -m SimpleHTTPServer"
 function xgrep() { xargs grep "$@" 2> /dev/null ;}
 function filefind() { find "$1" -type f -name "$2" 2> /dev/null ;}
 function cf() { find "$@" -type f -name *.cpp -o -name *.h -o -name *.c 2> /dev/null ;}

@@ -1,31 +1,33 @@
 #!/usr/bin/env bash
 
+sudo add-apt-repository ppa:chris-lea/node.js
+
 # google public key + sources list
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
 #echo "deb http://dl.google.com/linux/talkplugin/deb/ stable main" > /etc/apt/sources.list.d/google-talkplugin.list
 
-add-apt-repository ppa:webupd8team/sublime-text-3
 #add-apt-repository ppa:staticfloat/juliareleases for package julia
 apt-get update
 apt-get upgrade
 
 apps=(
-  cheese      # camera tester
-  clementine  # music player
+  #cheese      # camera tester
+  #clementine  # music player
   #couchdb     # json database
   google-chrome-stable  # stable chrome from googles repo
   #google-talkplugin     # google talk plugin (still needed?)
   grc       # generic colouriser
   guake     # quake like, styleable bash console
+  hexchat   # IRC client
   pidgin    # shitty XMPP client
   mumble    # team speak
+  nodejs
   redshift  # monitor coloriser at night
   screen    # screen manager
   sublime-text # editor
   vlc       # video player
   xclip     # for redirecting to clipboard via `<` (used in git file)
-  xchat     # lightweight IRC client
 )
 
 for i in ${apps[@]}

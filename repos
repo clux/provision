@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+npm config set prefix ~/npm
+npm config set loglevel info
+
 globalModules=(
   jshint      # static analysis
   jsonlint    # analysis of json files
@@ -52,7 +55,6 @@ modules=(
   dye
   ffa
   ffa-tb
-  fsx
   group
   groupstage
   groupstage-tb
@@ -81,7 +83,6 @@ modules=(
   tourney
   trials
   tub
-  typr
   vitae
   wolfram-alpha
   wolfram-irc

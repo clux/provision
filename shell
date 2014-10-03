@@ -7,7 +7,6 @@ touch ~/.bashrc
 cat bashrc >> ~/.bashrc
 
 # npm tab completion and linking of node executables
-~/local/node/bin/npm completion >> ~/.bashrc
+npm completion >> ~/.bashrc
 
-# make local bin for other apps
-mkdir -p ~/local/bin
+
