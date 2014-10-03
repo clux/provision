@@ -1,6 +1,5 @@
 # dotclux
 Use this if you are clux and you are reinstalling linux.
-Last attempted with Mint 17 Debian Edition Cinnamon x64.
 
 ## Usage
 Follow this, in order listed:
@@ -9,10 +8,7 @@ Follow this, in order listed:
 sudo apt-get install -y -qq git curl g++
 mkdir repos && cd repos && git clone https://github.com/clux/dotclux.git df && cd df
 
-# run these in parallel
 sudo ./linux
-./node 0.10.29 # non-sudo -> install in ~/local/node
-./llvm 3 4 2 # will require sudo for make install step
 # need to wait for node - so setup a few things outside installation:
 # - startup apps: guake, redshift, pidgin, remove caribou
 # - keyboard layout: add "us int dead", alt-shift change, caps compose
@@ -20,7 +16,6 @@ sudo ./linux
 # - look and feel of UI
 ./shell
 # continue in guake (applies new bashrc)
-./editor
 ./git
 ./cpy
 # login to chrome and dvcs services and paste ssh keys
@@ -28,7 +23,6 @@ sudo ./linux
 # while repos is cloning and setting up their dependencies:
 # - setup sublime text license
 # - setup sublime package control and install clang formater plugin
-# - user account picture
 
 # if at work - clone work gist and follow that
 ```
