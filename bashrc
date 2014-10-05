@@ -19,6 +19,7 @@ function validate() { jsonlint package.json -q ;}
 
 function aptin() { sudo apt-get install "$1" ;}
 function aptrem() { sudo apt-get remove "$1" ;}
+function gclone() { git clone git@github.com.org:clux/"$1".git ;}
 
 
 # git shortlog equivalent
