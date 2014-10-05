@@ -43,6 +43,7 @@ done
 
 modules=(
   autonomy
+  badgify
   blog
   cleverbot-irc
   combustion
