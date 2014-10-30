@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-npm config set prefix ~/npm
-npm config set loglevel info
+# only set prefix if we didn't install from source
+#npm config set prefix ~/npm
+#npm config set loglevel info
 
 globalModules=(
   jshint      # static analysis
@@ -33,7 +34,6 @@ cd && cd repos
 privates=(
   deathmatch
   meshrtc
-  sexify
 )
 for i in ${privates[@]}
 do
@@ -59,6 +59,7 @@ modules=(
   group
   groupstage
   groupstage-tb
+  groupstage-tb-duel
   gu
   icebreaker
   interlude

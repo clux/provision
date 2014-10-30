@@ -1,5 +1,6 @@
 
-export PATH=$HOME/npm/bin:$PATH
+#export PATH=$HOME/npm/bin:$PATH
+export PATH=$HOME/local/node/bin:$PATH
 
 function xgrep() { xargs grep "$@" 2> /dev/null ;}
 function filefind() { find "$1" -type f -name "$2" 2> /dev/null ;}

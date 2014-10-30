@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo add-apt-repository ppa:chris-lea/node.js
+# TODO: nodesource node install?
 
 # google public key + sources list
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
@@ -18,15 +18,15 @@ apps=(
   google-chrome-stable  # stable chrome from googles repo
   #google-talkplugin     # google talk plugin (still needed?)
   grc       # generic colouriser
-  guake     # quake like, styleable bash console
-  hexchat   # IRC client
-  pidgin    # shitty XMPP client
-  mumble    # team speak
-  nodejs
-  redshift  # monitor coloriser at night
+  guake     # quake like terminal manager
+  hexchat   # IRC
+  pidgin    # XMPP
+  mumble    # MP voice com
+  #nodejs   # disabled - compile from source
+  redshift  # monitor night brightener
   screen    # screen manager
   steam     # TF2
-  sublime-text # editor
+  #sublime-text # not sure if repos has ST3
   vlc       # video player
   xclip     # for redirecting to clipboard via `<` (used in git file)
 )
