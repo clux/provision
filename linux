@@ -14,12 +14,14 @@ apt-get upgrade
 apps=(
   #cheese      # camera tester
   #clementine  # music player
+  cmake     # c++
   #couchdb     # json database
   google-chrome-stable  # stable chrome from googles repo
   #google-talkplugin     # google talk plugin (still needed?)
   grc       # generic colouriser
   guake     # quake like terminal manager
   hexchat   # IRC
+  lcov      # c++ coverage
   pidgin    # XMPP
   mumble    # MP voice com
   #nodejs   # disabled - compile from source
