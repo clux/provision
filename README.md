@@ -46,6 +46,14 @@ Initializes the git config and sets up ssh keys to paste to github.
 ### editor
 Scrapes the latest 64bit linux sublime text 3 url and extracts it to ~/local/sublime_text_3.
 
+This is unused at the moment as can use sublime deb.
+Get package control up and install packages:
+
+- SublimeLinter
+- SublimeLinter-jshint
+- SublimeLinter-json
+- Seti_UI
+
 ### cpy
 Installs settings for:
 
