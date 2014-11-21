@@ -1,37 +1,67 @@
+export PATH=$HOME/npm/bin:$PATH
 
-#export PATH=$HOME/npm/bin:$PATH
-export PATH=$HOME/local/node/bin:$PATH
+ngrep() { grep -vE "$@" ;}
+xgrep() { xargs grep "$@" 2> /dev/null ;}
 
+filefind() { find "$1" -type f -name "$2" 2> /dev/null ;}
 
-function xgrep() { xargs grep "$@" 2> /dev/null ;}
-function filefind() { find "$1" -type f -name "$2" 2> /dev/null ;}
+# C++ files
+cf() { find "$@" -type f -name *.cpp -o -name *.h -o -name *.c 2> /dev/null ;}
+cs() { cf "$1" | xgrep "$2" ;}
+hf() { filefind "$@" "*.h" ;}
+hs() { hf "$1" | xgrep "$2" ;}
 
-function cf() { find "$@" -type f -name *.cpp -o -name *.h -o -name *.c 2> /dev/null ;}
-function cs() { cf "$1" | xgrep "$2" ;}
+# JS files
+jf() { filefind "$@" "*.js" | ngrep "node_modules|bower_components|\.min" ;}
+js() { jf "$1" | xgrep "$2" ;}
 
-function hf() { filefind "$@" "*.h" ;}
-function hs() { hf "$1" | xgrep "$2" ;}
+# markdowns
+mf() { filefind "$@" "*.md" | ngrep "node_modules|bower_components" ;}
+ms() { mf "$1" | xgrep "$2" ;}
 
-function jf() { filefind "$@" "*.js" | grep -vE "node_modules|bower_components|\.min" ;}
-function js() { jf "$1" | xgrep "$2" ;}
-
-function mf() { filefind "$@" "*.md" | grep -vE "node_modules|bower_components" ;}
-function ms() { mf "$1" | xgrep "$2" ;}
-
-function cmks() { filefind . "CMakeLists.txt" | xgrep "$1" ;}
-
-
-alias clip="xclip -sel clip"
-
+# build system query helpers
+srchjam() { find . -type f 2> /dev/null | grep -E "Jamfile|DEPS|Jamrules|opts" | xargs grep -E "$1" ;}
+srchcmake() { filefind . "CMakeLists.txt" | xgrep "$1" ;}
 
 alias colorgcc="grc -es -c conf.gcc --colour=on"
-function nj() { . ./env_linux-amd64.sh && colorgcc INPUT/jam/host/jam -j6 -q "$@" > /dev/null ;}
+nj() { . ./env_linux-amd64.sh && colorgcc INPUT/jam/host/jam -j6 -q "$@" > /dev/null ;}
+jj() { . ./env_linux-amd64.sh && colorgcc INPUT/jam/host/jam -j6 -q "$@" ;}
+clean() { rm -rf ./cmake/ && jj clean ;}
 
-function validate() { jsonlint package.json -q ;}
+validate() { jsonlint package.json -q ;}
 
-function aptin() { sudo apt-get install "$1" ;}
-function aptrem() { sudo apt-get remove "$1" ;}
-function gclone() { git clone git@github.com:clux/"$1".git ;}
+# package/repo fetching shortcuts
+aptin() { sudo apt-get install "$1" ;}
+aptrem() { sudo apt-get remove "$1" ;}
+gclone() { git clone git@github.com:clux/"$1".git ;}
+hclone() { hg clone https://hg.lal.cisco.com/"$1" ;}
+
+# insert xkcd tar joke here
+extract () {
+  if [ -f $1 ] ; then
+      case $1 in
+          *.tar.bz2)   tar xvjf $1    ;;
+          *.tar.gz)    tar xvzf $1    ;;
+          *.bz2)       bunzip2 $1     ;;
+          *.rar)       unrar x $1     ;;
+          *.gz)        gunzip $1      ;;
+          *.tar)       tar xvf $1     ;;
+          *.tbz2)      tar xvjf $1    ;;
+          *.tgz)       tar xvzf $1    ;;
+          *.zip)       unzip $1       ;;
+          *.Z)         uncompress $1  ;;
+          *.7z)        7z x $1        ;;
+          *)           echo "unknown extension for '$1'" ;;
+      esac
+  else
+      echo "'$1' is not a valid file!"
+  fi
+}
+# usage: ball output [inputs]
+ball () { tar czf "$1.tar" "${@:2}" ;}
+
+#
+alias clip="xclip -sel clip"
 
 
 # git shortlog equivalent
