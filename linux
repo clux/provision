@@ -21,6 +21,7 @@ apps=(
   #google-talkplugin     # google talk plugin (still needed?)
   grc       # generic colouriser
   guake     # quake like terminal manager
+  handbrake # encoding/transcoding utility
   hexchat   # IRC
   lcov      # c++ coverage
   pidgin    # XMPP
