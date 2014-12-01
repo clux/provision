@@ -5,6 +5,7 @@
 #npm config set loglevel info
 
 globalModules=(
+  ansimd      # markdown viewer terminal
   jshint      # static analysis
   jsonlint    # analysis of json files
   json        # curl jsonUrl | json key
