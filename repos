@@ -79,6 +79,7 @@ modules=(
   symlink
   roundrobin
   tabexplode
+  tf2configs
   tiebreaker
   topiary
   tournament
