@@ -60,6 +60,14 @@ extract () {
 # usage: ball output [inputs]
 ball () { tar czf "$1.tar" "${@:2}" ;}
 
+movies_unsynced () {
+  ls /media/clux/Zorn/NewMP4/BluRay/ | grep "" > zornFiles.log
+  ls /media/clux/TOOL/MP4/Movies/ | grep "" > toolFiles.log
+  diff toolFiles.log zornFiles.log
+  rm toolFiles.log
+  rm zornFiles.log
+}
+
 #
 alias clip="xclip -sel clip"
 
