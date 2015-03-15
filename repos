@@ -16,6 +16,7 @@ globalModules=(
   testling    # for browser tests
   asciify     # CLI asciifier
   ytdl        # streaming youtube downloader
+  bower       # web components currently here..
   # tests
   nodeunit
   tap
@@ -65,6 +66,7 @@ modules=(
   icebreaker
   interlude
   irc-stream
+  linkr-app
   linkr-components
   logule
   masters
@@ -100,9 +102,9 @@ do
 done
 
 echo "Preparing to symlink"
-npm install -g symlink
+npm install symlink
 echo "Dry run results:"
-symlinks . -d
+$(npm bin)/symlinks . -d
 echo "Doing it properly:"
-symlink . -g nodeunit -g coveralls
-npm install -g symlink
+$(npm bin)/symlink . -g nodeunit -g coveralls
+rm -rf node_modules/
