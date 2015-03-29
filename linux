@@ -22,17 +22,16 @@ apps=(
   grc       # generic colouriser
   guake     # quake like terminal manager
   handbrake # encoding/transcoding utility
-  hexchat   # IRC
   lcov      # c++ coverage
   pidgin    # XMPP
   mumble    # MP voice com
   #nodejs   # disabled - compile from source
   redshift  # monitor night brightener
   screen    # screen manager
-  steam     # TF2
+  steam     # games
   #sublime-text # not sure if repos has ST3
   vlc       # video player
-  xclip     # for redirecting to clipboard via `<` (used in git file)
+  xclip     # for copying to clipboard (used in git file)
 )
 
 for i in ${apps[@]}

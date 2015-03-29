@@ -16,10 +16,13 @@ globalModules=(
   testling    # for browser tests
   asciify     # CLI asciifier
   ytdl        # streaming youtube downloader
+  symlink     # node module link helper
   # tests
   nodeunit
   tap
   coveralls
+  jscoverage
+  vulcanize   # polymer concat
 )
 for i in ${globalModules[@]}
 do
@@ -42,7 +45,29 @@ do
   git clone git@bitbucket.org:clux/$i.git
 done
 
-modules=(
+# tournament related modules
+cd && mkdir trn && cd trn
+trn=(
+  duel
+  ffa
+  ffa-tb
+  group
+  groupstage
+  groupstage-tb
+  groupstage-tb-duel
+  masters
+  roundrobin
+  tournament
+  tournament-components
+  tourney
+)
+for i in ${trn[@]}
+do
+  echo $i
+  git clone git@github.com:clux/$i.git
+done
+
+misc=(
   autonomy
   badgify
   blog
@@ -53,56 +78,42 @@ modules=(
   curvefever-stats
   decay
   dotclux
-  duel
   dye
-  ffa
-  ffa-tb
-  group
-  groupstage
-  groupstage-tb
-  groupstage-tb-duel
   gu
   icebreaker
   interlude
   irc-stream
   linkr-components
   logule
-  masters
   npm-graph
   operators
   posts
   preservative
   sdp-transform
   splitter
-  statesoftheworld
   subset
-  symlink
-  roundrobin
+  #symlink
   tabexplode
   tf2configs
   tiebreaker
   topiary
-  tournament
-  tournament-components
-  tourney
   trials
   tub
+  unitednationsoftheworld
   vitae
   wolfram-alpha
   wolfram-irc
   wrappers
 )
 
-for i in ${modules[@]}
+cd && cd repos
+
+for i in ${misc[@]}
 do
   echo $i
   git clone git@github.com:clux/$i.git
 done
 
-echo "Preparing to symlink"
-npm install -g symlink
-echo "Dry run results:"
-symlinks . -d
-echo "Doing it properly:"
-symlink . -g nodeunit -g coveralls
-npm install -g symlink
+cd
+symlink repos trn -g nodeunit -g jscoverage -g coveralls
+!! | sh
