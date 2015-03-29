@@ -17,6 +17,7 @@ globalModules=(
   asciify     # CLI asciifier
   ytdl        # streaming youtube downloader
   symlink     # node module link helper
+  bower       # web components currently here..
   # tests
   nodeunit
   tap
@@ -83,6 +84,7 @@ misc=(
   icebreaker
   interlude
   irc-stream
+  linkr-app
   linkr-components
   logule
   npm-graph
