@@ -17,6 +17,7 @@ globalModules=(
   asciify     # CLI asciifier
   ytdl        # streaming youtube downloader
   symlink     # node module link helper
+  badgify     # readme badge generator
   bower       # web components currently here..
   # tests
   nodeunit
@@ -58,6 +59,7 @@ trn=(
   groupstage-tb-duel
   masters
   roundrobin
+  tiebreaker
   tournament
   tournament-components
   tourney
@@ -70,7 +72,7 @@ done
 
 misc=(
   autonomy
-  badgify
+  #badgify
   blog
   cleverbot-irc
   combustion
@@ -97,7 +99,6 @@ misc=(
   #symlink
   tabexplode
   tf2configs
-  tiebreaker
   topiary
   trials
   tub

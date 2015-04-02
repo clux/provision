@@ -11,14 +11,15 @@
   "main": basename.replace(/\-/g, "_") + ".js",
   "scripts": {
     "test": "nodeunit --reporter=verbose test/*.js",
-    "coverage": "jscoverage " + basename.replace(/\-/g, "_") + ".js && " + basename.toUpperCase().replace(/\-/g, "_") + "_COV=1 nodeunit --reporter=lcov test/*.js",
+    "precoverage": "jscoverage " + basename.replace(/\-/g, "_") + ".js",
+    "coverage": basename.toUpperCase().replace(/\-/g, "_") + "_COV=1 nodeunit --reporter=lcov test/*.js",
     "coveralls": "npm run coverage | coveralls"
   },
   "dependencies": {},
   "devDependencies": {
-    "nodeunit": "^0.9.0",
-    "jscoverage": "^0.5.6",
-    "coveralls": "^2.11.1"
+    "nodeunit": "^0.9.1",
+    "jscoverage": "^0.5.9",
+    "coveralls": "^2.11.2"
   },
   "bugs": {
     "url": "http://github.com/clux/" + basename + "/issues"
