@@ -119,5 +119,4 @@ do
 done
 
 cd
-symlink repos repos/tournament -g nodeunit -g jscoverage -g coveralls
-!! | sh
+symlink repos repos/tournament -g nodeunit -g jscoverage -g coveralls --execute

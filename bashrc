@@ -1,6 +1,5 @@
 export PATH=$HOME/npm/bin:$PATH
-nvm use iojs
-#nvm use 0.10
+export PATH=$HOME/npm/bin:$PATH
 
 ngrep() { grep -vE "$@" ;}
 xgrep() { xargs grep "$@" 2> /dev/null ;}
