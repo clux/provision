@@ -13,16 +13,15 @@ sudo ./linux
 # - startup apps: guake, redshift, pidgin, remove caribou
 # - keyboard layout: add "us int dead", alt-shift change, caps compose
 # - guake configure
+# - editor script (and related tasks below)
 # - look and feel of UI
+# - install nvm and nvm install 0.10 and iojs
 ./shell
 # continue in guake (applies new bashrc)
 ./git
 ./cpy
 # login to chrome and dvcs services and paste ssh keys
 ./repos
-# while repos is cloning and setting up their dependencies:
-# - setup sublime text license
-# - setup sublime package control and install clang formater plugin
 
 # if at work - clone work gist and follow that
 ```
@@ -30,9 +29,6 @@ sudo ./linux
 ## Script Description
 ### linux
 apt basics
-
-### node
-Gets specified version of node, makes, installs locally. Leaves a pre-compiled folder of that node version in ~/Downloads for quick version switching.
 
 ### llvm
 The entire llvm toolchain; llvm, clang, clang extras, compiler-rt. Prepares for a global install, and leaves a pre-compiled version in ~/Downloads for version switching.
@@ -44,14 +40,20 @@ Prepares shell shortcuts, PATH extensions and npm auto-completion.
 Initializes the git config and sets up ssh keys to paste to github.
 
 ### editor
-Scrapes the latest 64bit linux sublime text 3 url and extracts it to ~/local/sublime_text_3.
+Fetches the latest `amd64.deb` sublime text 3 build and `dpkg` installs it.
 
-This is unused at the moment as can use sublime deb.
-Get package control up and install packages:
+Afterwards:
+
+- setup sublime text license
+- setup sublime package control
+
+Then install the following packages:
 
 - SublimeLinter
 - SublimeLinter-jshint
 - SublimeLinter-json
+- SublimeLinter-cppcheck
+- SublimeLinter-contrib-clang?
 - Seti_UI
 
 ### cpy
@@ -67,6 +69,3 @@ Does a bunch of stuff with my git and npm modules:
 - Installs global npm modules
 - Clones all personal modules
 - npm link all my personal modules so they are available globally (in correct order)
-
-## License
-Licensed to clux exclusively

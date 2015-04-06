@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# ensure rc exists
-touch ~/.bashrc
-
 # write in what's in our default
 cat bashrc >> ~/.bashrc
 

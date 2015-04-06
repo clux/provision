@@ -48,7 +48,8 @@ do
 done
 
 # tournament related modules
-cd && mkdir trn && cd trn
+cd && cd repos
+mkdir tournament && cd tournament
 trn=(
   duel
   ffa
@@ -118,5 +119,5 @@ do
 done
 
 cd
-symlink repos trn -g nodeunit -g jscoverage -g coveralls
+symlink repos repos/tournament -g nodeunit -g jscoverage -g coveralls
 !! | sh

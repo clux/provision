@@ -1,12 +1,12 @@
 #!/bin/sh
-wget -q http://www.sublimetext.com/3 -O - | \
+url=$(wget -q http://www.sublimetext.com/3 -O - | \
     tr "\t\r\n'" '   "' | \
     grep -i -o '<a[^>]\+href[ ]*=[ \t]*"\(ht\|f\)tps\?:[^"]\+"' | \
     sed -e 's/^.*"\([^"]\+\)".*$/\1/g' | \
-    grep "x64.tar.bz2" | \
-    xargs curl | \
-    tar -xj
+    grep "amd64.deb")
 
-mv sublime_text_3/ ~/local
-cd ~/local/bin
-ln -s ../sublime_text_3/sublime_text
+echo $url
+wget $url
+
+file=$(echo $url | sed 's/.*.com\///')
+sudo dpkg -i $file

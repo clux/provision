@@ -10,13 +10,8 @@ cp -R sublime-text-3/ ~/.config/
 # cp %gconf.xml ~/.gconf/desktop/gnome/peripherals/keyboard/kbd/
 
 # user picture
-cp .face ~/
+#cp .face ~/
 
 # redshift
 cp redshift.conf  ~/.config/
 
-
-# bot configs
-cp .curvebot.json ~/repos/
-cp .clvr.json ~/repos/
-cp .wa.json ~/repos/
