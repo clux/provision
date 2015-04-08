@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# TODO: nodesource node install?
-
 # google public key + sources list
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
@@ -20,7 +18,6 @@ apps=(
   google-chrome-stable  # stable chrome from googles repo
   #google-talkplugin     # google talk plugin (still needed?)
   grc       # generic colouriser
-  guake     # quake like terminal manager
   handbrake # encoding/transcoding utility
   lcov      # c++ coverage
   pidgin    # XMPP
@@ -31,7 +28,6 @@ apps=(
   steam     # games
   #sublime-text # not sure if repos has ST3
   vlc       # video player
-  xclip     # for copying to clipboard (used in git file)
 )
 
 for i in ${apps[@]}

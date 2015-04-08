@@ -1,17 +1,17 @@
 #!/bin/sh
 
 cp .jshintrc ~/repos
+cp redshift.conf  ~/.config/
 
-# sublime 3 - ditto
+# sublime 3
 rm -rf ~/.config/sublime-text-3/Cache/JavaScript/
 cp -R sublime-text-3/ ~/.config/
 
-# keyboard layouts + shortcut keys (broken atm.. TODO: fix)
-# cp %gconf.xml ~/.gconf/desktop/gnome/peripherals/keyboard/kbd/
+# autostart + gconf settings
+cp -R gconf/* ~/.gconf/
+cp  autostart/* ~/.config/autostart
+
+# TODO: maybe look at keyboard layouts + shortcut keys
 
 # user picture
-#cp .face ~/
-
-# redshift
-cp redshift.conf  ~/.config/
-
+cp iface ~/.iface

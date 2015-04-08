@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+cd ~/repos
+rm -rf df/
+sed -i 's/repos\/df/repos\/dotclux/g' ~/.bashrc

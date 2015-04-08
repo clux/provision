@@ -4,25 +4,28 @@ Use this if you are clux and you are installing linux.
 ## Usage
 Follow this, in order listed:
 
-```bash
-sudo apt-get install -y -qq git curl g++
+```sh
+sudo apt-get install -y -qq git curl g++ xclip guake
 mkdir repos && cd repos && git clone https://github.com/clux/dotclux.git df && cd df
 
 # run these in parallel:
 sudo ./linux
 ./node 0.10.38
+./io 1.3.6
+./git
 # need to wait - so setup a few things outside installation when possible:
-# - startup apps: guake, redshift, pidgin, remove caribou if mint
+# - startup apps: clean out what isn't needed (likely everything)
 # - keyboard layout: add "us int dead", alt-shift change, caps compose
-# - guake configure
-# - editor script (and related tasks below)
-# - look and feel of UI
+# - look and feel of UI: { effects: OFF, mouse: PAD, general: SCALE }
+# - login to chrome and dvcs services and paste ssh keys (once chrome is there)
+
+./editor # and related install tasks below
+./cpy
 ./shell
 # continue in guake (applies new bashrc)
-./git
-./cpy
-# login to chrome and dvcs services and paste ssh keys
 ./repos
+# clean up `df` directory if no changes were made - otherwise commit there
+./cleanup
 
 # if at work - clone work gist and follow that
 ```
@@ -33,9 +36,6 @@ apt basics
 
 ### node
 basic node fetcher and installer into `~/local/node` - still not sold on `nvm`
-
-### shell
-Prepares shell shortcuts, PATH extensions and npm auto-completion.
 
 ### git
 Initializes the git config and sets up ssh keys to paste to github.
@@ -57,6 +57,7 @@ Then install the following packages:
 - SublimeLinter-contrib-clang?
 - Seti_UI
 
+
 ### cpy
 Installs settings for:
 
@@ -64,8 +65,13 @@ Installs settings for:
 - jshint
 - redshift
 
+Safe to do after sublime has been installed (i.e. after `editor`)
+
+### shell
+Prepares shell shortcuts, PATH extensions and npm auto-completion.
+
 ### repos
-Does a bunch of stuff with my git and npm modules:
+Does a bunch of stuff with my git and npm modules - requires `shell` swap.
 
 - Installs global npm modules
 - Clones all personal modules

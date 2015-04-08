@@ -1,5 +1,5 @@
 export PATH=$HOME/npm/bin:$PATH
-export PATH=$HOME/npm/bin:$PATH
+export PATH=$HOME/local/node/bin:$PATH
 
 ngrep() { grep -vE "$@" ;}
 xgrep() { xargs grep "$@" 2> /dev/null ;}
@@ -52,6 +52,3 @@ movies_unsynced () {
   rm toolFiles.log
   rm zornFiles.log
 }
-
-#
-alias clip="xclip -sel clip"

@@ -1,9 +1,7 @@
 #!/bin/sh
 
-# write in what's in our default
-cat bashrc >> ~/.bashrc
-
 # npm tab completion and linking of node executables
-npm completion >> ~/.bashrc
+~/local/node/bin/npm completion >> ~/.bashrc
 
-
+# reference the local bashrc file
+echo ". `pwd`/bashrc" >> ~/.bashrc
