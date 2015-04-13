@@ -55,6 +55,7 @@ Then install the following packages:
 - SublimeLinter-json
 - SublimeLinter-cppcheck
 - SublimeLinter-contrib-clang?
+- SublimeLinter-pep8
 - Seti_UI
 
 

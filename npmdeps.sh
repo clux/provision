@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # only set prefix if we didn't install from source
 #npm config set prefix ~/npm
 #npm config set loglevel info
