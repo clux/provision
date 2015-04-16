@@ -45,19 +45,20 @@ Fetches the latest `amd64.deb` sublime text 3 build and `dpkg` installs it.
 
 Afterwards:
 
-- setup sublime text license
-- setup sublime package control
+- setup sublime [license](https://mail.google.com/mail/u/0/#search/sublime+license/13a942d72a211e81)
+- setup sublime [package control](https://packagecontrol.io/installation)
 
 Then install the following packages:
 
 - SublimeLinter
-- SublimeLinter-jshint
+- SublimeLinter-jshint # `jshint` installed in npmdeps
 - SublimeLinter-json
-- SublimeLinter-cppcheck
-- SublimeLinter-contrib-clang?
-- SublimeLinter-pep8
+- SublimeLinter-cppcheck # `cppcheck` installed in linux - catches basics
+- SublimeLinter-shellcheck
+- SublimeLinter-pep8 # pep8 from pythondeps
 - Seti_UI
 
+The SublimeLinter-contrib-clang is too manual to be worth it. Have to set all flags and include dirs yourself.
 
 ### cpy
 Installs settings for:
