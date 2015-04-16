@@ -5,7 +5,6 @@ wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-ke
 echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
 #echo "deb http://dl.google.com/linux/talkplugin/deb/ stable main" > /etc/apt/sources.list.d/google-talkplugin.list
 
-#add-apt-repository ppa:staticfloat/juliareleases for package julia
 apt-get update
 apt-get upgrade
 
@@ -26,7 +25,6 @@ apps=(
   redshift  # monitor night brightener
   screen    # screen manager
   steam     # games
-  #sublime-text # not sure if repos has ST3
   vlc       # video player
 )
 

@@ -23,6 +23,7 @@ sudo ./linux
 ./cpy
 ./shell
 # continue in guake (applies new bashrc)
+./npmdeps && ./pipdeps # global npm and pip helpers
 ./repos
 # clean up `df` directory if no changes were made - otherwise commit there
 ./cleanup
@@ -51,11 +52,11 @@ Afterwards:
 Then install the following packages:
 
 - SublimeLinter
-- SublimeLinter-jshint # `jshint` installed in npmdeps
+- SublimeLinter-jshint # `jshint` installed in `npmdeps`
 - SublimeLinter-json
-- SublimeLinter-cppcheck # `cppcheck` installed in linux - catches basics
-- SublimeLinter-shellcheck
-- SublimeLinter-pep8 # pep8 from pythondeps
+- SublimeLinter-cppcheck # `cppcheck` installed in `linux` - catches basics
+- SublimeLinter-shellcheck # if we can install `shellcheck` easily (should be apt installable but not there atm for me)
+- SublimeLinter-pep8 # `pep8` from `pipdeps`
 - Seti_UI
 - MarkdownEditing # (reopen .md files after restart - `cpy` settings should have been preserved by install)
 
