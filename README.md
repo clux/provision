@@ -57,6 +57,7 @@ Then install the following packages:
 - SublimeLinter-shellcheck
 - SublimeLinter-pep8 # pep8 from pythondeps
 - Seti_UI
+- MarkdownEditing # (reopen .md files after restart - `cpy` settings should have been preserved by install)
 
 The SublimeLinter-contrib-clang is too manual to be worth it. Have to set all flags and include dirs yourself.
 
