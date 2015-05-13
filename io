@@ -1,12 +1,21 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-# io install script
-# usage ./io 1.6.3
+# this is an ssh safe install of io that works with pm2-deploy
 
-cd ~/Downloads
-mkdir io-v$1
-cd io-v$1
-curl https://iojs.org/dist/v$1/iojs-v$1.tar.gz | tar xz --strip-components=1
-./configure --prefix=$HOME/local/io
-make
-make install
+abort() {  echo "$@" 1>&2 && exit 1; }
+
+version=$(wget -qO- https://iojs.org/dist/index.tab | sed -n 2p | cut -f1)
+test -n "$version" || abort missing https://iojs.org/dist/index.tab
+
+echo installing $version
+
+mkdir -p ~/local/iojs-$version
+cd ~/local/iojs-$version
+wget -qO- https://iojs.org/dist/$version/iojs-$version-linux-x64.tar.gz | tar xz --strip-components=1
+
+# PATH modification won't work over ssh easily => symlink from ~/bin
+# Assumes having run `sudo chown $USER /usr/local`
+cd /usr/local/bin
+ln -s ~/local/iojs-$version/bin/npm
+ln -s ~/local/iojs-$version/bin/node
+ln -s ~/local/iojs-$version/bin/iojs
