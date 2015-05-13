@@ -16,6 +16,6 @@ wget -qO- https://iojs.org/dist/$version/iojs-$version-linux-x64.tar.gz | tar xz
 # PATH modification won't work over ssh easily => symlink from ~/bin
 # Assumes having run `sudo chown $USER /usr/local`
 cd /usr/local/bin
-ln -s ~/local/iojs-$version/bin/npm
-ln -s ~/local/iojs-$version/bin/node
-ln -s ~/local/iojs-$version/bin/iojs
+ln -fs ~/local/iojs-$version/bin/npm
+ln -fs ~/local/iojs-$version/bin/node
+ln -fs ~/local/iojs-$version/bin/iojs
