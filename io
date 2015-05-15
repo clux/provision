@@ -13,9 +13,6 @@ mkdir -p ~/local/iojs-$version
 cd ~/local/iojs-$version
 wget -qO- https://iojs.org/dist/$version/iojs-$version-linux-x64.tar.gz | tar xz --strip-components=1
 
-# PATH modification won't work over ssh easily => symlink from ~/bin
-# Assumes having run `sudo chown $USER /usr/local`
-cd /usr/local/bin
-ln -fs ~/local/iojs-$version/bin/npm
-ln -fs ~/local/iojs-$version/bin/node
-ln -fs ~/local/iojs-$version/bin/iojs
+# Prepend to PATH in .bashrc (BEFORE INTERACTIVE CUTOUT) to make it work in ssh commands
+echo "PATH=\$HOME/local/iojs-$version/bin:\$PATH" | cat - ~/.bashrc > ~/tmpbashrc
+mv ~/tmpbashrc ~/.bashrc
