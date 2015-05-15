@@ -1,29 +1,37 @@
 #!/usr/bin/env bash
 
 # llvm install script
-# usage ./llvm 3 4 2
+# usage ./llvm 3 6 0
 
-LLVM=http://llvm.org/releases/$1.$2.$3/llvm-$1.$2.$3.src.tar.gz
-CLANG=http://llvm.org/releases/$1.$2.$3/cfe-$1.$2.$3.src.tar.gz
-EXTRA=http://llvm.org/releases/$1.$2.$3/clang-tools-extra-$1.$2.$3.src.tar.gz
-COMPILERRT=http://llvm.org/releases/$1.$2.$3/compiler-rt-$1.$2.$3.src.tar.gz
+LLVM=http://llvm.org/releases/$1.$2.$3/llvm-$1.$2.$3.src.tar.xz
+CLANG=http://llvm.org/releases/$1.$2.$3/cfe-$1.$2.$3.src.tar.xz
+EXTRA=http://llvm.org/releases/$1.$2.$3/clang-tools-extra-$1.$2.$3.src.tar.xz
+COMPILERRT=http://llvm.org/releases/$1.$2.$3/compiler-rt-$1.$2.$3.src.tar.xz
 
-cd ~/Downloads && mkdir llvm-v$1.$2.$3 && cd llvm-v$1.$2.$3
-echo "curl $LLVM into $(pwd)"
-curl $LLVM | tar xz --strip-components=1
+mkdir llvm-v$1.$2.$3 && cd llvm-v$1.$2.$3
+echo "fetch $LLVM"
+wget $LLVM
+echo "fetch $CLANG"
+wget $CLANG
+echo "fetch $EXTRA"
+wget $EXTRA
+echo "fetch $COMPILERRT"
+wget $COMPILERRT
 
-cd tools && mkdir clang && cd clang
-echo "curl $CLANG into $(pwd)"
-curl $CLANG | tar xz --strip-components=1
+mkdir src && cd src
+tar xf ../llvm-$1.$2.$3.src.tar.xz --strip-components=1
+# clang goes in tools/clang
+mkdir -p tools/clang && cd tools/clang
+tar xf ../../../cfe-$1.$2.$3.src.tar.xz --strip-components=1
+# extra goes in tools/clang/tools/extra
+mkdir -p tools/extra && cd tools/extra
+tar xf ../../../../../clang-tools-extra-$1.$2.$3.src.tar.xz --strip-components=1
+# compiler-rt goes in projects/compiler-rt
+cd ../../../../
+mkdir -p projects/compiler-rt && cd projects/compiler-rt
+tar xf ../../../compiler-rt-$1.$2.$3.src.tar.xz --strip-components=1
 
-cd tools && mkdir extra && cd extra
-echo "curl $EXTRA into $(pwd)"
-curl $EXTRA | tar xz --strip-components=1
-
-cd ../../../../projects && mkdir compiler-rt && cd compiler-rt
-echo "curl $COMPILERRT into $(pwd)"
-curl $COMPILERRT | tar xz --strip-components=1
-
+# back to source
 cd ../..
 
 # don't pollute src dir with build stuff
