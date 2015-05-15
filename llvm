@@ -2,11 +2,11 @@
 
 # llvm install script
 # usage ./llvm 3 4 2
+
 LLVM=http://llvm.org/releases/$1.$2.$3/llvm-$1.$2.$3.src.tar.gz
 CLANG=http://llvm.org/releases/$1.$2.$3/cfe-$1.$2.$3.src.tar.gz
-# These don't seem to release as often
-EXTRA=http://llvm.org/releases/$1.$2/clang-tools-extra-$1.$2.src.tar.gz
-COMPILERRT=http://llvm.org/releases/$1.$2/compiler-rt-$1.$2.src.tar.gz
+EXTRA=http://llvm.org/releases/$1.$2.$3/clang-tools-extra-$1.$2.$3.src.tar.gz
+COMPILERRT=http://llvm.org/releases/$1.$2.$3/compiler-rt-$1.$2.$3.src.tar.gz
 
 cd ~/Downloads && mkdir llvm-v$1.$2.$3 && cd llvm-v$1.$2.$3
 echo "curl $LLVM into $(pwd)"
@@ -30,5 +30,5 @@ cd ../..
 mkdir build
 cd build
 ../configure
-make
+make -j8
 sudo make install
