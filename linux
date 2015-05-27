@@ -21,9 +21,9 @@ apps=(
   lcov      # c++ coverage
   pidgin    # XMPP
   mumble    # MP voice com
-  #nodejs   # disabled - compile from source
   redshift  # monitor night brightener
   screen    # screen manager
+  shellcheck # bash script linter
   steam     # games
   vlc       # video player
 )
