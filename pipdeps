@@ -6,5 +6,5 @@ globalModules=(
 for i in ${globalModules[@]}
 do
   echo $i
-  sudo pip install -g $i
+  sudo pip install $i
 done
