@@ -1,5 +1,5 @@
 export PATH=$HOME/npm/bin:$PATH
-export PATH=$HOME/local/node/bin:$PATH
+#export PATH=$HOME/local/node/bin:$PATH
 export PATH=$HOME/Downloads/llvm-3.6.0.src/tools/clang/tools/scan-build:$PATH
 
 ngrep() { grep -vE "$@" ;}

@@ -19,6 +19,7 @@ globalModules=(
   symlink     # node module link helper
   badgify     # readme badge generator
   bower       # web components currently here..
+  node-gyp-install # for when node-gyp fails
   # tests
   nodeunit
   tap
