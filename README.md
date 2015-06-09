@@ -58,6 +58,7 @@ Then install the following packages:
 - SublimeLinter-shellcheck # if we can install `shellcheck` easily (should be apt installable but not there atm for me)
 - SublimeLinter-pep8 # `pep8` from `pipdeps`
 - Seti_UI
+- Stylus (language)
 - MarkdownEditing # (reopen .md files after restart - `cpy` settings should have been preserved by install)
 
 The SublimeLinter-contrib-clang is too manual to be worth it. Have to set all flags and include dirs yourself.
