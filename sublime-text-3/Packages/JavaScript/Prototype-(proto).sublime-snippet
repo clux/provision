@@ -1,8 +1,5 @@
 <snippet>
-    <content><![CDATA[${1:Klass}.prototype.${2:method} = function (${3:arg}) {
-	${0:}
-};
-]]></content>
+    <content><![CDATA[prototype.${1:method} = ]]></content>
     <tabTrigger>proto</tabTrigger>
     <scope>source.js</scope>
     <description>Prototype Method</description>
