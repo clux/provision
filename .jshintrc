@@ -1,20 +1,19 @@
 {
     // enforcing options
-    "indent"        : 2,     // force tab-width
-    "camelcase"     : true,  // force camelCase or UPPER_CASE var names only
+    "indent"        : 2,     // force tab-width - removed soon :(
     "curly"         : true,  // force curly braces
     "eqeqeq"        : true,  // force ===
-    "forin"         : true,  // force for in only when hasOwnProperty exists
     "freeze"        : true,  // prevent modifying built in objets
     "latedef"       : true,  // prevent use of vars before their defs
-    "immed"         : true,  // prevent function(){}() without wrapping in parens
-    "newcap"        : true,  // prevent uncapitalized constructors
+    "newcap"        : true,  // prevent uncapitalized constructors - removed soon :(
     "noarg"         : true,  // prevent arguments.callee and arguments.caller
-    "noempty"       : true,  // prevent empty code blocks
+    "nonbsp"        : true,  // prevent mac option-space characters
     "plusplus"      : true,  // prevent ++ usage
     "undef"         : true,  // prevent accessing undeclared vars
     "unused"        : true,  // prevent having unused vars
     "trailing"      : true,  // prevent trailing whitespace
+    "singleGroups"  : true,  // prevent unnecessary grouping operators
+    "varstmt"       : true,  // prevent multi-var definitions (let's try)
 
     // complexity
     "maxparams"     : 5,     // max params per function
@@ -30,7 +29,8 @@
     "validthis"     : true,  // allow using this in non-constructor function
 
     // legacy + misc
-    "node"          : true,  // we need commonjs 'globals'
+    "node"          : true,  // we need commonjs globals
+    "browser"       : true,  // we need browser global
     "strict"        : false, // dont want "use strict" everywhere..
     "white"         : false  // dont want awful crockford whitespace style
 }
