@@ -13,7 +13,6 @@
     "unused"        : true,  // prevent having unused vars
     "trailing"      : true,  // prevent trailing whitespace
     "singleGroups"  : true,  // prevent unnecessary grouping operators
-    "varstmt"       : true,  // prevent multi-var definitions (let's try)
 
     // complexity
     "maxparams"     : 5,     // max params per function
