@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 globalModules=(
-  pep8
+  pyflakes
+  pylint
 )
 
 for i in ${globalModules[@]}

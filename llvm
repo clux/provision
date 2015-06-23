@@ -40,3 +40,7 @@ cd build
 ../configure
 make -j8
 sudo make install
+
+cd ..
+echo "PATH=$(pwd)/tools/clang/tools/scan-build:$PATH" | cat - ~/.bashrc > ~/tmpbashrc
+mv ~/tmpbashrc ~/.bashrc

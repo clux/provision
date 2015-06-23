@@ -56,7 +56,7 @@ Then install the following packages:
 - SublimeLinter-json
 - SublimeLinter-cppcheck # `cppcheck` installed in `linux` - catches basics
 - SublimeLinter-shellcheck # if we can install `shellcheck` easily (should be apt installable but not there atm for me)
-- SublimeLinter-pep8 # `pep8` from `pipdeps`
+- SublimeLinter-pylint
 - Seti_UI
 - Stylus (language)
 - MarkdownEditing # (reopen .md files after restart - `cpy` settings should have been preserved by install)
