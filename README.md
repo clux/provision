@@ -10,8 +10,7 @@ mkdir repos && cd repos && git clone https://github.com/clux/dotclux.git df && c
 
 # run these in parallel:
 sudo ./linux
-./node 0.10.38
-./io 1.3.6
+./io 2.3.1
 ./git
 # need to wait - so setup a few things outside installation when possible:
 # - startup apps: clean out what isn't needed (likely everything)
