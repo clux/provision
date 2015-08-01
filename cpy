@@ -1,6 +1,7 @@
 #!/bin/sh
 
 cp .jshintrc ~/repos
+cp .eslintrc ~/repos
 cp pep8 ~/.config
 cp redshift.conf  ~/.config/
 
