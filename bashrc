@@ -53,3 +53,8 @@ movies_unsynced () {
   rm toolFiles.log
   rm zornFiles.log
 }
+
+# usage: torrent file.torrent
+torrent () {
+  rsync -chzP -e ssh "$1" broxy:/home/bro/dumptruck/DL/.torr/
+}
