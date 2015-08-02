@@ -56,5 +56,5 @@ movies_unsynced () {
 
 # usage: torrent file.torrent
 torrent () {
-  rsync -chzP -e ssh "$1" broxy:/home/bro/dumptruck/DL/.torr/
+  rsync -chzP -e ssh "$1" broxy:~/dumptruck/DL/.torr/
 }
