@@ -19,6 +19,7 @@ apps=(
   grc       # generic colouriser
   handbrake # encoding/transcoding utility
   lcov      # c++ coverage
+  pass      # password store
   pidgin    # XMPP
   mumble    # MP voice com
   redshift  # monitor night brightener
@@ -26,6 +27,8 @@ apps=(
   shellcheck # bash script linter
   steam     # games
   vlc       # video player
+  xclip     # clipboard helper
+  xsel      # clipboard helper
 )
 
 for i in ${apps[@]}
