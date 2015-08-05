@@ -13,6 +13,9 @@ do
   git clone git@bitbucket.org:clux/$i.git
 done
 
+echo "Retrieving ssh config"
+git clone git@bitbucket.org:clux/ssh.git ~/.ssh
+
 # tournament related modules
 cd && cd repos
 mkdir tournament && cd tournament
