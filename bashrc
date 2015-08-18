@@ -58,3 +58,14 @@ movies_unsynced () {
 torrent () {
   rsync -chzP -e ssh "$1" broxy:~/dumptruck/DL/.torr/
 }
+
+# usage: broxy_check | grep resource | xclip
+broxy_check() {
+  ssh broxy ls dumptruck/DL
+}
+
+# usage: broxy_fetch (after having used xclip above)
+broxy_fetch() {
+  local rs="$(xclip -o)"
+  rsync -cahzP --protect-args -e ssh "broxy:/home/bro/dumptruck/DL/$rs/*" .
+}
