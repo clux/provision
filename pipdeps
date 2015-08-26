@@ -7,7 +7,7 @@ globalModules=(
   pylint
 )
 
-for i in ${globalModules[@]}
+for i in "${globalModules[@]}"
 do
   echo $i
   sudo pip install $i

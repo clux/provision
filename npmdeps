@@ -30,7 +30,8 @@ globalModules=(
   jscoverage
   vulcanize   # polymer concat
 )
-for i in ${globalModules[@]}
+
+for i in "${globalModules[@]}"
 do
   echo $i
   npm install -g $i
