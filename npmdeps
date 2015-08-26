@@ -22,6 +22,7 @@ globalModules=(
   badgify     # readme badge generator
   bower       # web components currently here..
   node-gyp-install # for when node-gyp fails
+  pm2         # process manager
   # tests
   nodeunit
   tap
