@@ -7,6 +7,7 @@
 globalModules=(
   ansimd      # markdown viewer terminal
   faucet      # tap formatter
+  eslint      # static analysis
   jshint      # static analysis
   jsonlint    # analysis of json files
   json        # curl jsonUrl | json key

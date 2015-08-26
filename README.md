@@ -13,7 +13,7 @@ sudo ./linux
 ./io 2.3.1
 ./git
 # need to wait - so setup a few things outside installation when possible:
-# - startup apps: clean out what isn't needed (likely everything)
+# - startup apps: clean out what isn't needed
 # - keyboard layout: add "us int dead", alt-shift change, caps compose
 # - look and feel of UI: { effects: OFF, mouse: PAD, general: SCALE }
 # - login to chrome and dvcs services and paste ssh keys (once chrome is there)
@@ -52,10 +52,11 @@ Then install the following packages:
 
 - SublimeLinter
 - SublimeLinter-jshint # `jshint` installed in `npmdeps`
+- SublimeLinter-eslint # `eslint` installed in `npmdeps`
 - SublimeLinter-json
-- SublimeLinter-cppcheck # `cppcheck` installed in `linux` - catches basics
-- SublimeLinter-shellcheck # if we can install `shellcheck` easily (should be apt installable but not there atm for me)
-- SublimeLinter-pylint
+- SublimeLinter-cppcheck # `cppcheck` installed in `linux`
+- SublimeLinter-shellcheck # `shellcheck` installed in `linux`
+- SublimeLinter-pylint # `pylint` installed in `pipdeps`
 - Seti_UI
 - Stylus (language)
 - MarkdownEditing # (reopen .md files after restart - `cpy` settings should have been preserved by install)
