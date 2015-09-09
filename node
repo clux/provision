@@ -16,3 +16,5 @@ wget -qO- https://nodejs.org/download/release/$version/node-$version-linux-x64.t
 echo "export PATH=\$HOME/local/node-$version/bin:\$PATH" | cat - ~/.bashrc > ~/tmpbashrc
 mv ~/tmpbashrc ~/.bashrc
 echo "Edit .bashrc to disable old versions"
+
+sh node-gyp-install -v $version
