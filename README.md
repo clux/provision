@@ -10,7 +10,7 @@ mkdir repos && cd repos && git clone https://github.com/clux/dotclux.git df && c
 
 # run these in parallel:
 sudo ./linux
-./io 2.3.1
+./node
 ./git
 # need to wait - so setup a few things outside installation when possible:
 # - startup apps: clean out what isn't needed
@@ -35,7 +35,7 @@ sudo ./linux
 apt basics
 
 ### node
-basic node fetcher and installer into `~/local/node` - still not sold on `nvm`
+basic node fetcher and installer into `~/local/node` - not sold on `nvm`
 
 ### git
 Initializes the git config and sets up ssh keys to paste to github.
