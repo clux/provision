@@ -17,10 +17,7 @@ echo "export PATH=\$HOME/local/node-$version/bin:\$PATH" | cat - ~/.bashrc > ~/t
 mv ~/tmpbashrc ~/.bashrc
 echo "Edit .bashrc to disable old versions"
 
-# using new node install (hence sh wrap) fetch latest headers for node-gyp
-if which node-gyp-install; then
-  sh node-gyp-install -v $version
-else
-  sh npm i node-gyp-install -g
-  sh node-gyp-install -v $version
-fi
+# node-gyp note
+echo " To fix native installs remember to:"
+echo "npm install node-gyp-install -g"
+echo "node-gyp-install -v $version"
