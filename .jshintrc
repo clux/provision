@@ -28,6 +28,7 @@
     "validthis"     : true,  // allow using this in non-constructor function
 
     // legacy + misc
+    "esnext"        : true,  // allow ES6 now
     "node"          : true,  // we need commonjs globals
     "browser"       : true,  // we need browser global
     "strict"        : false, // dont want "use strict" everywhere..
