@@ -1,6 +1,6 @@
 export PATH=$HOME/npm/bin:$PATH
-#export PATH=$HOME/local/node/bin:$PATH
 export PATH=$HOME/Downloads/llvm-3.6.0.src/tools/clang/tools/scan-build:$PATH
+export DOWNLOAD_DIR=/media/clux/Zeus/DL/
 
 ngrep() { grep -vE "$@" ;}
 xgrep() { xargs grep "$@" 2> /dev/null ;}
@@ -63,9 +63,9 @@ movies_unsynced () {
   rm zornFiles.log
 }
 
-# usage: torrent file.torrent
-torrent () {
-  rsync -chzP -e ssh "$1" broxy:~/dumptruck/DL/.torr/
+# usage: broxy_magnet "magnetlink" (need to quote it)
+broxy_magnet () {
+  ssh broxy ./brotorr/torrent "$1"
 }
 
 # usage: broxy_check | grep resource | xclip
@@ -73,8 +73,13 @@ broxy_check() {
   ssh broxy ls dumptruck/DL
 }
 
-# usage: broxy_fetch (after having used xclip above)
+# usage: broxy_copy_name Resource
+broxy_copy_name() {
+  ssh broxy ./list_downloads.sh | grep $1 | xclip
+}
+
+# usage: broxy_fetch (after having used broxy_copy_name above
 broxy_fetch() {
   local rs="$(xclip -o)"
-  rsync -cahzP --protect-args -e ssh "broxy:/home/bro/dumptruck/DL/$rs/*" .
+  rsync -cahzP --protect-args -e ssh "broxy:$rs/*" .
 }
