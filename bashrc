@@ -1,21 +1,31 @@
 export PATH=$HOME/npm/bin:$PATH
 export PATH=$HOME/Downloads/llvm-3.6.0.src/tools/clang/tools/scan-build:$PATH
 export DOWNLOAD_DIR=/media/clux/Zeus/DL/
+alias dl="cd $DOWNLOAD_DIR"
 
-ngrep() { grep -vE "$@" ;}
-xgrep() { xargs grep "$@" 2> /dev/null ;}
-
+# helpers to search through specific file types
 filefind() { find "$1" -type f -name "$2" 2> /dev/null ;}
+# TODO: should probabaly clean up flags rather than dev nulling everything
 
 # JS files
-jf() { filefind "$@" "*.js" | ngrep "node_modules|bower_components|\.min" ;}
-js() { jf "$1" | xgrep "$2" ;}
+jf() { filefind "$@" "*.js" | grep -vE "node_modules|bower_components|\.min" ;}
+js() { jf "$1" | xargs grep "$2" 2> /dev/null ;}
 
 # markdowns
-mf() { filefind "$@" "*.md" | ngrep "node_modules|bower_components" ;}
-ms() { mf "$1" | xgrep "$2" ;}
+mf() { filefind "$@" "*.md" | grep -vE "node_modules|bower_components" ;}
+ms() { mf "$1" | xargs grep "$2" 2> /dev/null ;}
 
-validate() { jsonlint package.json -q ;}
+# C++ files
+cf() { find "$@" -type f -name *.cpp -o -name *.h -o -name *.c 2> /dev/null ;}
+cs() { cf "$1" | xargs grep "$2" 2> /dev/null ;}
+hf() { filefind "$@" "*.h" ;}
+hs() { hf "$1" | xargs grep "$2" 2> /dev/null ;}
+
+# CMakeLists from PWD
+srchcmake() { filefind . "CMakeLists.txt" | xargs grep "$1" 2> /dev/null ;}
+
+
+node_json_validate() { jsonlint package.json -q ;}
 
 # package/repo fetching shortcuts
 aptin() { sudo apt-get install "$1" ;}
@@ -55,6 +65,24 @@ extract () {
 # usage: ball output [inputs]
 ball () { tar czf "$1.tar" "${@:2}" ;}
 
+# longcommand; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history 1 | cut -c 8-)"'
+
+# navigation shortcuts
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias la="ls -la"
+alias lsd="ls -l | grep --color=never '^d'"
+
+# misc helpers
+alias week='date +%V'
+
+alias localip="ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | cut -d ' ' -f1"
+
+alias cwd='pwd | tr -d "\r\n" | xclip -sel clip'
+
 movies_unsynced () {
   ls /media/clux/Zorn/NewMP4/BluRay/ | grep "" > zornFiles.log
   ls /media/clux/TOOL/MP4/Movies/ | grep "" > toolFiles.log
@@ -68,18 +96,20 @@ broxy_magnet () {
   ssh broxy ./brotorr/torrent "$1"
 }
 
-# usage: broxy_check | grep resource | xclip
+# usage: broxy_check
 broxy_check() {
   ssh broxy ls dumptruck/DL
 }
 
-# usage: broxy_copy_name Resource
-broxy_copy_name() {
-  ssh broxy ./list_downloads.sh | grep $1 | xclip
-}
-
-# usage: broxy_fetch (after having used broxy_copy_name above
+# usage: broxy_fetch substringFromAbove
 broxy_fetch() {
-  local rs="$(xclip -o)"
-  rsync -cahzP --protect-args -e ssh "broxy:$rs/*" .
+  local rs=$(ssh broxy ./list_downloads.sh | grep $1)
+  test -n "$rs" || echo "No grep results for $1"
+  local fldr=$(echo $rs | cut -d '/' -f 6)
+  test -n "$fldr" || echo "Invalid folder for $rs"
+  if [ -n "$fldr" ]; then
+    echo "Downloading $fldr"
+    rsync -cahzP -e ssh "broxy:$rs" .
+    alert
+  fi
 }
