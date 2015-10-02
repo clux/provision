@@ -22,6 +22,15 @@ aptin() { sudo apt-get install "$1" ;}
 aptrem() { sudo apt-get remove "$1" ;}
 gclone() { git clone git@github.com:clux/"$1".git ;}
 
+# rust helper
+rust_doc_update() {
+  cargo doc
+  local dir=$(basename $PWD)
+  echo '<meta http-equiv=refresh content=0;url=${dir}/index.html>' > target/doc/index.html
+  ghp-import -n target/doc
+  git push -qf git@github.com:clux/${dir}.git gh-pages
+}
+
 # insert xkcd tar joke here
 extract () {
   if [ -f $1 ] ; then
