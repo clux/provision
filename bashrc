@@ -91,17 +91,16 @@ movies_unsynced () {
   rm zornFiles.log
 }
 
-# usage: broxy_magnet "magnetlink" (need to quote it)
-broxy_magnet () {
-  ssh broxy ./brotorr/torrent "$1"
+# usage: broxy_download after having copied a magnet to clipboard
+broxy_download () {
+  ssh broxy ./brotorr/torrent "\"$(xclip -o -sel clip)\""
 }
 
-# usage: broxy_check
 broxy_check() {
   ssh broxy ls dumptruck/DL
 }
 
-# usage: broxy_fetch substringFromAbove
+# usage: `broxy_fetch name` where name is a substring from broxy_check
 broxy_fetch() {
   local rs=$(ssh broxy ./list_downloads.sh | grep $1)
   test -n "$rs" || echo "No grep results for $1"
