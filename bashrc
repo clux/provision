@@ -36,7 +36,7 @@ gclone() { git clone git@github.com:clux/"$1".git ;}
 rust_doc_update() {
   cargo doc
   local dir=$(basename $PWD)
-  echo '<meta http-equiv=refresh content=0;url=${dir}/index.html>' > target/doc/index.html
+  echo "<meta http-equiv=refresh content=0;url=$dir/index.html>" > target/doc/index.html
   ghp-import -n target/doc
   git push -qf git@github.com:clux/${dir}.git gh-pages
 }
