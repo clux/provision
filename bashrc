@@ -35,10 +35,25 @@ gclone() { git clone git@github.com:clux/"$1".git ;}
 # rust helper
 rust_doc_update() {
   cargo doc
-  local dir=$(basename $PWD)
-  echo "<meta http-equiv=refresh content=0;url=$dir/index.html>" > target/doc/index.html
+  local repo=$(basename $PWD)
+  echo "<meta http-equiv=refresh content=0;url=$repo/index.html>" > target/doc/index.html
   ghp-import -n target/doc
-  git push -qf git@github.com:clux/${dir}.git gh-pages
+  git push -qf git@github.com:clux/${repo}.git gh-pages
+}
+
+polymer_doc_update() {
+  local repo=$(basename $PWD)
+  if [ ! -d demo ]; then
+    echo "No demo directory found"
+    return
+  fi
+  mkdir components/$repo -p
+  cp demo/* components/$repo
+  find -maxdepth 1 -type f -exec cp {} components/$repo/ \;
+  cp bower_components/* components/ -R
+  echo "<meta http-equiv=refresh content=0;url=$repo/index.html>" > components/index.html
+  ghp-import -n components
+  git push -qf git@github.com:clux/${repo}.git gh-pages
 }
 
 # insert xkcd tar joke here
