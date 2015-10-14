@@ -5,6 +5,7 @@ cd && cd repos
 # private bitbucket repos
 privates=(
   deathmatch
+  ssh
   meshrtc
 )
 for i in ${privates[@]}
