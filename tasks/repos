@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd && cd repos
+cd && mkdir -p repos && cd repos
 
 # private bitbucket repos
 privates=(
