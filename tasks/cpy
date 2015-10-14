@@ -17,4 +17,4 @@ cp configs/autostart/* ~/.config/autostart
 # TODO: maybe look at keyboard layouts + shortcut keys
 
 # user picture
-cp iface ~/.iface
+cp configs/iface ~/.iface
