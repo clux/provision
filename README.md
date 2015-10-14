@@ -5,8 +5,8 @@ Personal Linux reinstall scripts and configs.
 Fetch latest version of this repo and deploy:
 
 ```sh
-wget https://github.com/clux/dotclux/archive/master.zip && unzip master.zip && rm master.zip
-cd dotclux-master
+wget https://github.com/clux/dotclux/archive/master.zip
+unzip master.zip && rm master.zip && cd dotclux-master
 sudo ./jessie.sh
 ```
 
