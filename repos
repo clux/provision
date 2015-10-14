@@ -21,6 +21,7 @@ cd && cd repos
 mkdir tournament && cd tournament
 trn=(
   duel
+  #duel-names
   ffa
   ffa-tb
   group
@@ -60,7 +61,8 @@ misc=(
   irc-stream
   linkr-app
   linkr-components
-  logule
+  #logule
+  mddocs
   npm-graph
   operators
   posts
