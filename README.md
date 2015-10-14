@@ -5,8 +5,8 @@ Personal Linux reinstall scripts and configs. Only tested on Debian 8 lately, bu
 Fetch latest version of this repo and deploy:
 
 ```sh
-wget https://github.com/clux/dotclux/archive/master.zip
-unzip master.zip && rm master.zip && cd dotclux-master
+wget -qO- https://github.com/clux/dotclux/archive/master.tar.gz | tar xz
+cd dotclux-master
 sudo ./desktop.sh
 ```
 
