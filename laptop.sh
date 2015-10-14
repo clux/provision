@@ -1,3 +1,8 @@
+#!/bin/sh
+
+echo "This is just a pseudo-script - mostly just for my own notes"
+exit 1
+
 # from root acc
 adduser clux sudo
 

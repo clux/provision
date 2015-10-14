@@ -1,5 +1,5 @@
 # dotclux
-Personal Linux reinstall scripts and configs.
+Personal Linux reinstall scripts and configs. Only tested on Debian 8 lately, but should work on most debian based systems.
 
 ## Usage
 Fetch latest version of this repo and deploy:
@@ -7,7 +7,7 @@ Fetch latest version of this repo and deploy:
 ```sh
 wget https://github.com/clux/dotclux/archive/master.zip
 unzip master.zip && rm master.zip && cd dotclux-master
-sudo ./jessie.sh
+sudo ./desktop.sh
 ```
 
 ## Manual tasks
