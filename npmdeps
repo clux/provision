@@ -3,6 +3,7 @@
 # only set prefix if we didn't install from source
 #npm config set prefix ~/npm
 #npm config set loglevel info
+npm install -g npm # update npm first
 
 globalModules=(
   ansimd      # markdown viewer terminal
@@ -12,10 +13,10 @@ globalModules=(
   jsonlint    # analysis of json files
   json        # curl jsonUrl | json key
   nd          # nd `moduleName` for README.md in stdout
-  npm         # alwyas update this
   pkginit     # for quick making a npm module shell (though bugged atm)
   browserify  # npm style webapps
   testling    # for browser tests
+  kill-tabs
   asciify     # CLI asciifier
   ytdl        # streaming youtube downloader
   symlink     # node module link helper
