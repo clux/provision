@@ -29,12 +29,12 @@ After `editor`:
 Then install the following packages:
 
 - SublimeLinter
-- SublimeLinter-jshint # `jshint` installed in `npmdeps`
-- SublimeLinter-eslint # `eslint` installed in `npmdeps`
+- SublimeLinter-jshint # `jshint` installed in `npm`
+- SublimeLinter-eslint # `eslint` installed in `npm`
 - SublimeLinter-json
-- SublimeLinter-cppcheck # `cppcheck` installed in `linux`
-- SublimeLinter-shellcheck # `shellcheck` installed in `linux`
-- SublimeLinter-pylint # `pylint` installed in `pipdeps`
+- SublimeLinter-cppcheck # `cppcheck` installed in `apt`
+- SublimeLinter-shellcheck # `shellcheck` installed in `apt`
+- SublimeLinter-pylint # `pylint` installed in `pip`
 - Seti_UI
 - Stylus (language)
 - MarkdownEditing # (reopen .md files after restart - `cpy` settings should have been preserved by install)

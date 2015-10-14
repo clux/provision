@@ -18,7 +18,6 @@ mv ~/tmpbashrc ~/.bashrc
 echo "Edit .bashrc to disable old versions"
 
 source ~/.bashrc
-# node-gyp note
-echo " To fix native installs remember to:"
-echo "npm install node-gyp-install -g"
-echo "node-gyp-install -v $version"
+
+echo "NB: For native installs, you may need to run:"
+echo "npm install node-gyp-install -g && node-gyp-install -v $version"
