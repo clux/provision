@@ -6,8 +6,8 @@ set -xeuo pipefail
 ./tasks/sublime
 ./tasks/cpy
 ./tasks/shell
-./tasks/npmdeps
-./tasks/pipdeps
-./tasks/repos
+./tasks/npm
+./tasks/pip
+./tasks/clone
 ./tasks/llvm 3 7 0
 ./tasks/cleanup
