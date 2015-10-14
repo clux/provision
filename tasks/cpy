@@ -11,8 +11,8 @@ rm -rf ~/.config/sublime-text-3/Cache/JavaScript/
 cp -R sublime-text-3/ ~/.config/
 
 # autostart + gconf settings
-cp -R gconf/* ~/.gconf/
-cp  autostart/* ~/.config/autostart
+cp -R configs/gconf/* ~/.gconf/
+cp configs/autostart/* ~/.config/autostart
 
 # TODO: maybe look at keyboard layouts + shortcut keys
 
