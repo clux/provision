@@ -17,6 +17,7 @@ echo "export PATH=\$HOME/local/node-$version/bin:\$PATH" | cat - ~/.bashrc > ~/t
 mv ~/tmpbashrc ~/.bashrc
 echo "Edit .bashrc to disable old versions"
 
+source ~/.bashrc
 # node-gyp note
 echo " To fix native installs remember to:"
 echo "npm install node-gyp-install -g"

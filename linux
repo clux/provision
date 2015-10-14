@@ -14,9 +14,11 @@ apps=(
   cmake     # c++ build tool
   #couchdb     # json database
   cppcheck  # c++ linter
+  g++
   google-chrome-stable  # stable chrome from googles repo
   #google-talkplugin     # google talk plugin (still needed?)
   grc       # generic colouriser
+  guake
   handbrake # encoding/transcoding utility
   lcov      # c++ coverage
   pass      # password store

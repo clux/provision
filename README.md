@@ -1,49 +1,28 @@
 # dotclux
-Use this if you are clux and you are installing linux.
+Reinstall scripts for Debian 8.
 
 ## Usage
-Follow this, in order listed:
+Bootstrap and run main script:
 
 ```sh
-sudo apt-get install -y -qq git curl g++ xclip guake
+sudo apt-get install -y -qq git curl
 mkdir repos && cd repos && git clone https://github.com/clux/dotclux.git df && cd df
 
-# run these in parallel:
-sudo ./linux
-./node
-./git
-# need to wait - so setup a few things outside installation when possible:
-# - startup apps: clean out what isn't needed
-# - keyboard layout: add "us int dead", alt-shift change, caps compose
-# - look and feel of UI: { effects: OFF, mouse: PAD, general: SCALE }
-# - login to chrome and dvcs services and paste ssh keys (once chrome is there)
-
-./editor # and related install tasks below
-./cpy
-./shell
-# continue in guake (applies new bashrc)
-./npmdeps && ./pipdeps # global npm and pip helpers
-./repos
-# clean up `df` directory if no changes were made - otherwise commit there
-./cleanup
-
-# if at work - clone work gist and follow that
+sudo ./jessie.sh
 ```
 
-## Script Description
-### linux
-apt basics
+## Manual tasks
+Need to wait for at least `git` to finish before tweaking chrome, so can do the following things first:
 
-### node
-basic node fetcher and installer into `~/local/node` - not sold on `nvm`
+- startup apps: clean out what isn't needed
+- keyboard layout: add "us int dead", alt-shift change, caps compose
+- look and feel of UI: { effects: OFF, mouse: PAD, general: SCALE }
 
-### git
-Initializes the git config and sets up ssh keys to paste to github.
+After `git`:
 
-### editor
-Fetches the latest `amd64.deb` sublime text 3 build and `dpkg` installs it.
+- login to chrome and dvcs services and paste ssh keys (once chrome is there)
 
-Afterwards:
+After `editor`:
 
 - setup sublime [license](https://mail.google.com/mail/u/0/#search/sublime+license/13a942d72a211e81)
 - setup sublime [package control](https://packagecontrol.io/installation)
@@ -62,6 +41,21 @@ Then install the following packages:
 - MarkdownEditing # (reopen .md files after restart - `cpy` settings should have been preserved by install)
 
 The SublimeLinter-contrib-clang is too manual to be worth it. Have to set all flags and include dirs yourself.
+
+Finally, if at work - clone work gist and follow that.
+
+## Script Description
+### linux
+apt basics
+
+### node
+basic node fetcher and installer into `~/local/node` - not sold on `nvm`
+
+### git
+Initializes the git config and sets up ssh keys to paste to github.
+
+### editor
+Fetches the latest `amd64.deb` sublime text 3 build and `dpkg` installs it.
 
 ### cpy
 Installs settings for:

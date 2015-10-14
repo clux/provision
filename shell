@@ -1,7 +1,9 @@
 #!/bin/sh
 
 # npm tab completion and linking of node executables
-~/local/node/bin/npm completion >> ~/.bashrc
+$(which npm) completion >> ~/.bashrc
 
 # reference the local bashrc file
-echo ". `pwd`/bashrc" >> ~/.bashrc
+echo ". $PWD/bashrc" >> ~/.bashrc
+
+source ~/.bashrc
