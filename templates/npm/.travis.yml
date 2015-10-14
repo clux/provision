@@ -1,0 +1,14 @@
+language: node_js
+sudo: false
+
+node_js:
+  - 4
+
+notifications:
+  email: false
+
+before_script:
+  - npm link
+
+after_script:
+  - npm run coverage | coveralls

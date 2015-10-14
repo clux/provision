@@ -96,6 +96,5 @@ do
   git clone git@github.com:clux/$i.git
 done
 
-node-gyp-install # so we have correct headers
 cd
-symlink repos repos/tournament -g nodeunit -g jscoverage -g coveralls --execute
+symlink repos repos/tournament -g nodeunit -g jscoverage -g coveralls -g istanbul --execute

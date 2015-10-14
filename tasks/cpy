@@ -1,9 +1,10 @@
 #!/bin/sh
 
-cp .jshintrc ~/repos
-cp .eslintrc ~/repos
-cp pep8 ~/.config
-cp redshift.conf  ~/.config/
+cp configs/.jshintrc ~/repos
+cp configs/.eslintrc ~/repos
+cp configs/gitconfig ~/.gitconfig
+cp configs/pep8 ~/.config
+cp configs/redshift.conf  ~/.config/
 
 # sublime 3
 rm -rf ~/.config/sublime-text-3/Cache/JavaScript/

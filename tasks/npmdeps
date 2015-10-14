@@ -26,6 +26,7 @@ globalModules=(
   pm2         # process manager
   # tests
   nodeunit
+  istanbul
   tap
   coveralls
   jscoverage
@@ -38,6 +39,6 @@ do
   npm install -g $i
 done
 
-pkginit add default pkg.json
+pkginit add default templates/npm/pkg.json
 
 pm2 completion >> ~/.bashrc

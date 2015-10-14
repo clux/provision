@@ -26,6 +26,12 @@ srchcmake() { filefind . "CMakeLists.txt" | xargs grep "$1" 2> /dev/null ;}
 
 
 node_json_validate() { jsonlint package.json -q ;}
+node_init() {
+  find ~/repos/dotclux/templates/npm/ -type f -not -iname pkg.json | xargs cp -t .
+  pkginit
+  echo "# $(basename $PWD)" > README.md
+  badgify >> README.md
+}
 
 # package/repo fetching shortcuts
 aptin() { sudo apt-get install "$1" ;}

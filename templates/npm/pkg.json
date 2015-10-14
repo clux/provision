@@ -10,15 +10,13 @@
   "keywords": [],
   "main": basename.replace(/\-/g, "_") + ".js",
   "scripts": {
-    "test": "nodeunit --reporter=verbose test/*.js",
-    "precoverage": "jscoverage " + basename.replace(/\-/g, "_") + ".js",
-    "coverage": basename.toUpperCase().replace(/\-/g, "_") + "_COV=1 nodeunit --reporter=lcov test/*.js",
-    "coveralls": "npm run coverage | coveralls"
+    "test": "bndg test/*.test.js",
+    "coverage": "istanbul cover bndg test/*.test.js"
   },
   "dependencies": {},
   "devDependencies": {
-    "nodeunit": "^0.9.1",
-    "jscoverage": "^0.5.9",
+    "bandage": "^0.2.0",
+    "istanbul": "^0.3.22",
     "coveralls": "^2.11.2"
   },
   "bugs": {

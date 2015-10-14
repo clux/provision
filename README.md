@@ -1,5 +1,5 @@
 # dotclux
-Reinstall scripts for Debian 8.
+Personal Linux reinstall scripts and configs.
 
 ## Usage
 Bootstrap and run main script:
@@ -7,7 +7,6 @@ Bootstrap and run main script:
 ```sh
 sudo apt-get install -y -qq git curl
 mkdir repos && cd repos && git clone https://github.com/clux/dotclux.git df && cd df
-
 sudo ./jessie.sh
 ```
 

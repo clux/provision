@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 set -xeuo pipefail
-./linux
-./node
-./git
-./editor
-./cpy
-./shell
-./npmdeps
-./pipdeps
-./repos
-./cleanup
+./tasks/apt
+./tasks/node
+./tasks/ssh
+./tasks/sublime
+./tasks/cpy
+./tasks/shell
+./tasks/npmdeps
+./tasks/pipdeps
+./tasks/repos
+./tasks/llvm 3 7 0
+./tasks/cleanup

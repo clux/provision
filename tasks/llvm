@@ -8,7 +8,8 @@ CLANG=http://llvm.org/releases/$1.$2.$3/cfe-$1.$2.$3.src.tar.xz
 EXTRA=http://llvm.org/releases/$1.$2.$3/clang-tools-extra-$1.$2.$3.src.tar.xz
 COMPILERRT=http://llvm.org/releases/$1.$2.$3/compiler-rt-$1.$2.$3.src.tar.xz
 
-mkdir llvm-v$1.$2.$3 && cd llvm-v$1.$2.$3
+cd ~
+mkdir -p local/llvm-v$1.$2.$3 && cd local/llvm-v$1.$2.$3
 echo "fetch $LLVM"
 wget $LLVM
 echo "fetch $CLANG"
@@ -42,5 +43,5 @@ make -j8
 sudo make install
 
 cd ..
-echo "PATH=$(pwd)/tools/clang/tools/scan-build:$PATH" | cat - ~/.bashrc > ~/tmpbashrc
+echo "export PATH=\$HOME/local/llvm-v$1.$2.$3/tools/clang/tools/scan-build:\$PATH" | cat - ~/.bashrc > ~/tmpbashrc
 mv ~/tmpbashrc ~/.bashrc
