@@ -83,7 +83,7 @@
      * Best practices
      */
     // we allow == only against null and typeof (therefor do not enable no-eq-null)
-    "eqeqeq": [2, "smart" ]            // http://eslint.org/docs/rules/eqeqeq
+    "eqeqeq": [2, "smart" ],         // http://eslint.org/docs/rules/eqeqeq
    
     // no arguments.callee/caller
     "no-caller": 2,                  // http://eslint.org/docs/rules/no-caller
