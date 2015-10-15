@@ -5,12 +5,12 @@ language: python
 services:
   - docker
 before_install:
-  - docker pull debian/jessie
+  - docker pull debian:jessie
 
 install:
-  - docker run debian/jessie /bin/sh -c "wget -qO- https://github.com/clux/dotclux/archive/master.tar.gz | tar xz;"
+  - docker run debian:jessie /bin/sh -c "wget -qO- https://github.com/clux/dotclux/archive/master.tar.gz | tar xz;"
   #- sudo chroot jessie apt install sudo ca-certificates ssh # may need ssl-cert
-  - docker run debian/jessin /bin/sh -c "TRAVIS=1 ./dotclux-master/desktop.sh"
+  - docker run debian:jessie /bin/sh -c "TRAVIS=1 ./dotclux-master/desktop.sh"
 
 notifications:
   email: false
