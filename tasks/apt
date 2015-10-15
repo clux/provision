@@ -1,12 +1,8 @@
 #!/usr/bin/env bash
 
+wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
 apt-get update
-apt-get upgrade
-
-sudo apt-get install libxss1 libappindicator1 libindicator7
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome*.deb
-sudo apt-get install -f
 
 apps=(
   #cheese      # camera tester
@@ -17,6 +13,7 @@ apps=(
   curl      # wget alternative
   g++
   git
+  google-chrome-stable
   grc       # generic colouriser
   guake
   handbrake # encoding/transcoding utility
