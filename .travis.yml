@@ -6,8 +6,6 @@ services:
   - docker
 before_install:
   - docker pull debian/jessie
-  - docker ps -a
-  - docker run carlad/sinatra /bin/sh -c "cd /root/sinatra; bundle exec rake test"
 
 install:
   - docker run debian/jessie /bin/sh -c "wget -qO- https://github.com/clux/dotclux/archive/master.tar.gz | tar xz;"
