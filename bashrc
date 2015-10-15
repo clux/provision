@@ -1,5 +1,3 @@
-export PATH=$HOME/npm/bin:$PATH
-export PATH=$HOME/Downloads/llvm-3.6.0.src/tools/clang/tools/scan-build:$PATH
 export DOWNLOAD_DIR=/media/clux/Zeus/DL/
 alias dl="cd $DOWNLOAD_DIR"
 

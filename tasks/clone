@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+giturl=$([-z "$TRAVIS" ] && echo git@github.com:clux || echo https://github.com/clux)
+
 cd && mkdir -p repos && cd repos
 
 # private bitbucket repos
@@ -8,14 +10,13 @@ privates=(
   ssh
   meshrtc
 )
-for i in ${privates[@]}
-do
-  echo $i
-  git clone git@bitbucket.org:clux/$i.git
+if [ -z "$TRAVIS" ]; then
+  for i in ${privates[@]}
+  do
+    echo $i
+    git clone git@bitbucket.org:clux/$i.git
 done
-
-echo "Retrieving ssh config"
-git clone git@bitbucket.org:clux/ssh.git ~/.ssh
+fi
 
 # tournament related modules
 cd && cd repos
@@ -38,8 +39,7 @@ trn=(
 )
 for i in ${trn[@]}
 do
-  echo $i
-  git clone git@github.com:clux/$i.git
+  git clone $giturl/$i.git
 done
 
 misc=(
@@ -93,7 +93,7 @@ cd && cd repos
 for i in ${misc[@]}
 do
   echo $i
-  git clone git@github.com:clux/$i.git
+  git clone $giturl/$i.git
 done
 
 cd

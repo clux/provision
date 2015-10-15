@@ -1,0 +1,20 @@
+sudo: true
+
+addons:
+  apt:
+    packages:
+    - debootstrap
+
+before_install:
+  - mkdir jessie
+  - sudo debootstrap jessie ./jessie http://http.debian.net/debian/
+  - sudo chroot jessie apt install sudo ca-certificates ssh # may need ssl-cert
+  - sudo mkdir -p jessie/home/clux
+
+install:
+  - wget -qO- https://github.com/clux/dotclux/archive/master.tar.gz | tar xz
+  - sudo mv dotclux-master/ jessie/home/clux/
+  - sudo chroot jessie TRAVIS=1 /home/clux/dotclux-master/desktop.sh
+
+notifications:
+  email: false
