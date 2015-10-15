@@ -6,7 +6,7 @@ services:
   - docker
 
 install:
-  - docker build -t . dotclux
+  - docker build -t dotclux .
 
 notifications:
   email: false
