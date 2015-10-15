@@ -6,8 +6,7 @@ Fetch latest version of this repo and deploy:
 
 ```sh
 wget -qO- https://github.com/clux/dotclux/archive/master.tar.gz | tar xz
-cd dotclux-master
-sudo ./desktop.sh
+sudo ./dotclux-master/desktop.sh
 ```
 
 ## Manual tasks

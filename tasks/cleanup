@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
-cd ~/repos
-rm -rf df/
-sed -i 's/repos\/df/repos\/dotclux/g' ~/.bashrc
+dir=$(cd "$(dirname "$1")"; echo "$(pwd -P)/$(basename "$1")")
+echo "Removing temporary reference to this directory ($dir) in bashrc"
+escdir=$(echo "$dir" | sed 's_/_\\/_g')
+sed -i "$escdir/d" ~/.bashrc
