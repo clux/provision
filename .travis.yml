@@ -2,21 +2,17 @@ sudo: true
 language: python
   - "2.7"
 
-addons:
-  apt:
-    packages:
-    - debootstrap
-
+services:
+  - docker
 before_install:
-  - mkdir jessie
-  - sudo debootstrap jessie ./jessie http://http.debian.net/debian/
-  - sudo chroot jessie apt install sudo ca-certificates ssh # may need ssl-cert
-  - sudo mkdir -p jessie/home/clux
+  - docker pull debian/jessie
+  - docker ps -a
+  - docker run carlad/sinatra /bin/sh -c "cd /root/sinatra; bundle exec rake test"
 
 install:
-  - wget -qO- https://github.com/clux/dotclux/archive/master.tar.gz | tar xz
-  - sudo mv dotclux-master/ jessie/home/clux/
-  - sudo chroot jessie TRAVIS=1 /home/clux/dotclux-master/desktop.sh
+  - docker run debian/jessie /bin/sh -c "wget -qO- https://github.com/clux/dotclux/archive/master.tar.gz | tar xz;"
+  #- sudo chroot jessie apt install sudo ca-certificates ssh # may need ssl-cert
+  - docker run debian/jessin /bin/sh -c "TRAVIS=1 ./dotclux-master/desktop.sh"
 
 notifications:
   email: false
