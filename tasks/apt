@@ -42,5 +42,7 @@ do
   apt-get install -y -qq $i
 done
 
-echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
-sudo sysctl -p
+if [ -z "$TRAVIS" ]; then
+  echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
+  sudo sysctl -p
+fi
