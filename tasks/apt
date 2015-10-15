@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 
-# google public key + sources list
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
-#echo "deb http://dl.google.com/linux/talkplugin/deb/ stable main" > /etc/apt/sources.list.d/google-talkplugin.list
-
 apt-get update
 apt-get upgrade
+
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
 
 apps=(
   #cheese      # camera tester
@@ -17,8 +15,6 @@ apps=(
   curl      # wget alternative
   g++
   git
-  google-chrome-stable  # stable chrome from googles repo
-  #google-talkplugin     # google talk plugin (still needed?)
   grc       # generic colouriser
   guake
   handbrake # encoding/transcoding utility
