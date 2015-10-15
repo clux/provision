@@ -1,4 +1,6 @@
 sudo: true
+language: python
+  - "2.7"
 
 addons:
   apt:
