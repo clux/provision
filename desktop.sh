@@ -7,7 +7,7 @@ cd $(dirname $0)
 source ~/.bashrc # need node
 [ -z "$TRAVIS" ] && ./tasks/ssh
 ./tasks/sublime
-./tasks/cpy
+[ -z "$TRAVIS" ] && ./tasks/cpy
 ./tasks/shell
 source ~/.bashrc # need local shell stuff for npm PATH (maybe put that in node task)
 ./tasks/npm
