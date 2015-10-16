@@ -7,6 +7,7 @@ cp configs/pep8 ~/.config
 cp configs/redshift.conf  ~/.config/
 
 # sublime 3
+mkdir -p ~/.config/sublime-text-3/Packages/User
 rm -rf ~/.config/sublime-text-3/Cache/JavaScript/
 cp -R sublime-text-3/ ~/.config/
 
