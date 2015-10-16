@@ -2,7 +2,7 @@
 
 wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
-apt-get update
+apt update
 
 apps=(
   #cheese      # camera tester
@@ -34,7 +34,7 @@ apps=(
 for i in ${apps[@]}
 do
   echo $i
-  apt-get install -y -qq $i
+  apt install -y -qq $i
 done
 
 if [ -z "$TRAVIS" ]; then
