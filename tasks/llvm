@@ -1,15 +1,25 @@
 #!/usr/bin/env bash
 
 # llvm install script
-# usage ./llvm 3 6 0
+# usage ./llvm 3.7.0
 
-LLVM=http://llvm.org/releases/$1.$2.$3/llvm-$1.$2.$3.src.tar.xz
-CLANG=http://llvm.org/releases/$1.$2.$3/cfe-$1.$2.$3.src.tar.xz
-EXTRA=http://llvm.org/releases/$1.$2.$3/clang-tools-extra-$1.$2.$3.src.tar.xz
-COMPILERRT=http://llvm.org/releases/$1.$2.$3/compiler-rt-$1.$2.$3.src.tar.xz
+abort() {
+  echo "$@" 1>&2
+  exit 1
+}
+
+ver=$1
+
+hash clang 2> /dev/null && clang --version | grep -q "$ver"
+test $? -eq 0  && abort clang version $ver already installed
+
+LLVM=http://llvm.org/releases/$ver/llvm-$ver.src.tar.xz
+CLANG=http://llvm.org/releases/$ver/cfe-$ver.src.tar.xz
+EXTRA=http://llvm.org/releases/$ver/clang-tools-extra-$ver.src.tar.xz
+COMPILERRT=http://llvm.org/releases/$ver/compiler-rt-$ver.src.tar.xz
 
 cd ~
-mkdir -p local/llvm-v$1.$2.$3 && cd local/llvm-v$1.$2.$3
+mkdir -p local/llvm-v$ver && cd local/llvm-v$ver
 echo "fetch $LLVM"
 wget $LLVM
 echo "fetch $CLANG"
@@ -20,17 +30,17 @@ echo "fetch $COMPILERRT"
 wget $COMPILERRT
 
 mkdir src && cd src
-tar xf ../llvm-$1.$2.$3.src.tar.xz --strip-components=1
+tar xf ../llvm-$ver.src.tar.xz --strip-components=1
 # clang goes in tools/clang
 mkdir -p tools/clang && cd tools/clang
-tar xf ../../../cfe-$1.$2.$3.src.tar.xz --strip-components=1
+tar xf ../../../cfe-$ver.src.tar.xz --strip-components=1
 # extra goes in tools/clang/tools/extra
 mkdir -p tools/extra && cd tools/extra
-tar xf ../../../../../clang-tools-extra-$1.$2.$3.src.tar.xz --strip-components=1
+tar xf ../../../../../clang-tools-extra-$ver.src.tar.xz --strip-components=1
 # compiler-rt goes in projects/compiler-rt
 cd ../../../../
 mkdir -p projects/compiler-rt && cd projects/compiler-rt
-tar xf ../../../compiler-rt-$1.$2.$3.src.tar.xz --strip-components=1
+tar xf ../../../compiler-rt-$ver.src.tar.xz --strip-components=1
 
 # back to source
 cd ../..
@@ -43,5 +53,5 @@ make -j8
 sudo make install
 
 cd ..
-echo "export PATH=\$HOME/local/llvm-v$1.$2.$3/tools/clang/tools/scan-build:\$PATH" | cat - ~/.bashrc > ~/tmpbashrc
+echo "export PATH=\$HOME/local/llvm-v$ver/tools/clang/tools/scan-build:\$PATH" | cat - ~/.bashrc > ~/tmpbashrc
 mv ~/tmpbashrc ~/.bashrc
