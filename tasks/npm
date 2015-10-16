@@ -15,7 +15,7 @@ globalModules=(
   pkginit     # for quick making a npm module shell (though bugged atm)
   browserify  # npm style webapps
   testling    # for browser tests
-  kill-tabs
+  kill-tabs   # party trick
   asciify     # CLI asciifier
   ytdl        # streaming youtube downloader
   symlink     # node module link helper
@@ -23,6 +23,7 @@ globalModules=(
   bower       # web components currently here..
   node-gyp-install # for when node-gyp fails
   pm2         # process manager
+  polylint    # linter for polymer
   # tests
   nodeunit
   istanbul
