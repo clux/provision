@@ -8,6 +8,11 @@ globalModules=(
   ghp-import
 )
 
+set -x
+which pip
+which pip2
+which pip3
+
 for i in "${globalModules[@]}"
 do
   echo $i
