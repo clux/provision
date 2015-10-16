@@ -1,0 +1,5 @@
+#!/usr/bin/env/bash
+
+# http://unix.stackexchange.com/questions/13751/kernel-inotify-watch-limit-reached
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
