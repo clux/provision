@@ -1,15 +1,16 @@
 #!/bin/sh
 
+# sublime 3
+mkdir -p ~/.config/sublime-text-3/Packages/User
+rm -rf ~/.config/sublime-text-3/Cache/JavaScript/
+cp -R sublime-text-3/ ~/.config/
+
+# misc configs
 cp configs/.jshintrc ~/
 cp configs/.eslintrc ~/
 cp configs/gitconfig ~/.gitconfig
 cp configs/pep8 ~/.config
 cp configs/redshift.conf  ~/.config/
-
-# sublime 3
-mkdir -p ~/.config/sublime-text-3/Packages/User
-rm -rf ~/.config/sublime-text-3/Cache/JavaScript/
-cp -R sublime-text-3/ ~/.config/
 
 # autostart + gconf settings
 cp -R configs/gconf/* ~/.gconf/

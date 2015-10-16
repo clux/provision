@@ -7,21 +7,38 @@
   [ "$status" -eq 0 ]
 }
 
-@test "repos" {
-  [ -d "$HOME/repos/dotclux" ]
-}
-
 @test "npm" {
   run which badgify
   [ "$status" -eq 0 ]
 }
 
-@test "clang" {
-  run which clang
+@test "pip" {
+  run which pylint
   [ "$status" -eq 0 ]
 }
 
+@test "sublime" {
+  run which subl
+  [ "$status" -eq 0 ]
+}
+
+@test "chrome" {
+  run which google-chrome
+  [ "$status" -eq 0 ]
+}
 
 @test "configs" {
   [ -r "$HOME/.eslintrc" ]
 }
+
+if [ -z "$TRAVIS" ]; then
+  @test "repos" {
+    [ -d "$HOME/repos/dotclux" ]
+  }
+
+  @test "clang 3.7.0" {
+    run clang --version
+    [ "$status" -eq 0 ]
+    [ $(expr "$output" : ".*3.7.0") -ne 0 ]
+  }
+fi

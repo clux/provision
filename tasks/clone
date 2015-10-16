@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-giturl=$([-z "$TRAVIS" ] && echo git@github.com:clux || echo https://github.com/clux)
+giturl=$([ -z "$TRAVIS" ] && echo git@github.com:clux || echo https://github.com/clux)
 
 cd && mkdir -p repos && cd repos
 
