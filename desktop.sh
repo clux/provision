@@ -3,7 +3,7 @@ set -xeuo pipefail
 touch ~/.bashrc
 cd $(dirname $0)
 #./tasks/apt
-#./tasks/node
+./tasks/node
 #source ~/.bashrc # need node
 #[ -z "$TRAVIS" ] && ./tasks/ssh
 #./tasks/sublime
@@ -12,7 +12,7 @@ cd $(dirname $0)
 #source ~/.bashrc # need local shell stuff for npm PATH (maybe put that in node task)
 #./tasks/npm
 ./tasks/pip
-#./tasks/clone
+./tasks/clone
 #[ -z "$TRAVIS" ] && ./tasks/llvm 3 7 0
 #./tasks/cleanup
 #source ~/.bashrc
