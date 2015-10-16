@@ -13,5 +13,5 @@
   amend = commit --amend -m
   ping = commit --allow-empty -m \"ping hooks\"
   uncommit = reset --soft HEAD^
-  unstage = git reset HEAD
+  unstage = reset HEAD
   count = shortlog -sn
