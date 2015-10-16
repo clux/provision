@@ -1,17 +1,12 @@
 #!/usr/bin/env bash
 
-apt-get install python-pip
+apt-get install python-pip -y -qq
 
 globalModules=(
   pyflakes
   pylint
   ghp-import
 )
-
-set -x
-which pip
-which pip2
-which pip3
 
 for i in "${globalModules[@]}"
 do
