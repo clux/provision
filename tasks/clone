@@ -98,3 +98,8 @@ done
 
 cd
 symlink repos repos/tournament -g nodeunit -g jscoverage -g coveralls -g istanbul --execute
+
+cd repos
+git clone https://github.com/sstephenson/bats.git
+cd bats
+./install.sh /usr/local
