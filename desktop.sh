@@ -15,4 +15,6 @@ source ~/.bashrc # need local shell stuff for npm PATH (maybe put that in node t
 ./tasks/clone
 [ -z "$TRAVIS" ] && ./tasks/llvm 3 7 0
 ./tasks/cleanup
+source ~/.bashrc
+bats test/*.test.bats
 echo "All done - 'source ~/.bashrc' or open a new shell"
