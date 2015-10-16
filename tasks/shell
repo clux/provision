@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # npm tab completion and linking of node executables
 npm completion >> ~/.bashrc
