@@ -16,6 +16,11 @@ if [ -z "$TRAVIS" ]; then
     echo $i
     git clone git@bitbucket.org:clux/$i.git
 done
+git clone git@bitbucket.org:clux/dotcisco.git dotwork
+git clone git@bitbucket.org:clux/ssh.git ~/ssh
+mv ~/.ssh/* ~/ssh
+rm -rf ~/.ssh
+mv ~/ssh ~/.ssh
 fi
 
 # tournament related modules
