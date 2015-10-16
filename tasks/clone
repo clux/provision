@@ -6,9 +6,9 @@ cd && mkdir -p repos && cd repos
 
 # private bitbucket repos
 privates=(
-  deathmatch
+  #deathmatch
   ssh
-  meshrtc
+  #meshrtc
 )
 if [ -z "$TRAVIS" ]; then
   for i in ${privates[@]}
