@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+set -x
 # install local bashrc
 echo "source $PWD/bashrc" >> ~/.bashrc
 
