@@ -12,7 +12,7 @@ sudo ./dotclux-master/desktop.sh
 ```
 
 ## Manual tasks
-Tasks that can be done after immediately:
+Tasks that can be done immediately:
 
 - startup apps: clean out what isn't needed (everything else added)
 - keyboard layout: add "us int dead", alt-shift change, caps compose
@@ -21,5 +21,5 @@ Tasks that can be done after immediately:
 Tasks that can be done post certain tasks:
 
 - `ssh`: login to chrome and dvcs services and paste ssh keys
-- `sublime` [license](https://mail.google.com/mail/u/0/#search/sublime+license/13a942d72a211e81)
-- `sublime` [package control](https://packagecontrol.io/installation)
+- `sublime`: [license](https://mail.google.com/mail/u/0/#search/sublime+license/13a942d72a211e81)
+- `sublime`: [package control](https://packagecontrol.io/installation)
