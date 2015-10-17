@@ -89,7 +89,7 @@ misc=(
   wolfram-alpha
   wolfram-irc
   wrappers
-  xmpp-stream
+  #xmpp-stream
   zalgolize
 )
 
