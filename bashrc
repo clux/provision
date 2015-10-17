@@ -1,5 +1,7 @@
 export DOWNLOAD_DIR=/media/clux/Zeus/DL/
 alias dl="cd $DOWNLOAD_DIR"
+export CC=clang
+export CXX=clang++
 
 # helpers to search through specific file types
 filefind() { find "$1" -type f -name "$2" 2> /dev/null ;}

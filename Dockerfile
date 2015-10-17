@@ -1,5 +1,6 @@
 FROM debian:jessie
 
+# Install stuff typically present after debian installer
 RUN apt-get update && apt-get install -y \
     ca-certificates \
     wget \

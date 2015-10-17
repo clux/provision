@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-# completion scripts
-npm completion >> ~/.bashrc
-pm2 completion install
-
-# reference the local bashrc file
-echo ". $PWD/bashrc" >> ~/.bashrc
