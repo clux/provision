@@ -2,11 +2,6 @@
 
 # Tests that expected stuff has been installed and are on PATH
 
-@test "bats" {
-  run which bats
-  [ "$status" -eq 0 ]
-}
-
 @test "npm" {
   run which badgify
   [ "$status" -eq 0 ]
@@ -32,8 +27,10 @@
 }
 
 @test "repos" {
-  [ -n "$TRAVIS" ] && skip "not running on travis"
+  [ -d "$HOME/repos" ]
   [ -d "$HOME/repos/dotclux" ]
+  run which bndg # should have been npm link'd
+  [ "$status" -eq 0 ]
 }
 
 @test "clang 3.7.0" {

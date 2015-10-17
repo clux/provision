@@ -9,13 +9,11 @@ source ~/.bashrc # need node
 ./tasks/sublime
 ./tasks/cpy
 ./tasks/shell
-source ~/.bashrc # need local shell stuff for npm PATH (maybe put that in node task)
 ./tasks/npm
 ./tasks/pip
 ./tasks/clone
 [ -z "$TRAVIS" ] && ./tasks/llvm 3.7.0
-./tasks/cleanup
 [ -z "$TRAVIS" ] && ./tasks/system
-source ~/.bashrc
+./tasks/cleanup
 bats test/*.test.bats
 echo "All done - 'source ~/.bashrc' or open a new shell"

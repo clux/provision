@@ -6,16 +6,16 @@ cd && mkdir -p repos && cd repos
 
 # private bitbucket repos
 privates=(
-  #deathmatch
-  ssh
-  #meshrtc
+  brotorr
+  irc-swarm
+  mumble-keys
 )
 if [ -z "$TRAVIS" ]; then
   for i in ${privates[@]}
   do
     echo $i
     git clone git@bitbucket.org:clux/$i.git
-done
+  done
 git clone git@bitbucket.org:clux/dotcisco.git dotwork
 git clone git@bitbucket.org:clux/ssh.git ~/ssh
 mv ~/.ssh/* ~/ssh
@@ -28,7 +28,7 @@ cd && cd repos
 mkdir tournament && cd tournament
 trn=(
   duel
-  #duel-names
+  duel-names
   ffa
   ffa-tb
   group

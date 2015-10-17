@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
-# npm tab completion and linking of node executables
+# completion scripts
 npm completion >> ~/.bashrc
+pm2 completion install
 
 # reference the local bashrc file
 echo ". $PWD/bashrc" >> ~/.bashrc
-
-source ~/.bashrc

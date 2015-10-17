@@ -39,6 +39,3 @@ do
 done
 
 pkginit add default templates/npm/pkg.json
-
-#completion is annoying the first time as it also spams logs - diable for now
-#pm2 completion >> ~/.bashrc
