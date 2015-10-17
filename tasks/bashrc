@@ -5,4 +5,4 @@ echo "source $PWD/bashrc" >> ~/.bashrc
 
 # install completion scripts at the bottom of bashrc..
 npm completion >> ~/.bashrc
-pm2 completion install
+[ -z "$TRAVIS" ] && pm2 completion install

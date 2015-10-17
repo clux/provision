@@ -39,6 +39,8 @@
 @test "npm" {
   run which badgify
   [ "$status" -eq 0 ]
+  run which pm2
+  [ "$status" -eq 0 ]
 }
 
 @test "pip" {
