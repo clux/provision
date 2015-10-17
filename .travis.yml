@@ -1,10 +1,11 @@
 language: python
+python:
   - "2.7"
 
 services:
   - docker
 
-install:
+script:
   - docker build -t dotclux .
 
 notifications:
