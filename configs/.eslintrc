@@ -158,8 +158,6 @@
     /**
      * Style
      */
-    // force dangling commas in object literals when multiline (maintain vcs history)
-    "comma-dangle": [2, "always-multiline"],    // http://eslint.org/docs/rules/comma-dangle
     // always return things of same type when returning in a function
     "consistent-return": 2,          // http://eslint.org/docs/rules/consistent-return
     // always enforce curly braces for constrol structures
@@ -190,7 +188,7 @@
     //}],
     //"comma-style": [2, "first"],      // http://eslint.org/docs/rules/comma-style
     "eol-last": 2,                   // http://eslint.org/docs/rules/eol-last
-    "func-names": 1,                 // http://eslint.org/docs/rules/func-names
+    "func-names": 0,                 // http://eslint.org/docs/rules/func-names
     "key-spacing": [2, {             // http://eslint.org/docs/rules/key-spacing
         "beforeColon": false,
         "afterColon": true
@@ -205,7 +203,7 @@
     "no-new-object": 2,              // http://eslint.org/docs/rules/no-new-object
     "no-spaced-func": 2,             // http://eslint.org/docs/rules/no-spaced-func
     "no-trailing-spaces": 2,         // http://eslint.org/docs/rules/no-trailing-spaces
-    "no-extra-parens": 2,            // http://eslint.org/docs/rules/no-extra-parens
+    "no-extra-parens": 0,            // http://eslint.org/docs/rules/no-extra-parens
     "no-underscore-dangle": 0,       // http://eslint.org/docs/rules/no-underscore-dangle
     //"one-var": [2, "never"],         // http://eslint.org/docs/rules/one-var
     "padded-blocks": [2, "never"],   // http://eslint.org/docs/rules/padded-blocks
@@ -221,7 +219,7 @@
       "named": "never" // stick to jshint rule that was commonly enforced
       // TODO: maybe last is not necessary
     }],                              // http://eslint.org/docs/rules/space-before-function-paren
-    "space-infix-ops": 2,            // http://eslint.org/docs/rules/space-infix-ops
+    "space-infix-ops": 0,            // http://eslint.org/docs/rules/space-infix-ops
     "space-return-throw-case": 2,    // http://eslint.org/docs/rules/space-return-throw-case
     "spaced-comment": 2,             // http://eslint.org/docs/rules/spaced-comment
   }
