@@ -102,7 +102,7 @@ do
 done
 
 cd
-symlink repos repos/tournament -g nodeunit -g jscoverage -g coveralls --execute
+symlink repos repos/tournament -g jscoverage -g coveralls --execute
 
 cd repos
 git clone https://github.com/sstephenson/bats.git

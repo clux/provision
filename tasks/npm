@@ -24,9 +24,7 @@ globalModules=(
   pm2         # process manager
   polylint    # linter for polymer
   # tests
-  nodeunit
-  istanbul
-  tap
+  tape
   coveralls
   jscoverage
   vulcanize   # polymer concat
