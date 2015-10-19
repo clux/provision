@@ -1,8 +1,0 @@
-<snippet>
-    <content><![CDATA[function (${1:arg}) {
-	${0:$TM_SELECTED_TEXT}
-}]]></content>
-    <tabTrigger>fun</tabTrigger>
-    <scope>source.js</scope>
-    <description>Function</description>
-</snippet>

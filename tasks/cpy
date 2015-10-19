@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
 # sublime 3
-mkdir -p ~/.config/sublime-text-3/Packages/User
-rm -rf ~/.config/sublime-text-3/Cache/JavaScript/
-cp -R configs/sublime-text-3/ ~/.config/
+mkdir -p ~/.config/sublime-text-3/Packages/
+ln -s $PWD/configs/ST3User/ ~/.config/sublime-text-3/Packages/User
 
 # symlink misc configs
 ln -s $PWD/configs/.eslintrc ~/

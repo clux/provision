@@ -1,6 +1,0 @@
-<snippet>
-    <content><![CDATA[prototype.${1:method} = ]]></content>
-    <tabTrigger>proto</tabTrigger>
-    <scope>source.js</scope>
-    <description>Prototype Method</description>
-</snippet>

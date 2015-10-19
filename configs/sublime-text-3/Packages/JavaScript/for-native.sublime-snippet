@@ -1,8 +1,0 @@
-<snippet>
-    <content><![CDATA[for (var ${1:i} = 0; ${1:i} < ${2:ary}.length; ${1:i} += 1) {
-	${100:${2:ary}[${1:i}]}$0
-}]]></content>
-    <tabTrigger>for</tabTrigger>
-    <scope>source.js</scope>
-    <description>for native</description>
-</snippet>
