@@ -11,7 +11,6 @@ ln -s $PWD/configs/pep8 ~/.config/
 ln -s $PWD/configs/redshift.conf ~/.config/
 ln -s $PWD/configs/.gitconfig ~/
 
-
 # autostart + gconf settings
 cp -R configs/gconf/* ~/.gconf/
 cp configs/autostart/* ~/.config/autostart
