@@ -10,14 +10,14 @@
   "keywords": [],
   "main": basename.replace(/\-/g, "_") + ".js",
   "scripts": {
-    "test": "bndg test/*.test.js",
-    "coverage": "istanbul cover bndg test/*.test.js"
+    "test": "bndg 'test/*.test.js'",
+    "precoverage": "istanbul cover bndg 'test/*.test.js'",
+    "coverage": "cat coverage/lcov.info && rm -rf coverage"
   },
   "dependencies": {},
   "devDependencies": {
-    "bandage": "^0.2.0",
-    "istanbul": "^0.3.22",
-    "coveralls": "^2.11.2"
+    "bandage": "^0.2.3",
+    "istanbul": "^0.4.0"
   },
   "bugs": {
     "url": "http://github.com/clux/" + basename + "/issues"
