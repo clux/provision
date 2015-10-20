@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# only set prefix if we didn't install from source
 npm install -g npm # update npm first
 
 globalModules=(
