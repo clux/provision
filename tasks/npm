@@ -23,11 +23,6 @@ globalModules=(
   bower       # web components currently here..
   pm2         # process manager
   polylint    # linter for polymer
-  # tests
-  tape
-  coveralls
-  jscoverage
-  vulcanize   # polymer concat
 )
 
 for i in "${globalModules[@]}"
