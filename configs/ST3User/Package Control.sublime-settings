@@ -11,6 +11,7 @@
 	[
 		"Bats (Bash Automated Testing System)",
 		"CMake",
+		"Generic Config",
 		"Package Control",
 		"Rust",
 		"Seti_UI",
