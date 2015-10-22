@@ -9,4 +9,4 @@ echo $url
 wget $url
 
 file=$(echo $url | sed 's/.*.com\///')
-sudo dpkg -i $file
+dpkg -i $file
