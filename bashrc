@@ -101,7 +101,7 @@ alias lsd="ls -l | grep --color=never '^d'"
 # misc helpers
 alias week='date +%V'
 
-alias localip="ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | cut -d ' ' -f1"
+alias localip="sudo ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | cut -d ' ' -f1"
 
 alias cwd='pwd | tr -d "\r\n" | xclip -sel clip'
 
