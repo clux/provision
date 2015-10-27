@@ -8,6 +8,7 @@
   dif = diff
   stat = diff --stat
   st = status -s
+  pul = pull
   ci = commit
   cia = commit -am
   amend = commit --amend -m
