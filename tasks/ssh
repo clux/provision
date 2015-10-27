@@ -1,7 +1,10 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # generate ssh keys
 ssh-keygen -t rsa -C "analsandblaster@gmail.com" -f ~/.ssh/github_id_rsa
 xclip -sel clip < ~/.ssh/github_id_rsa.pub
-echo "LOG IN TO DVCS AND PASTE RSA KEY (IN CLIPBOARD NOW)"
-echo "VERIFY GITHUB WITH: ssh -T git@github.com"
+echo "Log in to github and bitbucket and paste clipboarded public key"
+read -p "Press any key when keys have been added..."
+set -x
+ssh -T git@github.com
+ssh -T git@bitbucket.org
