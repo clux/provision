@@ -13,7 +13,7 @@
   [ "$status" -eq 0 ]
   run node --version
   [ "$status" -eq 0 ]
-  [ $(expr "$output" : ".*v4.") -ne 0 ]
+  echo "$output" && echo "$output" | grep "v4."
 }
 
 @test "ssh" {
@@ -59,7 +59,7 @@
   [ -n "$TRAVIS" ] && skip "not compiling llvm on travis"
   run clang --version
   [ "$status" -eq 0 ]
-  [ $(expr "$output" : ".*3.7.0") -ne 0 ]
+  echo "$output" && echo "$output" | grep "3.7.0"
 }
 
 @test "bashrc" {
