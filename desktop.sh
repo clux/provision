@@ -7,10 +7,10 @@ cd $(dirname $0)
 source ~/.bashrc # need node in other tasks
 [ -z "$TRAVIS" ] && ./tasks/ssh
 ./tasks/sublime
-./tasks/cpy
 ./tasks/npm
 ./tasks/pip
 ./tasks/clone
+./tasks/cpy
 [ -z "$TRAVIS" ] && ./tasks/llvm 3.7.0
 [ -z "$TRAVIS" ] && ./tasks/system
 ./tasks/bashrc
