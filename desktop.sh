@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -xeuo pipefail
+set -xeo pipefail
 touch ~/.bashrc
 cd $(dirname $0)
 ./tasks/apt
