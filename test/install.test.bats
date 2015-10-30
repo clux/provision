@@ -6,6 +6,8 @@
   [ "$status" -eq 0 ]
   run which guake
   [ "$status" -eq 0 ]
+  run which cmake
+  [ "$status" -eq 0 ]
 }
 
 @test "node" {
@@ -31,7 +33,11 @@
 
 @test "cpy" {
   [ -r "$HOME/.eslintrc" ]
+  [ -r "$HOME/.jshintrc" ]
+  [ -r "$HOME/.gitconfig" ]
+  cat ~/.gitconfig && cat ~/.gitconfig | grep "status -s"
   [ -r "$HOME/.config/redshift.conf" ]
+  [ -r "$HOME/.config/autostart/guake.desktop" ]
   [ -r "$HOME/.config/sublime-text-3/Packages/User/SublimeLinter.sublime-settings" ]
   [ -r "$HOME/.iface" ]
 }

@@ -11,16 +11,16 @@ privates=(
   mumble-keys
 )
 if [ -z "$TRAVIS" ]; then
-  for i in ${privates[@]}
+  for repo in ${privates[@]}
   do
-    echo $i
-    git clone git@bitbucket.org:clux/$i.git
+    echo $repo
+    git clone git@bitbucket.org:clux/$repo.git
   done
-git clone git@bitbucket.org:clux/dotcisco.git dotwork
-git clone git@bitbucket.org:clux/ssh.git ~/ssh
-mv ~/.ssh/* ~/ssh
-rm -rf ~/.ssh
-mv ~/ssh ~/.ssh
+  git clone git@bitbucket.org:clux/dotcisco.git dotwork
+  git clone git@bitbucket.org:clux/ssh.git ~/ssh
+  mv ~/.ssh/* ~/ssh
+  rm -rf ~/.ssh
+  mv ~/ssh ~/.ssh
 fi
 
 # tournament related modules
@@ -42,9 +42,9 @@ trn=(
   tournament-components
   tourney
 )
-for i in ${trn[@]}
+for repo in ${trn[@]}
 do
-  git clone $giturl/$i.git
+  git clone $giturl/$repo.git
 done
 
 misc=(
@@ -55,8 +55,8 @@ misc=(
   cleverbot-irc
   combustion
   confortable
-  curvefever-bot
-  curvefever-stats
+  #curvefever-bot
+  #curvefever-stats
   decay
   deus-login
   dotclux
@@ -79,7 +79,7 @@ misc=(
   subset
   sulfur
   #symlink
-  tabexplode
+  #tabexplode
   tf2configs
   topiary
   trials
@@ -95,10 +95,10 @@ misc=(
 
 cd && cd repos
 
-for i in ${misc[@]}
+for repo in ${misc[@]}
 do
-  echo $i
-  git clone $giturl/$i.git
+  echo $repo
+  git clone $giturl/$repo.git
 done
 
 cd
