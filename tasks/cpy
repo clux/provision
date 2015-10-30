@@ -15,6 +15,7 @@ ln -s $CONFIGS/.gitconfig ~/
 
 # autostart + gconf settings
 cp -R configs/gconf/* ~/.gconf/
+mkdir -p ~/.config/autostart
 cp configs/autostart/* ~/.config/autostart
 
 # TODO: maybe look at keyboard layouts + shortcut keys
