@@ -15,7 +15,7 @@ sudo ./dotclux-master/desktop.sh
 Stuff to do immediately:
 
 - keyboard layout: add "us int dead", alt-shift change, caps compose
-- look and feel of UI: 
+- look and feel of UI:
   * effects: OFF
   * mouse: pad on, no clicks on pad, two finger basic
 
@@ -25,7 +25,7 @@ Stuff do do while it's going:
 
 Stuff you need to wait for stuff:
 
-- after `apt`: login to chrome, gmail, and dvcs services
+- after beginning of `apt`: login to chrome, gmail, and dvcs services, configure guake
 - after `ssh`: paste keys at dvcs account settings pages *SCRIPT HALTED UNTIL YOU DO THIS*
 - after `cpy`: [sublime license](https://mail.google.com/mail/u/0/#search/sublime+license/13a942d72a211e81)
 - after `cpy`: [sublime package control](https://packagecontrol.io/installation)
