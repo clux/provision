@@ -13,7 +13,7 @@
   [ "$status" -eq 0 ]
   run node --version
   [ "$status" -eq 0 ]
-  echo "$output" && echo "$output" | grep "v4."
+  echo "$output" && echo "$output" | grep "v5."
 }
 
 @test "ssh" {
