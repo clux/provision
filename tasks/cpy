@@ -1,18 +1,21 @@
 #!/usr/bin/env bash
 
+CONFIGS="$HOME/repos/dotclux/configs"
+
 # sublime 3
 mkdir -p ~/.config/sublime-text-3/Packages/
-ln -s $PWD/configs/ST3User/ ~/.config/sublime-text-3/Packages/User
+ln -s $CONFIGS/ST3User/ ~/.config/sublime-text-3/Packages/User
 
 # symlink misc configs
-ln -s $PWD/configs/.eslintrc ~/
-ln -s $PWD/configs/.jshintrc ~/
-ln -s $PWD/configs/pep8 ~/.config/
-ln -s $PWD/configs/redshift.conf ~/.config/
-ln -s $PWD/configs/.gitconfig ~/
+ln -s $CONFIGS/.eslintrc ~/
+ln -s $CONFIGS/.jshintrc ~/
+ln -s $CONFIGS/pep8 ~/.config/
+ln -s $CONFIGS/redshift.conf ~/.config/
+ln -s $CONFIGS/.gitconfig ~/
 
 # autostart + gconf settings
 cp -R configs/gconf/* ~/.gconf/
+mkdir -p ~/.config/autostart
 cp configs/autostart/* ~/.config/autostart
 
 # TODO: maybe look at keyboard layouts + shortcut keys
