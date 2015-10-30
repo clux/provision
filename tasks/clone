@@ -107,4 +107,4 @@ symlink repos repos/tournament --execute
 cd repos
 git clone https://github.com/sstephenson/bats.git
 cd bats
-./install.sh /usr/local
+./install.sh ~/local/
