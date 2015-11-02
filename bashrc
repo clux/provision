@@ -6,7 +6,6 @@ export CXX=clang++
 
 # helpers to search through specific file types
 filefind() { find "$1" -type f -name "$2" 2> /dev/null ;}
-# TODO: should probabaly clean up flags rather than dev nulling everything
 
 # JS files
 jf() { filefind "$@" "*.js" | grep -vE "node_modules|bower_components|\.min" ;}
@@ -38,7 +37,8 @@ node_init() {
 # package/repo fetching shortcuts
 aptin() { sudo apt-get install "$1" ;}
 aptrem() { sudo apt-get remove "$1" ;}
-gclone() { git clone git@github.com:clux/"$1".git ;}
+ghclone() { git clone git@github.com:clux/"$1".git ;}
+bbclone() { git clone git@bitbucket.org:clux/"$1".git ;}
 
 # rust helper
 rust_doc_update() {
@@ -62,6 +62,11 @@ polymer_doc_update() {
   echo "<meta http-equiv=refresh content=0;url=$repo/index.html>" > components/index.html
   ghp-import -n components
   git push -qf git@github.com:clux/${repo}.git gh-pages
+}
+
+ssh_eval_hack() {
+  eval "$(ssh-agent -s)"
+  ssh-add  ~/.ssh/github_id_rsa
 }
 
 # insert xkcd tar joke here
@@ -122,6 +127,8 @@ broxy_download () {
 broxy_check() {
   ssh broxy ls dumptruck/DL
 }
+
+# TODO: get some more helpers to find new stuff in other directories based on mtime
 
 # usage: `broxy_fetch name` where name is a substring from broxy_check
 broxy_fetch() {
