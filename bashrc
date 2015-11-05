@@ -4,6 +4,16 @@ alias dl="cd $DOWNLOAD_DIR"
 export CC=clang
 export CXX=clang++
 
+color_code() {
+  [ "$1" -eq  0 ] && echo "" || echo -e "\e[1;31m[$?]\e[m"
+}
+yellow() {
+  echo -e "\e[1;33m$1\e[m"
+}
+PS1='$(color_code $?)\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w $(yellow \$) '
+alias grep='grep --colour'
+
+
 # helpers to search through specific file types
 filefind() { find "$1" -type f -name "$2" 2> /dev/null ;}
 
@@ -97,10 +107,11 @@ ball () { tar czf "$1.tar" "${@:2}" ;}
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history 1 | cut -c 8-)"'
 
 # navigation shortcuts
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
+alias up1="cd .."
+alias up2="cd ../.."
+alias up3="cd ../../.."
+alias up4="cd ../../../.."
+alias up5="cd ../../../../.."
 alias la="ls -la"
 alias lsd="ls -l | grep --color=never '^d'"
 
