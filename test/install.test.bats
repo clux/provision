@@ -42,6 +42,15 @@
   [ -r "$HOME/.iface" ]
 }
 
+@test "clone" {
+  run which arc
+  [ "$status" -eq 0 ]
+  run man -w z
+  [ "$status" -eq 0 ]
+  run man -w bats
+  [ "$status" -eq 0 ]
+}
+
 @test "npm" {
   run which badgify
   [ "$status" -eq 0 ]
@@ -54,7 +63,7 @@
   [ "$status" -eq 0 ]
 }
 
-@test "clone" {
+@test "cluxdev" {
   [ -d "$HOME/repos" ]
   [ -d "$HOME/repos/dotclux" ]
   run which bndg # should have been symlinked

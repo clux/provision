@@ -9,7 +9,9 @@ source ~/.bashrc # need node in other tasks
 ./tasks/sublime
 ./tasks/npm
 ./tasks/pip
+gh=$([ -z "$TRAVIS" ] && echo git@github.com: || echo https://github.com/)
 ./tasks/clone
+./tasks/cluxdev
 ./tasks/cpy
 [ -z "$TRAVIS" ] && ./tasks/llvm 3.7.0
 [ -z "$TRAVIS" ] && ./tasks/system

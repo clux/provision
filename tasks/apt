@@ -16,6 +16,8 @@ apt-get install -y -qq \
   handbrake \
   lcov \
   pass \
+  php-cli \
+  php5-curl \
   pidgin \
   mumble \
   nmap \

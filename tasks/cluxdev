@@ -1,0 +1,103 @@
+#!/usr/bin/env bash
+
+cd && mkdir -p repos && cd repos
+
+# private bitbucket repos
+privates=(
+  brotorr
+  irc-swarm
+  mumble-keys
+)
+if [ -z "$TRAVIS" ]; then
+  for repo in ${privates[@]}
+  do
+    echo $repo
+    git clone git@bitbucket.org:clux/$repo.git
+  done
+  git clone git@bitbucket.org:clux/dotcisco.git dotwork
+  git clone git@bitbucket.org:clux/ssh.git ~/ssh
+  mv ~/.ssh/* ~/ssh
+  rm -rf ~/.ssh
+  mv ~/ssh ~/.ssh
+fi
+
+# tournament related modules
+cd && cd repos
+mkdir tournament && cd tournament
+trn=(
+  duel
+  duel-names
+  ffa
+  ffa-tb
+  group
+  groupstage
+  groupstage-tb
+  groupstage-tb-duel
+  masters
+  roundrobin
+  tiebreaker
+  tournament
+  tournament-components
+  tourney
+)
+for repo in ${trn[@]}
+do
+  git clone $giturl/$repo.git
+done
+
+misc=(
+  autonomy
+  #badgify
+  bandage
+  blog
+  cleverbot-irc
+  combustion
+  confortable
+  #curvefever-bot
+  #curvefever-stats
+  decay
+  deus-login
+  dotclux
+  dye
+  gu
+  icebreaker
+  interlude
+  irc-stream
+  linkr-app
+  linkr-components
+  #logule
+  mddocs
+  npm-graph
+  operators
+  posts
+  preservative
+  sdp-transform
+  smell
+  splitter
+  subset
+  sulfur
+  #symlink
+  #tabexplode
+  tf2configs
+  topiary
+  trials
+  tub
+  unitednationsoftheworld
+  vitae
+  wolfram-alpha
+  wolfram-irc
+  wrappers
+  #xmpp-stream
+  zalgolize
+)
+
+cd && cd repos
+
+for repo in ${misc[@]}
+do
+  echo $repo
+  git clone ${gh}clux/$repo.git
+done
+
+cd
+symlink repos repos/tournament --execute
