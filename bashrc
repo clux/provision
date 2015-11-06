@@ -4,15 +4,14 @@ alias dl="cd $DOWNLOAD_DIR"
 export CC=clang
 export CXX=clang++
 
-color_code() {
-  [ "$1" -eq  0 ] && echo "" || echo -e "\e[1;31m[$?]\e[m"
-}
-yellow() {
-  echo -e "\e[1;33m$1\e[m"
-}
+color_code() { [ "$1" -eq  0 ] && echo "" || echo -e "\e[1;31m[$1]\e[m"; }
+yellow() { echo -e "\e[1;33m$1\e[m"; }
 PS1='$(color_code $?)\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w $(yellow \$) '
+
 alias grep='grep --colour'
 
+gh='git@github.com:'
+ghclone() { git clone ${gh}$1; }
 
 # helpers to search through specific file types
 filefind() { find "$1" -type f -name "$2" 2> /dev/null ;}
@@ -74,9 +73,17 @@ polymer_doc_update() {
   git push -qf git@github.com:clux/${repo}.git gh-pages
 }
 
-ssh_eval_hack() {
+ssh-eval-hack() {
   eval "$(ssh-agent -s)"
   ssh-add  ~/.ssh/github_id_rsa
+}
+
+hg-export-reverse() {
+  hg export $1 | patch -p1 -R
+}
+
+du-biggest() {
+  du -hs * | sort -n | tail
 }
 
 # insert xkcd tar joke here
@@ -153,3 +160,8 @@ broxy_fetch() {
     alert
   fi
 }
+
+alias rsync-copy="rsync -avz --progress -h"
+alias rsync-move="rsync -avz --progress -h --remove-source-files"
+alias rsync-update="rsync -avzu --progress -h"
+alias rsync-synchronize="rsync -avzu --delete --progress -h"
