@@ -1,46 +1,18 @@
 #!/bin/sh
+set -ex
+# This assumes you have setup `adduser clux sudo` as root user first
 
-echo "This is just a pseudo-script - mostly just for my own notes"
-exit 1
+# bunch of system stuff that needs sudo
+sed -i.bak 's/jessie main/jessie main contrib non-free/g' /etc/apt/sources.list
+apt-get update
+apt-get install -y firmware-iwlwifi
+# GRUB is really slow to render on a high DPI screen - just keep it ugly
+sed -i.bak 's/#GRUB_TERMINAL=console/GRUB_TERMINAL=console/' /etc/default/grub
+update-grub
 
-# from root acc
-adduser clux sudo
+# https://wiki.debian.org/NvidiaGraphicsDrivers#Debian_8_.22Jessie.22
+aptitude -r install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') nvidia-kernel-dkms
+# NB: this worked by itself last time - screw optimus on laptop (too much of a hassle)
 
-# add contrib + non-free variants to /etc/apt/sources.list
-# TODO: probably only need this on the main ones..
-
-sudo apt-get update
-sudo apt-get upgrade
-
-sudo apt-get install firmware-iwlwifi
-# reboot for wifi
-
-# bumblebee with i386 support
-sudo dpkg --add-architecture i386
-sudo apt-get update
-sudo apt-get install bumblebee-nvidia primus primus-libs:i386
-adduser $USER bumblebee
-
-# update grub
-#GRUB_CMDLINE_LINUX_DEFAULT="quiet acpi_osi=\"!Windows 2013\""
-sudo gedic /etc/default/grub
-update-grub # as root
-
-# don't start any nvidia-xconf
-# REBOOT
-
-# CHECK GPU switching works
-cat /proc/acpi/bbswitch
-# 0000:01:00.0 OFF
-echo ON > /proc/acpi/bbswitch && cat /proc/acpi/bbswitch
-# 0000:01:00.0 ON
-echo OFF > /proc/acpi/bbswitch
-
-
-# update bumblebee conf
-echo "Driver = nvidia" # first line
-echo "KernelDriver = nvidia-current" # should already be there
-sudo gedit /etc/bumblebee/bumblebee.conf
-
-# verify optirun glxgears works without errors in console
-export vblank_mode=0 # set in bashrc (and use it for steam)
+echo "laptop pre-setup script complete"
+echo "reboot and continue as if desktop"
