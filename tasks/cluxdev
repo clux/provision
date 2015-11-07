@@ -2,25 +2,22 @@
 
 cd && mkdir -p repos && cd repos
 
-# private bitbucket repos
-privates=(
-  brotorr
-  irc-swarm
-  mumble-keys
-)
 if [ -z "$TRAVIS" ]; then
-  for repo in ${privates[@]}
+  secrets=(
+    dotcisco
+    gpg-pass
+    mumble-keys
+    ssh
+  )
+  for repo in ${secrets[@]}
   do
     echo $repo
     git clone git@bitbucket.org:clux/$repo.git
   done
-  git clone git@bitbucket.org:clux/dotcisco.git dotwork
-  git clone git@bitbucket.org:clux/ssh.git ~/ssh
-  mv ~/.ssh/* ~/ssh
-  rm -rf ~/.ssh
-  mv ~/ssh ~/.ssh
-  git clone git@bitbucket.org:clux/gpg-pass.git ~/.gnupg
-  ~/.gnupg/install.sh
+  mv dotcisco dotwork # old habbit
+  ./ssh/install.sh
+  ./gpg-pass/install.sh
+  ./mumble-keys/install.sh
 fi
 
 # tournament related modules
@@ -69,6 +66,7 @@ misc=(
   linkr-components
   #logule
   mddocs
+  mumble-bot
   npm-graph
   operators
   posts
