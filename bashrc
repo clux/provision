@@ -99,11 +99,6 @@ polymer_doc_update() {
   git push -qf git@github.com:clux/${repo}.git gh-pages
 }
 
-ssh-eval-hack() {
-  eval "$(ssh-agent -s)"
-  ssh-add  ~/.ssh/github_id_rsa
-}
-
 hg-export-reverse() {
   hg export $1 | patch -p1 -R
 }
