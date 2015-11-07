@@ -19,6 +19,8 @@ if [ -z "$TRAVIS" ]; then
   mv ~/.ssh/* ~/ssh
   rm -rf ~/.ssh
   mv ~/ssh ~/.ssh
+  git clone git@bitbucket.org:clux/gpg-pass.git ~/.gnupg
+  ~/.gnupg/install.sh
 fi
 
 # tournament related modules
