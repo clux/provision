@@ -3,6 +3,7 @@ export DOWNLOAD_DIR=/media/clux/Zeus/DL/
 alias dl="cd $DOWNLOAD_DIR"
 export CC=clang
 export CXX=clang++
+export SHELLCHECK_OPTS="-e SC2086"
 
 set_prompt () {
   rc=$? # Must save this
@@ -77,8 +78,8 @@ hs() { hf "$1" | xargs grep "$2" 2> /dev/null ;}
 srchcmake() { filefind . "CMakeLists.txt" | xargs grep "$1" 2> /dev/null ;}
 
 
-node_json_validate() { jsonlint package.json -q ;}
-node_init() {
+node-json-validate() { jsonlint package.json -q ;}
+node-init() {
   local dir=$(dirname ${BASH_SOURCE[@]})
   find $dir/templates/npm/ -type f -not -iname pkg.json -exec cp {} $PWD \;
   pkginit
@@ -93,7 +94,7 @@ ghclone() { git clone git@github.com:clux/"$1".git ;}
 bbclone() { git clone git@bitbucket.org:clux/"$1".git ;}
 
 # rust helper
-rust_doc_update() {
+rust-doc-update() {
   cargo doc
   local repo=$(basename $PWD)
   echo "<meta http-equiv=refresh content=0;url=$repo/index.html>" > target/doc/index.html
@@ -101,7 +102,7 @@ rust_doc_update() {
   git push -qf git@github.com:clux/${repo}.git gh-pages
 }
 
-polymer_doc_update() {
+polymer-doc-update() {
   local repo=$(basename $PWD)
   if [ ! -d demo ]; then
     echo "No demo directory found"
@@ -166,7 +167,7 @@ alias localip="sudo ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | cut -d ' '
 
 alias cwd='pwd | tr -d "\r\n" | xclip -sel clip'
 
-movies_unsynced () {
+movies-unsynced () {
   ls /media/clux/Zorn/NewMP4/BluRay/ | grep "" > zornFiles.log
   ls /media/clux/TOOL/MP4/Movies/ | grep "" > toolFiles.log
   diff toolFiles.log zornFiles.log
@@ -175,18 +176,18 @@ movies_unsynced () {
 }
 
 # usage: broxy_download after having copied a magnet to clipboard
-broxy_download () {
+broxy-download () {
   ssh broxy ./brotorr/torrent "\"$(xclip -o -sel clip)\""
 }
 
-broxy_check() {
+broxy-check() {
   ssh broxy ls dumptruck/DL
 }
 
 # TODO: get some more helpers to find new stuff in other directories based on mtime
 
 # usage: `broxy_fetch name` where name is a substring from broxy_check
-broxy_fetch() {
+broxy-fetch() {
   local rs=$(ssh broxy ./list_downloads.sh | grep $1)
   test -n "$rs" || echo "No grep results for $1"
   local fldr=$(echo $rs | cut -d '/' -f 6)
