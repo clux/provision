@@ -10,26 +10,43 @@ set_prompt () {
   White='\[\e[01;37m\]'
   Red='\[\e[0;31m\]'
   Yellow='\[\e[01;33m\]'
+  Blue="\[\033[0;34m\]"
   Reset='\[\e[00m\]'
+  Flag='\342\232\221'
+  Voltage='\342\232\241'
 
   PS1=$([ $rc -ne 0 ] && echo -E "$Red[$rc]$Reset")
 
   if [ $EUID -eq 0 ]; then
-    PS1+="$Red\\h$Reset:" # red root
+    PS1+="$Red\\h$Reset" # red root
   else
-    PS1+="\\u$White@$Reset\\h:" # normal plain user
+    PS1+="\\u$White@$Reset\\h" # normal plain user
   fi
   PS1+="${debian_chroot:+($debian_chroot)}" # chroot prefix
   # Color directory based on dirty status if relevant, otherwise white
+  # NB: these works anywhere inside a repo, but we only check in the main directories
   if [ -d ".git" ]; then
-    git status | grep -q "nothing to commit";
+    res=$(git status)
+    # Check if ahead
+    echo $res | grep -qE "ahead of '.*' by [0-9]*"
+    PS1+=$([ $? -eq 0 ] && echo -n "$Yellow$Voltage")
+    # Check if stash
+    PS1+=$([ -n "$(git stash list)" ] && echo -n "$Yellow$Flag")
+    # Check if clean
+    echo $res | grep -q "nothing to commit";
     PS1+=$([ $? -eq 0 ] && echo -n "$Green" || echo -n "$Red")
   elif [ -d ".hg" ]; then
+    # Checking if ahead skipped (requires hg outgoing which does network IO)
+    PS1+=$([ -n "$(hg qseries)" ] && echo -n "$Yellow$Flag")
+    # Check if clean
     PS1+=$([ -z "$(hg status)" ] && echo -n "$Green" || echo -n "$Red")
   else
-    PS1+="$White"
+    # Folder is not version controlled (at least not at this root)
+    PS1+="$Blue"
   fi
-  PS1+="\\w $Yellow\$$Reset " # yellow $
+  PS1+="\\w "
+  #PS1+="$(basename $PWD) "
+  PS1+="$Yellow\$$Reset " # yellow $
 }
 PROMPT_COMMAND='set_prompt'
 
@@ -135,11 +152,10 @@ ball () { tar czf "$1.tar" "${@:2}" ;}
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history 1 | cut -c 8-)"'
 
 # navigation shortcuts
-alias up1="cd .."
-alias up2="cd ../.."
-alias up3="cd ../../.."
-alias up4="cd ../../../.."
-alias up5="cd ../../../../.."
+alias up="cd .."
+alias upp="cd ../.."
+alias uppp="cd ../../.."
+alias upppp="cd ../../../.."
 alias la="ls -la"
 alias lsd="ls -l | grep --color=never '^d'"
 
