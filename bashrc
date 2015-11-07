@@ -4,9 +4,35 @@ alias dl="cd $DOWNLOAD_DIR"
 export CC=clang
 export CXX=clang++
 
-color_code() { [ "$1" -eq  0 ] && echo "" || echo -e "\e[1;31m[$1]\e[m"; }
-yellow() { echo -e "\e[1;33m$1\e[m"; }
-PS1='$(color_code $?)\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w $(yellow \$) '
+set_prompt () {
+  rc=$? # Must save this
+  Green='\[\e[0;32m\]'
+  White='\[\e[01;37m\]'
+  Red='\[\e[0;31m\]'
+  Yellow='\[\e[01;33m\]'
+  Reset='\[\e[00m\]'
+
+  PS1=$([ $rc -ne 0 ] && echo -E "$Red[$rc]$Reset")
+
+  if [ $EUID -eq 0 ]; then
+    PS1+="$Red\\h$Reset:" # red root
+  else
+    PS1+="\\u$White@$Reset\\h:" # normal plain user
+  fi
+  PS1+="${debian_chroot:+($debian_chroot)}" # chroot prefix
+  # Color directory based on dirty status if relevant, otherwise white
+  if [ -d ".git" ]; then
+    git status | grep -q "nothing to commit";
+    PS1+=$([ $? -eq 0 ] && echo -n "$Green" || echo -n "$Red")
+  elif [ -d ".hg" ]; then
+    PS1+=$([ -z "$(hg status)" ] && echo -n "$Green" || echo -n "$Red")
+  else
+    PS1+="$White"
+  fi
+  PS1+="\\w $Yellow\$$Reset " # yellow $
+}
+PROMPT_COMMAND='set_prompt'
+
 
 alias grep='grep --colour'
 
