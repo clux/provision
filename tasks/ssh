@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "Generating github identity"
-ssh-keygen -t rsa -b 4096 -o -a 100 -C "analsandblaster@gmail.com" -f ~/.ssh/github_id_rsa
+ssh-keygen -t rsa -b 4096 -C "analsandblaster@gmail.com" -f ~/.ssh/github_id_rsa
 xclip -sel clip < ~/.ssh/github_id_rsa.pub
 echo "Log in to github and bitbucket and paste clipboarded public key"
 read -p "Press any key when keys have been added..."
