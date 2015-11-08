@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<gconf>
-	<entry name="show_hide" mtime="1428354852" type="string">
-		<stringvalue>F1</stringvalue>
-	</entry>
-</gconf>
