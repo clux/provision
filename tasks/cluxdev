@@ -2,23 +2,22 @@
 
 cd && mkdir -p repos && cd repos
 
-if [ -z "$TRAVIS" ]; then
-  secrets=(
-    dotcisco
-    gpg-pass
-    mumble-keys
-    ssh
-  )
-  for repo in ${secrets[@]}
-  do
-    echo $repo
-    git clone git@bitbucket.org:clux/$repo.git
-  done
-  mv dotcisco dotwork # old habbit
-  ./ssh/install.sh
-  ./gpg-pass/install.sh
-  ./mumble-keys/install.sh
-fi
+# secrets
+secrets=(
+  dotcisco
+  gpg-pass
+  mumble-keys
+  ssh
+)
+for repo in ${secrets[@]}
+do
+  echo $repo
+  git clone git@bitbucket.org:clux/$repo.git
+done
+mv dotcisco dotwork # old habbit
+./ssh/install.sh
+./gpg-pass/install.sh
+./mumble-keys/install.sh
 
 # tournament related modules
 cd && cd repos
@@ -96,7 +95,7 @@ cd && cd repos
 for repo in ${misc[@]}
 do
   echo $repo
-  git clone ${gh}clux/$repo.git
+  git clone git@bitbucket.org:clux/$repo.git
 done
 
 cd

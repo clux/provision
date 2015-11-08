@@ -3,7 +3,6 @@ export DOWNLOAD_DIR=/media/clux/Zeus/DL/
 alias dl="cd $DOWNLOAD_DIR"
 export CC=clang
 export CXX=clang++
-export SHELLCHECK_OPTS="-e SC2086"
 
 set_prompt () {
   rc=$? # Must save this

@@ -18,14 +18,6 @@
   echo "$output" && echo "$output" | grep "v5."
 }
 
-@test "ssh" {
-  [ -n "$TRAVIS" ] && skip "not installing ssh on travis"
-  [ -d "$HOME/.ssh" ]
-  [ -r "$HOME/.ssh/config" ]
-  [ -d "$HOME/.ssh/.git" ]
-  [ -r "$HOME/.ssh/.gitignore" ]
-}
-
 @test "sublime" {
   run which subl
   [ "$status" -eq 0 ]
@@ -64,10 +56,25 @@
 }
 
 @test "cluxdev" {
+  [ -n "$TRAVIS" ] && skip "not building every single module in one go on travis"
   [ -d "$HOME/repos" ]
   [ -d "$HOME/repos/dotclux" ]
   run which bndg # should have been symlinked
   [ "$status" -eq 0 ]
+}
+
+@test "secrets" {
+  [ -n "$TRAVIS" ] && skip "no priveleges to do secrets test on travis"
+  [ -r "$HOME/.config/Mumble/Mumble.conf" ]
+  [ -d "$HOME/.ssh" ]
+  [ -r "$HOME/.ssh/config" ]
+  [ -d "$HOME/.ssh/.git" ]
+  [ -r "$HOME/.ssh/.gitignore" ]
+  [ -d "$HOME/.gnupg" ]
+  [ -r "$HOME/.gnupg/pubring.gpg" ]
+  [ -d "$HOME/.gnupg/.git" ]
+  [ -r "$HOME/.gnupg/.gitignore" ]
+  [ -d "$HOME/repos/dotwork" ]
 }
 
 @test "llvm" {
