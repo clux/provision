@@ -19,6 +19,10 @@ mv dotcisco dotwork # old habbit
 ./gpg-pass/install.sh
 ./mumble-keys/install.sh
 
+# dotfiles
+git clone git@github.com:clux/dotfiles.git
+./dotfiles/install.sh
+
 # tournament related modules
 cd && cd repos
 mkdir tournament && cd tournament

@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 set -e
-# this is an ssh safe install of node that works with pm2-deploy
-
 abort() {  echo "$@" 1>&2 && exit 1; }
 
 version=$(wget -qO- https://nodejs.org/download/release/index.tab | sed -n 2p | cut -f1)
@@ -12,10 +10,9 @@ mkdir -p ~/local/node-$version
 cd ~/local/node-$version
 wget -qO- https://nodejs.org/download/release/$version/node-$version-linux-x64.tar.gz | tar xz --strip-components=1
 
-# Prepend to PATH in .bashrc (BEFORE INTERACTIVE CUTOUT) to make it work in ssh commands
-echo "export PATH=\$HOME/local/node-$version/bin:\$PATH" | cat - ~/.bashrc > ~/tmpbashrc
-mv ~/tmpbashrc ~/.bashrc
-echo "Edit .bashrc to disable old versions"
+# Update local/node/bin symlink to use newly downloaded version
+mkdir -p ~/local/node
+ln -sf ~/local/node-$version/bin ~/local/node/bin
 
-echo "NB: For native installs, you may need to run:"
-echo "npm install node-gyp-install -g && node-gyp-install -v $version"
+echo "Remember to:"
+echo "export PATH=\$HOME/local/node/bin:\$PATH"

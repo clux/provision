@@ -53,5 +53,5 @@ make -j8
 sudo make install
 
 cd ..
-echo "export PATH=\$HOME/local/llvm-v$ver/tools/clang/tools/scan-build:\$PATH" | cat - ~/.bashrc > ~/tmpbashrc
-mv ~/tmpbashrc ~/.bashrc
+echo "Remember to:"
+echo "export PATH=\$HOME/local/llvm-v$ver/tools/clang/tools/scan-build:\$PATH"
