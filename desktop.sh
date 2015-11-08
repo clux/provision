@@ -18,6 +18,5 @@ if [ -z "$TRAVIS" ]; then
   #./tasks/system
 fi
 source ~/.bashrc
-echo "path is $PATH"
 bats test
 echo "All done - 'source ~/.bashrc' or open a new shell"

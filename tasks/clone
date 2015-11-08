@@ -8,7 +8,7 @@ git clone ${gh}sstephenson/bats.git
 
 # z
 git clone ${gh}rupa/z.git
-ln z/z.1 share/man/man1/
+ln -f z/z.1 $PWD/share/man/man1/
 echo "source ~/local/z/z.sh" >> ~/.bashrc
 
 # arc
