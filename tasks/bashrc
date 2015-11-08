@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-# install completion scripts
-[ -z "$TRAVIS" ] && pm2 completion install
-npm completion >> ~/.bashrc
-
-# install local bashrc
-echo "source $PWD/bashrc" >> ~/.bashrc

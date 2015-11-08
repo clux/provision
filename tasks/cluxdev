@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-cd && mkdir -p repos && cd repos
-
 # secrets
 secrets=(
   dotcisco
@@ -18,10 +16,6 @@ mv dotcisco dotwork # old habbit
 ./ssh/install.sh
 ./gpg-pass/install.sh
 ./mumble-keys/install.sh
-
-# dotfiles
-git clone git@github.com:clux/dotfiles.git
-./dotfiles/install.sh
 
 # tournament related modules
 cd && cd repos

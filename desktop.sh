@@ -7,14 +7,15 @@ cd $(dirname $0)
 source ~/.bashrc # need node in other tasks
 [ -z "$TRAVIS" ] && ./tasks/ssh
 ./tasks/sublime
-./tasks/npm
-./tasks/pip
 export gh=$([ -z "$TRAVIS" ] && echo git@github.com: || echo https://github.com/)
+./tasks/dotfiles # need to set up paths early
 ./tasks/clone
-[ -z "$TRAVIS" ] && ./tasks/cluxdev
-[ -z "$TRAVIS" ] && ./tasks/llvm 3.7.0
-[ -z "$TRAVIS" ] && ./tasks/system
-./tasks/bashrc
-source ~/.bashrc
+if [ -z "$TRAVIS" ]; then
+  ./tasks/npm
+  ./tasks/pip
+  ./tasks/cluxdev
+  ./tasks/llvm 3.7.0
+  #./tasks/system
+fi
 bats test
 echo "All done - 'source ~/.bashrc' or open a new shell"

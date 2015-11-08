@@ -23,7 +23,7 @@
   [ "$status" -eq 0 ]
 }
 
-@test "cpy" {
+@test "dotfiles" {
   [ -r "$HOME/.eslintrc" ]
   [ -r "$HOME/.jshintrc" ]
   [ -r "$HOME/.gitconfig" ]
@@ -44,6 +44,7 @@
 }
 
 @test "npm" {
+  [ -n "$TRAVIS" ] && skip "not doing global installs on travis"
   run which badgify
   [ "$status" -eq 0 ]
   run which pm2
@@ -51,6 +52,7 @@
 }
 
 @test "pip" {
+  [ -n "$TRAVIS" ] && skip "not doing global installs on travis"
   run which pylint
   [ "$status" -eq 0 ]
 }
