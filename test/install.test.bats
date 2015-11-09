@@ -23,17 +23,6 @@
   [ "$status" -eq 0 ]
 }
 
-@test "dotfiles" {
-  [ -r "$HOME/.eslintrc" ]
-  [ -r "$HOME/.jshintrc" ]
-  [ -r "$HOME/.gitconfig" ]
-  cat ~/.gitconfig && cat ~/.gitconfig | grep "status -s"
-  [ -r "$HOME/.config/redshift.conf" ]
-  [ -r "$HOME/.config/autostart/guake.desktop" ]
-  [ -r "$HOME/.config/sublime-text-3/Packages/User/SublimeLinter.sublime-settings" ]
-  [ -r "$HOME/.iface" ]
-}
-
 @test "clone" {
   run which arc
   [ "$status" -eq 0 ]
@@ -41,6 +30,27 @@
   [ "$status" -eq 0 ]
   run man -w bats
   [ "$status" -eq 0 ]
+}
+
+@test "dotfiles" {
+  [ -d "$HOME/repos/dotfiles" ]
+  [ -r "$HOME/.bash_prompt" ]
+  [ -r "$HOME/.bash_profile" ]
+  [ -r "$HOME/.path" ]
+  [ -r "$HOME/.aliases" ]
+  [ -r "$HOME/.functions" ]
+  [ -r "$HOME/.xprofile" ]
+  [ -r "$HOME/.eslintrc" ]
+  [ -r "$HOME/.jshintrc" ]
+  [ -r "$HOME/.gitconfig" ]
+  [ -r "$HOME/.config/autostart/guake.desktop" ]
+  [ -r "$HOME/.config/sublime-text-3/Packages/User/SublimeLinter.sublime-settings" ]
+  [ -r "$HOME/.iface" ]
+}
+
+@test "evars" {
+  [ -n "$TRAVIS" ] && skip "travis/docker shell by design not interactive"
+  [ "$CXX" = "clang++" ]
 }
 
 @test "npm" {
@@ -58,7 +68,7 @@
 }
 
 @test "cluxdev" {
-  [ -n "$TRAVIS" ] && skip "not building every single module in one go on travis"
+  [ -n "$TRAVIS" ] && skip "not building every single module on travis"
   [ -d "$HOME/repos" ]
   [ -d "$HOME/repos/dotclux" ]
   run which bndg # should have been symlinked
@@ -84,8 +94,4 @@
   run clang --version
   [ "$status" -eq 0 ]
   echo "$output" && echo "$output" | grep "3.7.0"
-}
-
-@test "bashrc" {
-  [ "$CXX" = "clang++" ]
 }
