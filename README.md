@@ -1,7 +1,7 @@
 # dotclux
 [![build status](https://secure.travis-ci.org/clux/dotclux.svg)](http://travis-ci.org/clux/dotclux)
 
-Personal Linux reinstall scripts and configs. Only tested on Debian 8 lately, but should work on most debian based systems.
+Personal Linux reinstall scripts, for debian based systems.
 
 ## Usage
 Fetch latest version of this repo and deploy:
