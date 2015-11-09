@@ -1,7 +1,6 @@
 FROM debian:jessie
-
-RUN apt-get update && apt-get install -y \
-    wget
-
-RUN wget -qO- https://github.com/clux/dotclux/archive/master.tar.gz | tar xz
-RUN TRAVIS=1 ./dotclux-master/desktop.sh
+RUN apt-get update && apt-get install -y wget man-db
+ENV TRAVIS 1
+ADD . /dotclux-master
+RUN ./dotclux-master/desktop.sh
+RUN bats test

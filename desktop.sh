@@ -17,6 +17,3 @@ if [ -z "$TRAVIS" ]; then
   ./tasks/llvm 3.7.0
   #./tasks/system
 fi
-source ~/.bashrc
-bats test
-echo "All done - 'source ~/.bashrc' or open a new shell"
