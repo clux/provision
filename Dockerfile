@@ -9,7 +9,7 @@ ADD tasks dotclux/tasks
 
 # Do the hard work
 ENV TRAVIS 1
-#RUN ./dotclux/desktop.sh
+RUN ./dotclux/desktop.sh
 
 # Verify
 ADD test dotclux/test
