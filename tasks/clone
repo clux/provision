@@ -9,9 +9,9 @@ git clone ${gh}sstephenson/bats.git
 # z
 git clone ${gh}rupa/z.git
 ln -f z/z.1 $PWD/share/man/man1/
-echo "source ~/local/z/z.sh" >> ~/.bashrc
 
 # arc
 git clone ${gh}phacility/libphutil.git
 git clone ${gh}phacility/arcanist.git
-echo "export PATH=\$HOME/local/arcanist/bin:\$PATH" >> ~/.bashrc
+
+# NB: These rely on PATH containing ~/local/bin and ~/local/arcanist/bin
