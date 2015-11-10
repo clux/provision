@@ -1,7 +1,7 @@
 FROM debian:jessie
 
 # Stuff needed to get as close as possible to a plain debian netinst
-RUN apt-get update && apt-get install -y wget man-db ca-certificates
+RUN apt-get update && apt-get install -y wget man-db ca-certificates cinnamon
 
 # Copy over just what we need so we dont invalidate the cache with trivial changes
 ADD desktop.sh dotclux/
