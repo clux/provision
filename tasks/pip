@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 
 apt-get install python-pip -y -qq
+pip install -U pip
 
 globalModules=(
   pyflakes
   pylint
   ghp-import
+  mercurial_keyring
 )
 
 for i in "${globalModules[@]}"
 do
   echo $i
-  pip install $i
+  pip install --user $i
 done
