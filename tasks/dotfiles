@@ -4,6 +4,6 @@ cd && mkdir -p repos && cd repos
 
 git clone ${gh}clux/dotfiles.git
 ./dotfiles/install.sh
-if [ -n "$TRAVIS" ]; then
+if [ -z "$TRAVIS" ]; then
   ./dotfiles/install-ui.sh
 fi
