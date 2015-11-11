@@ -30,4 +30,4 @@ do
   npm install -g $i
 done
 
-pkginit add default templates/npm/pkg.json
+pkginit add default ~/.templates/npm/pkg.json
