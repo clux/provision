@@ -13,6 +13,7 @@ wget -qO- https://nodejs.org/download/release/$version/node-$version-linux-x64.t
 # Update local/node/bin symlink to use newly downloaded version
 mkdir -p ~/local/node
 ln -sf ~/local/node-$version/bin ~/local/node/bin
+ln -sf ~/local/node-$version/lib ~/local/node/lib
 
 echo "Remember to:"
 echo "export PATH=\$HOME/local/node/bin:\$PATH"
