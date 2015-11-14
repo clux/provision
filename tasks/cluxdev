@@ -1,100 +1,81 @@
 #!/usr/bin/env bash
 
-# secrets
-secrets=(
-  dotcisco
-  gpg-pass
-  mumble-keys
-  ssh
-)
-for repo in ${secrets[@]}
-do
-  echo $repo
-  git clone git@bitbucket.org:clux/$repo.git
-done
-mv dotcisco dotwork # old habbit
+mkdir -p ~/repos && cd ~/repos
+
+# Personal stuff
+git hub-clux dotclux tf2configs vitae
+git bucket-clux dotcisco gpg-pass mumble-keys ssh
+
 ./ssh/install.sh
 ./gpg-pass/install.sh
 ./mumble-keys/install.sh
 
-# tournament related modules
-cd && cd repos
-mkdir tournament && cd tournament
-trn=(
-  duel
-  duel-names
-  ffa
-  ffa-tb
-  group
-  groupstage
-  groupstage-tb
-  groupstage-tb-duel
-  masters
-  roundrobin
-  tiebreaker
-  tournament
-  tournament-components
-  tourney
-)
-for repo in ${trn[@]}
-do
-  git clone $giturl/$repo.git
-done
-
-misc=(
-  autonomy
-  #badgify
-  bandage
-  blog
-  cleverbot-irc
-  combustion
-  confortable
-  #curvefever-bot
-  #curvefever-stats
-  decay
-  deus-login
-  dotclux
-  dye
-  gu
-  icebreaker
-  interlude
-  irc-stream
-  linkr-app
-  linkr-components
-  #logule
-  mddocs
-  mumble-bot
-  npm-graph
-  operators
-  posts
-  preservative
-  sdp-transform
-  smell
-  splitter
-  subset
-  sulfur
-  #symlink
-  #tabexplode
-  tf2configs
+# general modules
+git hub-clux \
+  bandage \
+  blog \
+  deus-login \
+  dye \
+  gu \
+  icebreaker \
+  irc-stream \
+  linkr-app \
+  linkr-components \
+  mddocs \
+  posts \
+  sdp-transform \
+  smell \
+  sulfur \
+  symlink \
   topiary
-  trials
-  tub
-  unitednationsoftheworld
-  vitae
-  wolfram-alpha
-  wolfram-irc
-  wrappers
-  #xmpp-stream
-  zalgolize
-)
 
-cd && cd repos
+# tournament related modules
+cd ~/repos && mkdir -p tournament && cd tournament
+git hub-clux \
+  duel \
+  duel-names \
+  ffa \
+  ffa-tb \
+  group \
+  groupstage \
+  groupstage-tb \
+  groupstage-tb-duel \
+  masters \
+  roundrobin \
+  tiebreaker \
+  tournament \
+  tournament-components \
+  tourney
 
-for repo in ${misc[@]}
-do
-  echo $repo
-  git clone git@bitbucket.org:clux/$repo.git
-done
+# functional libraries
+cd ~/repos && mkdir interlude && cd interlude
+git hub-clux autonomy interlude operators subset wrappers
+
 
 cd
-symlink repos repos/tournament --execute
+symlink repos repos/tournament repos/interlude --execute
+
+# Don't check these out at the moment
+# Keeping this comment here as a reminder why they are kept out of above lists
+notcloneds=(
+  badgify # globally installed
+  cleverbot-irc # stable, deployed
+  combustion # not in use atm, but good
+  confortable # stable, in use everywhere
+  curvefever-bot # unmaintained, broken
+  curvefever-stats # unmaintained, broken
+  decay # stable, working
+  logule # stable, but overcomplicated and unmaintained (using sulphur+smell)
+  mumble-bot # just for laughs
+  npm-graph # not in use atm
+  splitter # not in use atm
+  tabexplode # not in use atm
+  trials # stable, working
+  typr # stable, not needed
+  tub # not in use atm
+  unitednationsoftheworld # song
+  wolfram-alpha # stable, working
+  wolfram-irc # stable, deployed
+  xmpp-stream # experimental, and no need for atm
+  zalgolize # globally installed
+)

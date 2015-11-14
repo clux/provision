@@ -10,7 +10,6 @@ globalModules=(
   jshint      # static analysis
   jsonlint    # analysis of json files
   json        # curl jsonUrl | json key
-  nd          # nd `moduleName` for README.md in stdout
   pkginit     # for quick making a npm module shell (though bugged atm)
   browserify  # npm style webapps
   testling    # for browser tests
@@ -22,6 +21,8 @@ globalModules=(
   bower       # web components currently here..
   pm2         # process manager
   polylint    # linter for polymer
+  marked-man  # man page generator
+  zalgolize   # fun stuff
 )
 
 for i in "${globalModules[@]}"
