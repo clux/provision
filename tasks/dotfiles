@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-mkdir -p ~/clux && cd ~/repos
+mkdir -p ~/repos && cd ~/repos
 git clone ${gh}clux/dotfiles.git
 
 ./dotfiles/install.sh

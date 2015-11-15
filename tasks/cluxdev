@@ -72,7 +72,7 @@ notcloneds=(
   tabexplode # not in use atm
   trials # stable, working
   typr # stable, not needed
-  tub # not in use atm
+  tub # globally installed
   unitednationsoftheworld # song
   wolfram-alpha # stable, working
   wolfram-irc # stable, deployed

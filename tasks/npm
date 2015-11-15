@@ -6,6 +6,7 @@ globalModules=(
   ansimd      # markdown viewer terminal
   badgify     # badge generator
   faucet      # tap formatter
+  tub         # tap formatter
   eslint      # static analysis
   jshint      # static analysis
   jsonlint    # analysis of json files
