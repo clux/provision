@@ -2,8 +2,9 @@
 
 mkdir -p ~/repos && cd ~/repos
 git clone ${gh}clux/dotfiles.git
+cd dotfiles
 
-./dotfiles/install.sh
+make config
 if [ -z "$TRAVIS" ]; then
-  ./dotfiles/install-ui.sh
+  make ui
 fi
