@@ -26,4 +26,5 @@ apt-get install -y -qq \
   redshift \
   shellcheck \
   vlc \
+  vim-gnome \
   xclip
