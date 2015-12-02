@@ -7,12 +7,12 @@ apt-get install -y -qq google-chrome-stable guake # get these early
 
 # get everything else in one line
 apt-get install -y -qq \
+  ccze \
   cmake \
   cppcheck \
   curl \
   g++ \
   git \
-  grc  \
   handbrake \
   htop \
   iftop \
