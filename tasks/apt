@@ -23,6 +23,7 @@ apt-get install -y -qq \
   php5-curl \
   pidgin \
   python-keyring \
+  sshfs \
   mumble \
   nmap \
   redshift \
