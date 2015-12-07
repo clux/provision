@@ -31,3 +31,7 @@ apt-get install -y -qq \
   vlc \
   vim-gnome \
   xclip
+
+# remove output of dpkg -l | grep zeitgeist
+apt-get purge libzeitgeist-* zeitgeist
+apt-get autoremove
