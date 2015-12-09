@@ -21,7 +21,6 @@ apt-get install -y -qq \
   pass \
   php5-cli \
   php5-curl \
-  pidgin \
   python-keyring \
   sshfs \
   mumble \
