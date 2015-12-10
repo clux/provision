@@ -23,6 +23,16 @@
   [ "$status" -eq 0 ]
 }
 
+@test "profanity" {
+  run which subl
+  [ "$status" -eq 0 ]
+  run profanity --version
+  [ "$status" -eq 0 ]
+  echo "$output"
+  echo "$output" | grep "OTR support\: Enabled"
+  echo "$output" | grep "Desktop notification support\: Enabled"
+}
+
 @test "clone" {
   run which arc
   [ "$status" -eq 0 ]
