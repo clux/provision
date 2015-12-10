@@ -24,7 +24,7 @@
 }
 
 @test "profanity" {
-  run which subl
+  run which profanity
   [ "$status" -eq 0 ]
   run profanity --version
   [ "$status" -eq 0 ]
