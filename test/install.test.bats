@@ -52,6 +52,7 @@
   [ -r "$HOME/.xprofile" ]
   [ -r "$HOME/.eslintrc" ]
   [ -r "$HOME/.jshintrc" ]
+  [ -r "$HOME/.clang-format" ]
   [ -r "$HOME/.gitconfig" ]
   [ -r "$HOME/.config/autostart/guake.desktop" ]
   [ -r "$HOME/.config/sublime-text-3/Packages/User/SublimeLinter.sublime-settings" ]
