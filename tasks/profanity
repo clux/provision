@@ -1,0 +1,34 @@
+#!/bin/bash
+set -e
+
+PROFANITY_VER="0.4.7"
+STROPHE_VER="0.8.8"
+
+apt-get install -y \
+  autoconf \
+  libssl-dev \
+  libncursesw5-dev \
+  libcurl4-gnutls-dev \
+  libreadline-dev \
+  libotr5-dev \
+  libtool
+
+mkdir -p xmpp && cd xmpp
+
+wget -qO- https://github.com/boothj5/profanity/archive/${PROFANITY_VER}.tar.gz | tar xz
+wget -qO- https://github.com/strophe/libstrophe/archive/${STROPHE_VER}.tar.gz | tar xz
+
+cd libstrophe-${STROPHE_VER}
+mkdir m4
+./bootstrap.sh
+./configure --prefix=/usr
+make -j8
+sudo make install
+cd ..
+
+cd profanity-${PROFANITY_VER}
+mkdir m4
+./boostrap.sh
+./configure --enable-otr
+make -j8
+sudo make install
