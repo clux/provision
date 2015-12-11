@@ -25,7 +25,6 @@ apt-get install -y -qq \
   sshfs \
   mumble \
   nmap \
-  profanity \
   redshift \
   shellcheck \
   vlc \
