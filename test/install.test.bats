@@ -24,6 +24,7 @@
 }
 
 @test "profanity" {
+  [ -n "$TRAVIS" ] && skip "not installing profanity on travis"
   run which profanity
   [ "$status" -eq 0 ]
   run profanity --version
