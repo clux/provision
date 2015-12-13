@@ -8,6 +8,8 @@ abort() {
   exit 1
 }
 
+set -ex
+
 ver=$1
 
 hash clang 2> /dev/null && clang --version | grep -q "$ver"
@@ -15,25 +17,27 @@ test $? -eq 0  && abort clang version $ver already installed
 
 LLVM=http://llvm.org/releases/$ver/llvm-$ver.src.tar.xz
 CLANG=http://llvm.org/releases/$ver/cfe-$ver.src.tar.xz
+LLDB=http://llvm.org/releases/$ver/lldb-$ver.src.tar.xz
 EXTRA=http://llvm.org/releases/$ver/clang-tools-extra-$ver.src.tar.xz
 COMPILERRT=http://llvm.org/releases/$ver/compiler-rt-$ver.src.tar.xz
 
 cd ~
 mkdir -p local/llvm-v$ver && cd local/llvm-v$ver
-echo "fetch $LLVM"
-wget $LLVM
-echo "fetch $CLANG"
-wget $CLANG
-echo "fetch $EXTRA"
-wget $EXTRA
-echo "fetch $COMPILERRT"
-wget $COMPILERRT
+wget "$LLVM"
+wget "$CLANG"
+wget "$LLDB"
+wget "$EXTRA"
+wget "$COMPILERRT"
 
 mkdir src && cd src
 tar xf ../llvm-$ver.src.tar.xz --strip-components=1
 # clang goes in tools/clang
 mkdir -p tools/clang && cd tools/clang
 tar xf ../../../cfe-$ver.src.tar.xz --strip-components=1
+# lldb goes in tools/lldb
+cd ../..
+mkdir -p tools/lldb && cd tools/lldb
+tar xf ../../../lldb-$ver.src.tar.xz --strip-components=1
 # extra goes in tools/clang/tools/extra
 mkdir -p tools/extra && cd tools/extra
 tar xf ../../../../../clang-tools-extra-$ver.src.tar.xz --strip-components=1
@@ -43,15 +47,17 @@ mkdir -p projects/compiler-rt && cd projects/compiler-rt
 tar xf ../../../compiler-rt-$ver.src.tar.xz --strip-components=1
 
 # back to source
-cd ../..
+cd ~/local/llvm-v$ver
 
 # don't pollute src dir with build stuff
 mkdir build
 cd build
-../configure
-make -j8
-sudo make install
+cmake -G "Ninja" \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_INSTALL_PREFIX=/usr/local \
+  ../src
+ninja -j8
+ninja install
 
-cd ..
 echo "Remember to:"
 echo "export PATH=\$HOME/local/llvm-v$ver/tools/clang/tools/scan-build:\$PATH"
