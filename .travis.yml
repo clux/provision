@@ -5,14 +5,6 @@ python:
 services:
   - docker
 
-env:
-  global:
-    secure: "gBEab6NZVqMdZxjkgHzHUHuxOOSg97emEOjJMLcgtVrLjSrSozrw5eP/am3i+nBXrs/nI2SDjA3g2L9K7PmB1M7bKBoDDRqoQ9LhYwilugYF58KOIkGGw8Qn+d49eu+grsXKpLbmZAyIVHwPlMdKinysvxVqf0gOg7+u5rQg13Y="
-
-env:
-  DOCKER_USERNAME: clux
-  DOCKER_EMAIL: analsandblaster@gmail.com
-
 script:
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - docker pull clux/dotclux
