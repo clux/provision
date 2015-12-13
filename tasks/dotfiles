@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
-set -ex
+set -e
 
 mkdir -p ~/repos && cd ~/repos
 git clone ${GH}clux/dotfiles.git
 cd dotfiles
 
 make config
-if [ -z "$TRAVIS" ]; then
+if [ -n "$XDG_CURRENT_DESKTOP" ]; then
   make ui
-  make etc
 fi
