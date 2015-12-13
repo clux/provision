@@ -26,6 +26,7 @@ apt-get install -y \
   ninja-build \
   pkg-config \
   python-dev \
+  python-pip \
   swig \
   uuid-dev \
   xz-utils

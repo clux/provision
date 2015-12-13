@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-apt-get install python-pip -y -qq
 pip install -U pip
 
 globalModules=(
