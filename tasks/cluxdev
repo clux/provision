@@ -1,59 +1,68 @@
 #!/usr/bin/env bash
+set -ex
 
 mkdir -p ~/repos && cd ~/repos
 
-# Personal stuff
-git hub-clux dotclux tf2configs vitae
-git bucket-clux dotcisco gpg-pass mumble-keys ssh
-
-./ssh/install.sh
-./gpg-pass/install.sh
-./mumble-keys/install.sh
-
 # general modules
-git hub-clux \
-  bandage \
-  blog \
-  deus-login \
-  dye \
-  gu \
-  icebreaker \
-  irc-stream \
-  linkr-app \
-  linkr-components \
-  mddocs \
-  posts \
-  sdp-transform \
-  smell \
-  sulfur \
-  symlink \
+modules=(
+  bandage
+  blog
+  deus-login
+  dye
+  gu
+  icebreaker
+  irc-stream
+  linkr-app
+  linkr-components
+  mddocs
+  posts
+  sdp-transform
+  smell
+  sulfur
   topiary
+)
+for i in "${modules[@]}"; do
+  git clone "${GH}clux/$i"
+done
 
 # tournament related modules
 cd ~/repos && mkdir -p tournament && cd tournament
-git hub-clux \
-  duel \
-  duel-names \
-  ffa \
-  ffa-tb \
-  group \
-  groupstage \
-  groupstage-tb \
-  groupstage-tb-duel \
-  masters \
-  roundrobin \
-  tiebreaker \
-  tournament \
-  tournament-components \
+tournament=(
+  duel
+  duel-names
+  ffa
+  ffa-tb
+  group
+  groupstage
+  groupstage-tb
+  groupstage-tb-duel
+  masters
+  roundrobin
+  tiebreaker
+  tournament
   tourney
+)
+for i in "${tournament[@]}"; do
+  git clone "${GH}clux/$i"
+done
 
 # functional libraries
 cd ~/repos && mkdir interlude && cd interlude
-git hub-clux autonomy interlude operators subset wrappers
+interlude=(
+  autonomy
+  interlude
+  operators
+  subset
+  wrappers
+)
 
+for i in "${interlude[@]}"; do
+  git clone "${GH}clux/$i"
+done
 
 cd
 symlink repos repos/tournament repos/interlude --execute
+
 
 # Don't check these out at the moment
 # Keeping this comment here as a reminder why they are kept out of above lists
