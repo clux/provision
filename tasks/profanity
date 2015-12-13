@@ -23,3 +23,6 @@ mkdir -p m4
 ./configure --enable-otr
 make -j8
 make install
+
+cd ../..
+rm -rf xmpp
