@@ -103,8 +103,19 @@
 }
 
 @test "llvm" {
-  [ -n "$TRAVIS" ] && skip "not compiling llvm on travis"
   run clang --version
   [ "$status" -eq 0 ]
   echo "$output" && echo "$output" | grep "3.7.0"
+  # compiled s.t. we have sanitizers
+  run ls /usr/local/lib/clang/3.7.0/lib/linux/libclang_rt.asan_cxx-x86_64.a
+  [ "$status" -eq 0 ]
+  # with lldb
+  run lldb --version
+  [ "$status" -eq 0 ]
+  echo "$output" && echo "$output" | grep "3.7.0"
+  # with analyzer and scan-build
+  run c++-analyzer --version
+  [ "$status" -eq 0 ]
+  run scan-build --version
+  [ "$status" -eq 0 ]
 }
