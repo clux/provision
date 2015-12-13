@@ -8,7 +8,7 @@ services:
 script:
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - docker pull clux/dotclux
-  - docker build -t dotclux-dev -f DevFile
+  - docker build -t dotclux-dev -f DevFile .
 
 notifications:
   email: false
