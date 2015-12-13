@@ -16,7 +16,6 @@ RUN dpkg-reconfigure locales && \
   locale-gen
 
 ENV LC_ALL en_GB.UTF-8
-ENV TRAVIS 1
 
 # Step by step execution - only invalidating cache when each task changes
 ADD tasks/apt tasks/

@@ -10,18 +10,21 @@
   [ "$status" -eq 0 ]
 }
 
-@test "node" {
-  run which node
+@test "llvm" {
+  run clang --version
   [ "$status" -eq 0 ]
-  run node --version
+  echo "$output" && echo "$output" | grep "3.7.0"
+  # compiled s.t. we have sanitizers
+  run ls /usr/local/lib/clang/3.7.0/lib/linux/libclang_rt.asan_cxx-x86_64.a
   [ "$status" -eq 0 ]
-  echo "$output" && echo "$output" | grep "v4."
-  run node -pe process.release.lts
-  echo "$output" && echo "$output" | grep "Argon"
-}
-
-@test "sublime" {
-  run which subl
+  # with lldb
+  run lldb --version
+  [ "$status" -eq 0 ]
+  echo "$output" && echo "$output" | grep "3.7.0"
+  # with analyzer and scan-build
+  run c++-analyzer --version
+  [ "$status" -eq 0 ]
+  run which scan-build
   [ "$status" -eq 0 ]
 }
 
@@ -36,6 +39,21 @@
     # Won't have desktop support in travis container
     echo "$output" | grep "Desktop notification support\: Enabled"
   fi
+}
+
+@test "node" {
+  run which node
+  [ "$status" -eq 0 ]
+  run node --version
+  [ "$status" -eq 0 ]
+  echo "$output" && echo "$output" | grep "v4."
+  run node -pe process.release.lts
+  echo "$output" && echo "$output" | grep "Argon"
+}
+
+@test "sublime" {
+  run which subl
+  [ "$status" -eq 0 ]
 }
 
 @test "clone" {
@@ -82,6 +100,7 @@
 }
 
 @test "cluxdev" {
+  [ -n "$TRAVIS" ] && skip "not building + linking all dev modules on travis"
   [ -d "$HOME/repos" ]
   run which bndg # should have been symlinked
   [ "$status" -eq 0 ]
@@ -100,22 +119,4 @@
   [ -r "$HOME/.gnupg/.gitignore" ]
   [ -d "$HOME/repos/dotwork" ]
   [ -d "$HOME/repos/dotclux" ]
-}
-
-@test "llvm" {
-  run clang --version
-  [ "$status" -eq 0 ]
-  echo "$output" && echo "$output" | grep "3.7.0"
-  # compiled s.t. we have sanitizers
-  run ls /usr/local/lib/clang/3.7.0/lib/linux/libclang_rt.asan_cxx-x86_64.a
-  [ "$status" -eq 0 ]
-  # with lldb
-  run lldb --version
-  [ "$status" -eq 0 ]
-  echo "$output" && echo "$output" | grep "3.7.0"
-  # with analyzer and scan-build
-  run c++-analyzer --version
-  [ "$status" -eq 0 ]
-  run scan-build --version
-  [ "$status" -eq 0 ]
 }

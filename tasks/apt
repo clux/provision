@@ -36,7 +36,6 @@ apt-get install -y -qq \
   ccze \
   curl \
   git \
-  handbrake \
   htop \
   iftop \
   lcov \

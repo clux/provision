@@ -1,4 +1,4 @@
-FROM clux/dotclux:latest
+FROM clux/dotclux
 
 ADD tasks/sublime tasks/
 RUN ./tasks/sublime
@@ -19,9 +19,7 @@ RUN /bin/bash -c 'source $HOME/.bashrc && ./tasks/npm'
 ADD tasks/pip tasks/
 RUN ./tasks/pip
 
-ADD tasks/cluxdev tasks/
-RUN /bin/bash -c 'source $HOME/.bashrc && ./tasks/cluxdev'
-
 # Verify
+ENV TRAVIS 1
 ADD test test
 RUN bash -c 'source ~/.bashrc && bats test'

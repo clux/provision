@@ -3,6 +3,7 @@ set -xeo pipefail
 cd "$(dirname "$0")"
 sudo chown -R "$USER" /usr/local
 ./tasks/apt
+./tasks/llvm 3.7.0
 ./tasks/profanity
 ./tasks/sublime
 ./tasks/node
@@ -13,7 +14,8 @@ source ~/.bashrc
 ./tasks/clone
 ./tasks/npm
 ./tasks/pip
+# stuff we not built in docker
 ./tasks/secrets
 ./tasks/cluxdev
-./tasks/llvm 3.7.0
+./tasks/guitools
 #./tasks/system
