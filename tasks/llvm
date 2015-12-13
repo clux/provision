@@ -22,6 +22,7 @@ EXTRA=http://llvm.org/releases/$ver/clang-tools-extra-$ver.src.tar.xz
 COMPILERRT=http://llvm.org/releases/$ver/compiler-rt-$ver.src.tar.xz
 
 cd ~
+mkdir -p local/bin
 mkdir -p local/llvm-v$ver && cd local/llvm-v$ver
 wget "$LLVM"
 wget "$CLANG"
@@ -34,6 +35,9 @@ tar xf ../llvm-$ver.src.tar.xz --strip-components=1
 # clang goes in tools/clang
 mkdir -p tools/clang && cd tools/clang
 tar xf ../../../cfe-$ver.src.tar.xz --strip-components=1
+# copy scan-build directory into a bin directory - does not make install
+# ignore scan-view, can just open html report
+find tools/scan-build/ -type f -exec cp {} ~/local/bin/ \;
 # lldb goes in tools/lldb
 cd ../..
 mkdir -p tools/lldb && cd tools/lldb
@@ -59,5 +63,8 @@ cmake -G "Ninja" \
 ninja -j8
 ninja install
 
+cd
+rm -rf ~/local/llvm-v$ver
+
 echo "Remember to:"
-echo "export PATH=\$HOME/local/llvm-v$ver/tools/clang/tools/scan-build:\$PATH"
+echo "export PATH=\$HOME/local/bin:\$PATH"
