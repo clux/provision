@@ -1,0 +1,27 @@
+FROM clux/dotclux:latest
+
+ADD tasks/sublime tasks/
+RUN ./tasks/sublime
+
+ADD tasks/node tasks/
+RUN ./tasks/node
+
+ADD tasks/dotfiles tasks/
+ADD tasks/clone tasks/
+
+ENV GH https://github.com/
+RUN ./tasks/dotfiles
+RUN ./tasks/clone
+
+ADD tasks/npm tasks/
+RUN /bin/bash -c 'source $HOME/.bashrc && ./tasks/npm'
+
+ADD tasks/pip tasks/
+RUN ./tasks/pip
+
+ADD tasks/cluxdev tasks/
+RUN /bin/bash -c 'source $HOME/.bashrc && ./tasks/cluxdev'
+
+# Verify
+ADD test test
+RUN bash -c 'source ~/.bashrc && bats test'

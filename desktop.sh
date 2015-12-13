@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 set -xeo pipefail
-touch ~/.bashrc
-cd $(dirname $0)
+cd "$(dirname "$0")"
+sudo chown -R "$USER" /usr/local
 ./tasks/apt
-./tasks/node
-[ -z "$TRAVIS" ] && ./tasks/ssh
+./tasks/profanity
 ./tasks/sublime
-export gh=$([ -z "$TRAVIS" ] && echo git@github.com: || echo https://github.com/)
+./tasks/node
+./tasks/ssh
+export GH="git@github.com:"
 ./tasks/dotfiles # need to set up paths early
 source ~/.bashrc
 ./tasks/clone
-if [ -z "$TRAVIS" ]; then
-  ./tasks/npm
-  ./tasks/pip
-  ./tasks/cluxdev
-  ./tasks/llvm 3.7.0
-  #./tasks/system
-fi
+./tasks/npm
+./tasks/pip
+./tasks/secrets
+./tasks/cluxdev
+./tasks/llvm 3.7.0
+#./tasks/system

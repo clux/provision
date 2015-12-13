@@ -2,7 +2,7 @@
 set -ex
 
 mkdir -p ~/repos && cd ~/repos
-git clone ${gh}clux/dotfiles.git
+git clone ${GH}clux/dotfiles.git
 cd dotfiles
 
 make config

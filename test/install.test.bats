@@ -15,7 +15,9 @@
   [ "$status" -eq 0 ]
   run node --version
   [ "$status" -eq 0 ]
-  echo "$output" && echo "$output" | grep "v5."
+  echo "$output" && echo "$output" | grep "v4."
+  run node -pe process.release.lts
+  echo "$output" && echo "$output" | grep "Argon"
 }
 
 @test "sublime" {
@@ -24,14 +26,16 @@
 }
 
 @test "profanity" {
-  [ -n "$TRAVIS" ] && skip "not installing profanity on travis"
   run which profanity
   [ "$status" -eq 0 ]
   run profanity --version
   [ "$status" -eq 0 ]
   echo "$output"
   echo "$output" | grep "OTR support\: Enabled"
-  echo "$output" | grep "Desktop notification support\: Enabled"
+  if [ -z "$TRAVIS" ]; then
+    # Won't have desktop support in travis container
+    echo "$output" | grep "Desktop notification support\: Enabled"
+  fi
 }
 
 @test "clone" {
@@ -66,7 +70,6 @@
 }
 
 @test "npm" {
-  [ -n "$TRAVIS" ] && skip "not doing global installs on travis"
   run which badgify
   [ "$status" -eq 0 ]
   run which pm2
@@ -74,15 +77,12 @@
 }
 
 @test "pip" {
-  [ -n "$TRAVIS" ] && skip "not doing global installs on travis"
   run which pylint
   [ "$status" -eq 0 ]
 }
 
 @test "cluxdev" {
-  [ -n "$TRAVIS" ] && skip "not building every single module on travis"
   [ -d "$HOME/repos" ]
-  [ -d "$HOME/repos/dotclux" ]
   run which bndg # should have been symlinked
   [ "$status" -eq 0 ]
 }
@@ -99,6 +99,7 @@
   [ -d "$HOME/.gnupg/.git" ]
   [ -r "$HOME/.gnupg/.gitignore" ]
   [ -d "$HOME/repos/dotwork" ]
+  [ -d "$HOME/repos/dotclux" ]
 }
 
 @test "llvm" {

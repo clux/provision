@@ -3,15 +3,15 @@ mkdir -p ~/local/bin
 cd ~/local
 
 # bats
-git clone ${gh}sstephenson/bats.git
+git clone ${GH}sstephenson/bats.git
 ./bats/install.sh .
 
 # z
-git clone ${gh}rupa/z.git
+git clone ${GH}rupa/z.git
 ln -f z/z.1 $PWD/share/man/man1/
 
 # arc
-git clone ${gh}phacility/libphutil.git
-git clone ${gh}phacility/arcanist.git
+git clone ${GH}phacility/libphutil.git
+git clone ${GH}phacility/arcanist.git
 
 # NB: These rely on PATH containing ~/local/bin and ~/local/arcanist/bin

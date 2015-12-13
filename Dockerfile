@@ -1,16 +1,29 @@
 FROM debian:jessie
 
 # Stuff needed to get as close as possible to a plain debian netinst
-RUN apt-get update && apt-get install -y wget man-db ca-certificates
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update && apt-get install -y \
+  locales \
+  wget \
+  man-db \
+  nano \
+  ca-certificates
 
-# Copy over just what we need so we dont invalidate the cache with trivial changes
-ADD desktop.sh dotclux/
-ADD tasks dotclux/tasks
+RUN dpkg-reconfigure locales && \
+  locale-gen C.UTF-8 && \
+  /usr/sbin/update-locale LANG=C.UTF-8 && \
+  echo 'en_GB.UTF-8 UTF-8' >> /etc/locale.gen && \
+  locale-gen
 
-# Do the hard work
+ENV LC_ALL en_GB.UTF-8
 ENV TRAVIS 1
-RUN ./dotclux/desktop.sh
 
-# Verify
-ADD test dotclux/test
-RUN bash -c 'source ~/.bashrc && bats dotclux/test'
+# Step by step execution - only invalidating cache when each task changes
+ADD tasks/apt tasks/
+RUN ./tasks/apt
+
+ADD tasks/llvm tasks/
+RUN ./tasks/llvm 3.7.0
+
+ADD tasks/profanity tasks/
+RUN ./tasks/profanity
