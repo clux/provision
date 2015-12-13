@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-npm install -g npm # update npm first
+set -e
 
 globalModules=(
   ansimd      # markdown viewer terminal
@@ -25,10 +24,9 @@ globalModules=(
   zalgolize   # fun stuff
 )
 
-for i in "${globalModules[@]}"
-do
-  echo $i
-  npm install -g $i
+for i in "${globalModules[@]}"; do
+  echo "$i"
+  npm install -g "$i"
 done
 
 pkginit add default ~/.templates/npm/pkg.json

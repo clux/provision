@@ -1,20 +1,23 @@
 #!/usr/bin/env bash
-set -e
+set -ex
 abort() {  echo "$@" 1>&2 && exit 1; }
 
-version=$(wget -qO- https://nodejs.org/download/release/index.tab | sed -n 2p | cut -f1)
+#latest=$(wget -qO- https://nodejs.org/download/release/index.tab | sed -n 2p | cut -f1)
+lts=$(wget -qO- https://nodejs.org/download/release/index.tab | grep Argon | cut -f1 | head -n 1)
+version="$lts"
 test -n "$version" || abort missing nodejs.org/download/release/index.tab
 
-echo installing $version
-mkdir -p ~/local/node-$version
-cd ~/local/node-$version
+echo "installing $version"
+mkdir -p /usr/local/node-$version
+cd /usr/local/node-$version
 wget -qO- https://nodejs.org/download/release/$version/node-$version-linux-x64.tar.gz | tar xz --strip-components=1
 
 # Update local/node/bin symlink to use newly downloaded version
-mkdir -p ~/local/node
-ln -sf ~/local/node-$version/bin ~/local/node/bin
-ln -sf ~/local/node-$version/lib ~/local/node/lib
-ln -sf ~/local/node-$version/share ~/local/node/share
+mkdir -p /usr/local/node
+rm -f /usr/local/node/bin /usr/local/node/share /usr/local/node/lib
+ln -sf /usr/local/node-$version/bin /usr/local/node/bin
+ln -sf /usr/local/node-$version/lib /usr/local/node/lib
+ln -sf /usr/local/node-$version/share /usr/local/node/share
 
 echo "Remember to:"
-echo "export PATH=\$HOME/local/node/bin:\$PATH"
+echo "export PATH=/usr/local/node/bin:\$PATH"
