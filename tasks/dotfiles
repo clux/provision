@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -ex
 
 mkdir -p ~/repos && cd ~/repos
 git clone ${gh}clux/dotfiles.git
@@ -7,4 +8,5 @@ cd dotfiles
 make config
 if [ -z "$TRAVIS" ]; then
   make ui
+  make etc
 fi
