@@ -23,7 +23,6 @@ apt-get install -y \
   libexpat1-dev \
   libglib2.0-dev \
   libxml2-dev \
-  ninja-build \
   pkg-config \
   python-dev \
   python-pip \

@@ -3,17 +3,9 @@
 # llvm install script
 # usage ./llvm 3.7.0
 
-abort() {
-  echo "$@" 1>&2
-  exit 1
-}
-
 set -ex
 
 ver=$1
-
-hash clang 2> /dev/null && clang --version | grep -q "$ver"
-test $? -eq 0  && abort clang version $ver already installed
 
 LLVM=http://llvm.org/releases/$ver/llvm-$ver.src.tar.xz
 CLANG=http://llvm.org/releases/$ver/cfe-$ver.src.tar.xz
@@ -56,15 +48,14 @@ cd ~/local/llvm-v$ver
 # don't pollute src dir with build stuff
 mkdir build
 cd build
-cmake -G "Ninja" \
+cmake \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX=/usr/local \
   ../src
-ninja -j8
-ninja install
+make -j8
+make install
 
-cd
-rm -rf ~/local/llvm-v$ver
+rm -rf ~/local-llvm-v$ver
 
 echo "Remember to:"
 echo "export PATH=\$HOME/local/bin:\$PATH"
