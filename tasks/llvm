@@ -12,17 +12,27 @@ CLANG=http://llvm.org/releases/$ver/cfe-$ver.src.tar.xz
 LLDB=http://llvm.org/releases/$ver/lldb-$ver.src.tar.xz
 EXTRA=http://llvm.org/releases/$ver/clang-tools-extra-$ver.src.tar.xz
 COMPILERRT=http://llvm.org/releases/$ver/compiler-rt-$ver.src.tar.xz
+LIBCPP=http://llvm.org/releases/$ver/libcxx-$ver.src.tar.xz
+LIBCPPABI=http://llvm.org/releases/$ver/libcxxabi-$ver.src.tar.xz
+LIBUNWIND=http://llvm.org/releases/$ver/libunwind-$ver.src.tar.xz
 
 cd ~
 mkdir -p local/bin
 mkdir -p local/llvm-v$ver && cd local/llvm-v$ver
-wget "$LLVM"
-wget "$CLANG"
-wget "$LLDB"
-wget "$EXTRA"
-wget "$COMPILERRT"
+wget "$LLVM" &
+wget "$CLANG" &
+wget "$LLDB" &
+wget "$EXTRA" &
+wget "$COMPILERRT" &
+wget "$LIBCPP" &
+wget "$LIBCPPABI" &
+wget "$LIBUNWIND" &
 
-mkdir src && cd src
+for job in $(jobs -p); do
+  wait "$job"
+done
+
+mkdir -p src && cd src
 tar xf ../llvm-$ver.src.tar.xz --strip-components=1
 # clang goes in tools/clang
 mkdir -p tools/clang && cd tools/clang
@@ -41,6 +51,15 @@ tar xf ../../../../../clang-tools-extra-$ver.src.tar.xz --strip-components=1
 cd ../../../../
 mkdir -p projects/compiler-rt && cd projects/compiler-rt
 tar xf ../../../compiler-rt-$ver.src.tar.xz --strip-components=1
+cd ..
+mkdir -p libcxxabi && cd libcxxabi
+tar xf ../../../libcxxabi-$ver.src.tar.xz --strip-components=1
+cd ..
+mkdir -p libcxx && cd libcxx
+tar xf ../../../libcxx-$ver.src.tar.xz --strip-components=1
+cd ..
+mkdir -p libunwind && cd libunwind
+tar xf ../../../libunwind-$ver.src.tar.xz --strip-components=1
 
 # back to source
 cd ~/local/llvm-v$ver
