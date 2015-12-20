@@ -8,10 +8,9 @@ apt-get install -y -qq google-chrome-stable guake # get these early
 
 # development dependencies
 apt-get install -y \
-  apt-utils \
   autoconf \
+  build-essential \
   cmake \
-  g++ \
   libssl-dev \
   libncursesw5-dev \
   libncurses5-dev \
@@ -28,14 +27,15 @@ apt-get install -y \
   python-dev \
   python-pip \
   swig \
-  uuid-dev \
-  xz-utils
+  uuid-dev
 
 # get everything else in one line
 apt-get install -y -qq \
   ccze \
+  cowsay \
   curl \
   git \
+  handbrake \
   htop \
   iftop \
   lcov \

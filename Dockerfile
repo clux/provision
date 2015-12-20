@@ -7,7 +7,9 @@ RUN apt-get update && apt-get install -y \
   wget \
   man-db \
   nano \
-  ca-certificates
+  ca-certificates \
+  apt-utils \
+  xz-utils
 
 RUN dpkg-reconfigure locales && \
   locale-gen C.UTF-8 && \
