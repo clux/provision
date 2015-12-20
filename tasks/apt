@@ -22,6 +22,7 @@ apt-get install -y \
   libtool \
   libexpat1-dev \
   libglib2.0-dev \
+  libnotify-dev \
   libxml2-dev \
   pkg-config \
   python-dev \
