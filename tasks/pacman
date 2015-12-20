@@ -1,0 +1,38 @@
+#!/bin/bash
+
+pacs=(
+  bash-completion
+  ccze
+  cmake
+  git
+  gimp
+  htop
+  imagemagic
+  lolcat
+  lsb-release
+  mpd
+  mumble
+  ncmpcpp
+  nmap
+  openssh
+  profanity
+  redshift
+  rsync
+  pass
+  vlc
+  wget
+  xclip
+)
+
+for p in "${pacs[@]}"; do
+  pacman -S "$p"
+done
+
+# haskell
+pacman -S ghc cabal-install shellcheck
+
+# llvm
+pacman -S clang clang-analyzer clang-tools-extra
+
+# misc others
+pacman -S nemo-fileroller
