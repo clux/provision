@@ -19,7 +19,7 @@ swapon /dev/sda5
 pacstrap /mnt base base-devel
 arch-chroot /mnt /bin/bash
 
-edit /etc/locale.gen # uncomment en_GB.* (2 elements)
+edit /etc/locale.gen # uncomment en_GB.* + en_US.* (2x2 elements)
 locale-gen
 
 tzselect
@@ -78,10 +78,3 @@ pacman -S guake
 
 # bootstrap some visuals
 sudo pacman -S firefox wget
-
-# follow arch script
-# TODO: move this
-wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz | tar xzvf
-cd google-chrome
-makepkg -s
-sudo pacman -U google-chrome-*.pkg.tar.xz

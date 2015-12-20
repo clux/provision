@@ -15,7 +15,11 @@
   [ "$status" -eq 0 ]
   echo "$output" && echo "$output" | grep "3.7.0"
   # compiled s.t. we have sanitizers
-  run ls /usr/local/lib/clang/3.7.0/lib/linux/libclang_rt.asan_cxx-x86_64.a
+  if [[ $(lsb_release -si) == "Arch" ]];
+    run ls /usr/lib/clang/3.7.0/lib/linux/libclang_rt.asan_cxx-x86_64.a
+  else
+    run ls /usr/local/lib/clang/3.7.0/lib/linux/libclang_rt.asan_cxx-x86_64.a
+  fi
   [ "$status" -eq 0 ]
   # with lldb
   run lldb --version

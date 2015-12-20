@@ -34,5 +34,13 @@ pacman -S ghc cabal-install shellcheck
 # llvm
 pacman -S clang clang-analyzer clang-tools-extra
 
+# python
+pacman -S python-pip
+
 # misc others
 pacman -S nemo-fileroller
+
+# steam
+pacman -S steam
+# grab lib32-nvidia-libgl when offered
+# may need: lib32-alsa-plugins as well
