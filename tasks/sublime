@@ -11,6 +11,7 @@ if [[ $(lsb_release -si) == "Arch" ]]; then
 
   bunzip2 sublime_text_3_*.bz2
   tar axvf sublime_text_3_*.tar
+  ln -sf ~/local/sublime_text_3/sublime_text ~/local/bin/subl
 else
   # .deb
   url=$(wget -q http://www.sublimetext.com/3 -O - | \

@@ -2,7 +2,11 @@
 
 # Tests that expected stuff has been installed and are on PATH
 @test "apt" {
-  run which google-chrome
+  if [[ $(lsb_release -si) == "Arch" ]]; then
+    run which google-chrome-stable
+  else
+    run which google-chrome
+  fi
   [ "$status" -eq 0 ]
   run which guake
   [ "$status" -eq 0 ]
@@ -15,7 +19,7 @@
   [ "$status" -eq 0 ]
   echo "$output" && echo "$output" | grep "3.7.0"
   # compiled s.t. we have sanitizers
-  if [[ $(lsb_release -si) == "Arch" ]];
+  if [[ $(lsb_release -si) == "Arch" ]]; then
     run ls /usr/lib/clang/3.7.0/lib/linux/libclang_rt.asan_cxx-x86_64.a
   else
     run ls /usr/local/lib/clang/3.7.0/lib/linux/libclang_rt.asan_cxx-x86_64.a

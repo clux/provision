@@ -13,6 +13,7 @@ pacs=(
   mpd
   mumble
   ncmpcpp
+  ntfs-3g
   nmap
   openssh
   profanity
@@ -22,6 +23,7 @@ pacs=(
   vlc
   wget
   xclip
+  xorg-xrandr
 )
 
 for p in "${pacs[@]}"; do
@@ -32,7 +34,7 @@ done
 pacman -S ghc cabal-install shellcheck
 
 # llvm
-pacman -S clang clang-analyzer clang-tools-extra
+pacman -S clang clang-analyzer clang-tools-extra lldb
 
 # python
 pacman -S python-pip
@@ -41,6 +43,4 @@ pacman -S python-pip
 pacman -S nemo-fileroller
 
 # steam
-pacman -S steam
-# grab lib32-nvidia-libgl when offered
-# may need: lib32-alsa-plugins as well
+pacman -S steam lib32-alsa-plugins lib32-nvidia-libgl
