@@ -58,16 +58,17 @@ adduser -m -g users -G audio,disk,games,lp,network,networkmanager,optical,power,
 passwd clux
 nano /etc/sudoers # uncomment %wheel ALL(ALL) ALL --- NOT NOPASSWD
 
-pacman -S alsa-utils xorg-server ttf-dejavu ttf-liberation cinnamon nvidia slim slim-themes
+pacman -S alsa-utils xorg-server ttf-dejavu ttf-liberation cinnamon nvidia lightdm lightdm-gtk-greeter
 # get nvidia-libgl version only with evdeb (libinput is for wayland)
 
 reboot
 login # clux
 
-echo "exec cinnamon-session" > .xinitrc
-nano /etc/slim.conf # set theme to archlinux, default user if care
-systemctl enable slim.service
-systemctl start slim
+
+nano /etc/lightdm/lightdm.conf # greeter-session=lightdm-gtk-greeter
+
+systemctl enable lightdm.service
+systemctl start lightdm
 pacman -S guake
 
 # ctlr-alt-F7 and log in to cinnamon session

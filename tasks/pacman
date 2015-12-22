@@ -5,8 +5,10 @@ pacs=(
   ccze
   cmake
   cowsay
+  feh
   git
   gimp
+  gthumb
   gnome-terminal
   htop
   imagemagic
@@ -17,6 +19,7 @@ pacs=(
   ncmpcpp
   ntfs-3g
   nmap
+  numix-themes
   openssh
   profanity
   redshift
