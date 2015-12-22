@@ -1,28 +1,19 @@
 #!/bin/sh
-if [[ $(lsb_release -si) == "Arch" ]]; then
-  # tarball
-  url=$(wget -q http://www.sublimetext.com/3 -O - | \
+set -ex
+
+urls=$(wget -q http://www.sublimetext.com/3 -O - | \
       tr "\t\r\n'" '   "' | \
       grep -i -o '<a[^>]\+href[ ]*=[ \t]*"\(ht\|f\)tps\?:[^"]\+"' | \
-      sed -e 's/^.*"\([^"]\+\)".*$/\1/g' | \
-      grep "x64.tar.bz2")
-  echo $url
-  wget $url
+      sed -e 's/^.*"\([^"]\+\)".*$/\1/g')
 
+if grep -qEi 'debian|buntu|mint' /etc/*release; then
+  url=$(echo "$urls" | grep amd64.deb)
+  wget "$url"
+  dpkg -i sublime-text_build-*.deb
+else
+  url=$(echo "$urls" | grep x64.tar.bz2)
+  wget "$url"
   bunzip2 sublime_text_3_*.bz2
   tar axvf sublime_text_3_*.tar
   ln -sf ~/local/sublime_text_3/sublime_text ~/local/bin/subl
-else
-  # .deb
-  url=$(wget -q http://www.sublimetext.com/3 -O - | \
-      tr "\t\r\n'" '   "' | \
-      grep -i -o '<a[^>]\+href[ ]*=[ \t]*"\(ht\|f\)tps\?:[^"]\+"' | \
-      sed -e 's/^.*"\([^"]\+\)".*$/\1/g' | \
-      grep "amd64.deb")
-
-  echo $url
-  wget $url
-
-  file=$(echo $url | sed 's/.*.com\///')
-  dpkg -i $file
 fi
