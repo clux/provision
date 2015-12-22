@@ -4,8 +4,10 @@ pacs=(
   bash-completion
   ccze
   cmake
+  cowsay
   git
   gimp
+  gnome-terminal
   htop
   imagemagic
   lolcat
@@ -39,8 +41,11 @@ pacman -S clang clang-analyzer clang-tools-extra lldb
 # python
 pacman -S python-pip
 
+# ssh stuff
+pacman -S keychain x11-ssh-askpass
+
 # misc others
-pacman -S nemo-fileroller
+pacman -S nemo-fileroller ttf-ubuntu-font-family
 
 # steam
 pacman -S steam lib32-alsa-plugins lib32-nvidia-libgl

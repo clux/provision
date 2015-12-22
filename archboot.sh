@@ -3,7 +3,6 @@
 echo "This is a pseudo-script"
 exit 1
 
-
 loadkeys colemak
 dhcpcd # easy on corded - verify you have inet
 
@@ -46,26 +45,25 @@ umount /mnt
 swapoff -a
 
 reboot now
+login # root
 
-login
+loadkeys colemak
 nano /etc/pacman.conf # uncomment multilib part (not testing)
 pacman -Syy
 pacman -Syu
-
-
 pacman -S sudo
+
 groupadd networkmanager
 adduser -m -g users -G audio,disk,games,lp,network,networkmanager,optical,power,scanner,storage,sys,uucp,video,wheel -s /bin/bash clux
 passwd clux
-
 nano /etc/sudoers # uncomment %wheel ALL(ALL) ALL --- NOT NOPASSWD
 
-pacman -S alsa-utils xorg-server ttf-dejavu cinnamon nvidia
+pacman -S alsa-utils xorg-server ttf-dejavu ttf-liberation cinnamon nvidia slim slim-themes
 # get nvidia-libgl version only with evdeb (libinput is for wayland)
-reboot
 
-# log in to main user now
-pacman -S slim slim-themes
+reboot
+login # clux
+
 echo "exec cinnamon-session" > .xinitrc
 nano /etc/slim.conf # set theme to archlinux, default user if care
 systemctl enable slim.service
