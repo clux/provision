@@ -14,6 +14,7 @@ pacs=(
   imagemagic
   lolcat
   lsb-release
+  mpc
   mpd
   mumble
   ncmpcpp
@@ -25,6 +26,7 @@ pacs=(
   redshift
   rsync
   pass
+  tmux
   vlc
   wget
   xclip
