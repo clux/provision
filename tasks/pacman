@@ -9,7 +9,6 @@ pacs=(
   git
   gimp
   gthumb
-  gnome-terminal
   htop
   imagemagic
   lolcat
@@ -25,12 +24,15 @@ pacs=(
   profanity
   redshift
   rsync
+  rxvt-unicode
   pass
   tmux
   vlc
   wget
   xclip
   xorg-xrandr
+  xorg-xrdb
+  xterm
 )
 
 for p in "${pacs[@]}"; do
