@@ -1,6 +1,8 @@
 #!/bin/sh
 set -ex
-# Run this with sudo before any tasks. After having run `adduser clux sudo`.
+
+# Modification scripts for nvidia optimus based laptop with wifi drivers
+# Run this with sudo before any debian8 tasks. After having run `adduser clux sudo` in root acc.
 
 # package configuration and drivers
 sed -i.bak 's/jessie main/jessie main contrib non-free/g' /etc/apt/sources.list
