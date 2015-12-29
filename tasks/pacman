@@ -54,5 +54,8 @@ pacman -S keychain x11-ssh-askpass
 # misc others
 pacman -S nemo-fileroller ttf-ubuntu-font-family
 
+# samba
+pacman -S samba nemo-share
+
 # steam
 pacman -S steam lib32-alsa-plugins lib32-nvidia-libgl
