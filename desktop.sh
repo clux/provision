@@ -14,8 +14,7 @@ source ~/.bashrc
 ./tasks/clone
 ./tasks/npm
 ./tasks/pip
-# stuff we not built in docker
+# stuff we didnt do in docker
 ./tasks/secrets
 ./tasks/cluxdev
-./tasks/guitools
 #./tasks/system
