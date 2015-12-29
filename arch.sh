@@ -17,3 +17,14 @@ makepkg -s
 sudo pacman -U google-chrome-*.pkg.tar.xz
 
 ./tasks/pacman
+./tasks/sublime
+./tasks/node
+./tasks/ssh
+export GH="git@github.com:"
+./tasks/dotfiles # need to set up paths early
+source ~/.bashrc
+./tasks/clone
+./tasks/npm
+./tasks/pip
+./tasks/secrets
+./tasks/cluxdev

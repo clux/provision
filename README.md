@@ -8,10 +8,11 @@ Fetch latest version of this repo and deploy to a fresh installation:
 
 ```sh
 wget -qO- https://github.com/clux/dotclux/archive/master.tar.gz | tar xz
-sudo ./dotclux-master/desktop.sh
+sudo ./dotclux-master/debian8.sh # for a debian netinst
+sudo ./dotclux-master/arch.sh # for an arch installation started following archboot.sh
 ```
 
-Alternatively, you can download the docker image that travis is building:
+Alternatively, you can download the debian based docker image that travis is building:
 
 ```sh
 docker pull clux/dev
@@ -21,4 +22,4 @@ docker run -it clux/dev /bin/bash
 This has everything my desktop has except the secrets and a local checkout of all active git repositories.
 
 ## Manual Steps
-An hour into `desktop.sh` you need to paste `ssh` keys into chrome (installed first thing) at github and bitbucket sites.
+An hour into the installation you need to paste `ssh` keys into chrome (installed first thing) at github and bitbucket sites.
