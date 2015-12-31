@@ -21,6 +21,7 @@ globalModules=(
   pm2         # process manager
   polylint    # linter for polymer
   marked-man  # man page generator
+  yr-cli      # weather forecasts
   zalgolize   # fun stuff
 )
 
