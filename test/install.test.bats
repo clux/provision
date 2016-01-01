@@ -84,9 +84,20 @@
   [ -r "$HOME/.eslintrc" ]
   [ -r "$HOME/.jshintrc" ]
   [ -r "$HOME/.clang-format" ]
+  [ -r "$HOME/.yrcli.json" ]
+  [ -r "$HOME/.inputrc" ]
+  [ -r "$HOME/.dircolors" ]
+  [ -r "$HOME/.ghci" ]
+  [ -r "$HOME/.mpdconf" ]
+  [ -r "$HOME/.nanorc" ]
+  [ -r "$HOME/.tmux.conf" ]
+  [ -r "$HOME/.xprofile" ]
+  [ -r "$HOME/.Xresources" ]
   [ -r "$HOME/.gitconfig" ]
   [ -r "$HOME/.config/sublime-text-3/Packages/User/SublimeLinter.sublime-settings" ]
   [ -r "$HOME/.iface" ]
+  [ -d "$HOME/.ncmpcpp" ]
+  [ -d "$HOME/.templates" ]
 }
 
 @test "evars" {
