@@ -68,11 +68,8 @@ nano /etc/lightdm/lightdm.conf # greeter-session=lightdm-gtk-greeter
 
 systemctl enable lightdm.service
 systemctl start lightdm
-pacman -S guake
+pacman -S guake firefox wget
 
 # ctlr-alt-F7 and log in to cinnamon session
 # change keyboard layout
 # alt-f2 start guake - not shortcutted
-
-# bootstrap some visuals
-sudo pacman -S firefox wget
