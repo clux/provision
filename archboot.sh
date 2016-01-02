@@ -53,7 +53,7 @@ pacman -Syy
 pacman -Syu
 pacman -S sudo
 
-adduser -m -G games,rfkill,uucp,wheel -s /bin/bash clux
+useradd -m -G games,rfkill,uucp,wheel -s /bin/bash clux
 passwd clux
 nano /etc/sudoers # uncomment %wheel ALL(ALL) ALL --- NOT NOPASSWD
 
