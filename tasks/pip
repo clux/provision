@@ -4,10 +4,11 @@ set -e
 pip install -U pip
 
 globalModules=(
-  pyflakes
-  pylint
   ghp-import
   mercurial_keyring
+  pyflakes
+  pylint
+  shyaml
 )
 
 for i in "${globalModules[@]}"; do
