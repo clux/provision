@@ -1,0 +1,51 @@
+#!/bin/bash
+set -e
+
+cp /var/lib/portage/world /var/lib/portage/world.backup
+cat <<EOF > /var/lib/portage/world
+app-admin/sudo
+app-editors/gedit
+app-editors/nano
+app-editors/vim
+app-misc/tmux
+app-portage/eix
+app-portage/gentoolkit
+app-shells/bash-completion # eselect bashcomp to enable
+dev-libs/libbsd
+dev-python/pip
+dev-util/strace
+dev-vcs/git
+gnome-extra/cinnamon
+media-fonts/dejavu
+media-fonts/liberation-fonts
+media-sound/mpc
+media-sound/mpd
+media-sound/ncmpcpp
+net-misc/dhcpcd
+net-misc/keychain
+net-misc/netifrc
+net-wireless/wpa_supplicant
+sys-apps/lsb-release
+sys-apps/pciutils
+sys-boot/grub
+sys-devel/distcc
+sys-kernel/dracut
+sys-kernel/gentoo-sources:3.18.25 # only for optimus laptop
+sys-kernel/linux-firmware
+www-client/firefox-bin
+www-client/google-chrome
+x11-apps/xrandr
+x11-base/xorg-server
+x11-drivers/xf86-input-evdev
+x11-drivers/xf86-video-intel
+x11-libs/gtk+extra # can't remember
+x11-misc/lightdm
+x11-misc/lightdm-gtk-greeter
+x11-misc/redshift
+x11-misc/xclip
+x11-terms/guake
+x11-terms/rxvt-unicode # needs extra fonts
+x11-terms/xterm
+EOF
+
+diff -u /var/lib/portage/world /var/lib/portage/world.backup
