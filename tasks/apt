@@ -38,6 +38,7 @@ apt-get install -y -qq \
   handbrake \
   htop \
   iftop \
+  keychain \
   lcov \
   lolcat \
   pass \
