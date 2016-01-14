@@ -4,6 +4,7 @@ set -e
 pip install -U pip
 
 globalModules=(
+  ansible
   ghp-import
   mercurial_keyring
   pyflakes
