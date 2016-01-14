@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
 echo "Generating github identity"
-ssh-keygen -t rsa -b 4096 -C "analsandblaster@gmail.com" -f ~/.ssh/github_id_rsa
-xclip -sel clip < ~/.ssh/github_id_rsa.pub
+# NB: bitbucket does not yet support ed25519
+# https://bitbucket.org/site/master/issues/10983/ed25519-ssh-keys-bb-13645
+ssh-keygen -t rsa -b 4096 -C "analsandblaster@gmail.com" -f ~/.ssh/github_id
+xclip -sel clip < ~/.ssh/github_id.pub
 echo "Log in to github and bitbucket and paste clipboarded public key"
 read -p "Press any key when keys have been added..."
 
