@@ -1,6 +1,7 @@
 #!/bin/sh
 set -ex
 
+mkdir -p ~/local/bin
 urls=$(wget -q http://www.sublimetext.com/3 -O - | \
       tr "\t\r\n'" '   "' | \
       grep -i -o '<a[^>]\+href[ ]*=[ \t]*"\(ht\|f\)tps\?:[^"]\+"' | \
