@@ -49,6 +49,7 @@ apt-get install -y -qq \
   mumble \
   nmap \
   redshift \
+  rxvt-unicode-256color \
   shellcheck \
   vlc \
   vim-gnome \
