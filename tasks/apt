@@ -53,6 +53,7 @@ apt-get install -y -qq \
   shellcheck \
   vlc \
   vim-gnome \
+  weechat-curses \
   xclip
 
 # remove output of dpkg -l | grep zeitgeist
