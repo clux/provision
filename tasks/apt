@@ -35,7 +35,6 @@ apt-get install -y -qq \
   cowsay \
   curl \
   git \
-  handbrake \
   htop \
   iftop \
   keychain \
