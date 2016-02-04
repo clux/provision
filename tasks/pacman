@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 pacs=(
   bash-completion
@@ -19,7 +20,6 @@ pacs=(
   ncmpcpp
   ntfs-3g
   nmap
-  numix-themes
   openssh
   profanity
   redshift
@@ -28,7 +28,7 @@ pacs=(
   pass
   tmux
   vlc
-  wget
+  weechat
   xclip
   xorg-xrandr
   xorg-xrdb
