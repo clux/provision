@@ -8,6 +8,9 @@ xclip -sel clip < ~/.ssh/github_id.pub
 echo "Log in to github and bitbucket and paste clipboarded public key"
 read -p "Press any key when keys have been added..."
 
+keychain --timeout 300 --host agent ~/.ssh/github_id
+source ~/.keychain/agent-sh
+
 echo "Verifying github"
 ssh -T git@github.com
 echo "Verifying bitbucket"
