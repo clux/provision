@@ -2,22 +2,19 @@
 set -e
 
 globalModules=(
-  ansimd      # markdown viewer terminal
   badgify     # badge generator
   faucet      # tap formatter
-  tub         # tap formatter
   eslint      # static analysis
   jshint      # static analysis
   jsonlint    # analysis of json files
   json        # curl jsonUrl | json key
-  pkginit     # for quick making a npm module shell (though bugged atm)
-  browserify  # npm style webapps
-  testling    # for browser tests
+  pkginit     # npm init helper
+  browserify  # common js bundler
   asciify     # CLI asciifier
-  ytdl        # streaming youtube downloader
+  ytdl        # streaming youtube dl
   symlink     # node module link helper
   badgify     # readme badge generator
-  bower       # web components currently here..
+  bower       # web components temp
   pm2         # process manager
   polylint    # linter for polymer
   marked-man  # man page generator
