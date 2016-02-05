@@ -1,5 +1,15 @@
 #!/usr/bin/env bats
 
+@test "system" {
+  locale -a | grep -q "en_GB.utf8"
+  #locale -a | grep -q "en_US.utf8"
+  localectl status | grep -q "LANG=en_GB.UTF-8"
+  localectl status | grep -q "LANGUAGE=en_GB:en"
+  localectl status | grep -q "X11 Layout: us"
+  localectl status | grep -qE "X11 Model: pc10."
+  localectl status | grep -q "X11 Variant: colemak"
+}
+
 # Tests that expected stuff has been installed and are on PATH
 @test "apt" {
   if [[ $(lsb_release -si) == "Arch" ]]; then

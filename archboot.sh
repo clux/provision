@@ -23,15 +23,19 @@ swapon /dev/sda5
 
 # create chroot and do the first configuration
 pacstrap /mnt base base-devel
-systemd-firstboot --root=/mnt \
-  --timezone=Europe/London \
-  --hostname=kjttks
-
 arch-chroot /mnt /bin/bash
-hwclock --systohc --utc
+
 echo "en_GB.UTF-8 UTF-8" > /etc/locale.gen
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
+
+systemd-firstboot \
+  --timezone=Europe/London \
+  --locale=en_GB.UTF-8 \
+  --locale-messages=en_GB.UTF-8 \
+  --hostname=kjttks
+
+hwclock --systohc --utc
 mkinitcpio -p linux
 
 # bootloader to SSD
