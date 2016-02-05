@@ -47,6 +47,7 @@ exit # chroot
 reboot
 
 # as root
+localectl set-locale LANG=en_GB.UTF-8
 localectl set-keymap colemak
 timedatectl set-ntp true
 
