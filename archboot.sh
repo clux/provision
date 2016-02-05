@@ -55,7 +55,7 @@ nano /etc/pacman.conf # uncomment multilib part (not testing)
 pacman -Syy
 pacman -Syu
 pacman -S sudo
-useradd -m -G games,rfkill,uucp,wheel -s /bin/bash clux
+useradd -m -G audio,video,games,rfkill,uucp,wheel -s /bin/bash clux
 passwd clux
 visudo # uncomment %wheel ALL(ALL) ALL --- NOT NOPASSWD
 
