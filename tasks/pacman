@@ -60,3 +60,6 @@ pacman -S samba nemo-share
 
 # steam
 pacman -S steam lib32-alsa-plugins lib32-nvidia-libgl
+
+# video editing
+pacman -S openshot

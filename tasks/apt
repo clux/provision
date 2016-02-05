@@ -40,6 +40,7 @@ apt-get install -y -qq \
   keychain \
   lcov \
   lolcat \
+  openshot \
   pass \
   php5-cli \
   php5-curl \
