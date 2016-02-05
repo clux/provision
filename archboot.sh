@@ -30,6 +30,7 @@ systemd-firstboot --root=/mnt \
 arch-chroot /mnt /bin/bash
 hwclock --systohc --utc
 echo "en_GB.UTF-8 UTF-8" > /etc/locale.gen
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 mkinitcpio -p linux
 
