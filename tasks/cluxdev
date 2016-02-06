@@ -9,6 +9,7 @@ modules=(
   blog
   deus-login
   dye
+  food
   gu
   icebreaker
   irc-stream
@@ -19,6 +20,7 @@ modules=(
   sdp-transform
   smell
   sulfur
+  quadratic
   topiary
 )
 for i in "${modules[@]}"; do
