@@ -8,6 +8,7 @@ globalModules=(
   jshint      # static analysis
   jsonlint    # analysis of json files
   json        # curl jsonUrl | json key
+  js-yaml     # yaml key helper
   pkginit     # npm init helper
   browserify  # common js bundler
   asciify     # CLI asciifier

@@ -9,7 +9,6 @@ globalModules=(
   mercurial_keyring
   pyflakes
   pylint
-  shyaml
 )
 
 for i in "${globalModules[@]}"; do
