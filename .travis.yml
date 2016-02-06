@@ -14,4 +14,8 @@ after_success:
   - docker push clux/dev
 
 notifications:
-  email: false
+  irc:
+    channels:
+      - "irc.quakenet.org#clux"
+    on_success: change
+    on_failure: always
