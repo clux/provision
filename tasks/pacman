@@ -8,6 +8,7 @@ pacs=(
   cmake
   cowsay
   feh
+  firefox
   git
   gimp
   gthumb
@@ -48,6 +49,9 @@ pacman -S clang clang-analyzer clang-tools-extra lldb
 
 # python
 pacman -S python-pip
+
+# rust
+pacman -S rust cargo
 
 # ssh stuff
 pacman -S keychain x11-ssh-askpass

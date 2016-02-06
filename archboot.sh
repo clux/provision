@@ -40,8 +40,9 @@ mkinitcpio -p linux
 
 # bootloader to SSD
 pacman -S grub
+pacman -S intel-ucode # microcode
 grub-mkconfig -o /boot/grub/grub.cfg
-grub-install /dev/sda # will use i386 by default
+grub-install /dev/sda
 
 # enable dhcpcd on right interface (see ip link show)
 systemctl enable dhcpcd@enp5s0
