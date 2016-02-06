@@ -2,9 +2,9 @@
 
 @test "system" {
   locale -a | grep -q "en_GB.utf8"
-  #locale -a | grep -q "en_US.utf8"
+  locale -a | grep -q "en_US.utf8"
+  [ -n "$TRAVIS" ] && skip "travis/docker does not have systemd"
   localectl status | grep -q "LANG=en_GB.UTF-8"
-  localectl status | grep -q "LANGUAGE=en_GB:en"
   localectl status | grep -q "X11 Layout: us"
   localectl status | grep -qE "X11 Model: pc10."
   localectl status | grep -q "X11 Variant: colemak"
@@ -13,7 +13,7 @@
 # Tests that expected stuff has been installed and are on PATH
 @test "apt" {
   if [[ $(lsb_release -si) == "Arch" ]]; then
-    run which google-chrome-stable
+    run which chromium
   else
     run which google-chrome
   fi
@@ -27,10 +27,10 @@
 @test "llvm" {
   run clang --version
   [ "$status" -eq 0 ]
-  echo "$output" && echo "$output" | grep "3.7.0"
+  echo "$output" && echo "$output" | grep "3.7.1"
   # compiled s.t. we have sanitizers
   if [[ $(lsb_release -si) == "Arch" ]]; then
-    run ls /usr/lib/clang/3.7.0/lib/linux/libclang_rt.asan_cxx-x86_64.a
+    run ls /usr/lib/clang/3.7.1/lib/linux/libclang_rt.asan_cxx-x86_64.a
   else
     run ls /usr/local/lib/clang/3.7.0/lib/linux/libclang_rt.asan_cxx-x86_64.a
   fi
@@ -38,7 +38,7 @@
   # with lldb
   run lldb --version
   [ "$status" -eq 0 ]
-  echo "$output" && echo "$output" | grep "3.7.0"
+  echo "$output" && echo "$output" | grep "3.7.1"
   # with analyzer and scan-build
   run c++-analyzer --version
   [ "$status" -eq 0 ]
@@ -147,9 +147,8 @@
   [ -d "$HOME/.ssh/.git" ]
   [ -r "$HOME/.ssh/.gitignore" ]
   [ -d "$HOME/.gnupg" ]
-  [ -r "$HOME/.gnupg/pubring.gpg" ]
   [ -d "$HOME/.gnupg/.git" ]
-  [ -r "$HOME/.gnupg/.gitignore" ]
-  [ -d "$HOME/repos/dotwork" ]
+  run gpg --list-keys
+  echo "$output" && echo "$output" | grep -q "clux"
   [ -d "$HOME/repos/dotclux" ]
 }
