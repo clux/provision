@@ -13,10 +13,15 @@ sudo ./dotclux-master/arch.sh # for an arch installation started following archb
 ```
 
 ## Manual Steps
-An hour into the installation you need to paste `ssh` keys into chrome (installed first thing) at github and bitbucket sites.
+During the `ssh` step (about an hour in on debian, or 10min in on Arch), you need to paste `ssh` keys into chrome (installed first thing) at github and bitbucket sites.
 
-## Warning
-This is tied to personal secrets, so you will not be able to accomplish the last two steps of the install process without modification or authorization.
+### Personalization
+You will not be able to accomplish the [secrets](https://github.com/clux/dotclux/blob/master/tasks/secrets) part of the installation without modification or authorization.
+
+If for some reason you want to try this, and you are not me, you should be able to carry out the procedure by ignoring this script, as well as changing email addresses in the generated public keys in [ssh](https://github.com/clux/dotclux/blob/master/tasks/secrets).
+
+### Dotfiles
+See [clux/dotfiles](https://github.com/clux/dotfiles). These are relied on by the npm task for `~/.templates`, `$PATH` extensions, and git aliases for the secrets.
 
 ## OS Specific
 
