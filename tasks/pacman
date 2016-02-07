@@ -1,51 +1,20 @@
 #!/bin/bash
 set -e
 
-# accept defaults libx264 over libx264-10bit
-pacs=(
-  bash-completion
-  ccze
-  cmake
-  cowsay
-  feh
-  firefox
-  git
-  gimp
-  gthumb
-  htop
-  imagemagick
-  lolcat
-  lsb-release
-  mpc
-  mpd
-  mumble
-  ncmpcpp
-  ntfs-3g
-  nmap
-  openssh
-  profanity
-  redshift
-  rsync
-  rxvt-unicode
-  pass
-  tmux
-  vlc
-  weechat
-  xclip
-  xorg-xrandr
-  xorg-xrdb
-  xterm
-)
+# CLIs
+pacman -S ccze git lolcat lsb-release nmap rsync
 
-for p in "${pacs[@]}"; do
-  pacman -S "$p"
-done
+# terminals
+pacman -S bash-completion cowsay rxvt-unicode tmux xterm
+
+# TUIs
+pacman -S htop profanity weechat
 
 # haskell
 pacman -S ghc cabal-install shellcheck
 
-# llvm
-pacman -S clang clang-analyzer clang-tools-extra lldb
+# c++
+pacman -S cmake clang clang-analyzer clang-tools-extra lldb
 
 # python
 pacman -S python-pip
@@ -53,17 +22,26 @@ pacman -S python-pip
 # rust
 pacman -S rust cargo
 
-# ssh stuff
-pacman -S keychain x11-ssh-askpass
+# ssh + key/pass managers
+pacman -S keychain x11-ssh-askpass pass openssh
 
-# misc others
-pacman -S nemo-fileroller ttf-ubuntu-font-family
+# music
+pacman -S mpc mpd ncmpcpp
 
-# samba
-pacman -S samba nemo-share
+# video (force libx264 over libx264-10bit for now)
+pacman -S libx264 openshot vlc
+
+# X related
+pacman -S gnome-screenshot mumble redshift xclip xdotool xorg-xrandr xorg-xrdb
+
+# media
+pacman -S feh gimp gthumb imagemagick
+
+# filesystems
+pacman -S ntfs-3g nemo-fileroller nemo-share samba
 
 # steam
 pacman -S steam lib32-alsa-plugins lib32-nvidia-libgl
 
-# video editing
-pacman -S openshot
+# misc
+pacman -S docker firefox ttf-ubuntu-font-family
