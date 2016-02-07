@@ -65,7 +65,7 @@ useradd -m -G audio,video,games,rfkill,uucp,wheel -s /bin/bash clux
 passwd clux
 visudo # uncomment %wheel ALL(ALL) ALL --- NOT NOPASSWD
 
-pacman -S nvidia # choose nvidia-libgl and evdev (which will pull xorg-server)
+pacman -S nvidia nvidia-libgl libevdev # will pull in xorg-server
 reboot # blacklists noveu
 
 # as root
