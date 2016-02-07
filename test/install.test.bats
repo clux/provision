@@ -32,7 +32,7 @@
   if [[ $(lsb_release -si) == "Arch" ]]; then
     run ls /usr/lib/clang/3.7.1/lib/linux/libclang_rt.asan_cxx-x86_64.a
   else
-    run ls /usr/local/lib/clang/3.7.0/lib/linux/libclang_rt.asan_cxx-x86_64.a
+    run ls /usr/local/lib/clang/3.7.1/lib/linux/libclang_rt.asan_cxx-x86_64.a
   fi
   [ "$status" -eq 0 ]
   # with lldb
