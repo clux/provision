@@ -71,7 +71,7 @@ cmake \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX=/usr/local \
   ../src
-make -j8
+make -j2
 make install
 
 rm -rf ~/local-llvm-v$ver
