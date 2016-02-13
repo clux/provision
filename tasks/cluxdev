@@ -4,63 +4,47 @@ set -ex
 mkdir -p ~/repos && cd ~/repos
 
 # general modules
-modules=(
-  bandage
-  blog
-  deus-login
-  dye
-  food
-  gu
-  icebreaker
-  irc-stream
-  linkr-app
-  linkr-components
-  mddocs
-  posts
-  sdp-transform
-  smell
-  sulfur
-  quadratic
+git hub \
+  bandage \
+  blog \
+  deus-login \
+  dye \
+  food \
+  gu \
+  icebreaker \
+  irc-stream \
+  linkr-app \
+  linkr-components \
+  mddocs \
+  posts \
+  sdp-transform \
+  smell \
+  sulfur \
+  quadratic \
   topiary
-)
-for i in "${modules[@]}"; do
-  git clone "${GH}clux/$i"
-done
 
 # tournament related modules
 cd ~/repos && mkdir -p tournament && cd tournament
-tournament=(
-  duel
-  duel-names
-  ffa
-  ffa-tb
-  group
-  groupstage
-  groupstage-tb
-  groupstage-tb-duel
-  masters
-  roundrobin
-  tiebreaker
-  tournament
+git hub \
+  duel \
+  duel-names \
+  ffa \
+  ffa-tb \
+  group \
+  groupstage \
+  groupstage-tb \
+  groupstage-tb-duel \
+  masters \
+  roundrobin \
+  tiebreaker \
+  tournament \
   tourney
-)
-for i in "${tournament[@]}"; do
-  git clone "${GH}clux/$i"
-done
+
 
 # functional libraries
 cd ~/repos && mkdir interlude && cd interlude
-interlude=(
-  autonomy
-  interlude
-  operators
-  subset
-  wrappers
-)
+git hub autonomy interlude operators subset
 
-for i in "${interlude[@]}"; do
-  git clone "${GH}clux/$i"
-done
 
 cd
 symlink repos repos/tournament repos/interlude --execute
@@ -87,6 +71,7 @@ notcloneds=(
   unitednationsoftheworld # song
   wolfram-alpha # stable, working
   wolfram-irc # stable, deployed
+  wrappers # not used in ages
   xmpp-stream # experimental, and no need for atm
   zalgolize # globally installed
 )
