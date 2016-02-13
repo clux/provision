@@ -46,5 +46,8 @@ pacman -S ntfs-3g nemo-fileroller nemo-share samba
 # steam
 pacman -S steam lib32-alsa-plugins lib32-nvidia-libgl
 
+# dev services
+pacman -S docker postgresql
+
 # misc
-pacman -S docker firefox ttf-ubuntu-font-family
+pacman -S firefox ttf-ubuntu-font-family
