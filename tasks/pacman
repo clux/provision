@@ -31,6 +31,9 @@ pacman -S mpc mpd ncmpcpp
 # video (force libx264 over libx264-10bit for now)
 pacman -S libx264 openshot vlc
 
+# network
+pacman -S vpnc
+
 # X related
 pacman -S gnome-screenshot mumble redshift xclip xdotool xorg-xrandr xorg-xrdb
 
