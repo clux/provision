@@ -6,9 +6,8 @@ cd ~/local
 git clone ${GH}sstephenson/bats.git
 ./bats/install.sh .
 
-# z
-git clone ${GH}rupa/z.git
-ln -f z/z.1 $PWD/share/man/man1/
+git clone ${GH}clvv/fasd.git
+ln -f fasd/fasd.1 $PWD/share/man/man1/
 
 # arc
 git clone ${GH}phacility/libphutil.git
