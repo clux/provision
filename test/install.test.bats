@@ -77,7 +77,7 @@
 @test "clone" {
   run which arc
   [ "$status" -eq 0 ]
-  run man -w z
+  run man -w fasd
   [ "$status" -eq 0 ]
   run man -w bats
   [ "$status" -eq 0 ]
