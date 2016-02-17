@@ -44,7 +44,7 @@ pacman -S feh gimp gthumb imagemagick
 pacman -S ntfs-3g nemo-fileroller nemo-share samba
 
 # steam
-pacman -S steam lib32-alsa-plugins lib32-nvidia-libgl
+pacman -S steam lib32-alsa-plugins lib32-nvidia-libgl nvidia-settings
 
 # dev services
 pacman -S docker postgresql
