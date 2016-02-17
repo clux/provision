@@ -9,6 +9,10 @@ git clone ${GH}sstephenson/bats.git
 git clone ${GH}clvv/fasd.git
 ln -f fasd/fasd.1 $PWD/share/man/man1/
 
+# blackbox
+wget -qO- https://github.com/StackExchange/blackbox/archive/stable.tar.gz | tar xz
+cd blackbox-stable && make manual-install && cd -
+
 # arc
 git clone ${GH}phacility/libphutil.git
 git clone ${GH}phacility/arcanist.git
