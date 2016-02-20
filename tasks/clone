@@ -4,7 +4,7 @@ cd ~/local
 
 # bats
 wget -qO- https://github.com/sstephenson/bats/archive/v0.4.0.tar.gz | tar xz
-./bats*/install.sh
+./bats*/install.sh .
 
 # fasd (z)
 wget -qO- https://github.com/clvv/fasd/archive/1.0.1.tar.gz | tar xz
