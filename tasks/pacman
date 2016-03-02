@@ -32,7 +32,7 @@ pacman -S mpc mpd ncmpcpp
 pacman -S libx264 openshot vlc
 
 # network
-pacman -S vpnc
+pacman -S vpnc bind-tools
 
 # X related
 pacman -S gnome-screenshot mumble redshift xclip xdotool xorg-xrandr xorg-xrdb
