@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # llvm install script
-# usage ./llvm 3.7.0
+# usage ./llvm 3.8.0
 
 set -ex
 
@@ -51,15 +51,15 @@ tar xf ../../../../../clang-tools-extra-$ver.src.tar.xz --strip-components=1
 cd ../../../../
 mkdir -p projects/compiler-rt && cd projects/compiler-rt
 tar xf ../../../compiler-rt-$ver.src.tar.xz --strip-components=1
-cd ..
-mkdir -p libcxxabi && cd libcxxabi
-tar xf ../../../libcxxabi-$ver.src.tar.xz --strip-components=1
-cd ..
-mkdir -p libcxx && cd libcxx
-tar xf ../../../libcxx-$ver.src.tar.xz --strip-components=1
-cd ..
-mkdir -p libunwind && cd libunwind
-tar xf ../../../libunwind-$ver.src.tar.xz --strip-components=1
+#cd ..
+#mkdir -p libcxxabi && cd libcxxabi
+#tar xf ../../../libcxxabi-$ver.src.tar.xz --strip-components=1
+#cd ..
+#mkdir -p libcxx && cd libcxx
+#tar xf ../../../libcxx-$ver.src.tar.xz --strip-components=1
+#cd ..
+#mkdir -p libunwind && cd libunwind
+#tar xf ../../../libunwind-$ver.src.tar.xz --strip-components=1
 
 # back to source
 cd ~/local/llvm-v$ver
@@ -71,7 +71,7 @@ cmake \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX=/usr/local \
   ../src
-make -j2
+make -j4
 make install
 
 rm -rf ~/local-llvm-v$ver
