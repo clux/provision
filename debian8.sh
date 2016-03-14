@@ -12,6 +12,7 @@ export GH="git@github.com:"
 ./tasks/dotfiles # need to set up paths early
 source ~/.bashrc
 ./tasks/clone
+#./tasks/cargo # need to have rust first
 ./tasks/npm
 ./tasks/pip
 # stuff we didnt do in docker

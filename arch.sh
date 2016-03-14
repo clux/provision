@@ -21,6 +21,7 @@ export GH="git@github.com:"
 ./tasks/dotfiles # need to set up paths early
 source ~/.bashrc
 ./tasks/clone
+./tasks/cargo
 ./tasks/npm
 ./tasks/pip
 ./tasks/secrets
