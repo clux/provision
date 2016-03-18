@@ -88,7 +88,7 @@
   [ -d "$HOME/repos/dotfiles" ]
   [ -L "$HOME/.aliases" ]
   [ -L "$HOME/.bash_profile" ]
-  [ -L "$HOME/.bash_prompt" ]
+  [ -L "$HOME/.prompt" ]
   [ -L "$HOME/.bashrc" ]
   [ -d "$HOME/.config/sublime-text-3/Packages/User" ]
   [ -L "$HOME/.config/sublime-text-3/Packages/User" ]
