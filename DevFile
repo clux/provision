@@ -14,7 +14,7 @@ RUN ./tasks/dotfiles
 RUN ./tasks/clone
 
 ADD tasks/npm tasks/
-RUN /bin/bash -c 'source $HOME/.bashrc && ./tasks/npm'
+RUN /bin/bash -c 'source $HOME/.path && ./tasks/npm'
 
 ADD tasks/pip tasks/
 RUN ./tasks/pip
@@ -22,4 +22,4 @@ RUN ./tasks/pip
 # Verify
 ENV TRAVIS 1
 ADD test test
-RUN bash -c 'source ~/.bashrc && bats test'
+RUN bash -c 'source ~/.path && bats test'
