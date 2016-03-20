@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+
+# from .functions
+ruby-env
+
+gem install travis
