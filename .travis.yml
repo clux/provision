@@ -1,10 +1,6 @@
-language: python
-python:
-  - '2.7'
 services:
   - docker
 script:
-  - 'docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"'
   - docker pull clux/dotclux
   - docker build -t clux/dev -f DevFile .
 notifications:
