@@ -1,7 +1,12 @@
 ---
 # Arch playbook - pacman install all the things
 
+- name: Upgrade and update
+  pacman: upgrade=yes update_cache=yes
+
 # TODO: aur chrome
+
+
 
 - name: Install dependencies
   pacman: name={{ item }} state=installed

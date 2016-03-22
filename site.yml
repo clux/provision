@@ -1,13 +1,14 @@
 ---
 - hosts: kjttks
+  connection: local
   user: clux
   roles:
-  #- arch
+  - test
 
-- hosts: broxy
-  user: bro
+#- hosts: broxy
+#  user: bro
 
-- hosts: workstation
-  user: clux
-  roles:
-  #- debian
+#- hosts: workstation
+#  user: clux
+#  roles:
+#  #- debian
