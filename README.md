@@ -8,6 +8,8 @@ Ansible version is only tested locally on the branch.
 
 ```sh
 wget -qO- https://github.com/clux/dotclux/archive/master.tar.gz | tar xz
-# get pip, pip install ansible
-# run locally
+cd dotclux-master
+virtualenv -p $(which python2) venv
+pip install -r requirements.txt
+ansible-playbook -i hosts site.yml
 ```
