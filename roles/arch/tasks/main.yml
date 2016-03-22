@@ -1,0 +1,89 @@
+---
+# Arch playbook - pacman install all the things
+
+# TODO: aur chrome
+
+- name: Install dependencies
+  pacman: name={{ item }} state=installed
+  sudo: yes
+  with_items:
+   # CLIs
+   - ccze
+   - git
+   - lolcat
+   - lsb-release
+   - nmap
+   - rsync
+   # terminal stuff
+   - bash-completion
+   - cowsay
+   - rxvt-unicode
+   - tmux
+   - xterm
+   # TUIs
+   - htop
+   - profanity
+   - weechat
+   # haskell
+   - ghc
+   - cabal-install
+   - shellcheck
+   # c++
+   - cmake
+   - clang
+   - clang-analyzer
+   - clang-tools-extra
+   - lldb
+   # python
+   - python-pip
+   # rust
+   - rust
+   - cargo
+   # ssh + secrets managers
+   - keychain
+   - pass
+   - openssh
+   # music
+   - mpc
+   - mpd
+   - ncmpcpp
+   # video
+   - libx264 # force this over libx264-10bit for now
+   - openshot
+   - vlc
+   # network
+   - vnpc
+   - bind-tools # contains dig
+   # X related
+   - gnome-screenshot
+   - redshift
+   - xclip
+   - xdotool
+   - xorg-xrandr
+   - xorg-xrdb
+   # gtk compat
+   - gtk-engines
+   - gtk-engine-murrine
+   # media
+   - feh
+   - gimp
+   - gthumb
+   - imagemagick
+   - mumble
+   # filesystems
+   - ntfs-3g
+   - nemo-fileroller
+   - nemo-share
+   - samba
+   # gaming
+   - steam
+   - lib32-alsa-plugins
+   - lib32-nvigia-libgl
+   - nvidia-settings
+   # dev services
+   - docker
+   - postgresql
+   # misc
+   - firefox
+   - ttf-ubuntu-font-family
+   - strace

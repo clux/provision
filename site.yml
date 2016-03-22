@@ -1,0 +1,13 @@
+---
+- hosts: kjttks
+  user: clux
+  roles:
+  #- arch
+
+- hosts: broxy
+  user: bro
+
+- hosts: workstation
+  user: clux
+  roles:
+  #- debian

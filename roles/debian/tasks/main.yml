@@ -1,0 +1,83 @@
+---
+# Debian playbook - apt install all the things
+
+# Chrome - because some sites need flash
+- apt_key: url=https://dl.google.com/linux/linux_signing_key.pub state=present
+  sudo: yes
+- apt_repository:
+    repo='deb http://dl.google.com/linux/chrome/deb/ stable main'
+    state=present
+    filename='google-chrome'
+  sudo: yes
+
+- name: "Update cache"
+  apt: update_cache=yes
+  sudo: yes
+
+- name: Install development dependencies
+  apt: name={{ item }} state=installed
+  sudo: yes
+  with_items:
+   - autoconf
+   - build-essential
+   - cmake
+   - libssl-dev
+   - libncursesw5-dev
+   - libncurses5-dev
+   - libcurl4-gnutls-dev
+   - libedit-dev
+   - libreadline-dev
+   - libotr5-dev
+   - libtool
+   - libexpat1-dev
+   - libglib2.0-dev
+   - libnotify-dev
+   - libxml2-dev
+   - pkg-config
+   - python-dev
+   - python-pip
+   - swig
+   - uuid-dev
+
+- name: Install apps
+  apt: name={{ item }} state=installed
+  sudo: yes
+  with_items:
+   - ccze
+   - chromium
+   - cowsay
+   - curl
+   - git
+   - google-chrome-stable
+   - guake
+   - htop
+   - iftop
+   - keychain
+   - lcov
+   - lolcat
+   - openshot
+   - pass
+   - php5-cli
+   - php5-curl
+   - python-keyring
+   - sshfs
+   - mumble
+   - nmap
+   - redshift
+   - rxvt-unicode-256color
+   - shellcheck
+   - vlc
+   - vim-gnome
+   - weechat-curses
+   - xclip
+
+- name: Uninstall packages
+  apt: pkg={{ item }} state=absent purge=yes force=yes
+  sudo: yes
+  with_items:
+    - libzeitgeist-*
+    - zeitgeist
+
+- name: Autoremove
+  apt: autoremove
+

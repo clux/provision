@@ -1,0 +1,5 @@
+---
+# Common plays that will be run on all nodes
+
+# TODO: low level stuff
+# TODO: cargo, npm, pip, gem
