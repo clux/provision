@@ -1,0 +1,25 @@
+---
+# npm playbook - install cli tools globally
+
+- name: Install dependencies
+  npm: name={{ item }} global=yes
+  with_items:
+   - badgify
+   - faucet
+   - eslint
+   - jshint
+   - jsonlint
+   - json
+   - js-yaml
+   - pkginit
+   - browserify
+   - asciify
+   - ytdl
+   - symlink
+   - bower
+   - pm2
+   - marked-man
+   - yr-cli
+   - zalgolize
+
+# TODO: pkginit add default ~/.templates/npm/pkg.json

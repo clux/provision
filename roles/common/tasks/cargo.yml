@@ -1,0 +1,11 @@
+---
+# cargo playbook - install cli tools in cargo userdir
+
+# NB: this isn't implemented yet, implement and submit a PR to:
+# https://github.com/ansible/ansible-modules-extras/blob/devel/packaging/language
+#- name: Install dependencies
+#  cargo: name={{ item }} user_install=yes
+#  with_items:
+#   - rustfmt
+#   - cargo-edit
+

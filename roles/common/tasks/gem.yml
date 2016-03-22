@@ -1,0 +1,7 @@
+---
+# gem playbook - install cli tools in ruby gemdir
+
+- name: Install dependencies
+  gem: name={{ item }} user_install=yes
+  with_items:
+   - travis
