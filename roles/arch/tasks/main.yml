@@ -7,38 +7,42 @@
   pacman: name={{ item }} state=installed
   sudo: yes
   with_items:
-   # CLIs
-   - ccze
+   # terminal tools
    - git
-   - lolcat
-   - lsb-release
-   - nmap
    - rsync
-   # terminal stuff
    - bash-completion
    - cowsay
+   - lolcat
+   - ccze
    - rxvt-unicode
    - tmux
    - xterm
-   # TUIs
-   - htop
+   # chat
    - profanity
    - weechat
-   # haskell
+   # programming
+   - python-pip
+   - rust
+   - cargo
    - ghc
    - cabal-install
    - shellcheck
-   # c++
    - cmake
    - clang
    - clang-analyzer
    - clang-tools-extra
    - lldb
-   # python
-   - python-pip
-   # rust
-   - rust
-   - cargo
+   # system tools
+   - htop
+   - nmap
+   - strace
+   - lsb-release
+   # network
+   - vnpc
+   - bind-tools # contains dig
+   # dev services
+   - docker
+   - postgresql
    # ssh + secrets managers
    - keychain
    - pass
@@ -47,13 +51,6 @@
    - mpc
    - mpd
    - ncmpcpp
-   # video
-   - libx264 # force this over libx264-10bit for now
-   - openshot
-   - vlc
-   # network
-   - vnpc
-   - bind-tools # contains dig
    # X related
    - gnome-screenshot
    - redshift
@@ -64,7 +61,14 @@
    # gtk compat
    - gtk-engines
    - gtk-engine-murrine
-   # media
+   # browsers
+   - chromium
+   - firefox
+   # video
+   - libx264 # force this over libx264-10bit for now
+   - openshot
+   - vlc
+   # misc media
    - feh
    - gimp
    - gthumb
@@ -80,10 +84,5 @@
    - lib32-alsa-plugins
    - lib32-nvigia-libgl
    - nvidia-settings
-   # dev services
-   - docker
-   - postgresql
-   # misc
-   - firefox
+   # fonts
    - ttf-ubuntu-font-family
-   - strace
