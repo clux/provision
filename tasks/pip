@@ -9,6 +9,7 @@ globalModules=(
   mercurial_keyring
   pyflakes
   pylint
+  virtualenv
 )
 
 for i in "${globalModules[@]}"; do
