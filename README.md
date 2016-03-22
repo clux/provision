@@ -7,9 +7,8 @@ Personal Linux re-install logic in ansible for Debian, Arch, and Gentoo.
 Ansible version is only tested locally on the branch.
 
 ```sh
-wget -qO- https://github.com/clux/dotclux/archive/master.tar.gz | tar xz
+wget -qO- https://github.com/clux/dotclux/archive/ansible.tar.gz | tar xz
 cd dotclux-master
-virtualenv -p $(which python2) venv
-pip install -r requirements.txt
+source dev.sh
 ansible-playbook -i hosts site.yml
 ```
