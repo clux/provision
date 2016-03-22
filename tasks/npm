@@ -14,10 +14,8 @@ globalModules=(
   asciify     # CLI asciifier
   ytdl        # streaming youtube dl
   symlink     # node module link helper
-  badgify     # readme badge generator
   bower       # web components temp
   pm2         # process manager
-  polylint    # linter for polymer
   marked-man  # man page generator
   yr-cli      # weather forecasts
   zalgolize   # fun stuff
