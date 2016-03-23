@@ -1,2 +1,2 @@
-app-admin/sudo -sendmail
+app-admin/sudo -sendmail offensive
 media-sound/mdp libmpdclient
