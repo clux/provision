@@ -2,13 +2,14 @@ ACCEPT_KEYWORDS="amd64"
 EMERGE_DEFAULT_OPTS="--usepkg --getbinpkg --quiet-build --binpkg-respect-use"
 FEATURES="buildpkg parallel-fetch parallel-install binpkg-multi-instance"
 USE="-consolekit systemd"
+MAKEOPTS="-j$(nproc)"
 
-# distcc notes
-# Add features "distcc distcc-pump"
-#CC="distcc /usr/x86_64-pc-linux-gnu/gcc-bin/4.9.3/x86_64-pc-linux-gnu-gcc"
-#CXX="distcc /usr/x86_64-pc-linux-gnu/gcc-bin/4.9.3/x86_64-pc-linux-gnu-g++"
-
-MAKEOPTS="-j$(nproc)" # bump when using distcc
+{% if gentoo_distcc_instances > 0 %}
+FEATURES="${FEATURES} distcc distcc-pump"
+CC="distcc /usr/x86_64-pc-linux-gnu/gcc-bin/4.9.3/x86_64-pc-linux-gnu-gcc"
+CXX="distcc /usr/x86_64-pc-linux-gnu/gcc-bin/4.9.3/x86_64-pc-linux-gnu-g++"
+MAKEOPTS="-j$(($(nproc) + ${gentoo_distcc_instances}*4))"
+{% endif %}
 
 GENTOO_MIRRORS="${gentoo_binmirror} http://distfiles.gentoo.org/"
 PORTAGE_BINHOST="${gentoo_binmirror}packages/"

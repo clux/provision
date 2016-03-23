@@ -1,2 +1,2 @@
-gentoo_rsync_host: builder
-gentoo_binmirror: "10.47.200.62/"
+gentoo_binmirror: http://10.47.200.62/
+gentoo_distcc_instances: 0
