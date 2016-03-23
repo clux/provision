@@ -1,0 +1,27 @@
+---
+# clone playbook - install stuff from git tags / source trees
+
+# TODO: should have PATHs include these bindirs
+# or, where possible, call supplied install scripts / make install
+
+- name: Install blackbox
+  git:
+    repo: https://github.com/StackExchange/blackbox
+    dest: /opt/blackbox
+    version: stable
+
+- name: Install bats
+  git:
+    repo: https://github.com/sstephenson/bats
+    dest: /opt/bats
+    version: v0.4.0
+
+- name: Install arcanist
+  git:
+    repo: https://github.com/phacility/libphutil
+    dest: /opt/libphutil
+    clone: yes
+  git:
+    repo: https://github.com/phacility/arcanist
+    dest: /opt/arcanist
+    clone: yes
