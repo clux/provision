@@ -2,15 +2,14 @@
 # Arch playbook - pacman install all the things
 
 - name: Upgrade and update
+  become: yes
   pacman: upgrade=yes update_cache=yes
 
 # TODO: aur chrome
 
-
-
 - name: Install dependencies
+  become: yes
   pacman: name={{ item }} state=installed
-  sudo: yes
   with_items:
    # terminal tools
    - git
@@ -43,7 +42,7 @@
    - strace
    - lsb-release
    # network
-   - vnpc
+   - vpnc
    - bind-tools # contains dig
    # dev services
    - docker
@@ -87,7 +86,7 @@
    # gaming
    - steam
    - lib32-alsa-plugins
-   - lib32-nvigia-libgl
+   - lib32-nvidia-libgl
    - nvidia-settings
    # fonts
    - ttf-ubuntu-font-family

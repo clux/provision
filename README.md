@@ -10,5 +10,5 @@ Ansible version is only tested locally on the branch.
 wget -qO- https://github.com/clux/dotclux/archive/ansible.tar.gz | tar xz
 cd dotclux-master
 source dev.sh
-ansible-playbook -i hosts site.yml
+ansible-playbook -i hosts -vv --ask-become-pass machine.yml
 ```

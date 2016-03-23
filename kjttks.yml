@@ -1,0 +1,7 @@
+---
+- hosts: kjttks
+  connection: local
+  user: clux
+  roles:
+  - test
+  - arch
