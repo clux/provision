@@ -1,0 +1,34 @@
+ACCEPT_KEYWORDS="amd64"
+
+EMERGE_DEFAULT_OPTS="--usepkg --getbinpkg --quiet-build"
+# Maybe add: --ask --binpkg-respect-use --binpkg-changed-deps=y
+
+FEATURES="buildpkg parallel-fetch parallel-install"
+# distcc distcc-pump
+# maybe: userfetch userpriv usersandbox binpkg-multi-instance
+
+USE="-consolekit systemd"
+
+MAKEOPTS="-j8" # bump when using distcc
+
+GENTOO_MIRRORS="${gentoo_binmirror} http://distfiles.gentoo.org/"
+PORTAGE_BINHOST="${gentoo_binmirror}packages/"
+
+#CC="distcc /usr/x86_64-pc-linux-gnu/gcc-bin/4.9.3/x86_64-pc-linux-gnu-gcc"
+#CXX="distcc /usr/x86_64-pc-linux-gnu/gcc-bin/4.9.3/x86_64-pc-linux-gnu-g++"
+
+# Not sure how many of the following are actually needed
+# these were defaults last time I installed, good to be explicit?
+
+CFLAGS="-O2 -pipe"
+CXXFLAGS="${CFLAGS}"
+CHOST="x86_64-pc-linux-gnu"
+
+PORTDIR="/usr/portage"
+DISTDIR="${PORTDIR}/distfiles"
+PKGDIR="${PORTDIR}/packages"
+
+GRUB_PLATFORMS="pc"
+
+#ABI_X86="32 64"
+#VIDEO_CARDS=intel

@@ -6,6 +6,10 @@ kjttks
 workstation
 cluxtop
 
+[gentoo]
+
+[gentoo:vars]
+
 [all:vars]
 ansible_python_interpreter="/sbin/python2"
 ansible_connection=local

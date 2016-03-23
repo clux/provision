@@ -1,0 +1,2 @@
+app-admin/sudo -sendmail
+media-sound/mdp libmpdclient

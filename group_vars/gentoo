@@ -1,0 +1,2 @@
+gentoo_rsync_host: builder
+gentoo_binmirror: "10.47.200.62/"
