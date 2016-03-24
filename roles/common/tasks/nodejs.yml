@@ -1,0 +1,44 @@
+---
+ - set_fact:
+     node_prefix="/usr/local"
+     node_lts_name="Argon"
+
+ - file: path="{{node_prefix}}/node" state=directory
+
+ - name: Get latest nodejs releases
+   uri:
+     url: https://nodejs.org/download/release/index.json
+     return_content: yes
+   register: json_response
+   failed_when: json_response.content is not defined
+
+ - name: Identify nodejs LTS
+   set_fact:
+     node_lts={{ json_response.content | from_json | selectattr('lts', 'equalto', node_lts_name) | map(attribute='version') | list | first }}
+
+ - name: Grab nodejs tarball
+   get_url:
+     url: "https://nodejs.org/download/release/{{node_lts}}/node-{{node_lts}}-linux-x64.tar.gz"
+     dest: "{{node_prefix}}/node/current.tar.gz"
+   register: nodejs_tarball
+
+ - name: Unpack nodejs tarball
+   unarchive:
+     copy: no
+     src: "{{ nodejs_tarball.dest }}"
+     dest: "{{node_prefix}}"
+     creates: "{{node_prefix}}/node-{{node_lts}}-linux-x64/bin"
+   register: nodejs_checkout
+
+# TODO: verify shasums from https://nodejs.org/download/release/latest-{{node_lts_name|lower}}/
+
+ - name: Activate new nodejs install
+   file:
+     src={{node_prefix}}/node-{{node_lts}}-linux-x64/{{item}}
+     dest={{node_prefix}}/node/{{item}}
+     state=link
+     force=yes
+   with_items:
+     - bin
+     - lib
+     - share
