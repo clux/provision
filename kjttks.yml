@@ -3,5 +3,5 @@
   connection: local
   user: clux
   roles:
-  - arch
+  - debian
   - common
