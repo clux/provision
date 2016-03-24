@@ -1,6 +1,7 @@
 ---
 # npm playbook - install cli tools globally
 
+# Assume these are stable enough to not have to do state=latest on them
 - name: Install dependencies
   npm: name={{ item }} global=yes
   with_items:
@@ -21,5 +22,6 @@
    - marked-man
    - yr-cli
    - zalgolize
+  tags: npm
 
 # TODO: pkginit add default ~/.templates/npm/pkg.json
