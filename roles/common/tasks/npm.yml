@@ -2,7 +2,7 @@
 # npm playbook - install cli tools globally
 
 # Assume these are stable enough to not have to do state=latest on them
-- name: Install dependencies
+- name: Install npm dependencies
   npm: name={{ item }} global=yes
   with_items:
    - badgify

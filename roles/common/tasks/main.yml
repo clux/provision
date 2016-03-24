@@ -1,6 +1,7 @@
 ---
 # Common plays that will be run on all nodes
 
+- include: nodejs.yml
 - include: npm.yml
 #- include: pip.yml
 - include: gem.yml

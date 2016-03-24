@@ -8,7 +8,6 @@ cluxtop
 
 [gentoo]
 
-[gentoo:vars]
 
 [all:vars]
 ansible_python_interpreter="/sbin/python2"
