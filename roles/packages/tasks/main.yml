@@ -1,0 +1,14 @@
+---
+# Package manager interface playbook
+
+- include: arch.yml
+  when: ansible_os_family == "Archlinux"
+  become: yes
+
+- include: debian.yml
+  when: ansible_os_family == "Debian"
+  become: yes
+
+- include: gentoo.yml
+  when: ansible_os_family == "gentoo"
+  become: yes

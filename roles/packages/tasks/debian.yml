@@ -3,25 +3,17 @@
 
 # Chrome - because some sites need flash
 - apt_key: url=https://dl.google.com/linux/linux_signing_key.pub state=present
-  when: ansible_os_family == "Debian"
-  become: yes
 
 - apt_repository:
     repo='deb http://dl.google.com/linux/chrome/deb/ stable main'
     state=present
     filename='google-chrome'
-  when: ansible_os_family == "Debian"
-  become: yes
 
 - name: "Update cache"
   apt: update_cache=yes
-  when: ansible_os_family == "Debian"
-  become: yes
 
 - name: Install development dependencies
   apt: name={{ item }} state=installed
-  when: ansible_os_family == "Debian"
-  become: yes
   with_items:
    - autoconf
    - build-essential
@@ -46,8 +38,6 @@
 
 - name: Install apps
   apt: name={{ item }} state=installed
-  when: ansible_os_family == "Debian"
-  become: yes
   with_items:
    - ccze
    - chromium
@@ -79,8 +69,6 @@
 
 - name: Uninstall packages
   apt: pkg={{ item }} state=absent purge=yes force=yes
-  when: ansible_os_family == "Debian"
-  become: yes
   with_items:
     - libzeitgeist-*
     - zeitgeist
@@ -88,5 +76,3 @@
 # will arrive in 2.1
 #- name: Autoremove
 #  apt: autoremove
-#  when: ansible_os_family == "Debian"
-#  become: yes
