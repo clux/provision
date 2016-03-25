@@ -10,11 +10,11 @@
      url: https://nodejs.org/download/release/index.json
      return_content: yes
    register: json_response
-   failed_when: json_response.content is not defined
+   failed_when: json_response.json is not defined
 
- - name: Identify nodejs LTS
+ - name: Identify nodejs LTS version
    set_fact:
-     node_lts={{ json_response.content | from_json | selectattr('lts', 'equalto', node_lts_name) | map(attribute='version') | list | first }}
+     node_lts={{ json_response.json | selectattr('lts', 'equalto', node_lts_name) | map(attribute='version') | list | first }}
 
  - name: Grab nodejs tarball
    get_url:
