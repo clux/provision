@@ -4,11 +4,14 @@
 - include: arch.yml
   when: ansible_os_family == "Archlinux"
   become: yes
+  tags: [arch, packages]
 
 - include: debian.yml
   when: ansible_os_family == "Debian"
   become: yes
+  tags: [debian, packages]
 
 - include: gentoo.yml
   when: ansible_os_family == "gentoo"
   become: yes
+  tags: [gentoo, packages]

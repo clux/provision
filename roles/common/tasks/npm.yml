@@ -22,6 +22,5 @@
    - marked-man
    - yr-cli
    - zalgolize
-  tags: npm
 
 # TODO: pkginit add default ~/.templates/npm/pkg.json
