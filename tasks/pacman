@@ -10,6 +10,9 @@ pacman -S bash-completion cowsay rxvt-unicode tmux xterm
 # TUIs
 pacman -S htop profanity weechat
 
+# vim
+pacman -S vim vim-ctrlp
+
 # haskell
 pacman -S ghc cabal-install shellcheck
 
