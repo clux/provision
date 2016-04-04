@@ -2,7 +2,7 @@
 set -e
 
 # CLIs
-pacman -S ccze git lolcat lsb-release nmap rsync
+pacman -S ccze git tig lolcat lsb-release nmap rsync
 
 # terminals
 pacman -S bash-completion cowsay rxvt-unicode tmux xterm
@@ -44,7 +44,7 @@ pacman -S gtk-engines gtk-engine-murrine
 pacman -S feh gimp gthumb imagemagick
 
 # filesystems
-pacman -S ntfs-3g nemo-fileroller nemo-share samba
+pacman -S ntfs-3g nemo-fileroller nemo-share samba mtpfs
 
 # steam
 pacman -S steam lib32-alsa-plugins lib32-nvidia-libgl nvidia-settings
