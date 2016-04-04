@@ -54,6 +54,7 @@ apt-get install -y -qq \
   shellcheck \
   vlc \
   vim-gnome \
+  vim-ctrlp \
   weechat-curses \
   xclip
 
