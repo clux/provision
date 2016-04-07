@@ -4,7 +4,12 @@ set -e
 globalModules=(
   rustfmt
   cargo-edit
+  racer
 )
+
+# racer needs rust source checkout
+cd ~/.local
+wget -qO- https://github.com/rust-lang/rust/archive/1.7.0.tar.gz | tar xz
 
 for i in "${globalModules[@]}"; do
   echo "$i"
