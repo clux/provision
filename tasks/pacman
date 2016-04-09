@@ -56,4 +56,4 @@ pacman -S steam lib32-alsa-plugins lib32-nvidia-libgl nvidia-settings
 pacman -S docker postgresql
 
 # misc
-pacman -S firefox ttf-ubuntu-font-family strace
+pacman -S firefox ttf-ubuntu-font-family strace hunspell-en
