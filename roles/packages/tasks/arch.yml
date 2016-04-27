@@ -71,7 +71,7 @@
    - chromium
    - firefox
    # video
-   - libx264 # force this over libx264-10bit for now
+   - libx264-10bit
    #- openshot
    - vlc
    # misc media
