@@ -10,3 +10,6 @@
 #- include: pip.yml
 - include: gem.yml
 #- include: cargo.yml
+
+- include: sublime.yml
+  tags: sublime
