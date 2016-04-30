@@ -23,4 +23,7 @@
    - yr-cli
    - zalgolize
 
-# TODO: pkginit add default ~/.templates/npm/pkg.json
+- file: path=/home/{{ desktop_user }}/.config/pkginit/ state=directory
+- template:
+    src=templates/pkg.json
+    dest=/home/{{ desktop_user }}/.config/pkginit/default.json

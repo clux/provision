@@ -1,6 +1,7 @@
 ---
 # gem playbook - install cli tools in ruby gemdir
 
+# Note that ruby gemdir is not by default on path (ruby-env)
 - name: Install dependencies
   gem: name={{ item }} user_install=yes
   with_items:
