@@ -94,9 +94,6 @@
       # fonts
       - ttf-ubuntu-font-family
 
- - set_fact: desktop_user="clux"
-
-
 # Docker - create the docker group (gpasswd -a $USER docker)
 # NB: this requires `newgrp docker` or logout
  - name: Add desktop user to docker group

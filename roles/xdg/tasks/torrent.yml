@@ -1,0 +1,12 @@
+---
+# xdg
+
+- template: src=templates/sshtorrent.desktop dest=/usr/share/applications/
+  become: yes
+  notify: xdg-mime sshtorrent
+
+- template:
+    src=templates/magnet
+    dest=/home/{{ desktop_user }}/local/bin/magnet
+    owner={{ desktop_user }}
+    mode="u+rwx"

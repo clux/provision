@@ -1,5 +1,5 @@
 ---
-# ssh + sshd
+# sshd
 
 - template: src=templates/motd.sh dest=/etc/profile.d/motd.sh
 

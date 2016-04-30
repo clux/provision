@@ -1,0 +1,8 @@
+#!/bin/bash
+(
+  set -x
+  source ~/.functions
+  source ~/.keychain/agent-sh
+  broxy-download "$1"
+) >> ~/.broxy.log 2>&1
+

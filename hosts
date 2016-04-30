@@ -1,13 +1,12 @@
 [arch]
 broxy
-kjttks
+kjttks desktop_user=clux
 
 [debian]
 workstation
 cluxtop
 
 [gentoo]
-
 
 [all:vars]
 ansible_python_interpreter="/sbin/python2"

@@ -1,0 +1,4 @@
+---
+
+- name: xdg-mime sshtorrent
+  shell: xdg-mime default sshtorrent.desktop x-scheme-handler/magnet
