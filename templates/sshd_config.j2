@@ -1,0 +1,20 @@
+# Security - public keys only
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+AuthenticationMethods publickey
+AuthorizedKeysFile .ssh/authorized_keys
+X11Forwarding no
+
+# Misc
+Port 8702
+PrintMotd no
+LoginGraceTime 30
+
+# Privileges
+PermitRootLogin no
+UsePrivilegeSeparation sandbox
+{% if ansible_os_family == "Archlinux" %}
+Subsystem sftp /usr/lib/ssh/sftp-server
+{% elif ansible_os_family == "Debian" %}
+Subsystem sftp /usr/lib/openssh/sftp-server
+{% endif %}

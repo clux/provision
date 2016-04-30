@@ -1,0 +1,8 @@
+---
+# ssh + sshd
+
+- template: src=templates/sshd_config.j2 dest=/etc/ssh/sshd_config
+  notify:
+  - restart sshd
+
+- service: name=sshd state=started

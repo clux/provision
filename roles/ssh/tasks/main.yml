@@ -1,0 +1,6 @@
+---
+# ssh + sshd
+
+- include: sshd.yml
+  become: yes
+  tags: [ssh, sshd]
