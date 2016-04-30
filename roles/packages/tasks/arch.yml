@@ -1,95 +1,124 @@
 ---
 # Arch playbook - pacman install all the things
 
-- name: Upgrade and update
-  pacman: upgrade=yes update_cache=yes
+ - name: Upgrade and update
+   pacman: upgrade=yes update_cache=yes
 
 # TODO: aur chrome
 
-- name: Install dependencies
-  pacman: name={{ item }} state=installed
-  with_items:
+ - name: Install dependencies
+   pacman: name={{ item }} state=installed
+   with_items:
    # terminal tools
-   - git
-   - tig
-   - rsync
-   - bash-completion
-   - cowsay
-   - lolcat
-   - ccze
-   - rxvt-unicode
-   - tmux
-   - xterm
-   # vim
-   - vim
-   - vim-ctrlp
-   # chat
-   - profanity
-   - weechat
-   # programming
-   - python-pip
-   - rust
-   - cargo
-   - ghc
-   - cabal-install
-   - shellcheck
-   - cmake
-   - clang
-   - clang-analyzer
-   - clang-tools-extra
-   - lldb
-   # system tools
-   - htop
-   - nmap
-   - strace
-   - lsb-release
-   # network
-   - vpnc
-   - bind-tools # contains dig
-   # dev services
-   - docker
-   - postgresql
-   # ssh + secrets managers
-   - keychain
-   - pass
-   - openssh
-   # music
-   - mpc
-   - mpd
-   - ncmpcpp
-   # X related
-   - gnome-screenshot
-   - redshift
-   - xclip
-   - xdotool
-   - xorg-xrandr
-   - xorg-xrdb
-   # gtk compat
-   - gtk-engines
-   - gtk-engine-murrine
-   # browsers
-   - chromium
-   - firefox
-   # video
-   - libx264-10bit
-   #- openshot
-   - vlc
-   # misc media
-   - feh
-   - gimp
-   - gthumb
-   - imagemagick
-   - mumble
-   # filesystems
-   - ntfs-3g
-   - nemo-fileroller
-   - nemo-share
-   - samba
-   - mtpfs
-   # gaming
-   - steam
-   - lib32-alsa-plugins
-   - lib32-nvidia-libgl
-   - nvidia-settings
-   # fonts
-   - ttf-ubuntu-font-family
+      - git
+      - tig
+      - rsync
+      - bash-completion
+      - cowsay
+      - lolcat
+      - ccze
+      - rxvt-unicode
+      - tmux
+      - xterm
+      # vim
+      - vim
+      - vim-ctrlp
+      # chat
+      - profanity
+      - weechat
+      # programming
+      - python-pip
+      - rust
+      - cargo
+      - ghc
+      - cabal-install
+      - shellcheck
+      - cmake
+      - clang
+      - clang-analyzer
+      - clang-tools-extra
+      - lldb
+      # system tools
+      - htop
+      - nmap
+      - strace
+      - lsb-release
+      # network
+      - vpnc
+      - bind-tools # contains dig
+      # dev services
+      - docker
+      - postgresql
+      # ssh + secrets managers
+      - keychain
+      - pass
+      - openssh
+      # music
+      - mpc
+      - mpd
+      - ncmpcpp
+      # X related
+      - gnome-screenshot
+      - redshift
+      - xclip
+      - xdotool
+      - xorg-xrandr
+      - xorg-xrdb
+      # gtk compat
+      - gtk-engines
+      - gtk-engine-murrine
+      # browsers
+      - chromium
+      - firefox
+      # video
+      - libx264-10bit
+      #- openshot
+      - vlc
+      # misc media
+      - feh
+      - gimp
+      - gthumb
+      - imagemagick
+      - mumble
+      # filesystems
+      - ntfs-3g
+      - nemo-fileroller
+      - nemo-share
+      - samba
+      - mtpfs
+      # gaming
+      - steam
+      - lib32-alsa-plugins
+      - lib32-nvidia-libgl
+      - nvidia-settings
+      # fonts
+      - ttf-ubuntu-font-family
+
+ - set_fact: desktop_user="clux"
+
+
+# Docker - create the docker group (gpasswd -a $USER docker)
+# NB: this requires `newgrp docker` or logout
+ - name: Add desktop user to docker group
+   user: name={{desktop_user}} groups=docker append=yes
+
+ - service: name=docker enabled=yes state=started
+
+
+# PostgreSQL - require setup if /var/lib/postgres/data is empty
+ - name: Check if postgres boostrap is needed
+   shell: stat /var/lib/postgres/data/base
+   register: has_setup_postgres
+   changed_when: "has_setup_postgres.rc != 0"
+   ignore_errors: True
+
+ - name: postgres initdb
+   shell: initdb --locale $LANG -E UTF8 -D '/var/lib/postgres/data'
+   become_user: postgres
+   when: has_setup_postgres | failed
+
+ - service: name=postgresql enabled=yes state=started
+
+ - name: postgres createuser
+   shell: createuser --superuser {{desktop_user}} -U postgres
+   when: has_setup_postgres | failed
