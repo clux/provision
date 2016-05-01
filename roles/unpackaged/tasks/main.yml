@@ -1,0 +1,8 @@
+- include: clone.yml
+  tags: [unpackaged, clone]
+
+- include: nodejs.yml
+  tags: [unpackaged, nodejs]
+
+- include: sublime.yml
+  tags: [unpackaged, sublime]

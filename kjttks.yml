@@ -4,6 +4,7 @@
   user: clux
   roles:
   - packages
-  - common
+  - unpackaged
+  - languages
   - ssh
   - xdg

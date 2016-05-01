@@ -1,8 +1,5 @@
 ---
 
-- name: restart docker
-  service: name=docker state=restarted
-
 - name: make-install blackbox
   shell: make manual-install chdir=/home/{{ desktop_user }}/local/blackbox
 
