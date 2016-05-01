@@ -1,27 +1,52 @@
 ---
 # clone playbook - install stuff from git tags / source trees
 
-# TODO: should have PATHs include these bindirs
-# or, where possible, call supplied install scripts / make install
+- file: path=/home/{{ desktop_user }}/local/{{ item }} state=directory
+  with_items:
+    - share/man/man1
+    - share/man/man7
+    - bin
 
 - name: Install blackbox
   git:
     repo: https://github.com/StackExchange/blackbox
-    dest: /opt/blackbox
+    dest: /home/{{ desktop_user }}/local/blackbox
     version: stable
+    update: no
+  notify: make-install blackbox
 
+# Exists in arch as bash-bats
 - name: Install bats
   git:
     repo: https://github.com/sstephenson/bats
-    dest: /opt/bats
+    dest: /home/{{ desktop_user }}/local/bats
     version: v0.4.0
+    update: no
+  notify: make-install bats
 
-- name: Install arcanist
+# Exists on AUR as z, but not on debian
+- name: Install z
   git:
-    repo: https://github.com/phacility/libphutil
-    dest: /opt/libphutil
-    clone: yes
+    repo: https://github.com/rupa/z
+    dest: /home/{{ desktop_user }}/local/z
+    update: no
+
+# only thing z needs to install is z.1
+# otherwise relies on sourcing ./z/z.sh from bash_profile
+- name: link z.1
+  file:
+    src=/home/{{ desktop_user }}/local/z/z.1
+    dest=/home/{{ desktop_user }}/local/share/man/man1/z.1
+    state=link
+    force=yes
+
+# on AUR as arcanist-git
+# relies on ./arcanist/bin on PATH
+- name: Install arcanist from master
   git:
-    repo: https://github.com/phacility/arcanist
-    dest: /opt/arcanist
-    clone: yes
+    repo: https://github.com/phacility/{{ item }}
+    dest: /home/{{ desktop_user }}/local/{{ item }}
+    update: no
+  with_items:
+    - arcanist
+    - libphutil

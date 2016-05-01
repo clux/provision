@@ -13,3 +13,6 @@
 
 - include: sublime.yml
   tags: sublime
+
+- include: clone.yml
+  tags: [common, clone]
