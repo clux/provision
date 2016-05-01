@@ -1,28 +1,28 @@
 ---
- - set_fact:
-     subl_prefix="/usr/local"
-     subl_build=3103
+- set_fact:
+    subl_prefix="/usr/local"
+    subl_build=3103
 
- - file: path="{{subl_prefix}}/sublime/{{subl_build}}" state=directory
+- file: path="{{subl_prefix}}/sublime/{{subl_build}}" state=directory
 
- - name: Grab sublime tarball
-   get_url:
-     url: "https://download.sublimetext.com/sublime_text_3_build_{{subl_build}}_x64.tar.bz2"
-     dest: "{{subl_prefix}}/sublime/{{subl_build}}.tar.gz"
-   register: sublime_tarball
+- name: Grab sublime tarball
+  get_url:
+    url=https://download.sublimetext.com/sublime_text_3_build_{{ subl_build }}_x64.tar.bz2
+    dest={{subl_prefix}}/sublime/{{subl_build}}.tar.gz
+  register: sublime_tarball
 
- - name: Unpack sublime tarball
-   unarchive:
-     copy: no
-     src: "{{ sublime_tarball.dest }}"
-     dest: "{{subl_prefix}}/sublime/{{subl_build}}"
-     creates: "{{subl_prefix}}/sublime/{{subl_build}}/sublime_text_3/sublime_text"
-     # TODO: strip components 1 in extra opts when it's done
-   register: sublime_checkout
+- name: Unpack sublime tarball
+  unarchive:
+    copy: no
+    src: "{{ sublime_tarball.dest }}"
+    dest: "{{subl_prefix}}/sublime/{{subl_build}}"
+    creates: "{{subl_prefix}}/sublime/{{subl_build}}/sublime_text_3/sublime_text"
+    # TODO: strip components 1 in extra opts when it's done
+  register: sublime_checkout
 
- - name: Activate new sublime install
-   file:
-     src={{subl_prefix}}/sublime/{{subl_build}}/sublime_text_3/sublime_text
-     dest={{subl_prefix}}/bin/subl
-     state=link
-     force=yes
+- name: Activate new sublime install
+  file:
+    src={{subl_prefix}}/sublime/{{subl_build}}/sublime_text_3/sublime_text
+    dest={{subl_prefix}}/bin/subl
+    state=link
+    force=yes
