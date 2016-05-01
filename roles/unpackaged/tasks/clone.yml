@@ -1,6 +1,8 @@
 ---
 # clone playbook - install stuff from git tags / source trees
 
+# TODO: all update flags can be set to yes iff want to upgrade
+
 - file: path=/home/{{ desktop_user }}/local/{{ item }} state=directory
   with_items:
     - share/man/man1
