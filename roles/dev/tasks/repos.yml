@@ -1,0 +1,93 @@
+---
+# Clone all active projects into ~/repos
+
+# TODO: these all need to set identity...
+
+- file: path=/home/{{ desktop_user }}/{{ item }} state=directory
+  with_items:
+  - repos2
+  - repos2/tournament
+  - repos2/interlude
+
+- name: Checkout general modules
+  git:
+    repo=git@github.com:clux/{{ item }}.git
+    dest=/home/{{ desktop_user }}/repos/{{ item }}
+    key_file=/home/{{ desktop_user }}/.ssh/id_github
+  with_items:
+  - bandage
+  - blog
+  - deus-login
+  - dye
+  - food
+  - gu
+  - icebreaker
+  - irc-stream
+  - linkr-app
+  - linkr-components
+  - mddocs
+  - posts
+  - sdp-transform
+  - sulfur
+  - quadratic
+  - topiary
+
+- name: Checkout tournament modules
+  git:
+    repo=git@github.com:clux/{{ item }}.git
+    dest=/home/{{ desktop_user }}/repos/tournament/{{ item }}
+    key_file=/home/{{ desktop_user }}/.ssh/id_github
+  with_items:
+  - duel
+  - duel-names
+  - ffa
+  - ffa-tb
+  - group
+  - groupstage
+  - groupstage-tb
+  - groupstage-tb-duel
+  - masters
+  - roundrobin
+  - tiebreaker
+  - tournament
+  - tourney
+
+- name: Checkout interlude modules
+  git:
+    repo=git@github.com:clux/{{ item }}.git
+    dest=/home/{{ desktop_user }}/repos/interlude/{{ item }}
+    key_file=/home/{{ desktop_user }}/.ssh/id_github
+  with_items:
+  - autonomy
+  - interlude
+  - operators
+  - subset
+
+# TODO: symlink
+# symlink repos repos/tournament repos/interlude --execute
+
+
+- name: Abandoned modules
+  shell: echo {{ item }}
+  when: False
+  with_items:
+  - badgify # globally installed
+  - cleverbot-irc # stable, deployed
+  - combustion # not in use atm, but good
+  - confortable # stable, in use everywhere
+  - curvefever-bot # unmaintained, broken
+  - curvefever-stats # unmaintained, broken
+  - decay # stable, working
+  - logule # stable, but overcomplicated and unmaintained (using sulphur+smell)
+  - mumble-bot # just for laughs
+  - npm-graph # not in use atm
+  - splitter # not in use atm
+  - tabexplode # not in use atm
+  - trials # stable, working
+  - typr # stable, not needed
+  - tub # globally installed
+  - unitednationsoftheworld # song
+  - wolfram-alpha # stable, working
+  - wolfram-irc # stable, deployed
+  - wrappers # not used in ages
+  - xmpp-stream # experimental, and no need for atm
