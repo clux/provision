@@ -3,7 +3,7 @@
   connection: local
   user: clux
   roles:
-  - packages
+  - os
   - unpackaged
   - languages
   - ssh
