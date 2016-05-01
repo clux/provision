@@ -81,3 +81,6 @@
     dest=/etc/default/keyboard
     regexp="^XKBVARIANT="
     line="XKBVARIANT=\"colemak\""
+
+# TODO: rustup
+# TODO: get.docker

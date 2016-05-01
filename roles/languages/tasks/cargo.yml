@@ -1,11 +1,30 @@
 ---
 # cargo playbook - install cli tools in cargo userdir
 
-# NB: this isn't implemented yet, implement and submit a PR to:
+# NB: cargo is not in ansible-modules-extras atm, so using shell. See:
 # https://github.com/ansible/ansible-modules-extras/blob/devel/packaging/language
-#- name: Install dependencies
-#  cargo: name={{ item }} user_install=yes
-#  with_items:
-#   - rustfmt
-#   - cargo-edit
 
+- shell: cargo install {{ item }}
+    creates=/home/{{ desktop_user }}/.cargo/bin/{{ item }}
+  with_items:
+   - rustfmt
+   - racer
+
+- shell: cargo install cargo-edit
+    creates=/home/{{ desktop_user }}/.cargo/bin/cargo-add
+
+- set_fact:
+    rust_ver="1.8.0"
+
+- name: Grab rust source tarball
+  get_url:
+    url=https://static.rust-lang.org/dist/rustc-{{ rust_ver }}-src.tar.gz
+    dest=/home/{{ desktop_user }}/.cargo/rustc-{{ rust_ver }}-src.tar.gz
+  register: rustc_tarball
+
+- name: Fetch rust source for racer
+  unarchive:
+    copy: no
+    src: "{{ rustc_tarball.dest }}"
+    dest: /home/{{ desktop_user }}/.cargo/
+    creates: /home/{{ desktop_user }}/.cargo/rustc-{{ rust_ver }}
