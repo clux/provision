@@ -5,15 +5,16 @@
 
 - file: path=/home/{{ desktop_user }}/{{ item }} state=directory
   with_items:
-  - repos2
-  - repos2/tournament
-  - repos2/interlude
+  - repos
+  - repos/tournament
+  - repos/interlude
 
 - name: Checkout general modules
   git:
     repo=git@github.com:clux/{{ item }}.git
     dest=/home/{{ desktop_user }}/repos/{{ item }}
     key_file=/home/{{ desktop_user }}/.ssh/id_github
+    update=no
   with_items:
   - bandage
   - blog
@@ -37,6 +38,7 @@
     repo=git@github.com:clux/{{ item }}.git
     dest=/home/{{ desktop_user }}/repos/tournament/{{ item }}
     key_file=/home/{{ desktop_user }}/.ssh/id_github
+    update=no
   with_items:
   - duel
   - duel-names
@@ -57,6 +59,7 @@
     repo=git@github.com:clux/{{ item }}.git
     dest=/home/{{ desktop_user }}/repos/interlude/{{ item }}
     key_file=/home/{{ desktop_user }}/.ssh/id_github
+    update=no
   with_items:
   - autonomy
   - interlude
@@ -67,7 +70,7 @@
 # symlink repos repos/tournament repos/interlude --execute
 
 
-- name: Abandoned modules
+- name: Inactive modules
   shell: echo {{ item }}
   when: False
   with_items:

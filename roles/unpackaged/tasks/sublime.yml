@@ -1,7 +1,4 @@
 ---
-- set_fact:
-    subl_prefix="/usr/local"
-    subl_build=3103
 
 - file: path="{{subl_prefix}}/sublime/{{subl_build}}" state=directory
 

@@ -1,8 +1,4 @@
 ---
-- set_fact:
-    node_prefix="/usr/local"
-    node_lts_name="Argon"
-
 - file: path="{{node_prefix}}/node" state=directory
 
 - name: Get latest nodejs releases

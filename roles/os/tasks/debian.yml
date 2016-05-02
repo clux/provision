@@ -75,12 +75,3 @@
 # will arrive in 2.1
 #- name: Autoremove
 #  apt: autoremove
-
-- name: Set login keyboard
-  lineinfile:
-    dest=/etc/default/keyboard
-    regexp="^XKBVARIANT="
-    line="XKBVARIANT=\"colemak\""
-
-# TODO: rustup
-# TODO: get.docker

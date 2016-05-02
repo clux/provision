@@ -12,6 +12,7 @@
   shell: curl -fsSL https://get.docker.com/ | sh
 
 - name: Install rust
-  shell: curl https://static.rust-lang.org/rustup.sh | sh -s -- --yes
+  shell: curl https://static.rust-lang.org/rustup.sh | sh -s -- --yes --disable-sudo
+  # NB: may need become_user: root here
 
 # TODO: profanity and llvm scripts
