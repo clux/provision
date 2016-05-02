@@ -1,8 +1,8 @@
 services:
   - docker
 script:
-  - docker pull clux/dotclux
-  - docker build -t clux/dev -f DevFile .
+  - docker pull clux/debian
+  - docker build -t clux/dev -f Dockertravis .
 notifications:
   email:
     on_success: change

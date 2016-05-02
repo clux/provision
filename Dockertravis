@@ -1,0 +1,5 @@
+FROM clux/debian
+
+RUN curl -L https://api.github.com/repos/clux/dotclux/tarball/ansible | tar xz
+
+RUN cd clux* && ./DEPLOY bootstrap kjttks

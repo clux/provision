@@ -3,6 +3,7 @@
   connection: local
   user: clux
   roles:
+  - bootstrap
   - os
   - unpackaged
   - languages

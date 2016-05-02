@@ -1,9 +1,12 @@
 #!/bin/bash
 if [[ $1 == "bootstrap" ]]; then
   sudo chown -R "$USER" /usr/local
-  sudo pacman -S python-virtualenv
+
+  # if arch: sudo pacman -S python-virtualenv
+
+  # if debian: need sudo apt-get update && sudo apt-get install -y curl python-pip
   source dev.sh
-  ansible-playbook -i hosts -v --ask-become-pass $1 --tags="bootstrap"
+  ansible-playbook -i hosts $1 -v --ask-become-pass --tags="bootstrap"
 elif [[ $1 == "core" ]]; then
   source dev.sh
   ansible-playbook -i hosts $1 -v --ask-become-pass --tags="core"
