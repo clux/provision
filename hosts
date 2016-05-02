@@ -1,10 +1,10 @@
 [arch]
-broxy
+broxy  desktop_user=bro
 kjttks desktop_user=clux
 
 [debian]
-workstation
-cluxtop
+workstation desktop_user=clux
+cluxtop     desktop_user=clux
 
 [gentoo]
 
