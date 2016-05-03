@@ -2,12 +2,20 @@ FROM debian:jessie
 
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get install -y \
-  locales \
-  curl \
-  python-pip \
-  man-db \
-  ca-certificates \
   apt-utils \
+  aptitude \
+  ca-certificates \
+  curl \
+  libffi-dev \
+  libssl-dev \
+  libyaml-dev \
+  locales \
+  man-db \
+  python-pip \
+  python-dev \
+  ssh \
+  virtualenv \
+  vim \
   xz-utils
 
 RUN dpkg-reconfigure locales && \

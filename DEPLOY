@@ -1,16 +1,15 @@
 #!/bin/bash
 if [[ $1 == "bootstrap" ]]; then
-  sudo chown -R "$USER" /usr/local
-
-  # if arch: sudo pacman -S python-virtualenv
-
-  # if debian: need sudo apt-get update && sudo apt-get install -y curl python-pip
-  source dev.sh
-  ansible-playbook -i hosts $1 -v --ask-become-pass --tags="bootstrap"
+  #sudo chown -R "$USER" /usr/local
+  source venv.sh
+  ansible-playbook -i hosts $2 -v --ask-become-pass --tags="bootstrap"
 elif [[ $1 == "core" ]]; then
-  source dev.sh
+  source venv.sh
   ansible-playbook -i hosts $1 -v --ask-become-pass --tags="core"
+elif [[ $1 == "travis" ]]; then
+  #pip install -r requirements.txt
+  ansible-playbook -i hosts travis.yml -vvv
 else
-  source dev.sh
+  source venv.sh
   ansible-playbook -i hosts $1 -v --ask-become-pass --tags="$2"
 fi

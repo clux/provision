@@ -1,5 +1,13 @@
 FROM clux/debian
 
-RUN curl -L https://api.github.com/repos/clux/dotclux/tarball/ansible | tar xz
+ADD ansible.tar dotclux
 
-RUN cd clux* && ./DEPLOY bootstrap kjttks
+# hosts...
+#[travis]
+#travis      desktop_user=clux
+#[travis:vars]
+#ansible_python_interpreter="/usr/bin/python2"
+
+ENV PATH $PATH:/usr/local/node/bin
+RUN cd dotclux && bash -c "pip install -r requirements.txt"
+RUN cd dotclux && ./DEPLOY travis

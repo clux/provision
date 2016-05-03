@@ -1,9 +1,0 @@
-services:
-  - docker
-script:
-  - docker pull clux/debian
-  - docker build -t clux/dev -f Dockertravis .
-notifications:
-  email:
-    on_success: change
-    on_failure: always

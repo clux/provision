@@ -1,1 +1,7 @@
-ansible
+ansible==2.0.2.0
+ecdsa==0.13
+Jinja2==2.8
+MarkupSafe==0.23
+paramiko==1.16.0
+pycrypto==2.6.1
+PyYAML==3.11
