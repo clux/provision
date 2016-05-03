@@ -2,14 +2,17 @@
 # Debian playbook - apt install all the things
 
 # Chrome - because some sites need flash
-- apt_key: url=https://dl.google.com/linux/linux_signing_key.pub state=present
-
-- apt_repository:
-    repo='deb http://dl.google.com/linux/chrome/deb/ stable main'
-    filename='google-chrome'
+# NB: because chrome actually updates the sources.list.d/google-chrome.list
+# we need the filename attr here (which is out in 2.1)..
+#- apt_key: url=https://dl.google.com/linux/linux_signing_key.pub state=present
+#- apt_repository:
+#    repo='deb http://dl.google.com/linux/chrome/deb/ stable main'
+#    filename='google-chrome'
 
 - name: "Update cache"
   apt: update_cache=yes
+
+#- apt: name=google-chrome-stable
 
 - name: Install development dependencies
   apt: name={{ item }} state=installed
@@ -43,7 +46,6 @@
    - cowsay
    - curl
    - git
-   - google-chrome-stable
    - guake
    - htop
    - iftop
