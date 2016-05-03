@@ -1,15 +1,10 @@
 #!/bin/bash
+source venv.sh
 if [[ $1 == "bootstrap" ]]; then
   #sudo chown -R "$USER" /usr/local
-  source venv.sh
-  ansible-playbook -i hosts $2 -v --ask-become-pass --tags="bootstrap"
+  ansible-playbook -i hosts bootstrap.yml -v
 elif [[ $1 == "core" ]]; then
-  source venv.sh
   ansible-playbook -i hosts $1 -v --ask-become-pass --tags="core"
-elif [[ $1 == "travis" ]]; then
-  #pip install -r requirements.txt
-  ansible-playbook -i hosts travis.yml -vvv
 else
-  source venv.sh
   ansible-playbook -i hosts $1 -v --ask-become-pass --tags="$2"
 fi

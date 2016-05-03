@@ -1,0 +1,11 @@
+---
+- hosts: kjttks
+  connection: local
+  gather_facts: no
+  pre_tasks:
+    - name: 'install python2'
+      raw: pacman -S --noconfirm python-simplejson
+
+  tasks:
+    - name: ensure user clux exists
+      user: name=clux state=present groups=audio,video,games,rfkill,uucp,wheel
