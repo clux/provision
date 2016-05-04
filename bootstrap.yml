@@ -1,6 +1,7 @@
 ---
 - hosts: kjttks
   connection: local
+  user: root
   gather_facts: no
   pre_tasks:
     - name: install python2 for ansible
@@ -13,19 +14,32 @@
         password=1234
         state=present
         groups=audio,video,games,rfkill,uucp,wheel
+
     - name: allow wheel users to sudo without pass
-      lineinfile:
-        dest=/etc/sudoers
-        state=present
-        regexp='^%wheel'
-        line='%wheel ALL=(ALL) NOPASSWD: ALL'
-        validate='visudo -cf %s'
+      lineinfile: "dest=/etc/sudoers state=present regexp='^%wheel' line='%wheel ALL=(ALL) NOPASSWD: ALL' validate='visudo -cf %s'"
+
     - name: enable multilib for steam
       lineinfile:
         dest=/etc/pacman.conf
-        regexp='^#{{ item }}' # these lines exist commented by default
-        line={{ item }}
-        state=present
+        backrefs=yes
+        regexp="^\#\[multilib\]"
+        line="[multilib]\nInclude = /etc/pacman.d/mirrorlist"
+
+    - name: install core display utilities
+      pacman: name={{ item }} state=installed
       with_items:
-        - "[multilib]"
-        - "Include = /etc/pacman.d/mirrorlist"
+        - alsa-utils
+        - cinnamon
+        - lightdm
+        - lightdm-gtk-greeter
+        - ttf-dejavu
+        - ttf-liberation
+        - guake
+        - chromium
+
+    - name: enable lightdm gtk greeter
+      lineinfile:
+        dest=/etc/lightdm/lightdm.conf
+        backrefs=yes
+        regexp="^#greeter-session\="
+        line="greeter-session=lightdm-gtk-greeter"
