@@ -3,9 +3,29 @@
   connection: local
   gather_facts: no
   pre_tasks:
-    - name: 'install python2'
+    - name: install python2 for ansible
       raw: pacman -S --noconfirm python-simplejson
 
   tasks:
-    - name: ensure user clux exists
-      user: name=clux state=present groups=audio,video,games,rfkill,uucp,wheel
+    - name: ensure {{ desktop_user }} exists
+      user:
+        name={{ desktop_user }}
+        password=1234
+        state=present
+        groups=audio,video,games,rfkill,uucp,wheel
+    - name: allow wheel users to sudo without pass
+      lineinfile:
+        dest=/etc/sudoers
+        state=present
+        regexp='^%wheel'
+        line='%wheel ALL=(ALL) NOPASSWD: ALL'
+        validate='visudo -cf %s'
+    - name: enable multilib for steam
+      lineinfile:
+        dest=/etc/pacman.conf
+        regexp='^#{{ item }}' # these lines exist commented by default
+        line={{ item }}
+        state=present
+      with_items:
+        - "[multilib]"
+        - "Include = /etc/pacman.d/mirrorlist"
