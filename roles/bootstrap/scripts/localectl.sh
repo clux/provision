@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 old=$(localectl)
 
 localectl set-locale LANG=en_GB.UTF-8
