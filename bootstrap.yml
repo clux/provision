@@ -25,6 +25,13 @@
         regexp="^\#\[multilib\]"
         line="[multilib]\nInclude = /etc/pacman.d/mirrorlist"
 
+    - name: install display drivers and xorg
+      pacman: name={{ item }} state=installed
+      with_items:
+        - nvidia
+        - nvidia-libgl
+        - libevdev
+
     - name: install core display utilities
       pacman: name={{ item }} state=installed
       with_items:
@@ -43,3 +50,6 @@
         backrefs=yes
         regexp="^#greeter-session\="
         line="greeter-session=lightdm-gtk-greeter"
+
+    - name: enable lightdm
+      service: name=lightdm enabled=yes
