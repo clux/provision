@@ -11,7 +11,6 @@
     - name: ensure {{ desktop_user }} exists
       user:
         name={{ desktop_user }}
-        password=1234
         state=present
         groups=audio,video,games,rfkill,uucp,wheel
 
