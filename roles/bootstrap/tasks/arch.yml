@@ -1,0 +1,11 @@
+---
+
+- script: localectl.sh
+  become_user: root
+  register: localectl_result
+  changed_when: "localectl_result.rc != 0"
+
+- script: timedatectl.sh
+  become_user: root
+  register: timedatectl_result
+  changed_when: "timedatectl_result.rc != 0"

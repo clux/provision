@@ -53,30 +53,10 @@ exit # chroot
 reboot
 
 # as root
-localectl set-locale LANG=en_GB.UTF-8
-localectl set-keymap colemak
-timedatectl set-ntp true
-
-nano /etc/pacman.conf # uncomment multilib part (not testing)
 pacman -Syy
 pacman -Syu
-pacman -S sudo
-useradd -m -G audio,video,games,rfkill,uucp,wheel -s /bin/bash clux
-passwd clux
-visudo # uncomment %wheel ALL(ALL) ALL --- NOT NOPASSWD
+# TODO: install a few deps for running ansible locally
 
-pacman -S nvidia nvidia-libgl libevdev # will pull in xorg-server
-reboot # blacklists noveu
-
-# as root
-X # verify we can startx
-pacman -S alsa-utils cinnamon lightdm lightdm-gtk-greeter
-pacman -S ttf-dejavu ttf-liberation guake chromium wget
-
-nano /etc/lightdm/lightdm.conf # greeter-session=lightdm-gtk-greeter
-
-reboot
-
-# as clux
-localectl set-x11-keymap us pc104 colemak # greeter keyb
-sudo systemctl enable lightdm --now
+curl https://api.github.com/repos/clux/dotclux/tarball/ansible | tar xz
+cd clux*
+./DEPLOY bootstrap kjttks.yml

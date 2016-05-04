@@ -8,11 +8,15 @@
       raw: pacman -S --noconfirm python-simplejson
 
   tasks:
+    - name: sudo
+      pacman: name=sudo state=installed
+
     - name: ensure {{ desktop_user }} exists
       user:
         name={{ desktop_user }}
         state=present
         groups=audio,video,games,rfkill,uucp,wheel
+        # TODO: generate ssh keys here
 
     - name: allow wheel users to sudo without pass
       lineinfile: "dest=/etc/sudoers state=present regexp='^%wheel' line='%wheel ALL=(ALL) NOPASSWD: ALL' validate='visudo -cf %s'"
@@ -52,3 +56,6 @@
 
     - name: enable lightdm
       service: name=lightdm enabled=yes
+
+  roles:
+    - bootstrap

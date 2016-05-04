@@ -2,6 +2,11 @@
 # OS extras for debian
 
 - include: laptop.yml
-  when: ansible_os_family == "Debian" and False
+  when: ansible_os_family == "Debian"
+  become: yes
+  tags: [bootstrap]
+
+- include: arch.yml
+  when: ansible_os_family == "Archlinux"
   become: yes
   tags: [bootstrap]
