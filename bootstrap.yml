@@ -18,7 +18,7 @@
         groups=audio,video,games,rfkill,uucp,wheel
         # TODO: generate ssh keys here
 
-    - name: allow wheel users to sudo without pass
+    - name: allow wheel users to sudo with pass
       lineinfile:
         dest=/etc/sudoers
         backrefs=yes
