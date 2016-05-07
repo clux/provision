@@ -15,7 +15,7 @@
       user:
         name={{ desktop_user }}
         state=present
-        groups=audio,video,games,rfkill,uucp,wheel
+        groups=audio,video,games,rfkill,uucp,wheel,docker
         # TODO: generate ssh keys here
 
     - name: allow wheel users to sudo with pass
