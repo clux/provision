@@ -18,5 +18,5 @@ curl https://api.github.com/repos/clux/dotclux/tarball/ansible | tar xz
 To provision specific roles/tags later:
 
 ```sh
-./DEPLOY gem,npm kjttks.yml
+./DEPLOY kjttks.yml gem,npm
 ```
