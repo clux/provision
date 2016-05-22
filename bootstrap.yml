@@ -3,9 +3,6 @@
   connection: local
   user: root
   gather_facts: no
-  pre_tasks:
-    - name: install python2 for ansible
-      raw: pacman -S --noconfirm python-simplejson
 
   tasks:
     - name: sudo
@@ -15,15 +12,14 @@
       user:
         name={{ desktop_user }}
         state=present
-        groups=audio,video,games,rfkill,uucp,wheel,docker
+        groups=audio,video,games,rfkill,uucp,wheel
         # TODO: generate ssh keys here
+        # TODO: docker group means this can't be re-run if after install (lest we lose it)
 
     - name: allow wheel users to sudo with pass
       lineinfile:
         dest=/etc/sudoers
-        backrefs=yes
-        regexp='^\#(%wheel ALL\=\(ALL\) ALL)$'
-        line='\1'
+        line='%wheel ALL=(ALL) ALL'
         validate='visudo -cf %s'
 
     - name: enable multilib for steam
@@ -33,12 +29,11 @@
         regexp="^\#\[multilib\]"
         line="[multilib]\nInclude = /etc/pacman.d/mirrorlist"
 
-    - name: install display drivers and xorg
-      pacman: name={{ item }} state=installed
-      with_items:
-        - nvidia
-        - nvidia-libgl
-        - libevdev
+    - name: "Update cache after changing pacman settings"
+      pacman: update_cache=yes
+
+    - name: install display drivers and choice dependencies in one go
+      pacman: name="nvidia nvidia-libgl libevdev" state=installed
 
     - name: install core display utilities
       pacman: name={{ item }} state=installed
@@ -59,8 +54,12 @@
         regexp="^#greeter-session\="
         line="greeter-session=lightdm-gtk-greeter"
 
+    - name: disable overly fancy grub that can be laggy
+      lineinfile:
+        dest=/etc/default/grub
+        backrefs=yes
+        regexp="^#GRUB_TERMINAL_OUTPUT\="
+        line="GRUB_TERMINAL_OUTPUT=console"
+
     - name: enable lightdm
       service: name=lightdm enabled=yes
-
-  #roles:
-  #  - bootstrap

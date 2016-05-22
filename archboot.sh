@@ -39,24 +39,26 @@ hwclock --systohc --utc
 mkinitcpio -p linux
 
 # bootloader to SSD
+pacman -Syy
+pacman -Syu
 pacman -S grub
 pacman -S intel-ucode # microcode
 grub-mkconfig -o /boot/grub/grub.cfg
 grub-install /dev/sda
 
+localectl set-locale LANG=en_GB.UTF-8
+localectl set-keymap colemak
+
 # enable dhcpcd on right interface (see ip link show)
 systemctl enable dhcpcd@enp5s0
 
-# set root pass, exit chroot and reboot into roots account
+# set root pass
 passwd
-exit # chroot
-reboot
+#maybe reboot here
 
-# as root
-pacman -Syy
-pacman -Syu
-# TODO: install a few deps for running ansible locally
-
-curl https://api.github.com/repos/clux/dotclux/tarball/ansible | tar xz
+# configure clux user
+curl -sSL https://github.com/clux/dotclux/archive/ansible.tar.gz | tar xz
 cd clux*
 ./DEPLOY bootstrap kjttks.yml
+passwd clux
+reboot
