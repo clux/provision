@@ -79,6 +79,17 @@
     - name: enable lightdm
       service: name=lightdm enabled=yes
 
+    # Things that makes the X setup easier
+    - name: install deps to easy x setup
+      pacman: name=git state=installed
+
+    - name: clone dotclux
+      git:
+        repo: https://github.com/clux/dotclux
+        dest: /home/{{ desktop_user }}/dotclux
+        update: yes
+      become: {{ desktop_user }}
+
   handlers:
     - name: update grub
       command: grub-mkconfig -o /boot/grub/grub.cfg && grub-install /dev/sda
