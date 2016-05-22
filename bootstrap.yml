@@ -57,9 +57,15 @@
     - name: disable overly fancy grub that can be laggy
       lineinfile:
         dest=/etc/default/grub
-        backrefs=yes
-        regexp="^#GRUB_TERMINAL_OUTPUT\="
         line="GRUB_TERMINAL_OUTPUT=console"
+      notify: update grub
 
     - name: enable lightdm
       service: name=lightdm enabled=yes
+
+  handlers:
+    - name: update grub
+      command: grub-mkconfig -o /boot/grub/grub.cfg && grub-install /dev/sda
+
+  roles:
+    - bootstrap

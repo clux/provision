@@ -25,8 +25,10 @@ swapon /dev/sda5
 pacstrap /mnt base base-devel
 arch-chroot /mnt /bin/bash
 
-echo "en_GB.UTF-8 UTF-8" > /etc/locale.gen
-echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+cat <<EOF > /etc/locale.gen
+en_GB.UTF-8 UTF-8
+en_US.UTF-8 UTF-8
+EOF
 locale-gen
 
 systemd-firstboot \
@@ -40,21 +42,23 @@ mkinitcpio -p linux
 
 # bootloader to SSD
 pacman -Syy
-pacman -Syu
-pacman -S grub
-pacman -S intel-ucode # microcode
+pacman -Syu --noconfirm
+pacman -S --noconfirm grub intel-ucode # microcode
 grub-mkconfig -o /boot/grub/grub.cfg
 grub-install /dev/sda
 
-localectl set-locale LANG=en_GB.UTF-8
-localectl set-keymap colemak
+exit
+swapoff
+reboot
 
-# enable dhcpcd on right interface (see ip link show)
+# login as root (no passwd yet)
+loadkeys colemak
+
+# enable dhcpcd on right interface (see ip link show or /sys/class/net/enp*)
 systemctl enable dhcpcd@enp5s0
 
 # set root pass
 passwd
-#maybe reboot here
 
 # configure clux user
 curl -sSL https://github.com/clux/dotclux/archive/ansible.tar.gz | tar xz

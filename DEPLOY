@@ -4,9 +4,12 @@ if [ -z "$VIRTUAL_ENV" ]; then
 fi
 
 if [[ $1 == "bootstrap" ]]; then
+  if [[ $EUID -ne 0 ]]; then
+    echo "Must run bootstrap role as root"
+    exit 1
+  fi
   ansible-playbook -i hosts bootstrap.yml -vv
   chown -R "$USER" /usr/local
-  passwd clux
 elif [[ $1 == "core" ]]; then
   ansible-playbook -i hosts "$1" -v --ask-become-pass --tags="core"
 else
