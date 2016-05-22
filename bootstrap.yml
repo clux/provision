@@ -29,11 +29,23 @@
         regexp="^\#\[multilib\]"
         line="[multilib]\nInclude = /etc/pacman.d/mirrorlist"
 
+    - script: localectl.sh
+      register: localectl_result
+      changed_when: "localectl_result.rc != 0"
+
+    - script: timedatectl.sh
+      register: timedatectl_result
+      changed_when: "timedatectl_result.rc != 0"
+
     - name: "Update cache after changing pacman settings"
       pacman: update_cache=yes
 
-    - name: install display drivers and choice dependencies in one go
+    - name: install NVIDIA display drivers and choice dependencies
       pacman: name="nvidia nvidia-libgl libevdev" state=installed
+      when: arch_nvidia is defined
+    - name: install MESA display drivers and choice dependencies
+      pacman: name="mesa mesa-libgl xorg-server" state=installed
+      when: arch_nvidia is undefined
 
     - name: install core display utilities
       pacman: name={{ item }} state=installed
@@ -66,6 +78,3 @@
   handlers:
     - name: update grub
       command: grub-mkconfig -o /boot/grub/grub.cfg && grub-install /dev/sda
-
-  roles:
-    - bootstrap

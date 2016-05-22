@@ -37,25 +37,27 @@ systemd-firstboot \
   --locale-messages=en_GB.UTF-8 \
   --hostname=kjttks
 
-hwclock --systohc --utc
-mkinitcpio -p linux
-
-# bootloader to SSD
 pacman -Syy
 pacman -Syu --noconfirm
-pacman -S --noconfirm grub intel-ucode # microcode
+
+hwclock --systohc --utc
+
+pacman -S --noconfirm grub intel-ucode vim linux-lts
+mkinitcpio -p linux-lts
+
+# bootloader to SSD
 grub-mkconfig -o /boot/grub/grub.cfg
 grub-install /dev/sda
 
 exit
-swapoff
 reboot
 
 # login as root (no passwd yet)
 loadkeys colemak
 
 # enable dhcpcd on right interface (see ip link show or /sys/class/net/enp*)
-systemctl enable dhcpcd@enp5s0
+iface=$(ip link show | grep enp | awk '{print $2}' | cut -d':' -f1)
+systemctl enable dhcpcd@$iface --now
 
 # set root pass
 passwd

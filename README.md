@@ -8,7 +8,7 @@ Download and use on second boot (when successfully booted into a configured chro
 For a detailed guide follow [archboot.sh](./archboot.sh).
 
 ```sh
-curl https://api.github.com/repos/clux/dotclux/tarball/ansible | tar xz
+curl -sSL https://github.com/clux/dotclux/archive/ansible.tar.gz | tar xz
 # in created dir:
 ./DEPLOY bootstrap kjttks.yml
 # change password of desktop_user, then boot (to blacklist nouveau) to an X desktop
