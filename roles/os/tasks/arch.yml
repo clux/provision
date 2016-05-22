@@ -89,8 +89,6 @@
     # gaming
     - steam
     - lib32-alsa-plugins
-    - lib32-nvidia-libgl
-    - nvidia-settings
     # fonts
     - ttf-ubuntu-font-family
 
