@@ -2,6 +2,9 @@
 - hosts: kjttks
   connection: local
   user: clux
+  vars_files:
+  - vars/versions.yml
+
   roles:
   - os
   - unpackaged

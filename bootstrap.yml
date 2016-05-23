@@ -88,7 +88,8 @@
         repo: https://github.com/clux/dotclux
         dest: /home/{{ desktop_user }}/dotclux
         update: yes
-      become: {{ desktop_user }}
+      become_user: "{{ desktop_user }}"
+      become: yes
 
   handlers:
     - name: update grub

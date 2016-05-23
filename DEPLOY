@@ -9,7 +9,7 @@ if [[ $1 == "bootstrap" ]]; then
     exit 1
   fi
   ansible-playbook -i hosts bootstrap.yml -vv
-  chown -R "$USER" /usr/local
+  chown -R "$USER:$USER" /usr/local
 elif [[ $1 == "core" ]]; then
   ansible-playbook -i hosts "$1" -v --ask-become-pass --tags="core"
 else

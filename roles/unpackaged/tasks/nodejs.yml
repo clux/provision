@@ -15,7 +15,7 @@
 - name: Grab nodejs tarball
   get_url:
     url: "https://nodejs.org/download/release/{{node_lts}}/node-{{node_lts}}-linux-x64.tar.gz"
-    dest: "{{node_prefix}}/node/current.tar.gz"
+    dest: "{{node_prefix}}/node/{{node_lts}}.tar.gz"
   register: nodejs_tarball
 
 - name: Unpack nodejs tarball
