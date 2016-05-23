@@ -8,3 +8,4 @@ fi
 source venv/bin/activate
 echo "Entering virtual env $VIRTUAL_ENV"
 pip install -r requirements.txt
+export ANSIBLE_NOCOWS=1
