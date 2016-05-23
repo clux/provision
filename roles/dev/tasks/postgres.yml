@@ -1,0 +1,19 @@
+---
+
+# PostgreSQL - require setup if /var/lib/postgres/data is empty
+- name: Check if postgres boostrap is needed
+  shell: stat /var/lib/postgres/data/base
+  register: has_setup_postgres
+  changed_when: "has_setup_postgres.rc != 0"
+  ignore_errors: True
+
+- name: postgres initdb
+  shell: initdb --locale $LANG -E UTF8 -D '/var/lib/postgres/data'
+  become_user: postgres
+  when: has_setup_postgres | failed
+
+- service: name=postgresql enabled=yes state=started
+
+- name: postgres createuser
+  shell: createuser --superuser {{desktop_user}} -U postgres
+  when: has_setup_postgres | failed
