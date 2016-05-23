@@ -92,7 +92,8 @@
     - ttf-ubuntu-font-family
 
 # Services that can run as --user (but ansible does not yet support that)
-- service: name={{ item }} enabled=yes state=started
+- command: systemctl enable {{ item }} --now
+  become: no
   with_items:
    - redshift-gtk
    - mpd
