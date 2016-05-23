@@ -1,10 +1,10 @@
 - include: clone.yml
-  tags: [unpackaged, clone]
+  tags: [unpackaged, clone, core]
 
 - include: nodejs.yml
   become: no
-  tags: [unpackaged, nodejs]
+  tags: [unpackaged, nodejs, core]
 
 - include: sublime.yml
   become: no
-  tags: [unpackaged, sublime]
+  tags: [unpackaged, sublime, core]

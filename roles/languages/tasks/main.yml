@@ -2,13 +2,13 @@
 # installs from language specific package managers
 
 - include: npm.yml
-  tags: [languages, npm]
+  tags: [languages, npm, core]
 
 #- include: pip.yml
-#  tags: [languages, pip]
+#  tags: [languages, pip, core]
 
 - include: gem.yml
-  tags: [languages, gem]
+  tags: [languages, gem, core]
 
 - include: cargo.yml
-  tags: [languages, cargo]
+  tags: [languages, cargo, core]
