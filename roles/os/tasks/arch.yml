@@ -35,7 +35,6 @@
     - shellcheck
     - cmake
     - clang
-    - clang-analyzer
     - clang-tools-extra
     - lldb
     # system tools
@@ -71,7 +70,7 @@
     - chromium
     - firefox
     # video
-    - libx264-10bit
+    - libx264
     #- openshot
     - vlc
     # misc media
