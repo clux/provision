@@ -38,3 +38,9 @@
     - bin
     - lib
     - share
+
+- name: add node path to all users
+  lineinfile:
+    dest=/etc/profile
+    line="export PATH=/usr/local/node/bin:$PATH"
+  become: yes
