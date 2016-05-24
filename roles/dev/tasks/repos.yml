@@ -1,13 +1,12 @@
 ---
 # Clone all active projects into ~/repos
 
-# TODO: these all need to set identity...
-
 - file: path=/home/{{ desktop_user }}/{{ item }} state=directory
   with_items:
   - repos
   - repos/tournament
   - repos/interlude
+  - sqbu
 
 - name: Checkout general modules
   git:
@@ -19,19 +18,12 @@
   - bandage
   - blog
   - deus-login
-  - dye
   - food
-  - gu
   - icebreaker
-  - irc-stream
-  - linkr-app
-  - linkr-components
-  - mddocs
+  - muslrust
   - posts
   - sdp-transform
-  - sulfur
   - quadratic
-  - topiary
 
 - name: Checkout tournament modules
   git:
@@ -54,43 +46,5 @@
   - tournament
   - tourney
 
-- name: Checkout interlude modules
-  git:
-    repo=git@github.com:clux/{{ item }}.git
-    dest=/home/{{ desktop_user }}/repos/interlude/{{ item }}
-    key_file=/home/{{ desktop_user }}/.ssh/id_github
-    update=no
-  with_items:
-  - autonomy
-  - interlude
-  - operators
-  - subset
-
-# TODO: symlink
-# symlink repos repos/tournament repos/interlude --execute
-
-
-- name: Inactive modules
-  shell: echo {{ item }}
-  when: False
-  with_items:
-  - badgify # globally installed
-  - cleverbot-irc # stable, deployed
-  - combustion # not in use atm, but good
-  - confortable # stable, in use everywhere
-  - curvefever-bot # unmaintained, broken
-  - curvefever-stats # unmaintained, broken
-  - decay # stable, working
-  - logule # stable, but overcomplicated and unmaintained (using sulphur+smell)
-  - mumble-bot # just for laughs
-  - npm-graph # not in use atm
-  - splitter # not in use atm
-  - tabexplode # not in use atm
-  - trials # stable, working
-  - typr # stable, not needed
-  - tub # globally installed
-  - unitednationsoftheworld # song
-  - wolfram-alpha # stable, working
-  - wolfram-irc # stable, deployed
-  - wrappers # not used in ages
-  - xmpp-stream # experimental, and no need for atm
+- name: "Link node modules"
+  command: symlink ~/repos ~/repos/tournament --execute
