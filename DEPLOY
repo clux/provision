@@ -9,10 +9,8 @@ if [[ $1 == "bootstrap" ]]; then
     exit 1
   fi
   # TODO: decrypt ~/.ssh/id_github with gpg
-  ansible-playbook -i hosts bootstrap.yml -vv
+  ansible-playbook -i hosts -l $(hostname) bootstrap.yml -vvv
   chown -R "$USER:$USER" /usr/local
-elif [[ $1 == "core" ]]; then
-  ansible-playbook -i hosts "$1" -v --ask-become-pass --tags="core"
 else
-  ansible-playbook -i hosts "$1" -v --ask-become-pass --tags="$2"
+  ansible-playbook -i hosts -l $(hostname) site.yml -v --ask-become-pass --tags="$1"
 fi

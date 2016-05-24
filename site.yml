@@ -1,9 +1,9 @@
 ---
-- hosts: kjttks
-  connection: local
-  user: clux
+- connection: local
+  hosts: all
   vars_files:
   - vars/versions.yml
+  user: "{{ desktop_user }}"
   roles:
   - os
   - unpackaged

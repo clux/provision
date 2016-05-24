@@ -3,6 +3,7 @@ broxy       desktop_user=bro  grub_drive=sda display_driver=nvidia
 kjttks      desktop_user=clux grub_drive=sda display_driver=nvidia
 cluxw5      desktop_user=clux grub_drive=sda display_driver=mesa
 cluxx1      desktop_user=clux grub_drive=sdb display_driver=mesa
+cluxtop     desktop_user=clux grub_drive=sdb display_driver=mesa
 
 [debian]
 workstation desktop_user=clux
