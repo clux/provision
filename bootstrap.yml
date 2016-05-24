@@ -39,19 +39,15 @@
     - name: "Update cache after changing pacman settings"
       pacman: update_cache=yes
 
-    - name: figure out what display driver to use
-      command: hostname
-      register: arch_hostname
-
     - name: install NVIDIA display drivers and choice dependencies
       pacman: name="nvidia nvidia-libgl libevdev lib32-nvidia-libgl nvidia-settings" state=installed
-      when: arch_hostname.stdout == "kjttks"
+      when: display_driver == "nvidia"
 
     - name: install MESA display drivers and choice dependencies
       pacman: name="mesa mesa-libgl xorg-server" state=installed
-      when: arch_hostname.stdout == "cluxtop"
+      when: display_driver == "mesa"
 
-    - name: install core display utilities
+    - name: install core packages
       pacman: name={{ item }} state=installed
       with_items:
         - alsa-utils
@@ -62,6 +58,7 @@
         - ttf-liberation
         - guake
         - chromium
+        - networkmanager
 
     - name: enable lightdm gtk greeter
       lineinfile:
@@ -76,8 +73,11 @@
         line="GRUB_TERMINAL_OUTPUT=console"
       notify: update grub
 
-    - name: enable lightdm
-      service: name=lightdm enabled=yes
+    - name: enable key services
+      service: name={{ item }} enabled=yes
+      with_items:
+        - lightdm
+        - NetworkManager
 
     # Things that makes the X setup easier
     - name: install deps to easy x setup
@@ -93,4 +93,4 @@
 
   handlers:
     - name: update grub
-      command: grub-mkconfig -o /boot/grub/grub.cfg && grub-install /dev/sda
+      command: "grub-mkconfig -o /boot/grub/grub.cfg && grub-install /dev/{{ grub_drive }}"

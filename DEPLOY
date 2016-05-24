@@ -8,6 +8,7 @@ if [[ $1 == "bootstrap" ]]; then
     echo "Must run bootstrap role as root"
     exit 1
   fi
+  # TODO: decrypt ~/.ssh/id_github with gpg
   ansible-playbook -i hosts bootstrap.yml -vv
   chown -R "$USER:$USER" /usr/local
 elif [[ $1 == "core" ]]; then

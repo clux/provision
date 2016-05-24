@@ -1,13 +1,11 @@
 [arch]
-broxy  desktop_user=bro
-kjttks desktop_user=clux
+broxy       desktop_user=bro  grub_drive=sda display_driver=nvidia
+kjttks      desktop_user=clux grub_drive=sda display_driver=nvidia
+cluxw5      desktop_user=clux grub_drive=sda display_driver=mesa
+cluxx1      desktop_user=clux grub_drive=sdb display_driver=mesa
 
 [debian]
 workstation desktop_user=clux
-cluxtop     desktop_user=clux
-
-[gentoo]
 
 [all:vars]
 ansible_python_interpreter="/sbin/python2"
-ansible_ssh_user=clux

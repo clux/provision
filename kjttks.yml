@@ -4,11 +4,10 @@
   user: clux
   vars_files:
   - vars/versions.yml
-
   roles:
   - os
   - unpackaged
   - languages
   - ssh
   - xdg
-  #- dev
+  - dev

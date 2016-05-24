@@ -1,3 +1,5 @@
+set -e
+
 if ! hash virtualenv2 2> /dev/null; then
   pacman -S --noconfirm python2-virtualenv
 fi

@@ -37,9 +37,6 @@ systemd-firstboot \
   --locale-messages=en_GB.UTF-8 \
   --hostname=kjttks
 
-pacman -Syy
-pacman -Syu --noconfirm
-
 hwclock --systohc --utc
 
 pacman -S --noconfirm grub intel-ucode vim linux-lts
@@ -64,7 +61,7 @@ passwd
 
 # configure clux user
 curl -sSL https://github.com/clux/dotclux/archive/ansible.tar.gz | tar xz
-cd clux*
+cd dotclux*
 ./DEPLOY bootstrap kjttks.yml
 passwd clux
 reboot
