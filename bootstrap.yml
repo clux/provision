@@ -1,5 +1,5 @@
 ---
-- hosts: kjttks
+- hosts: all
   connection: local
   user: root
   gather_facts: no

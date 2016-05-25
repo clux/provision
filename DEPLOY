@@ -8,9 +8,8 @@ if [[ $1 == "bootstrap" ]]; then
     echo "Must run bootstrap role as root"
     exit 1
   fi
-  # TODO: decrypt ~/.ssh/id_github with gpg
-  ansible-playbook -i hosts -l "$(hostname)" bootstrap.yml -vvv
+  ansible-playbook -i hosts -l "$(hostname)" bootstrap.yml -vv
   chown -R "$USER:$USER" /usr/local
 else
-  ansible-playbook -i hosts -l "$(hostname)" site.yml -v --ask-become-pass --tags="$1"
+  ansible-playbook -i hosts -l "$(hostname)" site.yml -vv --ask-become-pass --tags="$1"
 fi
