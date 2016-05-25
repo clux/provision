@@ -47,4 +47,5 @@
   - tourney
 
 - name: "Link node modules"
-  command: symlink ~/repos ~/repos/tournament --execute
+  command: symlink repos repos/tournament --execute chdir=/home/{{ desktop_user }} creates=/home/{{ desktop_user }}/repos/bandage/node_modules
+  

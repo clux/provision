@@ -39,9 +39,6 @@
     - name: "Update cache after changing pacman settings"
       pacman: update_cache=yes
 
-    - name: wtf
-      command: echo "{{ display_driver }}"
-
     - name: install NVIDIA display drivers and choice dependencies
       pacman: name="nvidia nvidia-libgl libevdev lib32-nvidia-libgl nvidia-settings" state=installed
       when: display_driver == "nvidia"
