@@ -5,23 +5,23 @@
 - name: Install npm dependencies
   npm: name={{ item }} global=yes
   with_items:
-   - badgify
-   - faucet
-   - eslint
-   - jshint
-   - jsonlint
-   - json
-   - js-yaml
-   - pkginit
-   - browserify
-   - asciify
-   - ytdl
-   - symlink
-   - bower
-   - pm2
-   - marked-man
-   - yr-cli
-   - zalgolize
+  - badgify
+  - faucet
+  - eslint
+  - jshint
+  - jsonlint
+  - json
+  - js-yaml
+  - pkginit
+  - browserify
+  - asciify
+  - ytdl
+  - symlink
+  - bower
+  - pm2
+  - marked-man
+  - yr-cli
+  - zalgolize
 
 - file: path=/home/{{ desktop_user }}/.config/pkginit/ state=directory
 - template:

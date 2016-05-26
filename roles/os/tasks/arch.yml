@@ -9,87 +9,87 @@
 - name: Install dependencies
   pacman: name={{ item }} state=installed
   with_items:
-    # terminal tools
-    - git
-    - tig
-    - rsync
-    - bash-completion
-    - cowsay
-    - lolcat
-    - ccze
-    - rxvt-unicode
-    - tmux
-    - xterm
-    # vim
-    - vim
-    - vim-ctrlp
-    # chat
-    - profanity
-    - weechat
-    # programming
-    - python-pip
-    - rust
-    - cargo
-    - ghc
-    - cabal-install
-    - shellcheck
-    - cmake
-    - clang
-    - clang-tools-extra
-    - lldb
-    # system tools
-    - htop
-    - nmap
-    - strace
-    - lsb-release
-    # network
-    - vpnc
-    - bind-tools # contains dig
-    # dev services
-    - docker
-    - postgresql
-    # ssh + secrets managers
-    - keychain
-    - pass
-    - openssh
-    # music
-    - mpc
-    - mpd
-    - ncmpcpp
-    # X related
-    - gnome-screenshot
-    - redshift
-    - xclip
-    - xdotool
-    - xorg-xrandr
-    - xorg-xrdb
-    # gtk compat
-    - gtk-engines
-    - gtk-engine-murrine
-    # browsers
-    - chromium
-    - firefox
-    # video
-    - libx264
-    #- openshot
-    - vlc
-    # misc media
-    - feh
-    - gimp
-    - gthumb
-    - imagemagick
-    - mumble
-    # filesystems
-    - ntfs-3g
-    - nemo-fileroller
-    - nemo-share
-    - samba
-    - mtpfs
-    # gaming
-    - steam
-    - lib32-alsa-plugins
-    # fonts
-    - ttf-ubuntu-font-family
+   # terminal tools
+   - git
+   - tig
+   - rsync
+   - bash-completion
+   - cowsay
+   - lolcat
+   - ccze
+   - rxvt-unicode
+   - tmux
+   - xterm
+   # vim
+   - vim
+   - vim-ctrlp
+   # chat
+   - profanity
+   - weechat
+   # programming
+   - python-pip
+   - rust
+   - cargo
+   - ghc
+   - cabal-install
+   - shellcheck
+   - cmake
+   - clang
+   - clang-tools-extra
+   - lldb
+   # system tools
+   - htop
+   - nmap
+   - strace
+   - lsb-release
+   # network
+   - vpnc
+   - bind-tools # contains dig
+   # dev services
+   - docker
+   - postgresql
+   # ssh + secrets managers
+   - keychain
+   - pass
+   - openssh
+   # music
+   - mpc
+   - mpd
+   - ncmpcpp
+   # X related
+   - gnome-screenshot
+   - redshift
+   - xclip
+   - xdotool
+   - xorg-xrandr
+   - xorg-xrdb
+   # gtk compat
+   - gtk-engines
+   - gtk-engine-murrine
+   # browsers
+   - chromium
+   - firefox
+   # video
+   - libx264
+   #- openshot
+   - vlc
+   # misc media
+   - feh
+   - gimp
+   - gthumb
+   - imagemagick
+   - mumble
+   # filesystems
+   - ntfs-3g
+   - nemo-fileroller
+   - nemo-share
+   - samba
+   - mtpfs
+   # gaming
+   - steam
+   - lib32-alsa-plugins
+   # fonts
+   - ttf-ubuntu-font-family
 
 # Services that can run as --user (but ansible does not yet support that)
 - command: "systemctl enable {{ item }} --now --user"

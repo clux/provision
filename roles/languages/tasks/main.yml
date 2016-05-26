@@ -4,8 +4,8 @@
 - include: npm.yml
   tags: [languages, npm, core]
 
-#- include: pip.yml
-#  tags: [languages, pip, core]
+# - include: pip.yml
+#   tags: [languages, pip, core]
 
 - include: gem.yml
   tags: [languages, gem, core]

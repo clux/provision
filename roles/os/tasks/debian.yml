@@ -4,15 +4,15 @@
 # Chrome - because some sites need flash
 # NB: because chrome actually updates the sources.list.d/google-chrome.list
 # we need the filename attr here (which is out in 2.1)..
-#- apt_key: url=https://dl.google.com/linux/linux_signing_key.pub state=present
-#- apt_repository:
-#    repo='deb http://dl.google.com/linux/chrome/deb/ stable main'
-#    filename='google-chrome'
+# - apt_key: url=https://dl.google.com/linux/linux_signing_key.pub state=present
+# - apt_repository:
+#     repo='deb http://dl.google.com/linux/chrome/deb/ stable main'
+#     filename='google-chrome'
 
 - name: "Update cache"
   apt: update_cache=yes
 
-#- apt: name=google-chrome-stable
+# - apt: name=google-chrome-stable
 
 - name: Install development dependencies
   apt: name={{ item }} state=installed
@@ -71,8 +71,8 @@
 - name: Uninstall packages
   apt: pkg={{ item }} state=absent purge=yes force=yes
   with_items:
-    - libzeitgeist-*
-    - zeitgeist
+   - libzeitgeist-*
+   - zeitgeist
 
 # will arrive in 2.1
 #- name: Autoremove

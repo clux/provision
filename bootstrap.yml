@@ -40,7 +40,9 @@
       pacman: update_cache=yes
 
     - name: install NVIDIA display drivers and choice dependencies
-      pacman: name="nvidia nvidia-libgl libevdev lib32-nvidia-libgl nvidia-settings" state=installed
+      pacman:
+        name="nvidia nvidia-libgl libevdev lib32-nvidia-libgl nvidia-settings"
+        state=installed
       when: display_driver == "nvidia"
 
     - name: install MESA display drivers and choice dependencies
