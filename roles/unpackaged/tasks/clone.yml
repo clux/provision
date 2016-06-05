@@ -41,14 +41,3 @@
     dest=/home/{{ desktop_user }}/local/share/man/man1/z.1
     state=link
     force=yes
-
-# on AUR as arcanist-git
-# relies on ./arcanist/bin on PATH
-- name: Install arcanist from master
-  git:
-    repo: https://github.com/phacility/{{ item }}
-    dest: /home/{{ desktop_user }}/local/{{ item }}
-    update: no
-  with_items:
-    - arcanist
-    - libphutil
