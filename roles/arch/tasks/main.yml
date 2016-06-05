@@ -1,7 +1,7 @@
 ---
 # Package manager interface
 
-- include: arch.yml
+- include: pacman.yml
   when: ansible_os_family == "Archlinux"
   become: yes
   tags: [arch, core]

@@ -70,7 +70,7 @@
    - chromium
    - firefox
    # video
-   - libx264
+   - libx264-10bit
    #- openshot
    - vlc
    # misc media

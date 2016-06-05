@@ -5,6 +5,8 @@
   - vars/versions.yml
   user: "{{ desktop_user }}"
   roles:
+  - { role: arch, when: ansible_os_family == "Archlinux" }
+  - { role: debian, when: ansible_os_family == "Debian" }
   - hacks
   - lpms
   - ssh
