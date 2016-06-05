@@ -1,5 +1,5 @@
 ---
-# Arch playbook - pacman install all the things
+# pacman interface
 
 - name: Upgrade and update
   pacman: upgrade=yes update_cache=yes
@@ -90,18 +90,3 @@
    - lib32-alsa-plugins
    # fonts
    - ttf-ubuntu-font-family
-
-# Services that can run as --user (but ansible does not yet support that)
-- command: "systemctl enable {{ item }} --now --user"
-  become_user: "{{ desktop_user }}"
-  with_items:
-   - redshift-gtk
-   - mpd
-
-# Docker - create the docker group (gpasswd -a $USER docker)
-# NB: this requires `newgrp docker` or logout
-# DONT DO NEWGRP AS IT WILL SCREW WITH YOUR PRIMARY GROUP
-- name: Add desktop user to docker group
-  user: name={{desktop_user}} groups=docker append=yes
-
-- service: name=docker enabled=yes state=started

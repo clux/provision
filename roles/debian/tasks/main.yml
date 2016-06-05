@@ -1,7 +1,12 @@
 ---
 # OS extras for debian
 
+- include: bash.yml
+  when: ansible_os_family == "Debian"
+  become: yes
+  tags: [debian, core]
+
 - include: debian.yml
   when: ansible_os_family == "Debian"
   become: yes
-  tags: [debian, extras]
+  tags: [debian, core]

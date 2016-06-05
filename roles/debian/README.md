@@ -1,8 +1,8 @@
-# debian-compat
-Extra stuff because debian is always slow on the uptake.
+# debian
 
-This will:
+This role will:
 
+- apt install everything
 - curl bash install rust
 - curl bash install docker
 - curl tar && make llvm

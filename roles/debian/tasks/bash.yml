@@ -1,5 +1,6 @@
 ---
-# Debian playbook - apt install all the things
+# unpackaged things that need shell tweaks
+# as well as a few config tweaks
 
 - name: Set login keyboard
   lineinfile:
@@ -13,6 +14,6 @@
 
 - name: Install rust
   shell: curl https://static.rust-lang.org/rustup.sh | sh -s -- --yes --disable-sudo
-  # NB: may need become_user: root here
+  become_user: root
 
 # TODO: profanity and llvm scripts

@@ -4,9 +4,9 @@
 - include: arch.yml
   when: ansible_os_family == "Archlinux"
   become: yes
-  tags: [arch, os, core]
+  tags: [arch, core]
 
-- include: debian.yml
-  when: ansible_os_family == "Debian"
+- include: services.yml
+  when: ansible_os_family == "Archlinux"
   become: yes
-  tags: [debian, os, core]
+  tags: [arch, core]

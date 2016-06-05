@@ -1,5 +1,6 @@
 ---
-# Debian playbook - apt install all the things
+# apt interface
+# things that cleanly install/uninstall on debian/mint
 
 # Chrome - because some sites need flash
 # NB: because chrome actually updates the sources.list.d/google-chrome.list
