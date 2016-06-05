@@ -1,13 +1,13 @@
 language: python
   - "2.7"
 before_script:
-- pip install yamllint --user
-- export PATH=$HOME/.local/bin:$PATH
-- export YAMLRULES="{ extends: default, rules: { line-length: { max: 100 } } }"
+  - pip install yamllint --user
+  - export PATH=$HOME/.local/bin:$PATH
+  - export YAMLRULES="{ extends: default, rules: { line-length: { max: 100 } } }"
 script:
-- find roles/ -name "*.yml" | xargs yamllint -d "$YAMLRULES"
-- yamllint -d "$YAMLRULES" bootstrap.yml site.yml
-- test -z "$(find roles/ -type f -iname '*.yaml')" && echo "Extensions OK"
+  - find roles/ -name "*.yml" | xargs yamllint -d "$YAMLRULES"
+  - yamllint -d "$YAMLRULES" bootstrap.yml site.yml
+  - test -z "$(find roles/ -type f -iname '*.yaml')" && echo "Extensions OK"
 notifications:
   email:
     on_success: change
