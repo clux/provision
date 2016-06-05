@@ -1,5 +1,5 @@
-# unpackaged installs
-All the stuff that is not controlled uniformly by package managers.
+# hacks
+All the stuff that is not controlled uniformly by package managers and need to be __hacked__ onto the system somehow.
 
 Key installs:
 
@@ -7,7 +7,6 @@ Key installs:
 - nodejs LTS (because non-LTS breaks my modules)
 - z
 - blackbox
-- arcanist
 - bats
 
 Obviously node and sublime are going to have dynamic link dependencies.

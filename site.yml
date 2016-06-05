@@ -5,8 +5,8 @@
   - vars/versions.yml
   user: "{{ desktop_user }}"
   roles:
-  - unpackaged
-  - languages
+  - hacks
+  - lpms
   - ssh
   - xdg
   - dev
