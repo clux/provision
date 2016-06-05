@@ -3,4 +3,4 @@
 
 - include: sshd.yml
   become: yes
-  tags: [ssh, sshd, core]
+  tags: [ssh, core]
