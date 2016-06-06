@@ -3,7 +3,6 @@
 @test "system" {
   locale -a | grep -q "en_GB.utf8"
   locale -a | grep -q "en_US.utf8"
-  [ -n "$TRAVIS" ] && skip "travis/docker does not have systemd"
   localectl status | grep -q "LANG=en_GB.UTF-8"
   localectl status | grep -q "X11 Layout: us"
   localectl status | grep -qE "X11 Model: pc10."
@@ -53,10 +52,7 @@
   [ "$status" -eq 0 ]
   echo "$output"
   echo "$output" | grep "OTR support\: Enabled"
-  if [ -z "$TRAVIS" ]; then
-    # Won't have desktop support in travis container
-    echo "$output" | grep "Desktop notification support\: Enabled"
-  fi
+  echo "$output" | grep "Desktop notification support\: Enabled"
 }
 
 @test "node" {
