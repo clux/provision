@@ -10,10 +10,12 @@ if [[ $1 == "bootstrap" ]]; then
   fi
   ansible-playbook -i hosts -l "$(hostname)" bootstrap.yml -vv
   chown -R "$USER:$USER" /usr/local
+if [[ $1 == "secrets" ]]; then
+  gpg -d vars/gogs.yml.gpg > vars/gogs.yml
+  ansible-playbook -i hosts -l "$(hostname)" secrets.yml -vv
 else
   set -x
-  ansible-playbook -i hosts -l "$(hostname)" site.yml --tags="$1" \
-    -vv \
+  ansible-playbook -i hosts -l "$(hostname)" site.yml --tags="$1" -vv \
     $(test -n "$DOTCLUX_FULL" && echo "-e upgrade_tasks=1" || echo "") \
     --ask-become-pass
 fi
