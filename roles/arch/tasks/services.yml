@@ -4,8 +4,8 @@
 - command: "systemctl enable {{ item }} --now --user"
   become_user: "{{ desktop_user }}"
   with_items:
-   - redshift-gtk
-   - mpd
+  - redshift-gtk
+  - mpd
 
 # Docker - create the docker group (gpasswd -a $USER docker)
 # NB: this requires `newgrp docker` or logout

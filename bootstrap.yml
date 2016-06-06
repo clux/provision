@@ -5,94 +5,94 @@
   gather_facts: no
 
   tasks:
-    - name: sudo
-      pacman: name=sudo state=installed
+  - name: sudo
+    pacman: name=sudo state=installed
 
-    - name: ensure {{ desktop_user }} exists
-      user:
-        name={{ desktop_user }}
-        state=present
-        groups=audio,video,games,rfkill,uucp,wheel
-        append=yes
+  - name: ensure {{ desktop_user }} exists
+    user:
+      name={{ desktop_user }}
+      state=present
+      groups=audio,video,games,rfkill,uucp,wheel
+      append=yes
 
-    - name: allow wheel users to sudo with pass
-      lineinfile:
-        dest=/etc/sudoers
-        line='%wheel ALL=(ALL) ALL'
-        validate='visudo -cf %s'
+  - name: allow wheel users to sudo with pass
+    lineinfile:
+      dest=/etc/sudoers
+      line='%wheel ALL=(ALL) ALL'
+      validate='visudo -cf %s'
 
-    - name: enable multilib for steam
-      lineinfile:
-        dest=/etc/pacman.conf
-        backrefs=yes
-        regexp="^\#\[multilib\]"
-        line="[multilib]\nInclude = /etc/pacman.d/mirrorlist"
+  - name: enable multilib for steam
+    lineinfile:
+      dest=/etc/pacman.conf
+      backrefs=yes
+      regexp="^\#\[multilib\]"
+      line="[multilib]\nInclude = /etc/pacman.d/mirrorlist"
 
-    - script: scripts/localectl.sh
-      register: localectl_result
-      changed_when: "localectl_result.rc != 0"
+  - script: scripts/localectl.sh
+    register: localectl_result
+    changed_when: "localectl_result.rc != 0"
 
-    - script: scripts/timedatectl.sh
-      register: timedatectl_result
-      changed_when: "timedatectl_result.rc != 0"
+  - script: scripts/timedatectl.sh
+    register: timedatectl_result
+    changed_when: "timedatectl_result.rc != 0"
 
-    - name: "Update cache after changing pacman settings"
-      pacman: update_cache=yes
+  - name: "Update cache after changing pacman settings"
+    pacman: update_cache=yes
 
-    - name: install NVIDIA display drivers and choice dependencies
-      pacman:
-        name="nvidia nvidia-libgl libevdev lib32-nvidia-libgl nvidia-settings"
-        state=installed
-      when: display_driver == "nvidia"
+  - name: install NVIDIA display drivers and choice dependencies
+    pacman:
+      name="nvidia nvidia-libgl libevdev lib32-nvidia-libgl nvidia-settings"
+      state=installed
+    when: display_driver == "nvidia"
 
-    - name: install MESA display drivers and choice dependencies
-      pacman: name="mesa mesa-libgl xorg-server" state=installed
-      when: display_driver == "mesa"
+  - name: install MESA display drivers and choice dependencies
+    pacman: name="mesa mesa-libgl xorg-server" state=installed
+    when: display_driver == "mesa"
 
-    - name: install core packages
-      pacman: name={{ item }} state=installed
-      with_items:
-        - alsa-utils
-        - cinnamon
-        - lightdm
-        - lightdm-gtk-greeter
-        - ttf-dejavu
-        - ttf-liberation
-        - guake
-        - chromium
-        - networkmanager
+  - name: install core packages
+    pacman: name={{ item }} state=installed
+    with_items:
+    - alsa-utils
+    - cinnamon
+    - lightdm
+    - lightdm-gtk-greeter
+    - ttf-dejavu
+    - ttf-liberation
+    - guake
+    - chromium
+    - networkmanager
 
-    - name: enable lightdm gtk greeter
-      lineinfile:
-        dest=/etc/lightdm/lightdm.conf
-        backrefs=yes
-        regexp="^#greeter-session\="
-        line="greeter-session=lightdm-gtk-greeter"
+  - name: enable lightdm gtk greeter
+    lineinfile:
+      dest=/etc/lightdm/lightdm.conf
+      backrefs=yes
+      regexp="^#greeter-session\="
+      line="greeter-session=lightdm-gtk-greeter"
 
-    - name: disable overly fancy grub that can be laggy
-      lineinfile:
-        dest=/etc/default/grub
-        line="GRUB_TERMINAL_OUTPUT=console"
-      notify: update grub
+  - name: disable overly fancy grub that can be laggy
+    lineinfile:
+      dest=/etc/default/grub
+      line="GRUB_TERMINAL_OUTPUT=console"
+    notify: update grub
 
-    - name: enable key services
-      service: name={{ item }} enabled=yes
-      with_items:
-        - lightdm
-        - NetworkManager
+  - name: enable key services
+    service: name={{ item }} enabled=yes
+    with_items:
+    - lightdm
+    - NetworkManager
 
-    # Things that makes the X setup easier
-    - name: install deps to easy x setup
-      pacman: name=git state=installed
+  # Things that makes the X setup easier
+  - name: install deps to easy x setup
+    pacman: name=git state=installed
 
-    - name: clone dotclux
-      git:
-        repo: https://github.com/clux/dotclux
-        dest: /home/{{ desktop_user }}/dotclux
-        update: yes
-      become_user: "{{ desktop_user }}"
-      become: yes
+  - name: clone dotclux
+    git:
+      repo: https://github.com/clux/dotclux
+      dest: /home/{{ desktop_user }}/dotclux
+      update: yes
+    become_user: "{{ desktop_user }}"
+    become: yes
 
   handlers:
-    - name: update grub
-      command: "grub-mkconfig -o /boot/grub/grub.cfg && grub-install /dev/{{ grub_drive }}"
+  - name: update grub
+    command: "grub-mkconfig -o /boot/grub/grub.cfg && grub-install /dev/{{ grub_drive }}"

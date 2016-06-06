@@ -3,9 +3,9 @@
 
 - file: path=/home/{{ desktop_user }}/local/{{ item }} state=directory
   with_items:
-    - share/man/man1
-    - share/man/man7
-    - bin
+  - share/man/man1
+  - share/man/man7
+  - bin
 
 - name: Install blackbox
   git:

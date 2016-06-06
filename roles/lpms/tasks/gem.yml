@@ -5,5 +5,5 @@
 - name: Install dependencies
   gem: name={{ item }} user_install=yes
   with_items:
-   - travis
+  - travis
   tags: gem

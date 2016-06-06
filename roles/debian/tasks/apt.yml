@@ -5,8 +5,8 @@
 # Chrome - because some sites need flash
 - apt_key: url=https://dl.google.com/linux/linux_signing_key.pub state=present
 - apt_repository:
-     repo='deb http://dl.google.com/linux/chrome/deb/ stable main'
-     filename='google-chrome'
+    repo='deb http://dl.google.com/linux/chrome/deb/ stable main'
+    filename='google-chrome'
 
 - name: "Update cache"
   apt: update_cache=yes
@@ -16,61 +16,61 @@
 - name: Install development dependencies
   apt: name={{ item }} state=installed
   with_items:
-   - autoconf
-   - build-essential
-   - cmake
-   - libssl-dev
-   - libncursesw5-dev
-   - libncurses5-dev
-   - libcurl4-gnutls-dev
-   - libedit-dev
-   - libreadline-dev
-   - libotr5-dev
-   - libtool
-   - libexpat1-dev
-   - libglib2.0-dev
-   - libnotify-dev
-   - libxml2-dev
-   - pkg-config
-   - python-dev
-   - python-pip
-   - swig
-   - uuid-dev
+  - autoconf
+  - build-essential
+  - cmake
+  - libssl-dev
+  - libncursesw5-dev
+  - libncurses5-dev
+  - libcurl4-gnutls-dev
+  - libedit-dev
+  - libreadline-dev
+  - libotr5-dev
+  - libtool
+  - libexpat1-dev
+  - libglib2.0-dev
+  - libnotify-dev
+  - libxml2-dev
+  - pkg-config
+  - python-dev
+  - python-pip
+  - swig
+  - uuid-dev
 
 - name: Install apps
   apt: name={{ item }} state=installed
   with_items:
-   - ccze
-   - chromium
-   - cowsay
-   - curl
-   - git
-   - guake
-   - htop
-   - iftop
-   - keychain
-   - lcov
-   - lolcat
-   - pass
-   - php5-cli
-   - php5-curl
-   - python-keyring
-   - sshfs
-   - mumble
-   - nmap
-   - redshift
-   - rxvt-unicode-256color
-   - shellcheck
-   - vlc
-   - vim-gnome
-   - weechat-curses
-   - xclip
+  - ccze
+  - chromium
+  - cowsay
+  - curl
+  - git
+  - guake
+  - htop
+  - iftop
+  - keychain
+  - lcov
+  - lolcat
+  - pass
+  - php5-cli
+  - php5-curl
+  - python-keyring
+  - sshfs
+  - mumble
+  - nmap
+  - redshift
+  - rxvt-unicode-256color
+  - shellcheck
+  - vlc
+  - vim-gnome
+  - weechat-curses
+  - xclip
 
 - name: Uninstall packages
   apt: pkg={{ item }} state=absent purge=yes force=yes
   with_items:
-   - libzeitgeist-*
-   - zeitgeist
+  - libzeitgeist-*
+  - zeitgeist
 
 - name: Autoremove
   apt: autoremove

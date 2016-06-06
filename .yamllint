@@ -1,0 +1,23 @@
+---
+extends: default
+
+rules:
+  line-length:
+    max: 100
+    level: warning
+  braces: # braces: { a: 1, b: 3 }
+    min-spaces-inside: 1
+    max-spaces-inside: 1
+  brackets: # dont care about [a,b,c] vs [ a, b, c ]
+    min-spaces-inside: 0
+    max-spaces-inside: 1
+  comments: # allow "only" one space before a comment
+    min-spaces-from-content: 1
+  new-line-at-end-of-file: enable
+  new-lines:
+    type: unix
+  trailing-spaces: enable
+  indentation: # lists start with hyphen on the same indentation level as parent
+    spaces: 2
+    indent-sequences: no
+    check-multi-line-strings: no

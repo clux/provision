@@ -3,13 +3,11 @@
 
 - name: Upgrade pip
   pip: name=pip state=latest
-  tags: pip
 
 # TODO: since we run ansible in a virtualenv - the following does not work..
 - name: Install dependencies
   pip: name={{ item }} extra_args='--user' state=present
   with_items:
-   - ghp-import
-   - pyflakes
-   - pylint
-  tags: pip
+  - ghp-import
+  - pyflakes
+  - pylint

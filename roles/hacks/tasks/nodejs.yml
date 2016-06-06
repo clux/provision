@@ -38,9 +38,9 @@
     force=yes
   become: yes
   with_items:
-    - bin
-    - lib
-    - share
+  - bin
+  - lib
+  - share
 
 - name: add node path to all users
   lineinfile:
