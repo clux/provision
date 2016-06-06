@@ -8,12 +8,22 @@
     regexp="^XKBVARIANT="
     line="XKBVARIANT=\"colemak\""
 
+# Docker install script - run as root as it would sudo otherwise
 - apt_key: url=https://get.docker.com/gpg state=present
 - name: Install docker
   shell: curl -fsSL https://get.docker.com/ | sh
+  become_user: root
+
+- name: Add desktop user to docker group
+  user: name={{desktop_user}} groups=docker append=yes
+- service: name=docker enabled=yes state=started
 
 - name: Install rust
   shell: curl https://static.rust-lang.org/rustup.sh | sh -s -- --yes --disable-sudo
   become_user: root
 
-# TODO: profanity and llvm scripts
+# Compile scripts - which can run fine sans sudo if /usr/local is chowned
+- script: scripts/profanity
+  creates: /usr/local/bin/profanity
+- script: scripts/llvm
+  creates: /usr/local/bin/clang

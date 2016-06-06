@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
 # llvm install script
-# usage ./llvm 3.8.0
 
 set -ex
 
-ver=$1
+ver="3.8.0"
 
 LLVM=http://llvm.org/releases/$ver/llvm-$ver.src.tar.xz
 CLANG=http://llvm.org/releases/$ver/cfe-$ver.src.tar.xz
