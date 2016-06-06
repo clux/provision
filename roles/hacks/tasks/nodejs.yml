@@ -16,7 +16,6 @@
   get_url:
     url: "https://nodejs.org/download/release/{{node_lts}}/node-{{node_lts}}-linux-x64.tar.gz"
     dest: "{{node_prefix}}/node/{{node_lts}}.tar.gz"
-  become: yes
   register: nodejs_tarball
 
 - name: Unpack nodejs tarball
@@ -25,7 +24,6 @@
     src: "{{ nodejs_tarball.dest }}"
     dest: "{{node_prefix}}"
     creates: "{{node_prefix}}/node-{{node_lts}}-linux-x64/bin"
-  become: yes
   register: nodejs_checkout
 
 # TODO: verify shasums from https://nodejs.org/download/release/latest-{{node_lts_name|lower}}/
@@ -36,7 +34,6 @@
     dest={{node_prefix}}/node/{{item}}
     state=link
     force=yes
-  become: yes
   with_items:
   - bin
   - lib
@@ -46,4 +43,3 @@
   lineinfile:
     dest=/etc/profile
     line="export PATH=/usr/local/node/bin:$PATH"
-  become: yes

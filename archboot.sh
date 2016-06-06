@@ -62,6 +62,6 @@ passwd
 # configure clux user
 curl -sSL https://github.com/clux/dotclux/archive/ansible.tar.gz | tar xz
 cd dotclux*
-./DEPLOY bootstrap kjttks.yml
+./DEPLOY bootstrap
 passwd clux
 reboot

@@ -10,7 +10,7 @@ if [[ $1 == "bootstrap" ]]; then
   fi
   ansible-playbook -i hosts -l "$(hostname)" bootstrap.yml -vv
   chown -R "$USER:$USER" /usr/local
-if [[ $1 == "secrets" ]]; then
+elif [[ $1 == "secrets" ]]; then
   gpg -d vars/gogs.yml.gpg > vars/gogs.yml
   ansible-playbook -i hosts -l "$(hostname)" secrets.yml -vv
 else

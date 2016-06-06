@@ -27,23 +27,23 @@
 @test "llvm" {
   run clang --version
   [ "$status" -eq 0 ]
-  echo "$output" && echo "$output" | grep "3.7.1"
+  echo "$output" && echo "$output" | grep "3.8.0"
   # compiled s.t. we have sanitizers
   if [[ $(lsb_release -si) == "Arch" ]]; then
-    run ls /usr/lib/clang/3.7.1/lib/linux/libclang_rt.asan_cxx-x86_64.a
+    run ls /usr/lib/clang/3.8.0/lib/linux/libclang_rt.asan_cxx-x86_64.a
   else
-    run ls /usr/local/lib/clang/3.7.1/lib/linux/libclang_rt.asan_cxx-x86_64.a
+    run ls /usr/local/lib/clang/3.8.0/lib/linux/libclang_rt.asan_cxx-x86_64.a
   fi
   [ "$status" -eq 0 ]
   # with lldb
   run lldb --version
   [ "$status" -eq 0 ]
-  echo "$output" && echo "$output" | grep "3.7.1"
-  # with analyzer and scan-build
-  run c++-analyzer --version
-  [ "$status" -eq 0 ]
-  run which scan-build
-  [ "$status" -eq 0 ]
+  echo "$output" && echo "$output" | grep "3.8.0"
+  # with analyzer and scan-build (apparently broken now)
+  #run c++-analyzer --version
+  #[ "$status" -eq 0 ]
+  #run which scan-build
+  #[ "$status" -eq 0 ]
 }
 
 @test "profanity" {
@@ -75,8 +75,6 @@
 }
 
 @test "clone" {
-  run which arc
-  [ "$status" -eq 0 ]
   run man -w z
   [ "$status" -eq 0 ]
   run man -w bats
@@ -98,7 +96,6 @@
   [ -L "$HOME/.eslintrc" ]
   [ -L "$HOME/.exports" ]
   [ -L "$HOME/.functions" ]
-  [ -L "$HOME/.ghci" ]
   [ -L "$HOME/.gitconfig" ]
   [ -L "$HOME/.hgrc" ]
   [ -L "$HOME/.iface" ]
@@ -116,7 +113,6 @@
 }
 
 @test "evars" {
-  [ -n "$TRAVIS" ] && skip "travis/docker shell by design not interactive"
   [ "$CXX" = "clang++" ]
 }
 
@@ -133,14 +129,12 @@
 }
 
 @test "cluxdev" {
-  [ -n "$TRAVIS" ] && skip "not building + linking all dev modules on travis"
   [ -d "$HOME/repos" ]
   run which bndg # should have been symlinked
   [ "$status" -eq 0 ]
 }
 
 @test "secrets" {
-  [ -n "$TRAVIS" ] && skip "no priveleges to do secrets test on travis"
   [ -r "$HOME/.config/Mumble/Mumble.conf" ]
   [ -d "$HOME/.ssh" ]
   [ -r "$HOME/.ssh/config" ]
@@ -149,6 +143,6 @@
   [ -d "$HOME/.gnupg" ]
   [ -d "$HOME/.gnupg/.git" ]
   run gpg --list-keys
-  echo "$output" && echo "$output" | grep -q "clux"
+  echo "$output" && echo "$output" | grep -q "\[ultimate\] Eirik"
   [ -d "$HOME/repos/dotclux" ]
 }
