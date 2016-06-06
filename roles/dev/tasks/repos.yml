@@ -24,6 +24,8 @@
   - posts
   - sdp-transform
   - quadratic
+  - tf2configs
+  - vitae
 
 - name: Checkout tournament modules
   git:
