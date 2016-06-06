@@ -4,7 +4,7 @@ python:
 before_script:
   - pip install yamllint --user
   - export PATH=$HOME/.local/bin:$PATH
-  - export YAMLRULES="{ extends: default, rules: { line-length: { max: 100 } } }"
+  - "export YAMLRULES={ extends: default, rules: { line-length: { max: 100 } } }"
 script:
   - find roles/ -name "*.yml" | xargs yamllint -d "$YAMLRULES"
   - yamllint -d "$YAMLRULES" bootstrap.yml site.yml
