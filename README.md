@@ -22,3 +22,5 @@ To re-provision specific roles/tags later:
 ```sh
 ./DEPLOY gem,npm
 ```
+
+Note that the only roles not provisioned by `core` are `ssh,xdg,dev`, which may be restructured quite a bit.
