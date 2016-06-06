@@ -45,7 +45,7 @@
    - lsb-release
    # network
    - vpnc
-   - bind-tools # contains dig
+   - bind-tools  # contains dig
    # dev services
    - docker
    - postgresql
@@ -72,7 +72,7 @@
    - firefox
    # video
    - libx264-10bit
-   #- openshot
+   # ignoring openshot for now
    - vlc
    # misc media
    - feh
