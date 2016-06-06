@@ -5,6 +5,7 @@
 
 - include: nodejs.yml
   become: no
+  when: upgrade_tasks | default(false)
   tags: [hacks, nodejs, core]
 
 - include: sublime.yml

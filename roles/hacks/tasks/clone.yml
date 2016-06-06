@@ -1,8 +1,6 @@
 ---
 # clone playbook - install stuff from git tags / source trees
 
-# TODO: all update flags can be set to yes iff want to upgrade
-
 - file: path=/home/{{ desktop_user }}/local/{{ item }} state=directory
   with_items:
     - share/man/man1
@@ -14,7 +12,7 @@
     repo: https://github.com/StackExchange/blackbox
     dest: /home/{{ desktop_user }}/local/blackbox
     version: stable
-    update: no
+    update: "{{ upgrade_tasks | default(false) }}"
   notify: make-install blackbox
 
 # Exists in arch as bash-bats
@@ -23,7 +21,7 @@
     repo: https://github.com/sstephenson/bats
     dest: /home/{{ desktop_user }}/local/bats
     version: v0.4.0
-    update: no
+    update: "{{ upgrade_tasks | default(false) }}"
   notify: make-install bats
 
 # Exists on AUR as z, but not on debian
@@ -31,7 +29,7 @@
   git:
     repo: https://github.com/rupa/z
     dest: /home/{{ desktop_user }}/local/z
-    update: no
+    update: "{{ upgrade_tasks | default(false) }}"
 
 # only thing z needs to install is z.1
 # otherwise relies on sourcing ./z/z.sh from bash_profile

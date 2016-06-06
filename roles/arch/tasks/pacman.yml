@@ -3,6 +3,7 @@
 
 - name: Upgrade and update
   pacman: upgrade=yes update_cache=yes
+  when: upgrade_tasks | default(false)
 
 # TODO: aur chrome
 

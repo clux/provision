@@ -11,5 +11,9 @@ if [[ $1 == "bootstrap" ]]; then
   ansible-playbook -i hosts -l "$(hostname)" bootstrap.yml -vv
   chown -R "$USER:$USER" /usr/local
 else
-  ansible-playbook -i hosts -l "$(hostname)" site.yml -vv --ask-become-pass --tags="$1"
+  set -x
+  ansible-playbook -i hosts -l "$(hostname)" site.yml --tags="$1" \
+    -vv \
+    $(test -n "$DOTCLUX_FULL" && echo "-e upgrade_tasks=1" || echo "") \
+    --ask-become-pass
 fi

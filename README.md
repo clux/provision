@@ -12,7 +12,7 @@ curl -sSL https://github.com/clux/dotclux/archive/ansible.tar.gz | tar xz
 # in created dir:
 ./DEPLOY bootstrap
 # change password of desktop_user, then boot (to blacklist nouveau) to an X desktop
-./DEPLOY core
+DOTCLUX_FULL=1 ./DEPLOY core
 ```
 
 To provision specific roles/tags later:
