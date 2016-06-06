@@ -2,7 +2,7 @@ language: python
 python:
   - "2.7"
 before_script:
-  - pip install yamllint --user
+  - pip install yamllint
   - export PATH=$HOME/.local/bin:$PATH
   - "export YAMLRULES={ extends: default, rules: { line-length: { max: 100 } } }"
 script:
