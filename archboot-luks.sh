@@ -7,42 +7,35 @@ exit 1
 loadkeys colemak
 dhcpcd # corded install
 
-# Partitioning (assuming lsblk points you to /dev/sda)
+# 1. Partitioning (assuming for /dev/sda)
 # Zap MBR/GPT data structures on disk
 sgdisk -Z /dev/sda
-
-# These seem wrong.. - can't install boot to it..
-sgdisk -a 2048 -o /dev/sda # needed? should be default
 # Create a 200 MB boot partition
-sgdisk -n 1:0:+200M -t 1:8300 -c 1:boot /dev/sda
+sgdisk -n 1:0:+200M -t 1:ef02 -c 1:boot /dev/sda
 # Remaining space in a second partition
-sgdisk -n 2:0:0 -t 2:8E00 -c 2:root /dev/sda
+sgdisk -n 2:0:0 -t 2:8e00 -c 2:cryptlvm /dev/sda
 
-# LVM on LUKS (password set here)
+# 2. LVM on LUKS (password set here)
 cryptsetup luksFormat /dev/sda2
-cryptsetup open --type luks /dev/sda2 lvm
+cryptsetup luksOpen luks /dev/sda2 lvm
 
 # Create physical volume on top of LUKS container:
 pvcreate /dev/mapper/lvm
 # Create volume group from physical volume, and add logical volumes on that group:
 vgcreate cluxv /dev/mapper/lvm
 lvcreate -L 8G cluxv -n swap
-lvcreate -L 50G cluxv -n root
-lvcreate -l 100%FREE cluxv -n home
+lvcreate -l 100%free cluxv -n root
 
+# 3. Filesystems
 # Create filesystems
 mkfs.ext4 /dev/mapper/cluxv-root
-mkfs.ext4 /dev/mapper/cluxv-home
 mkswap /dev/mapper/cluxv-swap
+mkfs.ext2 /dev/sda1
 
 # Mount filesystems
 mount /dev/mapper/cluxv-root /mnt
-mkdir /mnt/home
-mount /dev/mapper/cluxv-home /mnt/home
 swapon /dev/mapper/cluxv-swap
-
-# Create boot partition
-mkfs.ext2 /dev/sda1
+mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
 
 # create chroot and do the first configuration
@@ -64,12 +57,11 @@ systemd-firstboot \
 
 hwclock --systohc --utc
 
-pacman -S --noconfirm grub intel-ucode vim linux
-
 vim /etc/mkinitcpio.conf
 # add `keymap encrypt lvm2` before `filesystems`
 
-KEYMAP=colemak mkinitcpio -p linux
+export KEYMAP=colemak # mkinitcpio runs on linux install
+pacman -S --noconfirm grub intel-ucode vim linux
 
 # bootloader
 vim /etc/default/grub
@@ -80,7 +72,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 grub-install /dev/sda
 
 exit
-umount /mnt/{boot,home,}
+umount /mnt/{boot,}
 reboot
 
 # login as root (no passwd yet)
