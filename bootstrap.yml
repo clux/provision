@@ -63,6 +63,8 @@
     - guake
     - chromium
     - networkmanager
+    - openssh
+    - keychain
 
   - name: enable lightdm gtk greeter
     lineinfile:
