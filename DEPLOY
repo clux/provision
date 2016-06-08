@@ -10,7 +10,6 @@ if [[ $1 == "bootstrap" ]]; then
     exit 1
   fi
   ansible-playbook -i hosts -l "$(hostname)" bootstrap.yml -vv
-  chown -R "$USER:$USER" /usr/local
 elif [[ $1 == "secrets" ]]; then
   if [[ $EUID -eq 0 ]]; then
     echo "This role is not indended to be run as root"
@@ -18,6 +17,8 @@ elif [[ $1 == "secrets" ]]; then
   fi
   # interactive steps with passwords and key pasting here:
   set -x
+  # First sudo:
+  sudo chown -R "$USER:$USER" /usr/local
   # Decrypting gogs.yml - password please:
   gpg -d vars/gogs.yml.gpg > vars/gogs.yml
   # Adding main_id to keychain - password please:
