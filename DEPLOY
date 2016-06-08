@@ -25,12 +25,10 @@ elif [[ $1 == "secrets" ]]; then
   keychain --timeout 30 --quiet --host agent ~/.ssh/main_id
   source ~/.keychain/agent-sh
   ansible-playbook -i hosts -l "$(hostname)" secrets.yml -vv
-  # Generating secondary ssh ids:
-  ~/ssh/install.sh
-  # Importing gpg keys: all the passwords please:
-  ~/gpg/install.sh
-  # Mumble cert
-  ~/mumble/install.sh
+  for repo in ssh gpg mumble cisco; do
+    echo "Installing $repo"
+    ~/$repo/install.sh
+  done
   mkdir -p ~/repos && cd ~/repos
   git clone git@github.com:clux/dotfiles.git
   cd dotfiles

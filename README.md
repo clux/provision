@@ -12,7 +12,7 @@ curl -sSL https://github.com/clux/dotclux/archive/ansible.tar.gz | tar xz
 # in created dir:
 ./DEPLOY bootstrap
 # change password of desktop_user, then boot (to blacklist nouveau) to an X desktop
-./DEPLOY secrets # answer all gogs.yml, gpg, ssh prompts
+./DEPLOY secrets # answer all password prompts
 # install remaining list of dependencies unattended
 DOTCLUX_FULL=1 ./DEPLOY core
 ```
