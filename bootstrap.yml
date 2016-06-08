@@ -31,10 +31,12 @@
   - script: scripts/localectl.sh
     register: localectl_result
     changed_when: "localectl_result.rc != 0"
+    ignore_errors: True
 
   - script: scripts/timedatectl.sh
     register: timedatectl_result
     changed_when: "timedatectl_result.rc != 0"
+    ignore_errors: True
 
   - name: "Update cache after changing pacman settings"
     pacman: update_cache=yes
