@@ -71,8 +71,6 @@
   - chromium
   - firefox
   # video
-  - libx264-10bit
-  # ignoring openshot for now
   - vlc
   # misc media
   - feh
