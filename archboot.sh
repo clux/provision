@@ -38,19 +38,19 @@ systemd-firstboot \
   --hostname=kjttks
 
 hwclock --systohc --utc
-
+nano /etc/mkinitcpio.conf # add 'keymap' to HOOKS
+export KEYMAP=colemak # for mkinitcpio
 pacman -S --noconfirm grub intel-ucode vim linux-lts
-mkinitcpio -p linux-lts
 
 # bootloader to SSD
 grub-mkconfig -o /boot/grub/grub.cfg
 grub-install /dev/sda
 
 exit
+umount /mnt
 reboot
 
 # login as root (no passwd yet)
-loadkeys colemak
 
 # enable dhcpcd on right interface (see ip link show or /sys/class/net/enp*)
 iface=$(ip link show | grep enp | awk '{print $2}' | cut -d':' -f1)
