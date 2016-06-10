@@ -21,6 +21,7 @@
   - rxvt-unicode
   - tmux
   - xterm
+  - jshon
   # vim
   - vim
   - vim-ctrlp
