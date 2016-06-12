@@ -10,6 +10,8 @@ if [[ $1 == "bootstrap" ]]; then
     exit 1
   fi
   ansible-playbook -i hosts -l "$(hostname)" bootstrap.yml -vv
+  sddm --example-config > /etc/sddm.conf
+  passwd clux
 elif [[ $1 == "secrets" ]]; then
   if [[ $EUID -eq 0 ]]; then
     echo "This role is not indended to be run as root"

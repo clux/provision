@@ -68,7 +68,7 @@
   - name: enable key services
     service: name={{ item }} enabled=yes
     with_items:
-    - ssdm
+    - sddm
     - NetworkManager
 
   # Things that makes the X setup easier
