@@ -2,44 +2,47 @@
 
 echo "This is a pseudo-script"
 exit 1
-
-# temporaries
+# 0. Boot into live environment through UEFI boot
+efivars -l # proves you have uefi booted
 loadkeys colemak
-dhcpcd # corded install
 
-# 1. Partitioning (assuming for /dev/sda)
-# Zap MBR/GPT data structures on disk
-sgdisk -Z /dev/sda
-# Create a 200 MB boot partition
-sgdisk -n 1:0:+200M -t 1:ef02 -c 1:boot /dev/sda
-# Remaining space in a second partition
-sgdisk -n 2:0:0 -t 2:8e00 -c 2:cryptlvm /dev/sda
+# 1. Partitioning: GPT + EFI
+#  - 1: 512 MB EFI boot partition
+#  - 2: Linux LVM, remaining space
+sgdisk -Z \
+  -n 1:0:+512M -t 1:ef00 -c 1:bootefi \
+  -n 2:0:0 -t 2:8300 -c 2:cryptlvm \
+  -p /dev/sda
 
 # 2. LVM on LUKS (password set here)
 cryptsetup luksFormat /dev/sda2
-cryptsetup luksOpen luks /dev/sda2 lvm
+cryptsetup luksOpen /dev/sda2 lvm
 
 # Create physical volume on top of LUKS container:
 pvcreate /dev/mapper/lvm
+pvdisplay
 # Create volume group from physical volume, and add logical volumes on that group:
 vgcreate cluxv /dev/mapper/lvm
+vgdisplay
 lvcreate -L 8G cluxv -n swap
 lvcreate -l 100%free cluxv -n root
 
 # 3. Filesystems
 # Create filesystems
+mkfs.fat -F32 /dev/sda1
 mkfs.ext4 /dev/mapper/cluxv-root
 mkswap /dev/mapper/cluxv-swap
-mkfs.ext2 /dev/sda1
+lsblk
 
 # Mount filesystems
 mount /dev/mapper/cluxv-root /mnt
-swapon /dev/mapper/cluxv-swap
-mkdir /mnt/boot
+mkdir -p /mnt/boot
 mount /dev/sda1 /mnt/boot
+swapon /dev/mapper/cluxv-swap
 
 # create chroot and do the first configuration
-pacstrap /mnt base base-devel
+dhcpcd # corded install
+pacstrap /mnt base base-devel vim
 genfstab -U -p /mnt >> /mnt/etc/fstab
 arch-chroot /mnt /bin/bash
 
@@ -61,15 +64,20 @@ vim /etc/mkinitcpio.conf
 # add `keymap encrypt lvm2` before `filesystems`
 
 export KEYMAP=colemak # mkinitcpio runs on linux install
-pacman -S --noconfirm grub intel-ucode vim linux
+pacman -S --noconfirm linux
 
-# bootloader
-vim /etc/default/grub
-  #GRUB_ENABLE_CRYPTODISK=1
-  GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda2:cluxv"
+bootctl --path=/boot install
+cat <<EOF > /boot/loader/loader.conf
+timeout 3
+default arch
+EOF
 
-grub-mkconfig -o /boot/grub/grub.cfg
-grub-install /dev/sda
+cat <<EOF > /boot/loader/entries/arch.conf
+title Arch Linux Encrypted LVM
+linux /vmlinuz-linux
+initrd /initramfs-linux.img
+options cryptdevice=/dev/sda2:cluxv root=/dev/mapper/cluxv-root quiet rw
+EOF
 
 exit
 umount /mnt/{boot,}
