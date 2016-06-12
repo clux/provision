@@ -43,6 +43,7 @@ export KEYMAP=colemak # for mkinitcpio
 pacman -S --noconfirm grub intel-ucode vim linux-lts
 
 # bootloader to SSD
+echo "GRUB_TERMINAL_OUTPUT=console" >> /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 grub-install /dev/sda
 

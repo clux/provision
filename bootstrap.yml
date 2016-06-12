@@ -56,8 +56,7 @@
     with_items:
     - alsa-utils
     - cinnamon
-    - lightdm
-    - lightdm-gtk-greeter
+    - sddm
     - ttf-dejavu
     - ttf-liberation
     - guake
@@ -66,23 +65,10 @@
     - openssh
     - keychain
 
-  - name: enable lightdm gtk greeter
-    lineinfile:
-      dest=/etc/lightdm/lightdm.conf
-      backrefs=yes
-      regexp="^#greeter-session\="
-      line="greeter-session=lightdm-gtk-greeter"
-
-  - name: disable overly fancy grub that can be laggy
-    lineinfile:
-      dest=/etc/default/grub
-      line="GRUB_TERMINAL_OUTPUT=console"
-    notify: update grub
-
   - name: enable key services
     service: name={{ item }} enabled=yes
     with_items:
-    - lightdm
+    - ssdm
     - NetworkManager
 
   # Things that makes the X setup easier
@@ -96,7 +82,3 @@
       update: yes
     become_user: "{{ desktop_user }}"
     become: yes
-
-  handlers:
-  - name: update grub
-    command: "grub-mkconfig -o /boot/grub/grub.cfg && grub-install /dev/{{ grub_drive }}"
