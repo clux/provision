@@ -36,6 +36,7 @@ elif [[ $1 == "secrets" ]]; then
   cd dotfiles
   make config
   make ui
+  source ~/.bashrc
 else
   # shellcheck disable=SC2046
   ansible-playbook -i hosts -l "$(hostname)" site.yml --tags="$1" -vv \
