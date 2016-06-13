@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -ex
 echo "This is a pseudo-script"
 exit 1
 # 0. Boot into live environment through UEFI boot
@@ -85,10 +85,7 @@ reboot
 
 # login as root (no passwd yet)
 loadkeys colemak
-
-# enable dhcpcd on right interface (see ip link show or /sys/class/net/enp*)
-iface=$(ip link show | grep enp | awk '{print $2}' | cut -d':' -f1)
-systemctl enable dhcpcd@$iface --now
+dhcpcd
 
 # set root pass
 passwd
