@@ -61,7 +61,7 @@ systemd-firstboot \
 hwclock --systohc --utc
 
 vim /etc/mkinitcpio.conf
-# add `keymap encrypt lvm2` before `filesystems`
+# add `keymap encrypt lvm2 resume` before `filesystems`
 
 export KEYMAP=colemak # mkinitcpio runs on linux install
 pacman -S --noconfirm linux
@@ -76,7 +76,7 @@ cat <<EOF > /boot/loader/entries/arch.conf
 title Arch Linux Encrypted LVM
 linux /vmlinuz-linux
 initrd /initramfs-linux.img
-options cryptdevice=/dev/sda2:cluxv root=/dev/mapper/cluxv-root quiet rw
+options cryptdevice=/dev/sda2:cluxv resume=/dev/mapper/cluxv-swap root=/dev/mapper/cluxv-root quiet rw
 EOF
 
 exit
