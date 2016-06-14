@@ -48,7 +48,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 grub-install /dev/sda
 
 exit
-umount /mnt
+umount -R /mnt
 reboot
 
 # login as root (no passwd yet)

@@ -28,19 +28,19 @@ lvcreate -L 8G cluxv -n swap
 lvcreate -l 100%free cluxv -n root
 
 # 3. Filesystems
-# Create filesystems
+# 3.a) Create filesystems
 mkfs.fat -F32 /dev/sda1
 mkfs.ext4 /dev/mapper/cluxv-root
 mkswap /dev/mapper/cluxv-swap
 lsblk
 
-# Mount filesystems
+# 3. b) Mount filesystems
 mount /dev/mapper/cluxv-root /mnt
 mkdir -p /mnt/boot
 mount /dev/sda1 /mnt/boot
 swapon /dev/mapper/cluxv-swap
 
-# create chroot and do the first configuration
+# 4. Chroot
 dhcpcd # corded install
 pacstrap /mnt base base-devel vim
 genfstab -U -p /mnt >> /mnt/etc/fstab
@@ -58,6 +58,8 @@ systemd-firstboot \
   --locale-messages=en_GB.UTF-8 \
   --hostname=kjttks
 
+echo "KEYMAP=colemak" > /etc/vconsole.conf
+
 hwclock --systohc --utc
 
 _mkinitcpio_conf='/etc/mkinitcpio.conf'
@@ -65,7 +67,6 @@ if ! grep '^HOOKS=.*encrypt' "${_mkinitcpio_conf}"; then
     sed -i '/^HOOKS=/ s/filesystem/encrypt\ lvm2\ resume\ filesystem/' "${_mkinitcpio_conf}"
 fi
 
-export KEYMAP=colemak # mkinitcpio runs on linux install
 pacman -S --noconfirm linux
 
 bootctl --path=/boot install
@@ -82,7 +83,7 @@ options cryptdevice=/dev/sda2:cluxv resume=/dev/mapper/cluxv-swap root=/dev/mapp
 EOF
 
 exit
-umount /mnt/{boot,}
+umount -R /mnt
 reboot
 
 # login as root (no passwd yet)
