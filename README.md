@@ -1,22 +1,26 @@
 # dotclux
 [![build status](https://secure.travis-ci.org/clux/dotclux.svg)](http://travis-ci.org/clux/dotclux)
 
-Personal Arch Linux provisioning scripts in ansible.
+Personal Arch Linux provisioning scripts.
 
-## Usage
-Download and use on second boot (when successfully booted into a configured chroot as root).
-For a detailed guide follow [archboot.sh](./archboot.sh).
+## Bootstrap
+Copy the scripts in [archboot](./archboot/) to a usb stick along with an authorized `ssh` key.
+
+Then UEFI boot to an arch live environment and run `live.sh`.
+Once this is done, reboot into passwordless `root` user and run `firstboot.sh`
+
+## Provisioning
+After firstboot, login to `sddm` (maybe boot first), and continue:
 
 ```sh
-curl -sSL https://github.com/clux/dotclux/archive/ansible.tar.gz | tar xz
-# in created dir:
-./DEPLOY bootstrap
-# change password of desktop_user, then boot (to blacklist nouveau) to an X desktop
+# first thing that requires authorized ssh key
 ./DEPLOY secrets # answer all password prompts
-# install remaining list of dependencies unattended
-DOTCLUX_FULL=1 ./DEPLOY core
+
+# install remaining list of dependencies unattended (full provisioning mode)
+FPROV=1 ./DEPLOY core
 ```
 
+## Extras
 To re-provision specific roles/tags later:
 
 ```sh

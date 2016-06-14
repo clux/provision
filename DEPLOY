@@ -40,6 +40,6 @@ elif [[ $1 == "secrets" ]]; then
 else
   # shellcheck disable=SC2046
   ansible-playbook -i hosts -l "$(hostname)" site.yml --tags="$1" -vv \
-    $(test -n "$DOTCLUX_FULL" && echo "-e upgrade_tasks=1" || echo "") \
+    $(test -n "$FPROV" && echo "-e upgrade_tasks=1" || echo "") \
     --ask-become-pass
 fi
