@@ -60,8 +60,10 @@ systemd-firstboot \
 
 hwclock --systohc --utc
 
-vim /etc/mkinitcpio.conf
-# add `keymap encrypt lvm2 resume` before `filesystems`
+_mkinitcpio_conf='/etc/mkinitcpio.conf'
+if ! grep '^HOOKS=.*encrypt' "${_mkinitcpio_conf}"; then
+    sed -i '/^HOOKS=/ s/filesystem/encrypt\ lvm2\ resume\ filesystem/' "${_mkinitcpio_conf}"
+fi
 
 export KEYMAP=colemak # mkinitcpio runs on linux install
 pacman -S --noconfirm linux
