@@ -65,6 +65,9 @@
     - openssh
     - keychain
 
+  - name: generate sddm config
+    shell: sddm --example-config > /etc/sddm.conf creates=/etc/sddm.conf
+
   - name: enable key services
     service: name={{ item }} enabled=yes
     with_items:
