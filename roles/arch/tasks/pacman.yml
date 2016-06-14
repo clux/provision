@@ -64,10 +64,13 @@
   - xclip
   - xdotool
   - xorg-xrandr
+  - xorg-xinput
   - xorg-xrdb
   # gtk compat
   - gtk-engines
   - gtk-engine-murrine
+  # cinnamon addons
+  - dconf-editor
   # browsers
   - chromium
   - firefox
