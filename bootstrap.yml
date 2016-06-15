@@ -64,6 +64,9 @@
     - networkmanager
     - openssh
     - keychain
+    - xclip
+    - lsb-release
+    - tmux
 
   - name: generate sddm config
     shell: sddm --example-config > /etc/sddm.conf creates=/etc/sddm.conf
