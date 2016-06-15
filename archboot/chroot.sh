@@ -13,7 +13,7 @@ systemd-firstboot \
   --timezone=Europe/London \
   --locale=en_GB.UTF-8 \
   --locale-messages=en_GB.UTF-8 \
-  --hostname=kjttks
+  --hostname="$1"
 
 hwclock --systohc --utc
 

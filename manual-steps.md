@@ -2,27 +2,10 @@
 Miscellaneous list of things not yet handled in an automated way.
 
 ## automatic deploy
-Want bootstrap scripts to run on the new machine, so they need to be transported to the live environment somehow. See the USB stick issue.
 
-`efivars -l` did not exist on w5..
-### scripts
-scripts need to copy things correctly:
+- `efivars -l` did not exist on w5 - efibootmgr?
+- verify main disk is `/dev/sda` before proceeding
 
-- live.sh must copy chroot.sh to /mnt/ before arch-chroot
-- firstboot.sh must be copied to /mnt/root/
-- probably copy ssh key to /mnt/root as well
-
-then:
-
-```sh
-sudo cp /root/main_id* .
-mkdir ~/.ssh
-gpg -d main_id.gpg > main_id
-chmod 0600 main_id
-chmod 0644 main_id.pub
-rm main_id.gpg
-mv main_id* ~/.ssh
-```
 
 ## key generation
 Currently needs to be done on the machine via `ssh-keygen`, then have the public key copied into gmail, then from a machine that has access, authorize it elsewhere...

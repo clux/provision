@@ -62,11 +62,8 @@
     - guake
     - chromium
     - networkmanager
+    - git
     - openssh
-    - keychain
-    - xclip
-    - lsb-release
-    - tmux
 
   - name: generate sddm config
     shell: sddm --example-config > /etc/sddm.conf creates=/etc/sddm.conf
@@ -77,9 +74,13 @@
     - sddm
     - NetworkManager
 
-  # Things that makes the X setup easier
-  - name: install deps to easy x setup
-    pacman: name=git state=installed
+  - name: install deps to ease X setup
+    pacman: name={{ item }} state=installed
+    with_items:
+    - keychain
+    - xclip
+    - lsb-release
+    - tmux
 
   - name: clone dotclux
     git:

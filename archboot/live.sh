@@ -1,9 +1,12 @@
 #!/bin/bash
 set -ex
 cd "$(dirname "$0")"
+if [ -z "$1" ]; then
+  echo "You must provide a hostname"
+  exit 1
+fi
 
 # 0. Boot into live environment through UEFI boot
-efivars -l # proves you have uefi booted
 loadkeys colemak
 dhcpcd # this needs to work, so may as well ensure it works early
 
@@ -41,10 +44,12 @@ mkdir -p /mnt/boot
 mount /dev/sda1 /mnt/boot
 swapon /dev/mapper/cluxv-swap
 
-# 4. Chroot
+# 4. Create chroot
 pacstrap /mnt base base-devel vim
 genfstab -U -p /mnt >> /mnt/etc/fstab
-arch-chroot /mnt ./chroot.sh
+cp chroot.sh /mnt/
+cp firstboot.sh id_main* /mnt/root/
+arch-chroot /mnt ./chroot.sh "$1"
 umount -R /mnt
 
 echo "chroot created successfully - reboot to root user without password"
