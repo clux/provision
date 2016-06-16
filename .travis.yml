@@ -1,12 +1,16 @@
 ---
-language: python
-python:
-- "2.7"
+language: haskell
+addons:
+  apt:
+    packages:
+    - python-pip
 before_script:
+- cabal install shellcheck
 - pip install yamllint
 script:
 - yamllint *.yml roles/
 - test -z "$(find roles/ -type f -iname '*.yaml')" && echo "Extensions OK"
+- shellcheck DEPLOY archboot/*.sh genprov.sh
 notifications:
   email:
     on_success: change
