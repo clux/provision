@@ -4,6 +4,35 @@ if [ -z "$VIRTUAL_ENV" ]; then
   source venv.sh
 fi
 
+get_ssh_from_root() {
+  # Decrypt ssh key used to fetch secrets
+  mkdir -p ~/.ssh
+  # Fetch files copied by live.sh
+  sudo cp /root/main_id.{pub,gpg} ~/.ssh/
+  sudo chown "$USER:$USER" ~/.ssh/main_id*
+  gpg -d ~/.ssh/main_id.gpg > ~/.ssh/main_id
+  chmod 0600 ~/.ssh/main_id
+  chmod 0644 ~/.ssh/main_id.pub
+  rm ~/.ssh/main_id.gpg
+}
+
+fetch_secret_repos() {
+  # Decrypting gogs.yml
+  gpg -d vars/gogs.yml.gpg > vars/gogs.yml
+  # Adding main_id to keychain - password please:
+  keychain --timeout 30 --quiet --host agent ~/.ssh/main_id
+  source ~/.keychain/agent-sh
+  ansible-playbook -i hosts -l "$(hostname)" secrets.yml -vv
+}
+
+setup_dotfiles() {
+  mkdir -p ~/repos && cd ~/repos
+  git clone git@github.com:clux/dotfiles.git
+  cd dotfiles
+  make config
+  make ui
+}
+
 if [[ $1 == "bootstrap" ]]; then
   if [[ $EUID -ne 0 ]]; then
     echo "Must run bootstrap role as root"
@@ -17,35 +46,31 @@ elif [[ $1 == "secrets" ]]; then
   fi
   # interactive steps with passwords and key pasting here:
   set -x
-  # First sudo:
-  sudo chown -R "$USER:$USER" /usr/local
-  # Decrypt ssh key used to fetch secrets: - password please:
-  mkdir -p ~/.ssh
-  sudo cp /root/main_id.{pub,gpg} ~/.ssh/
-  sudo chown "$USER:$USER" ~/.ssh/main_id*
-  gpg -d ~/.ssh/main_id.gpg > ~/.ssh/main_id
-  chmod 0600 ~/.ssh/main_id
-  chmod 0644 ~/.ssh/main_id.pub
-  rm ~/.ssh/main_id.gpg
-  # Decrypting gogs.yml - password please:
-  gpg -d vars/gogs.yml.gpg > vars/gogs.yml
-  # Adding main_id to keychain - password please:
-  keychain --timeout 30 --quiet --host agent ~/.ssh/main_id
-  source ~/.keychain/agent-sh
-  ansible-playbook -i hosts -l "$(hostname)" secrets.yml -vv
-  for repo in ssh gpg mumble cisco; do
-    echo "Installing $repo"
-    ~/$repo/install.sh
-  done
-  mkdir -p ~/repos && cd ~/repos
-  git clone git@github.com:clux/dotfiles.git
-  cd dotfiles
-  make config
-  make ui
-  source ~/.bashrc
+  sudo chown -R "$USER:$USER" /usr/local # First sudo
+  # If we haven't set up our ssh key from genprov, do so now
+  [ -f ~/.ssh/main_id ] || get_ssh_from_root
+  # If we haven't installed the last secret repo, fetch all repos
+  [ -f ~/.ssh/work_id ] || fetch_secret_repos
+  # Install repos we haven't yet installed
+  [ -d ~/.ssh/.git ] && ~/ssh/install.sh
+  [ -d ~/.gnupg/.git ] || ~/gpg/install.sh
+  [ -f ~/.config/Mumble/Mumble.conf ] || ~/mumble/install.sh
+  [ -f ~/.ssh/work_id ] || ~/cisco/install.sh
+  # Delete the rest
+  rm -rf ~/ssh ~/gpg ~/mumble
+  # Set up dotfiles
+  [ -L ~/.functions ] || setup_dotfiles
 else
+  # arg parse
+  OPTIND=2 # getopts start
+  while getopts ":f" opt; do
+    case $opt in
+      f) FULL_PROV=1 ;;
+      \?) abort Invalid option -$OPTARG
+    esac
+  done
   # shellcheck disable=SC2046
   ansible-playbook -i hosts -l "$(hostname)" site.yml --tags="$1" -vv \
-    $(test -n "$FPROV" && echo "-e upgrade_tasks=1" || echo "") \
+    $(test -n "$FULL_PROV" && echo "-e upgrade_tasks=1" || echo "") \
     --ask-become-pass
 fi

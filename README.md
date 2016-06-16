@@ -28,17 +28,14 @@ Boot to a passwordless `root` user and configure `X` with:
 This will ask for a new `root` passwd, then a new `$USER` password.
 
 ## Provisioning
-After firstboot, login to `sddm` (maybe boot first), and continue:
+Once you have gotten a desktop, set up secrets and deploy core roles later.
 
 ```sh
-# first thing that requires authorized ssh key
 ./DEPLOY secrets # answer all password prompts
-
-# install remaining list of dependencies unattended (full provisioning mode)
-FPROV=1 ./DEPLOY core
+./DEPLOY core -f # make lunch
 ```
 
-## Extras
+## Tags & Extras
 To re-provision specific roles/tags later:
 
 ```sh
