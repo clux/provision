@@ -7,10 +7,10 @@ Arch Linux provisioning scripts.
 You need two USB sticks for this deployment.
 
 1. [live environment](https://www.archlinux.org/download/)
-2. generate with [genprov](./genprov.sh)
+2. [genprov](./genprov.sh) generated volume
 
 ## Bootstrap
-Boot into the live environment using EFI boot and mount the provisioning stick on `/prov`.
+Boot into the live environment using EFI boot, mount the provisioning stick on `/prov`, and start the show:
 
 ```sh
 export DCPASSWORD=encrypteddiskpw
@@ -19,13 +19,15 @@ export DCDISK=/dev/sda
 /prov/live.sh # 3 minutes unattended
 ```
 
-Boot to a passwordless `root` user and configure `X` with:
+Note that `$DCHOSTNAME` must exist in [hosts](./hosts).
+
+Then boot to a passwordless `root` user and configure `X` with:
 
 ```sh
-./firstboot.sh
+./firstboot.sh # 5 min unattended middle
 ```
 
-This will ask for a new `root` passwd, then a new `$USER` password.
+This will ask for a new `root` passwd at start, then your `$USER` password at the end.
 
 ## Provisioning
 Once you have gotten a desktop, set up secrets and deploy core roles later.

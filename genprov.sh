@@ -8,7 +8,10 @@ if [ ! -f ~/.ssh/main_id ]; then
   exit 1
 fi
 
-echo "WARNING: This will completely overwrite ${disk}"
+disksize=$(lsblk "${disk}" -ldn | awk '{print $4}')
+
+echo "WARNING: This will overwrite the ${disk}"
+echo "This is a ${disksize} disk"
 read -rp "Press any key to continue"
 
 sudo umount "${disk}1" || true
