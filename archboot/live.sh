@@ -18,6 +18,11 @@ abort() {
 [[ $DCDISK ]] || abort You must specify the disk to partition
 [[ $DCPASSWORD ]] || abort You must provide an encryption password
 [[ $DCHOSTNAME ]] || abort You must provide a host name
+DCDISKSIZE=$(lsblk "${DCDISK}" -ldn | awk '{print $4}')
+
+echo "WARNING: This will overwrite the disk ${DCDISK}"
+echo "This is a ${DCDISKSIZE} disk"
+read -rp "Press any key to continue"
 
 # 0. Boot into live environment through UEFI boot
 efivar -L # proves you EFI booted
