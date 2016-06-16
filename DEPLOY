@@ -21,7 +21,7 @@ elif [[ $1 == "secrets" ]]; then
   sudo chown -R "$USER:$USER" /usr/local
   # Decrypt ssh key used to fetch secrets: - password please:
   mkdir -p ~/.ssh
-  sudo cp /root/main_id* ~/.ssh/
+  sudo cp /root/main_id.{pub,gpg} ~/.ssh/
   sudo chown "$USER:$USER" ~/.ssh/main_id*
   gpg -d ~/.ssh/main_id.gpg > ~/.ssh/main_id
   chmod 0600 ~/.ssh/main_id

@@ -7,7 +7,7 @@ if [ -z "$1" ]; then
 fi
 
 # 0. Boot into live environment through UEFI boot
-loadkeys colemak
+efivar -L # proves you EFI booted
 dhcpcd # this needs to work, so may as well ensure it works early
 
 # 1. Partitioning: GPT + EFI
@@ -48,7 +48,7 @@ swapon /dev/mapper/cluxv-swap
 pacstrap /mnt base base-devel vim
 genfstab -U -p /mnt >> /mnt/etc/fstab
 cp chroot.sh /mnt/
-cp firstboot.sh id_main* /mnt/root/
+cp firstboot.sh main_id.* /mnt/root/
 arch-chroot /mnt ./chroot.sh "$1"
 umount -R /mnt
 

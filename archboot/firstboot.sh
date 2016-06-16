@@ -11,9 +11,9 @@ curl -sSL https://github.com/clux/dotclux/archive/ansible.tar.gz | tar xz
 cd dotclux*
 ./DEPLOY bootstrap
 
+loadkeys colemak # adding a user seems to screw it up
 myuser=$(grep "$HOSTNAME" -r hosts | awk 'BEGIN {RS=" "}; /desktop_user/' | cut -d'=' -f2)
 passwd "$myuser"
-mv id_main* "/home/$myuser/"
 
 if pacman -Ss nvidia-libgl | grep -q installed; then
   echo "bootstrap completed - boot to blacklist nouveau"
