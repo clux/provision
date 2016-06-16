@@ -1,5 +1,5 @@
-# dotclux
-[![build status](https://secure.travis-ci.org/clux/dotclux.svg)](http://travis-ci.org/clux/dotclux)
+# provision
+[![build status](https://secure.travis-ci.org/clux/provision.svg)](http://travis-ci.org/clux/provision)
 
 Arch Linux provisioning scripts.
 

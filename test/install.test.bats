@@ -140,5 +140,5 @@
   [ -d "$HOME/.gnupg/.git" ]
   run gpg --list-keys
   echo "$output" && echo "$output" | grep -q "\[ultimate\] Eirik"
-  [ -d "$HOME/repos/dotclux" ]
+  [ -d "$HOME/repos/provision" ]
 }

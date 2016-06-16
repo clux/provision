@@ -82,10 +82,10 @@
     - lsb-release
     - tmux
 
-  - name: clone dotclux
+  - name: clone provision repo
     git:
-      repo: https://github.com/clux/dotclux
-      dest: /home/{{ desktop_user }}/dotclux
+      repo: https://github.com/clux/provision
+      dest: /home/{{ desktop_user }}/provision
       update: yes
     become_user: "{{ desktop_user }}"
     become: yes

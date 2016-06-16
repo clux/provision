@@ -13,8 +13,8 @@ passwd
 sleep 5
 
 # Fetch bootstrap role
-curl -sSL https://github.com/clux/dotclux/archive/ansible.tar.gz | tar xz
-cd dotclux*
+curl -sSL https://github.com/clux/provision/archive/ansible.tar.gz | tar xz
+cd provision*
 
 # Ensure we have are listed in hosts and there's a corresponding desktop_user
 myuser=$(grep "$HOSTNAME" -r hosts | awk 'BEGIN {RS=" "}; /desktop_user/' | cut -d'=' -f2)
