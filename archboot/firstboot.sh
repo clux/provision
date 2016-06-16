@@ -1,18 +1,27 @@
 #!/bin/bash
-set -ex
-# for the first real boot after setting up the chroot
+set -exuo pipefail
+# For the first real boot after setting up the chroot
 # login as root (which has no passwd at this stage)
+
+# dhcpcd one last time (bootstrap enables NetworkManager)
+dhcpcd
 
 # set root pass
 passwd
 
-# configure user account
+# give dhcpcd some time
+sleep 5
+
+# Fetch bootstrap role
 curl -sSL https://github.com/clux/dotclux/archive/ansible.tar.gz | tar xz
 cd dotclux*
+
+# Ensure we have are listed in hosts and there's a corresponding desktop_user
+myuser=$(grep "$HOSTNAME" -r hosts | awk 'BEGIN {RS=" "}; /desktop_user/' | cut -d'=' -f2)
 ./DEPLOY bootstrap
 
-loadkeys colemak # adding a user seems to screw it up
-myuser=$(grep "$HOSTNAME" -r hosts | awk 'BEGIN {RS=" "}; /desktop_user/' | cut -d'=' -f2)
+# Finalise user account
+loadkeys colemak # localectl screws up locales temporarily
 passwd "$myuser"
 
 if pacman -Ss nvidia-libgl | grep -q installed; then

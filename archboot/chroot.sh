@@ -1,6 +1,9 @@
 #!/bin/bash
 set -ex
 
+DCHOSTNAME="$1"
+DCDISK="$2"
+
 # Generate locales (not sufficient to do firstboot)
 cat <<EOF > /etc/locale.gen
 en_GB.UTF-8 UTF-8
@@ -13,7 +16,7 @@ systemd-firstboot \
   --timezone=Europe/London \
   --locale=en_GB.UTF-8 \
   --locale-messages=en_GB.UTF-8 \
-  --hostname="$1"
+  --hostname="$DCHOSTNAME"
 
 hwclock --systohc --utc
 
@@ -35,7 +38,7 @@ cat <<EOF > /boot/loader/entries/lvmluks.conf
 title Arch Linux Encrypted LVM
 linux /vmlinuz-linux
 initrd /initramfs-linux.img
-options cryptdevice=/dev/sda2:cluxv resume=/dev/mapper/cluxv-swap root=/dev/mapper/cluxv-root quiet rw
+options cryptdevice=${DCDISK}2:vgroup resume=/dev/mapper/vgroup-swap root=/dev/mapper/vgroup-root quiet rw
 EOF
 
 # Bootloader menu - one entry

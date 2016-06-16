@@ -1,13 +1,31 @@
 # dotclux
 [![build status](https://secure.travis-ci.org/clux/dotclux.svg)](http://travis-ci.org/clux/dotclux)
 
-Personal Arch Linux provisioning scripts.
+Arch Linux provisioning scripts.
+
+## Prerequisites
+You need two USB sticks for this deployment.
+
+1. [live environment](https://www.archlinux.org/download/)
+2. generate with [genprov](./genprov.sh)
 
 ## Bootstrap
-Copy the scripts in [archboot](./archboot/) to a usb stick along with an authorized `ssh` key.
+Boot into the live environment using EFI boot and mount the provisioning stick on `/prov`.
 
-Then UEFI boot to an arch live environment and run `live.sh`.
-Once this is done, reboot into passwordless `root` user and run `firstboot.sh`
+```sh
+export DCPASSWORD=encrypteddiskpw
+export DCHOSTNAME=cluxx1
+export DCDISK=/dev/sda
+/prov/live.sh # 3 minutes unattended
+```
+
+Boot to a passwordless `root` user and configure `X` with:
+
+```sh
+./firstboot.sh
+```
+
+This will ask for a new `root` passwd, then a new `$USER` password.
 
 ## Provisioning
 After firstboot, login to `sddm` (maybe boot first), and continue:
