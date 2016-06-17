@@ -43,23 +43,23 @@ cryptsetup luksOpen "${DCDISK}2" lvm
 pvcreate /dev/mapper/lvm
 pvdisplay
 # Create volume group from physical volume, and add logical volumes on that group:
-vgcreate vgroup /dev/mapper/lvm
+vgcreate kjttks /dev/mapper/lvm
 vgdisplay
-lvcreate -L 8G vgroup -n swap
-lvcreate -l 100%free vgroup -n root
+lvcreate -L 8G kjttks -n swap
+lvcreate -l 100%free kjttks -n root
 
 # 3. Filesystems
 # 3.a) Create filesystems
 mkfs.fat -F32 "${DCDISK}1"
-mkfs.ext4 /dev/mapper/vgroup-root
-mkswap /dev/mapper/vgroup-swap
+mkfs.ext4 /dev/mapper/kjttks-root
+mkswap /dev/mapper/kjttks-swap
 lsblk
 
 # 3. b) Mount filesystems
-mount /dev/mapper/vgroup-root /mnt
+mount /dev/mapper/kjttks-root /mnt
 mkdir -p /mnt/boot
 mount "${DCDISK}1" /mnt/boot
-swapon /dev/mapper/vgroup-swap
+swapon /dev/mapper/kjttks-swap
 
 # 4. Create chroot
 pacstrap /mnt base base-devel vim

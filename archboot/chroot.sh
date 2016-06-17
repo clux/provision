@@ -38,7 +38,7 @@ cat <<EOF > /boot/loader/entries/lvmluks.conf
 title Arch Linux Encrypted LVM
 linux /vmlinuz-linux
 initrd /initramfs-linux.img
-options cryptdevice=${DCDISK}2:vgroup resume=/dev/mapper/vgroup-swap root=/dev/mapper/vgroup-root quiet rw
+options cryptdevice=${DCDISK}2:kjttks resume=/dev/mapper/kjttks-swap root=/dev/mapper/kjttks-root quiet rw
 EOF
 
 # Bootloader menu - one entry
