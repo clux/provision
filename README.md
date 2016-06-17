@@ -13,7 +13,6 @@ You need two USB sticks for this deployment.
 Boot into the live environment using EFI boot, mount the provisioning stick on `/prov`, and start the show:
 
 ```sh
-export DCPASSWORD=encrypteddiskpw
 export DCHOSTNAME=cluxx1
 export DCDISK=/dev/sda
 /prov/live.sh # 3 minutes unattended

@@ -8,15 +8,13 @@ set -exuo pipefail
 # - main_id.{pub,gpg} (used way later)
 
 cd "$(dirname "$0")"
-stick_root="$PWD"
 
 abort() {
   >&2 echo "$@"
   exit 1
 }
-[[ $EUID -ne 0 ]] || abort You must be root inside a live environment
+[[ $EUID -eq 0 ]] || abort You must be root inside a live environment
 [[ $DCDISK ]] || abort You must specify the disk to partition
-[[ $DCPASSWORD ]] || abort You must provide an encryption password
 [[ $DCHOSTNAME ]] || abort You must provide a host name
 DCDISKSIZE=$(lsblk "${DCDISK}" -ldn | awk '{print $4}')
 
@@ -37,8 +35,9 @@ sgdisk -Z \
   -p "$DCDISK"
 
 # 2. LVM on LUKS (password set here)
-echo "$DCPASSWORD" | cryptsetup luksFormat "${DCDISK}2" -
-echo "$DCPASSWORD" | cryptsetup luksOpen "${DCDISK}2" lvm
+loadkeys colemak
+cryptsetup luksFormat "${DCDISK}2"
+cryptsetup luksOpen "${DCDISK}2" lvm
 
 # Create physical volume on top of LUKS container:
 pvcreate /dev/mapper/lvm
@@ -71,6 +70,4 @@ arch-chroot /mnt ./chroot.sh "$DCHOSTNAME" "$DCDISK"
 
 # 5. Cleanup
 umount -R /mnt
-cd /
-umount "$stick_root"
 echo "chroot created successfully - reboot to root user (no pass)"
