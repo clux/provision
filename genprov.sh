@@ -30,4 +30,4 @@ fi
 cp archboot/* stick/
 cp ~/.ssh/main_id.{pub,gpg} stick/
 sudo umount "${disk}1" || true
-rm -f stick
+rm -r stick/
