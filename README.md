@@ -15,7 +15,7 @@ Boot into the live environment using EFI boot, mount the provisioning stick on `
 ```sh
 export DCHOSTNAME=cluxx1
 export DCDISK=/dev/sda
-/prov/live.sh # 3 minutes unattended
+/prov/live.sh # 3 minutes unattended after setting of crypt pass
 ```
 
 Note that `$DCHOSTNAME` must exist in [hosts](./hosts).
