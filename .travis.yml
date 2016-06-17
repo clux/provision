@@ -5,8 +5,8 @@ python:
 services:
 - docker
 before_script:
-- cabal install shellcheck
 - pip install yamllint
+- docker pull davidhrbac/docker-shellcheck
 script:
 - yamllint *.yml roles/
 - test -z "$(find roles/ -type f -iname '*.yaml')" && echo "Extensions OK"
