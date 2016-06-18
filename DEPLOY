@@ -52,10 +52,10 @@ elif [[ $1 == "secrets" ]]; then
   # If we haven't installed the last secret repo, fetch all repos
   [ -f ~/.ssh/work_id ] || fetch_secret_repos
   # Install repos we haven't yet installed
-  [ -d ~/.ssh/.git ] && ~/ssh/install.sh
   [ -d ~/.gnupg/.git ] || ~/gpg/install.sh
   [ -f ~/.config/Mumble/Mumble.conf ] || ~/mumble/install.sh
   [ -f ~/.ssh/work_id ] || ~/cisco/install.sh
+  [ -d ~/.ssh/.git ] || ~/ssh/install.sh
   # Delete the rest
   rm -rf ~/ssh ~/gpg ~/mumble
   # Set up dotfiles
