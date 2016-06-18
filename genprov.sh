@@ -1,7 +1,7 @@
 #!/bin/bash
-set -ex
+set -euo pipefail
 
-disk=${1-/dev/sdd}
+disk="$1"
 
 if [ ! -f ~/.ssh/main_id ]; then
   echo "You need to have an authorized SSH key to export"
