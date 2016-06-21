@@ -10,3 +10,11 @@
   when: ansible_os_family == "Archlinux"
   become: yes
   tags: [arch, core]
+
+# sddm avatar - assumes we already have ~/.iface
+- copy:
+    src=/home/{{ desktop_user }}/.iface
+    remote_src=True
+    dest=/usr/share/sddm/faces/{{ desktop_user }}.face.icon
+  become: yes
+  tags: [arch, core]
