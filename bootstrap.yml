@@ -73,10 +73,20 @@
       regexp="^#greeter-session\="
       line="greeter-session=lightdm-gtk-greeter"
 
+  - name: customize lightdm-gtk-greeter
+    copy:
+      src=templates/{{ item }}
+      remote_src=True
+      dest=/etc/lightdm/{{ item }}
+    with_items:
+    - lightdm-gtk-greeter.conf
+    - clux.jpg
+    - arch-bg.jpeg
+
   - name: enable key services
     service: name={{ item }} enabled=yes
     with_items:
-    - sddm
+    - lightdm
     - NetworkManager
 
   - name: install deps to ease X setup
