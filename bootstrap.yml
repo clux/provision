@@ -56,7 +56,8 @@
     with_items:
     - alsa-utils
     - cinnamon
-    - sddm
+    - lightdm
+    - lightdm-gtk-greeter
     - ttf-dejavu
     - ttf-liberation
     - guake
@@ -65,8 +66,12 @@
     - git
     - openssh
 
-  - name: generate sddm config
-    shell: sddm --example-config > /etc/sddm.conf creates=/etc/sddm.conf
+  - name: enable lightdm gtk greeter
+    lineinfile:
+      dest=/etc/lightdm/lightdm.conf
+      backrefs=yes
+      regexp="^#greeter-session\="
+      line="greeter-session=lightdm-gtk-greeter"
 
   - name: enable key services
     service: name={{ item }} enabled=yes
