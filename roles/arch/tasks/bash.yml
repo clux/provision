@@ -1,0 +1,8 @@
+---
+- name: Install rust
+  shell: curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable --no-modify-path -y
+  args:
+    creates: "/home/{{ desktop_user }}/.cargo/bin/rustc"
+    executable: /bin/bash
+  become: no
+  when: upgrade_tasks | default(false)

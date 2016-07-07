@@ -30,8 +30,6 @@
   - weechat
   # programming
   - python-pip
-  - rust
-  - cargo
   - ghc
   - cabal-install
   - shellcheck
@@ -44,6 +42,7 @@
   - nmap
   - strace
   - lsb-release
+  - community/perf
   # network
   - vpnc
   - bind-tools  # contains dig
