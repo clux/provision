@@ -25,3 +25,10 @@
     src: "{{ rustc_tarball.dest }}"
     dest: /home/{{ desktop_user }}/.cargo/
     creates: /home/{{ desktop_user }}/.cargo/rustc-{{ rust_ver }}
+
+- name: Link current as latest
+  file:
+    src="/home/{{ desktop_user }}/.cargo/rustc-{{ rust_ver }}"
+    dest="/home/{{ desktop_user }}/.cargo/rustc-stable"
+    state=link
+    force=yes
