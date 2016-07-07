@@ -27,3 +27,4 @@
 - template:
     src=templates/subl.desktop.j2
     dest=/home/{{ desktop_user }}/.cinnamon/panel-launchers/cinnamon-custom-launcher-1.desktop
+  when: ansible_os_family != "Debian"

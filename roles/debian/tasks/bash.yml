@@ -8,22 +8,33 @@
     regexp="^XKBVARIANT="
     line="XKBVARIANT=\"colemak\""
 
-# Docker install script - run as root as it would sudo otherwise
+# Docker install
 - apt_key: url=https://get.docker.com/gpg state=present
-- name: Install docker
-  shell: curl -fsSL https://get.docker.com/ | sh
-  become_user: root
+- apt_repository:
+    repo: 'deb https://apt.dockerproject.org/repo debian-jessie main'
+    update_cache: yes
+    state: present
 
+- name: Install docker package
+  apt: name=docker-engine state=latest force=yes
+
+# TODO: Still necessary?
 - name: Add desktop user to docker group
-  user: name={{desktop_user}} groups=docker append=yes
+  user: name={{ desktop_user }} groups=docker append=yes
 - service: name=docker enabled=yes state=started
 
-- name: Install rust
-  shell: curl https://static.rust-lang.org/rustup.sh | sh -s -- --yes --disable-sudo
-  become_user: root
+
+# TODO: still fails on debian due to obscure bug..
+#- name: Install rust
+#  shell: curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable --no-modify-path -y
+#  args:
+#    creates: "/home/{{ desktop_user }}/.cargo/bin/rustc"
+#    executable: /bin/bash
+#  become: no
+#  when: upgrade_tasks | default(false)
 
 # Compile scripts - which can run fine sans sudo if /usr/local is chowned
-- script: scripts/profanity
-  creates: /usr/local/bin/profanity
-- script: scripts/llvm
-  creates: /usr/local/bin/clang
+- script: scripts/profanity creates=/usr/local/bin/profanity
+  become: no
+- script: scripts/llvm creates=/usr/local/bin/clang
+  become: no

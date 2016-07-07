@@ -1,12 +1,17 @@
 #!/bin/bash
-set -e
+set -x
 
+VENV_BIN="virtualenv2"
 if ! hash virtualenv2 2> /dev/null; then
-  pacman -S --noconfirm python2-virtualenv
+  if hash pacman 2> /dev/null; then
+    pacman -S --noconfirm python2-virtualenv
+  else
+    VENV_BIN="virtualenv"
+  fi
 fi
 
 if [ ! -d venv ]; then
-  virtualenv2 -p "$(which python2)" venv
+  "$VENV_BIN" -p "$(which python2)" venv
 fi
 source venv/bin/activate
 

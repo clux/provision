@@ -1,7 +1,7 @@
 ---
 # OS extras for debian
 
-- include: debian.yml
+- include: apt.yml
   when: ansible_os_family == "Debian"
   become: yes
   tags: [debian, core]

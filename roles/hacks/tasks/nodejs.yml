@@ -18,6 +18,7 @@
     dest: "{{node_prefix}}/node/{{node_lts}}.tar.gz"
   register: nodejs_tarball
 
+# NB: this somehow fails on debian
 - name: Unpack nodejs tarball
   unarchive:
     copy: no
@@ -30,8 +31,8 @@
 
 - name: Activate new nodejs install
   file:
-    src={{node_prefix}}/node-{{node_lts}}-linux-x64/{{item}}
-    dest={{node_prefix}}/node/{{item}}
+    src="{{node_prefix}}/node-{{node_lts}}-linux-x64/{{item}}"
+    dest="{{node_prefix}}/node/{{item}}"
     state=link
     force=yes
   with_items:

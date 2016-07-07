@@ -98,7 +98,6 @@
   [ -L "$HOME/.inputrc" ]
   [ -L "$HOME/.jshintrc" ]
   [ -L "$HOME/.mpdconf" ]
-  [ -L "$HOME/.nanorc" ]
   [ -d "$HOME/.ncmpcpp" ]
   [ -L "$HOME/.path" ]
   [ -d "$HOME/.templates" ]

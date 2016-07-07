@@ -4,9 +4,10 @@
 
 # Chrome - because some sites need flash
 - apt_key: url=https://dl.google.com/linux/linux_signing_key.pub state=present
-- apt_repository:
-    repo='deb http://dl.google.com/linux/chrome/deb/ stable main'
-    filename='google-chrome'
+# Still not working in ansible 2.1 despite advertised as such
+#- apt_repository:
+#    repo='deb http://dl.google.com/linux/chrome/deb/ stable main'
+#    filename='google-chrome'
 
 - name: "Update cache"
   apt: update_cache=yes
@@ -31,6 +32,7 @@
   - libglib2.0-dev
   - libnotify-dev
   - libxml2-dev
+  - linux-tools
   - pkg-config
   - python-dev
   - python-pip
@@ -72,5 +74,6 @@
   - libzeitgeist-*
   - zeitgeist
 
-- name: Autoremove
-  apt: autoremove
+# Still not working in 2.1 despite advertised..
+#- name: Autoremove
+#  apt: autoremove=yes

@@ -4,6 +4,8 @@
   vars_files:
   - vars/versions.yml
   user: "{{ desktop_user }}"
+  # Think we can get away with this..
+  gather_facts: False
   roles:
   - { role: arch, when: ansible_os_family == "Archlinux" }
   - { role: debian, when: ansible_os_family == "Debian" }
