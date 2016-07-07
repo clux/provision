@@ -6,3 +6,11 @@
     executable: /bin/bash
   become: no
   when: upgrade_tasks | default(false)
+
+- name: Upgrade rust stable
+  shell: rustup update stable
+  when: upgrade_tasks | default(false)
+
+- name: Upgrade rust nightly
+  shell: rustup update nightly
+  when: upgrade_tasks | default(false)
