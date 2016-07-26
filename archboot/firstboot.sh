@@ -27,5 +27,5 @@ passwd "$myuser"
 if pacman -Ss nvidia-libgl | grep -q installed; then
   echo "bootstrap completed - boot to blacklist nouveau"
 else
-  systemctl start sddm
+  systemctl start lightdm
 fi
