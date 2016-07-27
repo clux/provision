@@ -4,7 +4,6 @@
 - file: path=/home/{{ desktop_user }}/local/{{ item }} state=directory
   with_items:
   - share/man/man1
-  - share/man/man7
   - bin
 
 - name: Install blackbox
@@ -14,15 +13,6 @@
     version: stable
     update: "{{ upgrade_tasks | default(false) }}"
   notify: make-install blackbox
-
-# Exists in arch as bash-bats
-- name: Install bats
-  git:
-    repo: https://github.com/sstephenson/bats
-    dest: /home/{{ desktop_user }}/local/bats
-    version: v0.4.0
-    update: "{{ upgrade_tasks | default(false) }}"
-  notify: make-install bats
 
 # Exists on AUR as z, but not on debian
 - name: Install z
