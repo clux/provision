@@ -23,9 +23,11 @@
   - xterm
   - jshon
   - bash-bats
+  - the_silver_searcher
   # vim
   - vim
   - vim-ctrlp
+  - vim-seti
   # chat
   - profanity
   - weechat
