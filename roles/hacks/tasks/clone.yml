@@ -21,6 +21,12 @@
     dest: /home/{{ desktop_user }}/local/z
     update: "{{ upgrade_tasks | default(false) }}"
 
+- name: Install vim vundle
+  git:
+    repo: https://github.com/VundleVim/Vundle.vim
+    dest: /home/{{ desktop_user }}/.vim/bundle/Vundle.vim
+    update: "{{ upgrade_tasks | default(false) }}"
+
 # only thing z needs to install is z.1
 # otherwise relies on sourcing ./z/z.sh from bash_profile
 - name: link z.1
