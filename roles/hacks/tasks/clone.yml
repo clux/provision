@@ -21,7 +21,7 @@
     dest: /home/{{ desktop_user }}/local/z
     update: "{{ upgrade_tasks | default(false) }}"
 
-- name: Install vim vundle
+- name: Install vim vundle - allows :PluginInstall
   git:
     repo: https://github.com/VundleVim/Vundle.vim
     dest: /home/{{ desktop_user }}/.vim/bundle/Vundle.vim
