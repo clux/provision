@@ -1,4 +1,4 @@
-
+---
 - file: path="/home/{{ desktop_user }}/.vim/autoload/" state=directory
 
 - name: Install vim plug - allows :PluginInstall
