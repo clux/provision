@@ -11,3 +11,7 @@
 - include: sublime.yml
   become: no
   tags: [hacks, sublime, core]
+
+- include: vim.yml
+  become: no
+  tags: [hacks, vim, core]
