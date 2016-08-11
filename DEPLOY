@@ -1,8 +1,6 @@
 #!/bin/bash
 set -e
-if [ -z "$VIRTUAL_ENV" ]; then
-  source venv.sh
-fi
+export ANSIBLE_NOCOWS=1
 
 get_ssh_from_root() {
   # Decrypt ssh key used to fetch secrets
@@ -38,6 +36,7 @@ if [[ $1 == "bootstrap" ]]; then
     echo "Must run bootstrap role as root"
     exit 1
   fi
+  pacman -S --noconfirm ansible
   ansible-playbook -i hosts -l "$(hostname)" bootstrap.yml -vv
 elif [[ $1 == "secrets" ]]; then
   if [[ $EUID -eq 0 ]]; then
@@ -72,6 +71,6 @@ else
   done
   # shellcheck disable=SC2046
   ansible-playbook -i hosts -l "$(hostname)" site.yml --tags="$1" "-vv${VERBOSE}" \
-    $(test -n "$FULL_PROV" && echo "-e upgrade_tasks=1" || echo "") \
+    $([ -n "$FULL_PROV" ] && echo "-e upgrade_tasks=1" || echo "") \
     --ask-become-pass
 fi

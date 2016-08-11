@@ -4,8 +4,8 @@
 - include: npm.yml
   tags: [lpms, npm, core]
 
-# - include: pip.yml
-#   tags: [lpms, pip, core]
+- include: pip.yml
+  tags: [lpms, pip, core]
 
 - include: gem.yml
   tags: [lpms, gem, core]

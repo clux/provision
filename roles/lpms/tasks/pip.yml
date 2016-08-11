@@ -1,13 +1,13 @@
 ---
 # pip playbook - install cli tools in pip user dir
 
-- name: Upgrade pip
-  pip: name=pip state=latest
+# NB: pip is managed by pacman
 
-# TODO: since we run ansible in a virtualenv - the following does not work..
+# These technically do exist as well in pacman
 - name: Install dependencies
   pip: name={{ item }} extra_args='--user' state=present
   with_items:
   - ghp-import
   - pyflakes
   - pylint
+  - youtube-dl
