@@ -4,6 +4,7 @@
 # Assume these are stable enough to not have to do state=latest on them
 - name: Install npm dependencies
   npm: name={{ item }} global=yes
+  become: yes
   with_items:
   - badgify
   - faucet

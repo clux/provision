@@ -40,6 +40,8 @@
   - clang
   - clang-tools-extra
   - lldb
+  - nodejs
+  - npm
   # system tools
   - htop
   - nmap
