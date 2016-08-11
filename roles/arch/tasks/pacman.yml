@@ -24,6 +24,7 @@
   - jshon
   - bash-bats
   - the_silver_searcher
+  - shellcheck
   # vim
   - vim
   - vim-ctrlp
@@ -33,9 +34,6 @@
   - weechat
   # programming
   - python-pip
-  - ghc
-  - cabal-install
-  - shellcheck
   - cmake
   - clang
   - clang-tools-extra
