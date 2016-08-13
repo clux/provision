@@ -1,5 +1,5 @@
 #!/bin/bash
-PATH=/sbin:/usr/games:/usr/local/node/bin:$PATH
+PATH=/sbin:/usr/games:$PATH
 
 cpu5=$(awk '{printf("%3.1f%%", $2*100/'"$(nproc)"') }' < /proc/loadavg)
 
@@ -44,21 +44,27 @@ A="\033[01;31m" # red
 Z="\033[01;33m" # yellow
 
 # Color code high numbers
-if [[ $memusage > 80 ]]; then
-  memusage="${A}${memusage}${W}"
-elif [[ $memusage > 40 ]]; then
-  memusage="${Z}${memusage}${W}"
-fi
-if [[ $cpu5 > 80 ]]; then
-  cpu5="${A}${cpu5}${W}"
-elif [[ $cpu5 > 40 ]]; then
-  cpu5="${Z}${cpu5}${W}"
-fi
-if [[ $disk > 90 ]]; then
-  disk="${A}${disk}${W}"
-elif [[ $disk > 75 ]]; then
-  disk="${Z}${disk}${W}"
-fi
+# This technically does lexicographical compares of %3.1f%% and ints
+# - easier than parsing the number then using test -gt
+# - technically okay when we are comparing against 2 digit numbers
+# shellcheck disable=SC2071
+{
+  if [[ $memusage > 80 ]]; then
+    memusage="${A}${memusage}${W}"
+  elif [[ $memusage > 40 ]]; then
+    memusage="${Z}${memusage}${W}"
+  fi
+  if [[ $cpu5 > 80 ]]; then
+    cpu5="${A}${cpu5}${W}"
+  elif [[ $cpu5 > 40 ]]; then
+    cpu5="${Z}${cpu5}${W}"
+  fi
+  if [[ $disk > 90 ]]; then
+    disk="${A}${disk}${W}"
+  elif [[ $disk > 75 ]]; then
+    disk="${Z}${disk}${W}"
+  fi
+}
 
 echo -e "$(hostname)\n$(lsb_release -si) $(lsb_release -sr)" | cowsay -n -f eyes | lolcat
 echo -e "$R======================================================="
