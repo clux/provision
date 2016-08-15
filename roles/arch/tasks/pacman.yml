@@ -1,12 +1,6 @@
 ---
 # pacman interface
 
-- name: Upgrade and update
-  pacman: upgrade=yes update_cache=yes
-  when: upgrade_tasks | default(false)
-
-# TODO: aur chrome
-
 - name: Install dependencies
   pacman: name={{ item }} state=installed
   with_items:
@@ -25,10 +19,7 @@
   - bash-bats
   - the_silver_searcher
   - shellcheck
-  # vim
   - vim
-  - vim-ctrlp
-  - vim-seti
   # chat
   - profanity
   - weechat
@@ -89,7 +80,7 @@
   - nemo-fileroller
   - nemo-share
   - samba
-  - mtpfs
+  - mtpfs # kindle
   # gaming
   - steam
   - lib32-alsa-plugins
