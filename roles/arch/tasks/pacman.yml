@@ -86,4 +86,6 @@
   - lib32-alsa-plugins
   # fonts
   - ttf-ubuntu-font-family
-  - powerline-fonts
+  - otf-ipafont # japanese
+  - ttf-baekmuk # korean
+  - powerline-fonts # promptline dependency
