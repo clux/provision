@@ -87,5 +87,7 @@
   # fonts
   - ttf-ubuntu-font-family
   - otf-ipafont # japanese
-  - ttf-baekmuk # korean
-  - powerline-fonts # promptline dependency
+  - adobe-source-han-sans-kr-fonts # korean
+  - ttf-tlwg # thai
+  - wqy-microhei # chinese
+  - powerline-fonts # promptline
