@@ -1,7 +1,5 @@
 ---
 sshd_port: 8702
-rust_ver: 1.10.0
-node_prefix: /usr/local
-node_lts_name: Argon
+rust_ver: 1.11.0
 subl_prefix: /usr/local
 subl_build: 3114
