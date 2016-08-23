@@ -7,6 +7,10 @@
   become: no
   when: upgrade_tasks | default(false)
 
+- name: Upgrade rustup
+  shell: rustup self update
+  when: upgrade_tasks | default(false)
+
 - name: Upgrade rust stable
   shell: rustup update stable
   when: upgrade_tasks | default(false)
