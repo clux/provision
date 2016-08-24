@@ -8,7 +8,7 @@
 
 - include: bash.yml
   when: ansible_os_family == "Archlinux"
-  become: yes
+  become: no
   tags: [arch, core, bash]
 
 - include: services.yml

@@ -4,7 +4,6 @@
   args:
     creates: "/home/{{ desktop_user }}/.cargo/bin/rustc"
     executable: /bin/bash
-  become: no
   when: upgrade_tasks | default(false)
 
 - name: Upgrade rustup
