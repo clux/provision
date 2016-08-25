@@ -33,12 +33,12 @@
   - npm
   # system tools
   - htop
-  - nmap
   - strace
   - lsb-release
   - community/perf
   # network
   - vpnc
+  - nmap
   - bind-tools  # contains dig
   # dev services
   - docker
