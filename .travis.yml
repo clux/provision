@@ -8,7 +8,7 @@ before_script:
 - pip install yamllint
 - docker pull davidhrbac/docker-shellcheck
 script:
-- yamllint *.yml roles/
+- yamllint *.yml roles/ vars/
 - test -z "$(find roles/ -type f -iname '*.yaml')" && echo "Extensions OK"
 - docker run --rm -v $PWD:/volume -w /volume davidhrbac/docker-shellcheck shellcheck DEPLOY archboot/*.sh genprov.sh
 notifications:

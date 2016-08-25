@@ -66,6 +66,7 @@ exists() {
   # Python3 is default interpreter
   ls -l $(which python3) | grep python3
   exists pylint
+  exists ipython
   exists ghp-import
   exists youtube-dl
   run ansible --version

@@ -25,6 +25,7 @@
   - weechat
   # programming
   - python-pip
+  - ipython
   - cmake
   - clang
   - clang-tools-extra

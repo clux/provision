@@ -10,4 +10,5 @@
   - ghp-import
   - pyflakes
   - pylint
+  - pyaml
   - youtube-dl

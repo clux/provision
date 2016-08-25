@@ -1,5 +1,5 @@
 ---
-sshd_port: 8702
 rust_ver: 1.11.0
-subl_prefix: /usr/local
+sshd_port: 8702
 subl_build: 3114
+subl_prefix: /usr/local
