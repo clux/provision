@@ -1,25 +1,51 @@
 ---
-# cargo playbook - install cli tools in cargo userdir
+# cargo playbook - install rust toolchain and cargo modules
 
-# NB: cargo is not in ansible-modules-extras atm, so using shell. See:
-# https://github.com/ansible/ansible-modules-extras/blob/devel/packaging/language
+- name: Install rustup
+  shell: curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable --no-modify-path -y
+  args:
+    creates: "/home/{{ desktop_user }}/.cargo/bin/rustup"
+    executable: /bin/bash
 
-- shell: cargo install {{ item }}
+# all toolchain upgrades retrieved on full upgrades
+- name: Upgrade rustup
+  shell: rustup self update
+  when: upgrade_tasks | default(false)
+
+- name: Upgrade rust stable
+  shell: rustup update stable
+  when: upgrade_tasks | default(false)
+
+- name: Upgrade rust nightly
+  shell: rustup update nightly
+  when: upgrade_tasks | default(false)
+
+# module installs
+- name: install nightly clippy
+  shell: rustup run nightly cargo install clippy
+    creates=/home/{{ desktop_user }}/.cargo/bin/cargo-clippy
+
+- name: install racer and rustfmt
+  shell: cargo install {{ item }}
     creates=/home/{{ desktop_user }}/.cargo/bin/{{ item }}
   with_items:
   - rustfmt
   - racer
 
-- shell: cargo install cargo-edit
+- name: install cargo-edit
+  shell: cargo install cargo-edit
     creates=/home/{{ desktop_user }}/.cargo/bin/cargo-add
 
+# TODO: probably want upgrade_tasks to also update these modules
+
+# rust lang source code for racer
 - name: Grab rust source tarball
   get_url:
     url=https://static.rust-lang.org/dist/rustc-{{ rust_ver }}-src.tar.gz
     dest=/home/{{ desktop_user }}/.cargo/rustc-{{ rust_ver }}-src.tar.gz
   register: rustc_tarball
 
-- name: Fetch rust source for racer
+- name: Extract rust source
   unarchive:
     copy: no
     src: "{{ rustc_tarball.dest }}"

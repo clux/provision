@@ -6,11 +6,6 @@
   become: yes
   tags: [arch, core]
 
-- include: bash.yml
-  when: ansible_os_family == "Archlinux"
-  become: no
-  tags: [arch, core, bash]
-
 - include: services.yml
   when: ansible_os_family == "Archlinux"
   become: yes
