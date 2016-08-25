@@ -1,6 +1,10 @@
 #!/usr/bin/env bats
 
-@test "system" {
+exists() {
+  hash "$1" 2> /dev/null
+}
+
+@test "locales" {
   locale -a | grep -q "en_GB.utf8"
   locale -a | grep -q "en_US.utf8"
   localectl status | grep -q "LANG=en_GB.UTF-8"
@@ -9,45 +13,29 @@
   localectl status | grep -q "X11 Variant: colemak"
 }
 
+@test "services" {
+  systemctl is-enabled redshift-gtk --user -q
+  systemctl is-enabled mpd --user -q
+}
+
 # Tests that expected stuff has been installed and are on PATH
-@test "apt" {
-  if [[ $(lsb_release -si) == "Arch" ]]; then
-    run which chromium
-  else
-    run which google-chrome
-  fi
-  [ "$status" -eq 0 ]
-  run which guake
-  [ "$status" -eq 0 ]
-  run which cmake
-  [ "$status" -eq 0 ]
+@test "pacman" {
+  exists chromium
+  exists google-chrome-stable
+  exists guake
+  exists cmake
 }
 
 @test "llvm" {
-  run clang --version
-  [ "$status" -eq 0 ]
-  echo "$output" && echo "$output" | grep "3.8.0"
-  # compiled s.t. we have sanitizers
-  if [[ $(lsb_release -si) == "Arch" ]]; then
-    run ls /usr/lib/clang/3.8.0/lib/linux/libclang_rt.asan_cxx-x86_64.a
-  else
-    run ls /usr/local/lib/clang/3.8.0/lib/linux/libclang_rt.asan_cxx-x86_64.a
-  fi
-  [ "$status" -eq 0 ]
-  # with lldb
-  run lldb --version
-  [ "$status" -eq 0 ]
-  echo "$output" && echo "$output" | grep "3.8.0"
-  # with analyzer and scan-build (apparently broken now)
-  #run c++-analyzer --version
-  #[ "$status" -eq 0 ]
-  #run which scan-build
-  #[ "$status" -eq 0 ]
+  exists clang++
+  clang++ --version | grep -q "clang version 3.8"
+  exists clang-tidy
+  exists clang-format
+  find /usr/lib/clang/ -iname libclang_rt* | grep -q asan
 }
 
 @test "profanity" {
-  run which profanity
-  [ "$status" -eq 0 ]
+  exists profanity
   run profanity --version
   [ "$status" -eq 0 ]
   echo "$output"
@@ -56,21 +44,41 @@
 }
 
 @test "node" {
-  run which node
-  [ "$status" -eq 0 ]
-  run node --version
-  [ "$status" -eq 0 ]
-  echo "$output" && echo "$output" | grep "v4."
-  run node -pe process.release.lts
-  echo "$output" && echo "$output" | grep "Argon"
+  exists node
+  exists npm
+  npm --version | grep -E "^2\.*"
+  exists badgify
+  exists pm2
+  exists faucet
 }
 
-@test "sublime" {
-  run which subl
-  [ "$status" -eq 0 ]
+@test "rust" {
+  [ -L "$HOME/.cargo/rustc-stable" ]
+  [ -d "$RUST_SRC_PATH" ]
+  exists rustup
+  rustup which cargo | grep stable-x86_64
+  exists cargo-clippy
+  exists racer
+  exists cargo-add
 }
 
-@test "clone" {
+@test "python" {
+  # Python3 is default interpreter
+  ls -l $(which python3) | grep python3
+  exists pylint
+  exists ghp-import
+  exists youtube-dl
+  run ansible --version
+  echo "$output"
+  echo "$output" | grep "ansible 2.1"
+}
+
+@test "hacks" {
+  exists subl
+  ls -l $(which subl) | grep /usr/local/sublime
+  [ -d ~/.vim ]
+  [ -f ~/.vim/autoload/plug.vim ]
+  exists blackbox_cat
   run man -w z
   [ "$status" -eq 0 ]
   run man -w bats
@@ -111,22 +119,10 @@
   [ "$CXX" = "clang++" ]
 }
 
-@test "npm" {
-  run which badgify
-  [ "$status" -eq 0 ]
-  run which pm2
-  [ "$status" -eq 0 ]
-}
-
-@test "pip" {
-  run which pylint
-  [ "$status" -eq 0 ]
-}
-
-@test "cluxdev" {
+@test "dev" {
   [ -d "$HOME/repos" ]
-  run which bndg # should have been symlinked
-  [ "$status" -eq 0 ]
+  exists bndg
+  [ -L $(which bndg) ]
 }
 
 @test "secrets" {

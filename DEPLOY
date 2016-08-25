@@ -65,7 +65,7 @@ else
   while getopts ":fv" opt; do
     case $opt in
       f) FULL_PROV=1 ;;
-      v) VERBOSE="vv" ;;
+      v) VERBOSE="v" ;;
       \?) echo Invalid option -"$OPTARG"; exit 1 ;;
     esac
   done
@@ -73,4 +73,5 @@ else
   ansible-playbook -i hosts -l "$(hostname)" site.yml --tags="$1" "-vv${VERBOSE}" \
     $([ -n "$FULL_PROV" ] && echo "-e upgrade_tasks=1" || echo "") \
     --ask-become-pass
+  bats test
 fi
