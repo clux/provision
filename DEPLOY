@@ -62,16 +62,17 @@ elif [[ $1 == "secrets" ]]; then
 else
   # arg parse
   OPTIND=2 # getopts start
-  while getopts ":fv" opt; do
+  while getopts ":uvs" opt; do
     case $opt in
-      f) FULL_PROV=1 ;;
+      u) FULL=1 ;;
       v) VERBOSE="v" ;;
+      s) SUDO=1 ;;
       \?) echo Invalid option -"$OPTARG"; exit 1 ;;
     esac
   done
   # shellcheck disable=SC2046
   ansible-playbook -i hosts -l "$(hostname)" site.yml --tags="$1" "-vv${VERBOSE}" \
-    $([ -n "$FULL_PROV" ] && echo "-e upgrade_tasks=1" || echo "") \
-    --ask-become-pass
+    $([ -n "$FULL" ] && echo "-e upgrade_tasks=1" || echo "") \
+    $([ -n "$SUDO" ] && echo "--ask-become-pass" || echo "")
   bats test
 fi
