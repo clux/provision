@@ -62,9 +62,9 @@ elif [[ $1 == "secrets" ]]; then
 else
   # arg parse
   OPTIND=2 # getopts start
-  while getopts ":uvs" opt; do
+  while getopts ":fvs" opt; do
     case $opt in
-      u) FULL=1 ;;
+      f) FULL=1 ;;
       v) VERBOSE="v" ;;
       s) SUDO=1 ;;
       \?) echo Invalid option -"$OPTARG"; exit 1 ;;
