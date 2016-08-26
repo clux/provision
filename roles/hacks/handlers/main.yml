@@ -1,5 +1,0 @@
----
-
-# TODO: doesn't seem to work properly
-- name: make-install blackbox
-  shell: make manual-install chdir=/home/{{ desktop_user }}/local/blackbox/

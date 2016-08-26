@@ -6,16 +6,22 @@
   - share/man/man1
   - bin
 
-- name: Install blackbox
+- name: Clone blackbox
   git:
     repo: https://github.com/StackExchange/blackbox
     dest: /home/{{ desktop_user }}/local/blackbox
     version: stable
     update: "{{ upgrade_tasks | default(false) }}"
-  notify: make-install blackbox
+
+- name: make-install blackbox
+  shell: make manual-install
+  args:
+    chdir: /home/{{ desktop_user }}/local/blackbox/
+    creates: "/usr/local/bin/blackbox_cat"
+    executable: /bin/bash
 
 # Exists on AUR as z, but not on debian
-- name: Install z
+- name: Clone z
   git:
     repo: https://github.com/rupa/z
     dest: /home/{{ desktop_user }}/local/z
