@@ -6,6 +6,7 @@
   with_items:
   # terminal tools
   - git
+  - bc
   - tig
   - rsync
   - bash-completion
