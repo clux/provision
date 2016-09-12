@@ -1,0 +1,36 @@
+---
+- file: path="{{node_prefix}}/node" state=directory
+
+- name: Grab nodejs tarball
+  get_url:
+    url: "https://nodejs.org/download/release/{{node.version}}/node-{{node.version}}-linux-x64.tar.gz"
+    dest: "{{node_prefix}}/node/{{node.version}}.tar.gz"
+    checksum: "sha256:{{ node.sha }}"
+  register: nodejs_tarball
+
+- name: Unpack nodejs tarball
+  unarchive:
+    copy: no
+    src: "{{ nodejs_tarball.dest }}"
+    dest: "{{node_prefix}}"
+    creates: "{{node_prefix}}/node-{{node.version}}-linux-x64/bin"
+  register: nodejs_checkout
+
+
+- name: Activate new nodejs install
+  file:
+    src="{{node_prefix}}/node-{{node.version}}-linux-x64/{{item}}"
+    dest="{{node_prefix}}/node/{{item}}"
+    state=link
+    force=yes
+  with_items:
+  - bin
+  - lib
+  - share
+
+# TODO: think there's a better way to do this
+- name: add node path to all users
+  lineinfile:
+    dest=/etc/profile
+    line="export PATH=/usr/local/node/bin:$PATH"
+  become: yes

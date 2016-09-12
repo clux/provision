@@ -1,10 +1,13 @@
 ---
 # npm playbook - install cli tools globally
+# NB: this book would get confused with root user or become: yes
+
+- name: Downgrade npm to @2.*
+  npm: name=npm global=yes version=2
 
 # Assume these are stable enough to not have to do state=latest on them
 - name: Install npm dependencies
   npm: name={{ item }} global=yes
-  become: yes
   with_items:
   - badgify
   - faucet

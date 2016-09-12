@@ -7,6 +7,10 @@
   become: no
   tags: [hacks, sublime, core]
 
+- include: nodejs.yml
+  become: no
+  tags: [hacks, nodejs, core]
+
 - include: vim.yml
   become: no
   tags: [hacks, vim, core]
