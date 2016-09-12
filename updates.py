@@ -22,6 +22,19 @@ def get_tags(repo):
 
 VERSIONS_FILE = os.path.join('vars', 'versions.yml')
 
+def get_node_version():
+    '''Find latest LTS and its sha256sum'''
+    resp = requests.get("https://nodejs.org/download/release/index.json")
+    last_lts = [v for v in resp.json() if v['lts']][0]
+    lts_name = last_lts['lts']
+
+    regex = r'(\S+)\s+node-v\d+.\d+.\d+-linux-x64.tar.gz'
+    sha_url = "https://nodejs.org/download/release/latest-{}/SHASUMS256.txt"
+    shas = requests.get(sha_url.format(lts_name.lower())).text.splitlines()
+    results = [re.search(regex, s) for s in shas]
+    sha = [x for x in results if x][0].group(1)
+
+    return { 'version': last_lts['version'], 'sha': sha }
 
 def get_sublime_build():
     '''Hacky parsing of sublime/3 page to get latest build'''
@@ -44,6 +57,7 @@ if __name__ == '__main__':
 
     VERSIONS['subl_build'] = get_sublime_build()
     VERSIONS['rust_ver'] = get_stable_rust_version()
+    VERSIONS['node'] = get_node_version()
 
     with open(VERSIONS_FILE, 'w') as file:
         pyaml.dump(VERSIONS, file, explicit_start=True)
