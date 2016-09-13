@@ -32,5 +32,5 @@
 - name: add node path to all users
   lineinfile:
     dest=/etc/profile
-    line="export PATH=/usr/local/node/bin:$PATH"
+    line="export PATH={{node_prefix}}/node/bin:$PATH"
   become: yes
