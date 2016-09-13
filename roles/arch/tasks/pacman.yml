@@ -30,6 +30,7 @@
   - cmake
   - clang
   - clang-tools-extra
+  - llvm
   - lldb
   # system tools
   - htop
