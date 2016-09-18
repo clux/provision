@@ -28,6 +28,7 @@
 
 - name: install powerline-fonts
   shell: ./install.sh
+  args:
     chdir: /home/{{ desktop_user }}/local/powerline-fonts/
     creates: "/home/{{ desktop_user }}/.local/share/fonts/DejaVu\ Sans\ Mono\ for\ Powerline.ttf"
 
