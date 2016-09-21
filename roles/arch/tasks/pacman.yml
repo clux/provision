@@ -64,6 +64,9 @@
   - gtk-engine-murrine
   # cinnamon addons
   - dconf-editor
+  # printing
+  - system-config-printer
+  - cups
   # browsers
   - chromium
   - firefox

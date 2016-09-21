@@ -14,3 +14,5 @@
   user: name={{desktop_user}} groups=docker append=yes
 
 - service: name=docker enabled=yes state=started
+
+- service: name=org.cups.cupsd enabled=yes started=started
