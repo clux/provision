@@ -74,7 +74,7 @@ if [ "$swap" -ne 0 ]; then
 echo -e "  $R Swap$W    $swap MB"
 fi
 if [[ $pm2total -ne 0 ]]; then
-echo -e "  $R Jobs$W    $pm2online online out of $pm2total total"
+echo -e "  $R Jobs$W     $pm2online online out of $pm2total total"
 fi
 #echo -e "  $R Processes$W You run $PSU out of $PSA total processes"
 if [ "$RECV" != "0.0GB" ]; then
