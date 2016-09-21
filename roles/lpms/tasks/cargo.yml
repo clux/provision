@@ -25,12 +25,13 @@
   shell: rustup run nightly cargo install clippy
     creates=/home/{{ desktop_user }}/.cargo/bin/cargo-clippy
 
-- name: install racer and rustfmt
+- name: install modules
   shell: cargo install {{ item }}
     creates=/home/{{ desktop_user }}/.cargo/bin/{{ item }}
   with_items:
   - rustfmt
   - racer
+  - tokei
 
 - name: install cargo-edit
   shell: cargo install cargo-edit
