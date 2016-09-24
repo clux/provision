@@ -75,6 +75,7 @@
   - gthumb
   - imagemagick
   - mumble
+  - gedit
   # filesystems
   - ntfs-3g
   - nemo-fileroller

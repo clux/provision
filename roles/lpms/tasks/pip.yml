@@ -11,4 +11,5 @@
   - pyflakes
   - pylint
   - pyaml
+  - requests
   - youtube-dl
