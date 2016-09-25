@@ -18,7 +18,6 @@
   - xterm
   - jshon
   - bash-bats
-  - the_silver_searcher
   - shellcheck
   - vim
   # chat

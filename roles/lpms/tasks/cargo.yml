@@ -32,6 +32,7 @@
   - rustfmt
   - racer
   - tokei
+  - ripgrep
 
 - name: install cargo-edit
   shell: cargo install cargo-edit

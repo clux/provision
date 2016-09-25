@@ -1,5 +1,4 @@
 #!/bin/bash
-# TODO: npm path again
 PATH=/sbin:/usr/games:$PATH
 
 cpu5=$(awk '{printf("%3.1f", $2*100/'"$(nproc)"') }' < /proc/loadavg)
