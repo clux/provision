@@ -15,7 +15,7 @@ def get_tags(repo):
     '''Query dockerhub for available tags for an image'''
     resp = requests.get('https://auth.docker.io/token?service=registry.docker.io&scope=repository:{}:pull'.format(repo),
                         headers={'Authorization': 'Basic ' + DOCKER_TOKEN})
-    token=resp.json()['token']
+    token = resp.json()['token']
     return requests.get("https://index.docker.io/v2/{}/tags/list".format(repo),
                         headers={'Authorization': 'Bearer ' + token,
                                  'Accept': 'application/json'}).json()['tags']
@@ -34,7 +34,7 @@ def get_node_version():
     results = [re.search(regex, s) for s in shas]
     sha = [x for x in results if x][0].group(1)
 
-    return { 'version': last_lts['version'], 'sha': sha }
+    return {'version': last_lts['version'], 'sha': sha}
 
 def get_sublime_build():
     '''Hacky parsing of sublime/3 page to get latest build'''

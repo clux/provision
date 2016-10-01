@@ -16,6 +16,7 @@ get_ssh_from_root() {
 
 fetch_secret_repos() {
   # Decrypting gogs.yml
+  echo "Provision password please"
   gpg -d vars/gogs.yml.gpg > vars/gogs.yml
   # Adding main_id to keychain - password please:
   keychain --timeout 30 --quiet --host agent ~/.ssh/main_id
