@@ -44,7 +44,9 @@ index c460306..b148339 100644
 now an option somewhere in system settings. no dconf entry for it...
 
 ## Sublime
-Some manual steps required. There's a menu option for the paste now..
+Install package control and configure session:
 
-- [license](https://mail.google.com/mail/u/0/#search/sublime+license/13a942d72a211e81)
-- [package control](https://packagecontrol.io/installation)
+- Preferences -> Install Package Control
+- View -> Layout -> Columns: 2 (shortcut key overridden by alt-shift)
+- Toggle: Sidebar + Minimap
+- Preferences -> Color Scheme -> SetiUX
