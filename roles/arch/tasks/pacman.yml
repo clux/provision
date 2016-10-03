@@ -19,6 +19,7 @@
   - jshon
   - bash-bats
   - shellcheck
+  - cppcheck
   - the_silver_searcher
   - vim
   # chat
