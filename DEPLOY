@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 export ANSIBLE_NOCOWS=1
 
 get_ssh_from_root() {
@@ -32,48 +31,54 @@ setup_dotfiles() {
   make ui
 }
 
-if [[ $1 == "bootstrap" ]]; then
-  if [[ $EUID -ne 0 ]]; then
-    echo "Must run bootstrap role as root"
-    exit 1
+main() {
+  set -e
+  if [[ $1 == "bootstrap" ]]; then
+    if [[ $EUID -ne 0 ]]; then
+      echo "Must run bootstrap role as root"
+      exit 1
+    fi
+    pacman -S --noconfirm ansible
+    ansible-playbook -i hosts -l "$(hostname)" bootstrap.yml -vv
+  elif [[ $1 == "secrets" ]]; then
+    if [[ $EUID -eq 0 ]]; then
+      echo "This role is not indended to be run as root"
+      exit 1
+    fi
+    # interactive steps with passwords and key pasting here:
+    set -x
+    sudo chown -R "$USER:$USER" /usr/local # First sudo
+    # If we haven't set up our ssh key from genprov, do so now
+    [ -f ~/.ssh/main_id ] || get_ssh_from_root
+    # If we haven't installed the last secret repo, fetch all repos
+    [ -f ~/.ssh/work_id ] || fetch_secret_repos
+    # Install repos we haven't yet installed
+    [ -d ~/.gnupg/.git ] || ~/gpg/install.sh
+    [ -f ~/.config/Mumble/Mumble.conf ] || ~/mumble/install.sh
+    [ -f ~/.ssh/work_id ] || ~/cisco/install.sh
+    [ -d ~/.ssh/.git ] || ~/ssh/install.sh
+    # Delete the rest
+    rm -rf ~/ssh ~/gpg ~/mumble
+    # Set up dotfiles
+    [ -L ~/.functions ] || setup_dotfiles
+  else
+    # arg parse
+    OPTIND=2 # getopts start
+    while getopts ":fvs" opt; do
+      case $opt in
+        f) FULL=1 ;;
+        v) VERBOSE="v" ;;
+        s) SUDO=1 ;;
+        \?) echo Invalid option -"$OPTARG"; exit 1 ;;
+      esac
+    done
+    # shellcheck disable=SC2046
+    ansible-playbook -i hosts -l "$(hostname)" site.yml --tags="$1" "-vv${VERBOSE}" \
+      $([ -n "$FULL" ] && echo "-e upgrade_tasks=1" || echo "") \
+      $([ -n "$SUDO" ] && echo "--ask-become-pass" || echo "")
+    bats test
   fi
-  pacman -S --noconfirm ansible
-  ansible-playbook -i hosts -l "$(hostname)" bootstrap.yml -vv
-elif [[ $1 == "secrets" ]]; then
-  if [[ $EUID -eq 0 ]]; then
-    echo "This role is not indended to be run as root"
-    exit 1
-  fi
-  # interactive steps with passwords and key pasting here:
-  set -x
-  sudo chown -R "$USER:$USER" /usr/local # First sudo
-  # If we haven't set up our ssh key from genprov, do so now
-  [ -f ~/.ssh/main_id ] || get_ssh_from_root
-  # If we haven't installed the last secret repo, fetch all repos
-  [ -f ~/.ssh/work_id ] || fetch_secret_repos
-  # Install repos we haven't yet installed
-  [ -d ~/.gnupg/.git ] || ~/gpg/install.sh
-  [ -f ~/.config/Mumble/Mumble.conf ] || ~/mumble/install.sh
-  [ -f ~/.ssh/work_id ] || ~/cisco/install.sh
-  [ -d ~/.ssh/.git ] || ~/ssh/install.sh
-  # Delete the rest
-  rm -rf ~/ssh ~/gpg ~/mumble
-  # Set up dotfiles
-  [ -L ~/.functions ] || setup_dotfiles
-else
-  # arg parse
-  OPTIND=2 # getopts start
-  while getopts ":fvs" opt; do
-    case $opt in
-      f) FULL=1 ;;
-      v) VERBOSE="v" ;;
-      s) SUDO=1 ;;
-      \?) echo Invalid option -"$OPTARG"; exit 1 ;;
-    esac
-  done
-  # shellcheck disable=SC2046
-  ansible-playbook -i hosts -l "$(hostname)" site.yml --tags="$1" "-vv${VERBOSE}" \
-    $([ -n "$FULL" ] && echo "-e upgrade_tasks=1" || echo "") \
-    $([ -n "$SUDO" ] && echo "--ask-become-pass" || echo "")
-  bats test
-fi
+}
+
+# If we were not sourced as a library, pass arguments onto main
+([ "$0" != "${BASH_SOURCE[0]}" ] && echo "${BASH_SOURCE[0]} sourced") || main "$@"
