@@ -1,7 +1,7 @@
 ---
 node:
-  sha: acf08148cecf245f28126122ac9128ff9909f00938b18d80fc0b92648d1c98a8
-  version: v4.6.0
+  sha: a9aafa2499097b315e1554b882923a6e2f9c446d24eaea53630f0fdbe075b226
+  version: v6.9.0
 node_prefix: /usr/local
 rust_ver: 1.12.0
 sshd_port: 8702
