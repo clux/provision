@@ -81,4 +81,8 @@ main() {
 }
 
 # If we were not sourced as a library, pass arguments onto main
-([ "$0" != "${BASH_SOURCE[0]}" ] && echo "${BASH_SOURCE[0]} sourced") || main "$@"
+if [ "$0" = "${BASH_SOURCE[0]}" ]; then
+  main "$@"
+else
+  echo "${BASH_SOURCE[0]} sourced"
+fi
