@@ -46,7 +46,11 @@ exists() {
 @test "node" {
   exists node
   exists npm
+  [[ $(node -pe process.release.lts) != undefined ]]
   npm --version | grep -E "^2\.*"
+}
+
+@test "npm-modules" {
   exists badgify
   exists pm2
   exists faucet

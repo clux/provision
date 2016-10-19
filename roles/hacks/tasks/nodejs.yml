@@ -34,3 +34,8 @@
     dest=/etc/profile
     line="export PATH={{node_prefix}}/node/bin:$PATH"
   become: yes
+
+- name: Downgrade npm to @2.*
+  npm: name=npm global=yes version=2
+
+# TODO: want to also run the ansible npm tag when this succeeds
