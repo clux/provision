@@ -1,6 +1,9 @@
 ---
 # npm playbook - install cli tools globally
 
+- name: have your ex help your new gf move in
+  npm: name=yarn global=yes
+
 - name: Install global npm dependencies (via yarn)
   shell: yarn global add {{ item }}
     creates={{node_prefix}}/node/bin/{{ item }}
