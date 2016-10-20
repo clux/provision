@@ -20,18 +20,6 @@
     creates: "/usr/local/bin/blackbox_cat"
     executable: /bin/bash
 
-- name: Clone powerline fonts
-  git:
-    repo: https://github.com/powerline/fonts
-    dest: /home/{{ desktop_user }}/local/powerline-fonts
-    update: "{{ upgrade_tasks | default(false) }}"
-
-- name: install powerline-fonts
-  shell: ./install.sh
-  args:
-    chdir: /home/{{ desktop_user }}/local/powerline-fonts/
-    creates: "/home/{{ desktop_user }}/.local/share/fonts/DejaVu\ Sans\ Mono\ for\ Powerline.ttf"
-
 # Exists on AUR as z, but not on debian
 - name: Clone z
   git:
