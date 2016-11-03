@@ -28,7 +28,7 @@ exists() {
 
 @test "llvm" {
   exists clang++
-  clang++ --version | grep -q "clang version 3.8"
+  clang++ --version | grep -q "clang version 3.9"
   exists clang-tidy
   exists clang-format
   find /usr/lib/clang/ -iname libclang_rt* | grep -q asan
@@ -75,7 +75,7 @@ exists() {
   exists youtube-dl
   run ansible --version
   echo "$output"
-  echo "$output" | grep "ansible 2.1"
+  echo "$output" | grep "ansible 2."
 }
 
 @test "hacks" {
