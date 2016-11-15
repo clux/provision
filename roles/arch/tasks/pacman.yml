@@ -36,7 +36,8 @@
   # system tools
   - htop
   - strace
-  - community/perf
+  - perf
+  - lsof
   # network
   - vpnc
   - nmap

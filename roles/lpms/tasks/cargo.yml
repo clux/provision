@@ -22,11 +22,11 @@
 
 # module installs
 - name: install nightly clippy
-  shell: rustup run nightly cargo install clippy
+  shell: rustup run nightly cargo install clippy --force
     creates=/home/{{ desktop_user }}/.cargo/bin/cargo-clippy
 
 - name: install modules
-  shell: cargo install {{ item }}
+  shell: cargo install {{ item }} --force
     creates=/home/{{ desktop_user }}/.cargo/bin/{{ item }}
   with_items:
   - rustfmt
