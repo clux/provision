@@ -21,10 +21,6 @@
   when: upgrade_tasks | default(false)
 
 # module installs via cargo
-- name: install modules on rustup nightly
-  shell: rustup run nightly cargo install clippy --force
-  when: recompile_tasks | default(false)
-
 - name: install modules on rustup stable
   shell: cargo install {{ item }} --force
   when: recompile_tasks | default(false)
@@ -33,6 +29,10 @@
   - racer
   - tokei
   - cargo-edit
+
+- name: install modules on rustup nightly
+  shell: rustup run nightly cargo install clippy --force
+  when: recompile_tasks | default(false)
 
 # rust lang source code for racer
 - name: Grab rust source tarball
