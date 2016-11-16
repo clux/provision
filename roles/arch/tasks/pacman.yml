@@ -45,7 +45,6 @@
   - bind-tools  # contains dig
   # dev services
   - docker
-  - postgresql
   # ssh + secrets managers
   - keychain
   - pass
