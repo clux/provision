@@ -69,17 +69,20 @@ main() {
   else
     # arg parse
     OPTIND=2 # getopts start
-    while getopts ":fvs" opt; do
+    while getopts ":fcvs" opt; do
       case $opt in
         f) FULL=1 ;;
+        c) RECOMPILE=1 ;;
         v) VERBOSE="v" ;;
         s) SUDO=1 ;;
         \?) echo Invalid option -"$OPTARG"; exit 1 ;;
       esac
     done
+    set -x
     # shellcheck disable=SC2046
     ansible-playbook -i hosts -l "$(hostname)" site.yml --tags="$1" "-vv${VERBOSE}" \
       $([ -n "$FULL" ] && echo "-e upgrade_tasks=1" || echo "") \
+      $([ -n "$RECOMPILE" ] && echo "-e recompile_tasks=1" || echo "") \
       $([ -n "$SUDO" ] && echo "--ask-become-pass" || echo "")
     bats test
   fi

@@ -20,24 +20,19 @@
   shell: rustup update nightly
   when: upgrade_tasks | default(false)
 
-# module installs
-- name: install nightly clippy
+# module installs via cargo
+- name: install modules on rustup nightly
   shell: rustup run nightly cargo install clippy --force
-    creates=/home/{{ desktop_user }}/.cargo/bin/cargo-clippy
+  when: recompile_tasks | default(false)
 
-- name: install modules
+- name: install modules on rustup stable
   shell: cargo install {{ item }} --force
-    creates=/home/{{ desktop_user }}/.cargo/bin/{{ item }}
+  when: recompile_tasks | default(false)
   with_items:
   - rustfmt
   - racer
   - tokei
-
-- name: install cargo-edit
-  shell: cargo install cargo-edit
-    creates=/home/{{ desktop_user }}/.cargo/bin/cargo-add
-
-# TODO: probably want upgrade_tasks to also update these modules
+  - cargo-edit
 
 # rust lang source code for racer
 - name: Grab rust source tarball
