@@ -93,4 +93,5 @@
   - adobe-source-han-sans-kr-fonts # korean
   - ttf-tlwg # thai
   - wqy-microhei # chinese
-  - noto-fonts-emoji # work is serious business
+  - noto-fonts-emoji # google's emoji font
+  - ttf-symbola # unicode font for github style emojis
