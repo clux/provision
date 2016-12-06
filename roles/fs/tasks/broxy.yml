@@ -1,13 +1,12 @@
 ---
-# fstab for kjttks
+# fstab for broxy
 
 - name: mount ntfs disks
   mount:
     name: "/media/{{ item.name }}"
     src: "{{ item.src }}"
     fstype: ntfs-3g
-    opts: "uid=clux,gid=users"
+    opts: "uid=bro,gid=users"
     state: mounted
   with_items:
-  - { src: /dev/sdb1, name: zeus }
-  - { src: /dev/sdc3, name: zorn }
+  - { src: /dev/sdb1, name: dumptruck }

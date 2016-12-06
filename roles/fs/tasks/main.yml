@@ -5,3 +5,8 @@
   when: inventory_hostname == "kjttks"
   become: yes
   tags: [fs, core]
+
+- include: broxy.yml
+  when: inventory_hostname == "broxy"
+  become: yes
+  tags: [fs, core]
