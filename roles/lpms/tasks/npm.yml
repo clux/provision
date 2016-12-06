@@ -6,8 +6,7 @@
 
 - name: Install global npm dependencies (via yarn)
   shell: yarn global add {{ item }}
-    creates={{node_prefix}}/node/bin/{{ item }}
-  # TODO: Should have a way to upgrade these without editing this file..
+  when: recompile_tasks | default(false)
   with_items:
   - badgify
   - faucet

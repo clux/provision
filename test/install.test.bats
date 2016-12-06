@@ -21,7 +21,7 @@ exists() {
 # Tests that expected stuff has been installed and are on PATH
 @test "pacman" {
   exists chromium
-  exists google-chrome-stable
+  #exists google-chrome-stable
   exists guake
   exists cmake
 }
@@ -51,6 +51,7 @@ exists() {
 }
 
 @test "npm-modules" {
+  exists yarn
   exists badgify
   exists pm2
   exists faucet
