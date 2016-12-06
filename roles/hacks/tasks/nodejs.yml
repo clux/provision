@@ -28,7 +28,6 @@
   - lib
   - share
 
-# TODO: think there's a better way to do this
 - name: add node path to all users
   lineinfile:
     dest=/etc/profile
@@ -37,5 +36,3 @@
 
 - name: Downgrade npm to @2.*
   npm: name=npm global=yes version=2
-
-# TODO: want to also run the ansible npm tag when this succeeds
