@@ -1,0 +1,15 @@
+---
+# fstab for kjttks
+
+- file: path="/media/{{ item }}" state=directory
+  with_items:
+  - zeus
+  - zorn
+
+- name: zorn in fstab
+  lineinfile:
+    dest=/etc/fstab
+    line="{{ item }}"
+  with_items:
+  - "/dev/sdb1 /media/zeus ntfs-3g uid=clux,gid=users 0 0"
+  - "/dev/sdc3 /media/zorn ntfs-3g uid=clux,gid=users 0 0"
