@@ -13,13 +13,13 @@
     copy: no
     src: "{{ sublime_tarball.dest }}"
     dest: "{{subl_prefix}}/sublime/{{subl_build}}"
-    creates: "{{subl_prefix}}/sublime/{{subl_build}}/sublime_text_3/sublime_text"
-    # TODO: strip components 1 in extra opts when it's done
+    creates: "{{subl_prefix}}/sublime/{{subl_build}}/sublime_text"
+    extra_opts: "--strip-components=1"
   register: sublime_checkout
 
 - name: Activate new sublime install
   file:
-    src={{subl_prefix}}/sublime/{{subl_build}}/sublime_text_3/sublime_text
+    src={{subl_prefix}}/sublime/{{subl_build}}/sublime_text
     dest={{subl_prefix}}/bin/subl
     state=link
     force=yes
