@@ -40,7 +40,7 @@ Once you have gotten a desktop, set up secrets and deploy core roles later.
 First argument is tags. Most stuff is tagged by `core`, but you can pass comma-separated sets of tags for specifics.
 
 ```sh
-./DEPLOY gem,npm
+./DEPLOY nodejs,npm -fsc
 ```
 
 Note that the only roles not provisioned by `core` are `ssh,xdg,dev`, which may be restructured quite a bit.
@@ -50,4 +50,5 @@ The `DEPLOY` script has a few optional flags for the normal deploy:
 
 - `-f` run full provisioning (enables upgrade tasks)
 - `-s` instructs ansible to ask for sudo password
+- `-c` enable recompile tasks (extra heavy upgrade tasks - mostly for lpms)
 - `-v` increases ansible verbosity

@@ -1,5 +1,5 @@
 ---
-- file: path="{{node_prefix}}/node" state=directory
+- file: path="{{node_prefix}}/node/{{node.version}}" state=directory
 
 - name: Grab nodejs tarball
   get_url:
@@ -12,14 +12,15 @@
   unarchive:
     copy: no
     src: "{{ nodejs_tarball.dest }}"
-    dest: "{{node_prefix}}"
-    creates: "{{node_prefix}}/node-{{node.version}}-linux-x64/bin"
+    dest: "{{node_prefix}}/node/{{node.version}}"
+    creates: "{{node_prefix}}/node/{{node.version}}/bin"
+    extra_opts: "--strip-components=1"
   register: nodejs_checkout
 
 
 - name: Activate new nodejs install
   file:
-    src="{{node_prefix}}/node-{{node.version}}-linux-x64/{{item}}"
+    src="{{node_prefix}}/node/{{node.version}}/{{item}}"
     dest="{{node_prefix}}/node/{{item}}"
     state=link
     force=yes
