@@ -91,7 +91,7 @@
   - ttf-ubuntu-font-family
   - otf-ipafont # japanese
   - adobe-source-han-sans-kr-fonts # korean
-  - ttf-tlwg # thai
+  - fonts-tlwg # thai
   - wqy-microhei # chinese
   - noto-fonts-emoji # google's emoji font
   - ttf-symbola # unicode font for github style emojis
