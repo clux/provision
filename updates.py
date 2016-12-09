@@ -23,16 +23,28 @@ def get_tags(repo):
 VERSIONS_FILE = os.path.join('vars', 'versions.yml')
 
 def get_node_version():
-    '''Find latest LTS and its sha256sum'''
+    '''
+    Find latest LTS and its signature verified sha256sum
+    NB: this requires having added nodejs teams gpg keys as described in
+    https://github.com/nodejs/node#verifying-binaries
+    '''
     resp = requests.get("https://nodejs.org/download/release/index.json")
     last_lts = [v for v in resp.json() if v['lts']][0]
     lts_name = last_lts['lts']
 
     regex = r'(\S+)\s+node-v\d+.\d+.\d+-linux-x64.tar.gz'
-    sha_url = "https://nodejs.org/download/release/latest-{}/SHASUMS256.txt"
-    shas = requests.get(sha_url.format(lts_name.lower())).text.splitlines()
+    sig_url = "https://nodejs.org/download/release/latest-{}/SHASUMS256.txt.asc"
+    import subprocess
+    r = requests.get(sig_url.format(lts_name.lower()), stream=True)
+    with open('./SHASUMS256.txt.asc', 'wb') as f:
+        for chunk in r.iter_content(chunk_size=128):
+            f.write(chunk)
+    subprocess.run(["gpg", "--decrypt", "--output", "SHASUMS256.txt", "SHASUMS256.txt.asc"], check=True)
+    with open('./SHASUMS256.txt', 'r') as f:
+        shas = f.read().splitlines()
     results = [re.search(regex, s) for s in shas]
     sha = [x for x in results if x][0].group(1)
+    subprocess.run(["rm", "SHASUMS256.txt", "SHASUMS256.txt.asc"], check=True)
 
     return {'version': last_lts['version'], 'sha': sha}
 
