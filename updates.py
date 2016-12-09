@@ -5,6 +5,7 @@ import os
 import requests
 import yaml
 import pyaml
+import subprocess
 
 DOCKER_TOKEN = ""
 DOCKER_CFG = os.path.join(os.environ['HOME'], ".docker", "config.json")
@@ -34,7 +35,6 @@ def get_node_version():
 
     regex = r'(\S+)\s+node-v\d+.\d+.\d+-linux-x64.tar.gz'
     sig_url = "https://nodejs.org/download/release/latest-{}/SHASUMS256.txt.asc"
-    import subprocess
     r = requests.get(sig_url.format(lts_name.lower()), stream=True)
     with open('./SHASUMS256.txt.asc', 'wb') as f:
         for chunk in r.iter_content(chunk_size=128):
