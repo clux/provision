@@ -91,6 +91,11 @@ exists() {
   [ "$status" -eq 0 ]
 }
 
+@test "cli-logins" {
+  npm whoami
+  docker info | grep Username
+}
+
 @test "dotfiles" {
   # Verify that directories are created and dotfiles are linked
   [ -d "$HOME/repos/dotfiles" ]
