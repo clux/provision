@@ -21,6 +21,7 @@
   - shellcheck
   - cppcheck
   - the_silver_searcher
+  - ripgrep
   - vim
   # chat
   - profanity
