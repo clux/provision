@@ -6,12 +6,8 @@
 
 # NB: recompile_tasks force ~150MB redownload and black reinstall
 # This is currently necessary due to yarn#1151 when upgrading node
-- name: killing old yarn cache
-  shell: yarn cache clean
-  when: recompile_tasks | default(false)
-
 - name: Install global npm dependencies (via yarn)
-  shell: yarn global add {{ item }}
+  shell: (yarn global remove {{ item }} || true) && yarn global add {{ item }}
   when: recompile_tasks | default(false)
   # TODO: would like to install missing modules regardless of recompile_tasks
   with_items:
