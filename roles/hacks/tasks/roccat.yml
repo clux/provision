@@ -12,8 +12,8 @@
     dest: /home/{{ desktop_user }}/local/{{ item }}
     update: "{{ upgrade_tasks | default(false) }}"
   with_items:
-    - libgaminggear
-    - roccat-tools
+  - libgaminggear
+  - roccat-tools
 
 - name: Install libgaminggear
   shell: makepkg -si --noconfirm
