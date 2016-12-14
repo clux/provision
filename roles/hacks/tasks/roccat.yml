@@ -4,18 +4,16 @@
 # Configuration made can be stored on the device
 # so this step is not necessary unless you need to customize
 # Documentation at http://roccat.sourceforge.net/general.html
+# NB: roccat-tools depends on specific versions of libgaminggear
 
-- name: Clone libgaminggear
+- name: Clone libgaminggear and roccat-tools
   git:
-    repo: https://aur.archlinux.org/libgaminggear.git
-    dest: /home/{{ desktop_user }}/local/libgaminggear
+    repo: https://aur.archlinux.org/{{ item }}.git
+    dest: /home/{{ desktop_user }}/local/{{ item }}
     update: "{{ upgrade_tasks | default(false) }}"
-
-- name: Clone roccat-tool
-  git:
-    repo: https://aur.archlinux.org/roccat-tools.git
-    dest: /home/{{ desktop_user }}/local/roccat-tools
-    update: "{{ upgrade_tasks | default(false) }}"
+  with_items:
+    - libgaminggear
+    - roccat-tools
 
 - name: Install libgaminggear
   shell: makepkg -si --noconfirm
@@ -29,7 +27,7 @@
   shell: makepkg -si --noconfirm
   args:
     chdir: /home/{{ desktop_user }}/local/roccat-tools/
-    creates: /usr/bin/gaminggearfxinfo
+    creates: /usr/bin/roccatkonepureconfig
     executable: /bin/bash
   become: yes
 
