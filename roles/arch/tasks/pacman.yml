@@ -26,6 +26,8 @@
   # chat
   - profanity
   - weechat
+  # music
+  - musescore
   # programming
   - python-pip
   - ipython
