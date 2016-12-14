@@ -10,3 +10,8 @@
   when: ansible_os_family == "Archlinux"
   become: yes
   tags: [arch, core]
+
+- include: aur.yml
+  when: ansible_os_family == "Archlinux"
+  become: no
+  tags: [arch, aur]

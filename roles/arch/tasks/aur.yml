@@ -1,0 +1,16 @@
+---
+# aur installs
+
+- name: google-chrome
+  git:
+    repo: https://aur.archlinux.org/google-chrome.git
+    dest: /home/{{ desktop_user }}/local/google-chrome
+    update: "{{ upgrade_tasks | default(false) }}"
+
+# NB: This works and doesn't require root
+- name: Install chrome
+  shell: makepkg -si --noconfirm
+  args:
+    chdir: /home/{{ desktop_user }}/local/google-chrome
+    creates: /usr/bin/google-chrome-stable
+    executable: /bin/bash

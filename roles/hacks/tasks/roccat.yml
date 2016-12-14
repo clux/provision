@@ -21,7 +21,6 @@
     chdir: /home/{{ desktop_user }}/local/libgaminggear/
     creates: /usr/bin/gaminggearfxinfo
     executable: /bin/bash
-  become: yes
 
 - name: Install roccat-tools
   shell: makepkg -si --noconfirm
@@ -29,6 +28,5 @@
     chdir: /home/{{ desktop_user }}/local/roccat-tools/
     creates: /usr/bin/roccatkonepureconfig
     executable: /bin/bash
-  become: yes
 
 # Can then run `sudo roccatkonepureconfig` and configure
