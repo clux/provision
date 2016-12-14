@@ -7,3 +7,4 @@ Key installs:
 - z
 - blackbox
 - nodejs + npm (os managed install is hacky, and npm3 breaks my modules)
+- roccat tools for mouse customization
