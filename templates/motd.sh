@@ -1,5 +1,6 @@
 #!/bin/bash
 PATH=/sbin:/usr/games:$PATH
+PATH=/usr/local/node/bin:$PATH
 
 cpu5=$(awk '{printf("%3.1f", $2*100/'"$(nproc)"') }' < /proc/loadavg)
 
