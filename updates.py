@@ -57,7 +57,7 @@ def get_sublime_build():
 
 def get_stable_rust_version():
     '''Hacky parsing of rust-lang download page to get latest stable version'''
-    resp = requests.get("https://www.rust-lang.org/en-US/downloads.html")
+    resp = requests.get("https://www.rust-lang.org/en-US/install.html")
     match = re.search(r'(\d+\.\d+\.\d+)', resp.text)
     return match.group(1)
 
