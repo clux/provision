@@ -91,6 +91,13 @@ exists() {
   [ "$status" -eq 0 ]
 }
 
+@test "nvidia" {
+  exists nvidia-settings
+  run nvidia-settings -q CurrentMetaMode
+  echo "$output"
+  echo "$output" | grep "ForceFullCompositionPipeline=On"
+}
+
 @test "cli-logins" {
   npm whoami
   docker info | grep Username
