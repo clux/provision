@@ -15,6 +15,8 @@
   - libgaminggear
   - roccat-tools
 
+# NB: these install steps asks for sudo pass mid attempt, but need to run as user..
+# currently only doing these sparingly so can seed the shell pre-provision..
 - name: Install libgaminggear
   shell: makepkg -si --noconfirm
   args:
