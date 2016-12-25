@@ -1,3 +1,4 @@
 *.retry
 vars/gogs.yml
 archlinux-*-dual.iso
+vars/archbox.yml

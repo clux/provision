@@ -10,3 +10,24 @@
     state: mounted
   with_items:
   - { src: /dev/sdb1, name: dumptruck }
+
+# credentials - not in repo
+# NB: requires `pass archbox > vars/archbox.yml`
+- include_vars: vars/archbox.yml
+
+- name: archbox mounts
+  mount:
+    name: "/media/archbox/{{ item }}"
+    src: "//192.168.100.3/{{ item }}"
+    fstype: "cifs"
+    opts: "user={{archbox.user}},password={{archbox.password}},nofail,noauto"
+    state: "mounted"
+    boot: no
+  become: yes
+  with_items:
+  - music
+  - music2
+  - series
+  - series2
+  - movies
+  - movies2
