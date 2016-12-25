@@ -1,11 +1,12 @@
 ---
 
-# Services that can run as --user (but ansible does not yet support that)
-- command: "systemctl enable {{ item }} --now --user"
-  become_user: "{{ desktop_user }}"
+# Services that can run as --user
+- systemd: name={{ item }} state=started enabled=yes user=yes
+  become: no
   with_items:
   - redshift-gtk
   - mpd
+
 
 # Docker - create the docker group (gpasswd -a $USER docker)
 # NB: this requires `newgrp docker` or logout
@@ -13,4 +14,4 @@
 - name: Add desktop user to docker group
   user: name={{desktop_user}} groups=docker append=yes
 
-- service: name=docker enabled=yes state=started
+- systemd: name=docker state=started enabled=yes
