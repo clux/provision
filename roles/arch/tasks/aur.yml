@@ -1,16 +1,25 @@
 ---
 # aur installs
 
-- name: google-chrome
+- name: clone aur repos
   git:
-    repo: https://aur.archlinux.org/google-chrome.git
-    dest: /home/{{ desktop_user }}/local/google-chrome
+    repo: https://aur.archlinux.org/{{ item }}.git
+    dest: /home/{{ desktop_user }}/local/{{ item }}
     update: "{{ upgrade_tasks | default(false) }}"
+  with_items:
+  - google-chrome
+  - discord
 
-# NB: This works and doesn't require root
 - name: Install chrome
   shell: makepkg -si --noconfirm
   args:
     chdir: /home/{{ desktop_user }}/local/google-chrome
     creates: /usr/bin/google-chrome-stable
+    executable: /bin/bash
+
+- name: Install discord
+  shell: makepkg -si --noconfirm
+  args:
+    chdir: /home/{{ desktop_user }}/local/discord
+    creates: /sbin/discord
     executable: /bin/bash
