@@ -12,4 +12,5 @@
   - pylint
   - pyaml
   - requests
+  - yamllint
   - youtube-dl
