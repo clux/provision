@@ -87,9 +87,6 @@
   - nemo-share
   - samba
   - mtpfs # kindle
-  # gaming
-  - steam
-  - lib32-alsa-plugins
   # fonts
   - ttf-ubuntu-font-family
   - otf-ipafont # japanese
@@ -98,3 +95,10 @@
   - wqy-microhei # chinese
   - noto-fonts-emoji # google's emoji font
   - ttf-symbola # unicode font for github style emojis
+
+- name: Install dependencies
+  pacman: name={{ item }} state=installed
+  with_items:
+  - steam
+  - steam-native-runtime
+  when: inventory_hostname == "ealbrigt-ws"
