@@ -102,4 +102,4 @@
   with_items:
   - steam
   - steam-native-runtime
-  when: inventory_hostname == "ealbrigt-ws"
+  when: inventory_hostname != "ealbrigt-ws"
