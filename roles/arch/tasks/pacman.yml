@@ -87,6 +87,7 @@
   - nemo-share
   - samba
   - mtpfs # kindle
+  - android-file-transfer # easy..
   # fonts
   - ttf-ubuntu-font-family
   - otf-ipafont # japanese
