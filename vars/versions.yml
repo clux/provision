@@ -1,9 +1,9 @@
 ---
 node:
-  sha: a1faed4afbbdbdddeae17a24b873b5d6b13950c36fabcb86327a001d24316ffb
-  version: v6.9.4
+  sha: a4b464068cf2c2cc8ffba9ca0a6ee1ebf146509a86d46a4f92e761c31adebd29
+  version: v6.9.5
 node_prefix: /usr/local
-rust_ver: 1.14.0
+rust_ver: 1.15.0
 sshd_port: 8702
 subl_build: 3126
 subl_prefix: /usr/local
