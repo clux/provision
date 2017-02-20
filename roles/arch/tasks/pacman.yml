@@ -49,6 +49,7 @@
   - bind-tools  # contains dig
   # dev services
   - docker
+  - docker-compose
   # ssh + secrets managers
   - keychain
   - pass
