@@ -50,7 +50,7 @@
 
 - name: Link current as latest
   file:
-    src="/home/{{ desktop_user }}/.cargo/rustc-{{ rust_ver }}"
+    src="/home/{{ desktop_user }}/.cargo/rustc-{{ rust_ver }}-src"
     dest="/home/{{ desktop_user }}/.cargo/rustc-stable"
     state=link
     force=yes
