@@ -83,6 +83,7 @@
   - imagemagick
   - mumble
   - gedit
+  - gphoto2
   # filesystems
   - ntfs-3g
   - nemo-fileroller
