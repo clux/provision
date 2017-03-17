@@ -9,6 +9,7 @@
   with_items:
   - google-chrome
   - discord
+  - ctop
 
 - name: Install chrome
   shell: makepkg -si --noconfirm
@@ -22,4 +23,11 @@
   args:
     chdir: /home/{{ desktop_user }}/local/discord
     creates: /sbin/discord
+    executable: /bin/bash
+
+- name: Install ctop
+  shell: makepkg -si --noconfirm
+  args:
+    chdir: /home/{{ desktop_user }}/local/ctop
+    creates: /sbin/ctop
     executable: /bin/bash
