@@ -10,6 +10,7 @@
   - google-chrome
   - discord
   - ctop
+  - z
 
 - name: Install aur packages
   shell: makepkg -si --noconfirm
@@ -19,5 +20,6 @@
     executable: /bin/bash
   with_items:
   #- { repo: google-chrome, dest: /usr/bin/google-chrome-stable }
+  - { repo: z, dest: /usr/share/z/z.sh }
   - { repo: discord, dest: /sbin/discord }
   - { repo: ctop, dest: /sbin/ctop }

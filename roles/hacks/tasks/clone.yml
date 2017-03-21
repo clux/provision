@@ -3,7 +3,7 @@
 
 - file: path=/home/{{ desktop_user }}/local/{{ item }} state=directory
   with_items:
-  - share/man/man1
+  - share
   - bin
 
 - name: Clone blackbox
@@ -19,19 +19,3 @@
     chdir: /home/{{ desktop_user }}/local/blackbox/
     creates: "/usr/local/bin/blackbox_cat"
     executable: /bin/bash
-
-# Exists on AUR as z, but not on debian
-- name: Clone z
-  git:
-    repo: https://github.com/rupa/z
-    dest: /home/{{ desktop_user }}/local/z
-    update: "{{ upgrade_tasks | default(false) }}"
-
-# only thing z needs to install is z.1
-# otherwise relies on sourcing ./z/z.sh from bash_profile
-- name: link z.1
-  file:
-    src=/home/{{ desktop_user }}/local/z/z.1
-    dest=/home/{{ desktop_user }}/local/share/man/man1/z.1
-    state=link
-    force=yes
