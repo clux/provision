@@ -6,7 +6,7 @@
     path: "{{ item }}"
     state: directory
   with_items:
-    - /etc/systemd/system/docker.service.d
+  - /etc/systemd/system/docker.service.d
 
 - name: systemd overrides
   template:
