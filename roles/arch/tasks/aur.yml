@@ -11,23 +11,13 @@
   - discord
   - ctop
 
-- name: Install chrome
+- name: Install aur packages
   shell: makepkg -si --noconfirm
   args:
-    chdir: /home/{{ desktop_user }}/local/google-chrome
-    creates: /usr/bin/google-chrome-stable
+    chdir: /home/{{ desktop_user }}/local/{{ item.repo }}
+    creates: "{{ item.dest }}"
     executable: /bin/bash
-
-- name: Install discord
-  shell: makepkg -si --noconfirm
-  args:
-    chdir: /home/{{ desktop_user }}/local/discord
-    creates: /sbin/discord
-    executable: /bin/bash
-
-- name: Install ctop
-  shell: makepkg -si --noconfirm
-  args:
-    chdir: /home/{{ desktop_user }}/local/ctop
-    creates: /sbin/ctop
-    executable: /bin/bash
+  with_items:
+  #- { repo: google-chrome, dest: /usr/bin/google-chrome-stable }
+  - { repo: discord, dest: /sbin/discord }
+  - { repo: ctop, dest: /sbin/ctop }
