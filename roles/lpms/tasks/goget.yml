@@ -1,0 +1,11 @@
+---
+# go playbook - go get stuff
+
+# We are using the standard `go` package from pacman
+
+- name: install binary packages
+  shell: go get -u -v github.com/{{ item.repo }}
+  #creates: "/home/{{ desktop_user }}/.go/bin/{{ item.bin }}"
+  when: upgrade_tasks | default(false)
+  with_items:
+  - { repo: spf13/hugo, bin: hugo }

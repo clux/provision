@@ -37,6 +37,7 @@
   - clang-tools-extra
   - llvm
   - lldb
+  - go
   # system tools
   - htop
   - strace

@@ -12,3 +12,6 @@
 
 - include: cargo.yml
   tags: [lpms, cargo, core]
+
+- include: goget.yml
+  tags: [lpms, go, core]
