@@ -20,6 +20,10 @@
   shell: rustup update nightly
   when: upgrade_tasks | default(false)
 
+- name: Nightly rust for clippy
+  shell: rustup update nightly-2017-03-28
+  when: upgrade_tasks | default(false)
+
 # module installs via cargo
 - name: install modules on rustup stable
   shell: cargo install {{ item }} --force
@@ -31,7 +35,7 @@
   - cargo-edit
 
 - name: install modules on rustup nightly
-  shell: rustup run nightly cargo install clippy --force
+  shell: rustup run nightly-2017-03-28 cargo install clippy --force
   when: recompile_tasks | default(false)
 
 # rust lang source code for racer
