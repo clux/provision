@@ -92,6 +92,7 @@
   - samba
   - mtpfs # kindle
   - android-file-transfer # easy..
+  - gptfdisk
   # fonts
   - ttf-ubuntu-font-family
   - otf-ipafont # japanese
