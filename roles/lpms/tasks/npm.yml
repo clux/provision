@@ -4,6 +4,9 @@
 - name: npm prefix
   shell: npm config set prefix /home/{{ desktop_user }}/.node_modules
 
+#- name: Downgrade npm to @2.*
+#  npm: name=npm global=yes version=2
+
 - name: have your ex help your new gf move in
   npm: name=yarn global=yes
 

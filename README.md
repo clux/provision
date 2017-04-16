@@ -40,7 +40,7 @@ Once you have gotten a desktop, set up secrets and deploy core roles later.
 First argument is tags. Most stuff is tagged by `core`, but you can pass comma-separated sets of tags for specifics.
 
 ```sh
-./DEPLOY nodejs,npm -fsc
+./DEPLOY npm -fsc
 ```
 
 Note that the only roles not provisioned by `core` are `ssh,xdg,dev`, which may be restructured quite a bit.
