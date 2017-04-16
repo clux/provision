@@ -1,12 +1,5 @@
 ---
 
-- include: clone.yml
-  tags: [hacks, clone, core]
-
-- include: sublime.yml
-  become: no
-  tags: [hacks, sublime, core]
-
 - include: nodejs.yml
   become: no
   tags: [hacks, nodejs, core]

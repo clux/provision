@@ -39,3 +39,5 @@
     executable: /bin/bash
   with_items:
   - { pkg: nodejs-lts, dest: /sbin/node }
+  - { pkg: blackbox-stackexchange, dest: /sbin/blackbox_edit }
+  - { pkg: sublime-text-dev, dest: /sbin/subl }

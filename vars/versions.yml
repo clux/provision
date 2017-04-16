@@ -1,5 +1,1 @@
 ---
-rust_ver: 1.16.0
-sshd_port: 8702
-subl_build: 3126
-subl_prefix: /usr/local
