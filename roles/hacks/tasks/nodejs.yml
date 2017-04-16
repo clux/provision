@@ -1,39 +1,11 @@
 ---
-- file: path="{{node_prefix}}/node/{{node.version}}" state=directory
+# NB: this is installed from pkgbuild step in roles/arch/tasks/aur
 
-- name: Grab nodejs tarball
-  get_url:
-    url: "https://nodejs.org/download/release/{{node.version}}/node-{{node.version}}-linux-x64.tar.gz"
-    dest: "{{node_prefix}}/node/{{node.version}}.tar.gz"
-    checksum: "sha256:{{ node.sha }}"
-  register: nodejs_tarball
-
-- name: Unpack nodejs tarball
-  unarchive:
-    copy: no
-    src: "{{ nodejs_tarball.dest }}"
-    dest: "{{node_prefix}}/node/{{node.version}}"
-    creates: "{{node_prefix}}/node/{{node.version}}/bin"
-    extra_opts: "--strip-components=1"
-  register: nodejs_checkout
-
-
-- name: Activate new nodejs install
-  file:
-    src="{{node_prefix}}/node/{{node.version}}/{{item}}"
-    dest="{{node_prefix}}/node/{{item}}"
-    state=link
-    force=yes
-  with_items:
-  - bin
-  - lib
-  - share
-
-- name: add node path to all users
-  lineinfile:
-    dest=/etc/profile
-    line="export PATH={{node_prefix}}/node/bin:$PATH"
-  become: yes
-
-- name: Downgrade npm to @2.*
-  npm: name=npm global=yes version=2
+#- name: add node path to all users
+#  lineinfile:
+#    dest=/etc/profile
+#    line="export PATH={{node_prefix}}/node/bin:$PATH"
+#  become: yes
+#
+#- name: Downgrade npm to @2.*
+#  npm: name=npm global=yes version=2

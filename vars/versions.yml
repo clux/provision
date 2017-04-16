@@ -1,8 +1,4 @@
 ---
-node:
-  sha: 35accd2d9ccac747eff0f236e2843bc2198ba7765e2340441d6230861bae4e1b
-  version: v6.10.2
-node_prefix: /usr/local
 rust_ver: 1.16.0
 sshd_port: 8702
 subl_build: 3126

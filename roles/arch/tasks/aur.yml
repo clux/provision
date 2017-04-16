@@ -23,3 +23,19 @@
   - { repo: z, dest: /usr/share/z/z.sh }
   - { repo: discord, dest: /sbin/discord }
   - { repo: ctop, dest: /sbin/ctop }
+
+- name: Checkout personal pkgbuilds
+  git:
+    repo: git@github.com:clux/pkgbuilds.git
+    dest: /home/{{ desktop_user }}/repos/pkgbuilds
+    key_file: /home/{{ desktop_user }}/.ssh/id_github
+    update: "{{ upgrade_tasks | default(false) }}"
+
+- name: Install personal packages
+  shell: makepkg -si --noconfirm
+  args:
+    chdir: /home/{{ desktop_user }}/repos/pkgbuilds/{{ item.pkg }}
+    creates: "{{ item.dest }}"
+    executable: /bin/bash
+  with_items:
+  - { pkg: nodejs-lts, dest: /sbin/node }

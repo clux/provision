@@ -1,6 +1,9 @@
 ---
 # npm playbook - install cli tools globally
 
+- name: npm prefix
+  shell: npm config set prefix /home/{{ desktop_user }}/.node_modules
+
 - name: have your ex help your new gf move in
   npm: name=yarn global=yes
 
@@ -19,12 +22,8 @@
   - json
   - js-yaml
   - pkginit
-  - browserify
   - asciify
-  - ytdl
-  - symlink
-  - bower
-  - pm2
+  #- pm2
   - marked-man
   - yr-cli
   - zalgolize
