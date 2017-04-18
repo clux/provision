@@ -38,6 +38,7 @@
   - llvm
   - lldb
   - go
+  - godep
   # system tools
   - htop
   - strace
