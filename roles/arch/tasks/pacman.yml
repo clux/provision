@@ -22,6 +22,7 @@
   - cppcheck
   - the_silver_searcher
   - ripgrep
+  - fzf
   - vim
   - asciinema
   # chat
@@ -49,6 +50,7 @@
   - nmap
   - net-tools # netstat
   - bind-tools  # contains dig
+  - traceroute
   # dev services
   - docker
   - docker-compose
