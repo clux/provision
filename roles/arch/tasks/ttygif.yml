@@ -1,0 +1,29 @@
+---
+#
+
+# stuff for ttygif
+- name: clone aur repos
+  git:
+    repo: https://aur.archlinux.org/{{ item }}.git
+    dest: /home/{{ desktop_user }}/local/{{ item }}
+    update: "{{ upgrade_tasks | default(false) }}"
+  with_items:
+  - ttyrec
+  - ttygif
+
+- name: install deps
+  pacman: name={{ item }} state=installed
+  with_items:
+  - xorg-xwininfo
+  - xorg-xwd
+
+# need to also: export X
+- name: Install ttyrecs
+  shell: makepkg -i --noconfirm
+  args:
+    chdir: /home/{{ desktop_user }}/local/{{ item }}
+    creates: /sbin/{{ item }}
+    executable: /bin/bash
+  with_items:
+  - ttyrec
+  - ttygif
