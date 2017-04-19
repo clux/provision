@@ -15,9 +15,3 @@
   when: ansible_os_family == "Archlinux"
   become: no
   tags: [arch, aur]
-
-# Maybe not do this
-- include: ttygif.yml
-  when: ansible_os_family == "Archlinux"
-  become: no
-  #tags: [arch, aur]
