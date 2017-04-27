@@ -5,7 +5,7 @@
 
 # These technically do exist as well in pacman
 - name: Install dependencies
-  pip: name={{ item }} extra_args='--user' state=present
+  pip: name={{ item }} extra_args='--user --upgrade' state=present
   with_items:
   - ghp-import
   - pyflakes
