@@ -28,7 +28,7 @@ exists() {
 
 @test "llvm" {
   exists clang++
-  clang++ --version | grep -q "clang version 3.9"
+  clang++ --version | grep -q "clang version 4."
   exists clang-tidy
   exists clang-format
   find /usr/lib/clang/ -iname libclang_rt* | grep -q asan
@@ -47,13 +47,12 @@ exists() {
   exists node
   exists npm
   [[ $(node -pe process.release.lts) != undefined ]]
-  npm --version | grep -E "^2\.*"
+  #npm --version | grep -E "^2\.*"
 }
 
 @test "npm-modules" {
   exists yarn
-  exists badgify
-  exists pm2
+  [[ $(hostname) == ealbrigt-ws ]] || exists badgify
   exists faucet
 }
 
@@ -80,8 +79,7 @@ exists() {
 }
 
 @test "hacks" {
-  exists subl
-  ls -l $(which subl) | grep /usr/local/sublime
+  exists subl3
   [ -d ~/.vim ]
   [ -f ~/.vim/autoload/plug.vim ]
   exists blackbox_cat
@@ -92,14 +90,16 @@ exists() {
 }
 
 @test "nvidia" {
-  exists nvidia-settings
-  run nvidia-settings -q CurrentMetaMode
-  echo "$output"
-  echo "$output" | grep "ForceFullCompositionPipeline=On"
+  if [[ $(hostname) != ealbrigt-ws ]]; then
+    exists nvidia-settings
+    run nvidia-settings -q CurrentMetaMode
+    echo "$output"
+    echo "$output" | grep "ForceFullCompositionPipeline=On"
+  fi
 }
 
 @test "cli-logins" {
-  npm whoami
+  [[ $(hostname) == ealbrigt-ws ]] || npm whoami
   docker info | grep Username
 }
 
