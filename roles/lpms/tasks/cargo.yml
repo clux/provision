@@ -20,6 +20,10 @@
   shell: rustup update nightly
   when: upgrade_tasks | default(false)
 
+- name: Upgrade rust source
+  shell: rustup component add rust-src
+  when: upgrade_tasks | default(false)
+
 - name: Nightly rust for clippy
   shell: rustup update nightly-2017-03-28
   when: upgrade_tasks | default(false)
@@ -38,23 +42,9 @@
   shell: rustup run nightly-2017-03-28 cargo install clippy --force
   when: recompile_tasks | default(false)
 
-# rust lang source code for racer
-- name: Grab rust source tarball
-  get_url:
-    url=https://static.rust-lang.org/dist/rustc-{{ rust_ver }}-src.tar.gz
-    dest=/home/{{ desktop_user }}/.cargo/rustc-{{ rust_ver }}-src.tar.gz
-  register: rustc_tarball
-
-- name: Extract rust source
-  unarchive:
-    copy: no
-    src: "{{ rustc_tarball.dest }}"
-    dest: /home/{{ desktop_user }}/.cargo/
-    creates: /home/{{ desktop_user }}/.cargo/rustc-{{ rust_ver }}
-
-- name: Link current as latest
+- name: Link rustc-stable to rustup stable location
   file:
-    src="/home/{{ desktop_user }}/.cargo/rustc-{{ rust_ver }}-src"
+    src="/home/{{ desktop_user }}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust"
     dest="/home/{{ desktop_user }}/.cargo/rustc-stable"
     state=link
     force=yes
