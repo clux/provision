@@ -25,7 +25,7 @@
   when: upgrade_tasks | default(false)
 
 - name: Nightly rust for clippy
-  shell: rustup update nightly-2017-03-28
+  shell: rustup update nightly
   when: upgrade_tasks | default(false)
 
 # module installs via cargo
@@ -39,7 +39,7 @@
   - cargo-edit
 
 - name: install modules on rustup nightly
-  shell: rustup run nightly-2017-03-28 cargo install clippy --force
+  shell: rustup run nightly cargo install clippy --force
   when: recompile_tasks | default(false)
 
 - name: Link rustc-stable to rustup stable location
