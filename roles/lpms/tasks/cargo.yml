@@ -14,13 +14,13 @@
   changed_when:
   - "'downloading' in command_result.stderr"
   with_items:
-    - "self update"
-    - "update stable"
-    - "update nightly"
-    - "component add rust-src"
-    - "component add rls --toolchain nightly"
-    - "component add rust-analysis --toolchain nightly"
-    - "component add rust-src --toolchain nightly"
+  - "self update"
+  - "update stable"
+  - "update nightly"
+  - "component add rust-src"
+  - "component add rls --toolchain nightly"
+  - "component add rust-analysis --toolchain nightly"
+  - "component add rust-src --toolchain nightly"
 
 
 # module installs via cargo
