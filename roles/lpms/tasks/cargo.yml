@@ -7,26 +7,18 @@
     creates: "/home/{{ desktop_user }}/.cargo/bin/rustup"
     executable: /bin/bash
 
-# all toolchain upgrades retrieved on full upgrades
-- name: Upgrade rustup
-  shell: rustup self update
+- name: rustup updates
+  shell: rustup {{ item }}
   when: upgrade_tasks | default(false)
+  register: command_result
+  changed_when:
+  - "'downloading' in command_result.stdout"
+  with_items:
+    - "self update"
+    - "update stable"
+    - "update nightly"
+    - "component add rust-src"
 
-- name: Upgrade rust stable
-  shell: rustup update stable
-  when: upgrade_tasks | default(false)
-
-- name: Upgrade rust nightly
-  shell: rustup update nightly
-  when: upgrade_tasks | default(false)
-
-- name: Upgrade rust source
-  shell: rustup component add rust-src
-  when: upgrade_tasks | default(false)
-
-- name: Nightly rust for clippy
-  shell: rustup update nightly
-  when: upgrade_tasks | default(false)
 
 # module installs via cargo
 - name: install modules on rustup stable
