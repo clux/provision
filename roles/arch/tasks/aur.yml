@@ -1,29 +1,6 @@
 ---
 # aur installs
 
-- name: clone aur repos
-  git:
-    repo: https://aur.archlinux.org/{{ item }}.git
-    dest: /home/{{ desktop_user }}/local/{{ item }}
-    update: "{{ upgrade_tasks | default(false) }}"
-  with_items:
-  - google-chrome
-  - discord
-  - ctop
-  - z
-
-- name: Install aur packages
-  shell: makepkg -si --noconfirm
-  args:
-    chdir: /home/{{ desktop_user }}/local/{{ item.repo }}
-    creates: "{{ item.dest }}"
-    executable: /bin/bash
-  with_items:
-  #- { repo: google-chrome, dest: /usr/bin/google-chrome-stable }
-  - { repo: z, dest: /usr/share/z/z.sh }
-  - { repo: discord, dest: /sbin/discord }
-  - { repo: ctop, dest: /sbin/ctop }
-
 - name: Checkout personal pkgbuilds
   git:
     repo: git@github.com:clux/pkgbuilds.git
@@ -41,3 +18,8 @@
   - { pkg: nodejs-lts, dest: /sbin/node }
   - { pkg: blackbox-vcs, dest: /sbin/blackbox_edit }
   - { pkg: sublime-text-dev, dest: /sbin/subl3 }
+  - { pkg: terraform, dest: /sbin/terraform }
+  - { pkg: ctop, dest: /sbin/ctop }
+  - { pkg: discord, dest: /sbin/discord }
+  - { pkg: z, dest: /usr/share/z/z.sh }
+  #- { pkg: google-chrome, dest: /sbin/google-chrome-stable }
