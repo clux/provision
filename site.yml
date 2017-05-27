@@ -8,7 +8,6 @@
   roles:
   - { role: arch, when: ansible_os_family == "Archlinux" }
   - fs
-  - hacks
   - lpms
   - ssh
   - xdg
