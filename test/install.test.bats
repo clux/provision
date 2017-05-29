@@ -26,12 +26,14 @@ exists() {
   exists cmake
 }
 
-@test "llvm" {
+@test "compilers" {
   exists clang++
   clang++ --version | grep -q "clang version 4."
   exists clang-tidy
   exists clang-format
   find /usr/lib/clang/ -iname libclang_rt* | grep -q asan
+  exists gcc
+  gcc --version | grep -q "(GCC) 7"
 }
 
 @test "profanity" {
