@@ -13,19 +13,15 @@
   - cowsay
   - lolcat
   - ccze
-  - rxvt-unicode
   - tmux
-  - xterm
   - jshon
   - bash-bats
   - shellcheck
-  - cppcheck
   - the_silver_searcher
   - ripgrep
   - fzf
   - vim
   - asciinema
-  - jshon
   # chat
   - profanity
   - weechat
@@ -40,7 +36,6 @@
   - llvm
   - lldb
   - go
-  - godep
   # system tools
   - htop
   - strace
@@ -95,7 +90,7 @@
   - nemo-share
   - samba
   - mtpfs # kindle
-  - android-file-transfer # easy..
+  - android-file-transfer
   - gptfdisk
   # fonts
   - ttf-ubuntu-font-family
