@@ -1,11 +1,12 @@
 ---
-# cargo playbook - install rust toolchain and cargo modules
+# install rust components via rustup and cargo
 
 - name: Install rustup
-  shell: curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable --no-modify-path -y
-  args:
-    creates: "/home/{{ desktop_user }}/.cargo/bin/rustup"
-    executable: /bin/bash
+  pacman: name=rustup state=installed
+
+- name: Default toolchain
+  shell: rustup default stable
+  # TODO: this only needs to be done when rustc / cargo does not have a toolchain yet
 
 - name: rustup updates
   shell: rustup {{ item }}
@@ -14,7 +15,6 @@
   changed_when:
   - "'downloading' in command_result.stderr"
   with_items:
-  - "self update"
   - "update stable"
   - "update nightly"
   - "component add rust-src"
@@ -22,8 +22,6 @@
   - "component add rust-analysis --toolchain nightly"
   - "component add rust-src --toolchain nightly"
 
-
-# module installs via cargo
 - name: install modules on rustup stable
   shell: cargo install {{ item }} --force
   when: recompile_tasks | default(false)
@@ -37,7 +35,7 @@
   shell: rustup run nightly cargo install clippy --force
   when: recompile_tasks | default(false)
 
-- name: Link rustc-stable to rustup stable location
+- name: Link rustc-stable to rustup stable source location (I point racer there)
   file:
     src="/home/{{ desktop_user }}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust"
     dest="/home/{{ desktop_user }}/.cargo/rustc-stable"
