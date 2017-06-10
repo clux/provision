@@ -36,6 +36,9 @@
   - llvm
   - lldb
   - go
+  - nodejs-lts-boron
+  - npm
+  - yarn
   # system tools
   - htop
   - strace

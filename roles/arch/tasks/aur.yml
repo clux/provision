@@ -15,7 +15,6 @@
     creates: "{{ item.dest }}"
     executable: /bin/bash
   with_items:
-  - { pkg: nodejs-lts, dest: /sbin/node }
   - { pkg: blackbox-vcs, dest: /sbin/blackbox_edit }
   - { pkg: sublime-text-dev, dest: /sbin/subl3 }
   - { pkg: terraform, dest: /sbin/terraform }

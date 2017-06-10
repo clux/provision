@@ -4,18 +4,10 @@
 - name: npm prefix
   shell: npm config set prefix /home/{{ desktop_user }}/.node_modules
 
-#- name: Downgrade npm to @2.*
-#  npm: name=npm global=yes version=2
-
-- name: have your ex help your new gf move in
-  npm: name=yarn global=yes
-
-# NB: recompile_tasks force ~150MB redownload and black reinstall
-# This is currently necessary due to yarn#1151 when upgrading node
-- name: Install global npm dependencies (via yarn)
-  shell: (yarn global remove {{ item }} || true) && yarn global add {{ item }}
-  when: recompile_tasks | default(false)
-  # TODO: would like to install missing modules regardless of recompile_tasks
+- name: Install global npm dependencies
+  shell: npm install -g {{ item }}
+  args:
+    creates: "/home/{{ desktop_user }}/.node_modules/bin/{{ item }}"
   with_items:
   - badgify
   - faucet
@@ -26,10 +18,17 @@
   - js-yaml
   - pkginit
   - asciify
-  #- pm2
   - marked-man
   - yr-cli
   - zalgolize
+
+- name: broxy global modules
+  when: inventory_hostname == "broxy"
+  shell: npm install -g {{ item }}
+  args:
+    creates: "/home/{{ desktop_user }}/.node_modules/bin/{{ item }}"
+  with_items:
+  - pm2
 
 - file: path=/home/{{ desktop_user }}/.config/pkginit/ state=directory
 - template:
