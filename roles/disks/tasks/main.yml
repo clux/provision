@@ -4,9 +4,9 @@
 - include: kjttks.yml
   when: inventory_hostname == "kjttks"
   become: yes
-  tags: [fs, core]
+  tags: [disks, core]
 
 - include: broxy.yml
   when: inventory_hostname == "broxy"
   become: yes
-  tags: [fs, core]
+  tags: [disks, core]
