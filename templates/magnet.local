@@ -1,0 +1,7 @@
+#!/bin/bash
+(
+  source ~/.exports
+  source ~/.path
+  set -x
+  ~/brotorr/torrent "$1"
+) >> ~/.brotorr.log 2>&1

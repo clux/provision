@@ -10,3 +10,11 @@
     dest=/home/{{ desktop_user }}/local/bin/magnet
     owner={{ desktop_user }}
     mode="u+rwx"
+  when: inventory_hostname != "broxy"
+
+- template:
+    src=templates/magnet.local
+    dest=/home/{{ desktop_user }}/local/bin/magnet
+    owner={{ desktop_user }}
+    mode="u+rwx"
+  when: inventory_hostname == "broxy"
