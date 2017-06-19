@@ -1,13 +1,14 @@
 ---
 # npm playbook - install cli tools globally
 
-- name: npm prefix
-  shell: npm config set prefix /home/{{ desktop_user }}/.node_modules
+- name: npm config set prefix ~/.node_modules
+  lineinfile:
+    dest: /home/{{ desktop_user }}/.npmrc
+    regexp: '^prefix='
+    line: 'prefix=/home/{{ desktop_user }}/.node_modules'
 
 - name: Install global npm dependencies
-  shell: npm install -g {{ item }}
-  args:
-    creates: "/home/{{ desktop_user }}/.node_modules/bin/{{ item }}"
+  npm: name={{ item }} state=present global=true
   with_items:
   - badgify
   - faucet
@@ -24,9 +25,7 @@
 
 - name: broxy global modules
   when: inventory_hostname == "broxy"
-  shell: npm install -g {{ item }}
-  args:
-    creates: "/home/{{ desktop_user }}/.node_modules/bin/{{ item }}"
+  npm: name={{ item }} state=present global=true
   with_items:
   - pm2
 
