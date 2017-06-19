@@ -50,6 +50,8 @@
   - net-tools # netstat
   - bind-tools  # contains dig
   - traceroute
+  - bmon
+  - nethogs
   # dev services
   - docker
   - docker-compose
@@ -103,6 +105,10 @@
   - wqy-microhei # chinese
   - noto-fonts-emoji # google's emoji font
   - ttf-symbola # unicode font for github style emojis
+
+# Linux capabilities so some apps can run sans-sudo
+- capabilities: path=/sbin/nethogs capability=cap_net_admin+ep
+- capabilities: path=/sbin/nethogs capability=cap_net_raw+ep
 
 - name: Install dependencies
   pacman: name={{ item }} state=installed
