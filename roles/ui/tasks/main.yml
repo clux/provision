@@ -1,0 +1,5 @@
+---
+# configures ui things
+
+- include: gconf.yml
+  tags: [ui, gconf]

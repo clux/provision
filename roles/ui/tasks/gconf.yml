@@ -1,0 +1,50 @@
+---
+# configure guake
+# snapshot from `gconftool-2 --dump /apps/guake`
+
+- name: guake keybindings
+  gconftool2:
+    key="/apps/guake/keybindings/{{ item.src }}"
+    value="{{ item.bind }}"
+    value_type="string"
+    state="present"
+  with_items:
+  - { src: "local/toggle_fullscreen", bind: "F11" }
+  - { src: "global/show_hide", bind: "F1" }
+  - { src: "local/toggle_fullscreen", bind: "F11" }
+  - { src: "local/new_tab", bind: "<Primary>t" }
+  - { src: "local/close_tab", bind: "<Primary>w" }
+  #- { src: "local/rename_current_tab", bind: "<Control>F2" } (cinnamon overrides this)
+  - { src: "local/previous_tab", bind: "<Primary>Left" }
+  - { src: "local/next_tab", bind: "<Primary>Right" }
+  #- { src: "local/clipboard_copy", bind: "<Control><Shift>"c }
+  #- { src: "local/clipboard_paste", bind: "<Control><Shift>v" }
+
+- name: guake style
+  gconftool2:
+    key="/apps/guake/style/{{ item.opt }}"
+    value="{{ item.val }}"
+    value_type="{{ item.type }}"
+    state="present"
+  with_items:
+  - { opt: "background/transparency", val: "20", type: int }
+  - { opt: "font/style", val: "Roboto Mono for Powerline 16", type: string }
+
+- name: guake general
+  gconftool2:
+    key="/apps/guake/general/{{ item.opt }}"
+    value="{{ item.val }}"
+    value_type="{{ item.type | default("bool") }}"
+    state="present"
+  with_items:
+  - { opt: "use_default_font", val: "false" }
+  - { opt: "use_default_font", val: "false" }
+  - { opt: "history_size", val: 16000, type: int }
+  - { opt: "use_trayicon", val: "false" }
+  - { opt: "use_popup", val: "false" }
+  - { opt: "mouse_display", val: "false" }
+  - { opt: "prompt_on_quit", val: "false" }
+  - { opt: "window_height_f", val: "92", type: int }
+  - { opt: "window_tabbar", val: "true" }
+  - { opt: "window_ontop", val: "false" }
+  - { opt: "use_vte_titles", val: "false" }
