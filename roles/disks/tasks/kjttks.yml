@@ -10,7 +10,7 @@
     state: mounted
   with_items:
   - { src: /dev/sdb1, name: zeus }
-  - { src: /dev/sdc3, name: zorn }
+  - { src: /dev/sdd3, name: zorn }
 
 - name: mount ext4 disks
   mount:
@@ -20,4 +20,4 @@
     opts: "defaults,noatime"
     state: mounted
   with_items:
-  - { src: /dev/sdd2, name: gauss }
+  - { src: /dev/sdc2, name: gauss }
