@@ -16,6 +16,7 @@ systemd-firstboot \
   --timezone=Europe/London \
   --locale=en_GB.UTF-8 \
   --locale-messages=en_GB.UTF-8 \
+  --setup-machine-id \
   --hostname="$DCHOSTNAME"
 
 hwclock --systohc --utc
@@ -28,7 +29,7 @@ _mkinitcpio_conf='/etc/mkinitcpio.conf'
 if ! grep '^HOOKS=.*encrypt' "${_mkinitcpio_conf}"; then
     sed -i '/^HOOKS=/ s/filesystem/keymap\ encrypt\ lvm2\ resume\ filesystem/' "${_mkinitcpio_conf}"
 fi
-pacman -S --noconfirm linux
+mkinitcpio -p linux
 
 # Configure systemd boot
 bootctl --path=/boot install

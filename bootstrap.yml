@@ -43,7 +43,7 @@
 
   - name: install NVIDIA display drivers and choice dependencies
     pacman:
-      name="nvidia nvidia-utils libevdev lib32-nvidia-utils nvidia-settings"
+      name="nvidia nvidia-utils nvidia-settings libglvnd"
       state=installed
     when: display_driver == "nvidia"
 
