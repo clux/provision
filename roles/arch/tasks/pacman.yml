@@ -16,7 +16,6 @@
   - tmux
   - jshon
   - bash-bats
-  - shellcheck
   - the_silver_searcher
   - ripgrep
   - fzf
