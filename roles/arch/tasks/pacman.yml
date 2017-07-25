@@ -38,6 +38,7 @@
   - nodejs-lts-boron
   - npm
   - yarn
+  - rustup
   # system tools
   - htop
   - strace

@@ -1,13 +1,6 @@
 ---
 # install rust components via rustup and cargo
 
-- name: Install rustup
-  pacman: name=rustup state=installed
-
-- name: Default toolchain
-  shell: rustup default stable
-  # TODO: this only needs to be done when rustc / cargo does not have a toolchain yet
-
 - name: rustup updates
   shell: rustup {{ item }}
   when: upgrade_tasks | default(false)
@@ -21,6 +14,11 @@
   - "component add rls --toolchain nightly"
   - "component add rust-analysis --toolchain nightly"
   - "component add rust-src --toolchain nightly"
+
+- name: rustup default stable
+  shell: rustup default stable
+  register: rustup_result
+  changed_when: "'unchanged' not in rustup_result.stdout"
 
 - name: install modules on rustup stable
   shell: cargo install {{ item }} --force
