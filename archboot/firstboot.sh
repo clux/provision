@@ -24,7 +24,7 @@ myuser=$(grep "$HOSTNAME" -r hosts | awk 'BEGIN {RS=" "}; /desktop_user/' | cut 
 loadkeys colemak # localectl screws up locales temporarily
 passwd "$myuser"
 
-if pacman -Ss nvidia-libgl | grep -q installed; then
+if pacman -Ss nvidia | grep -q installed; then
   echo "bootstrap completed - boot to blacklist nouveau"
 else
   systemctl start lightdm
