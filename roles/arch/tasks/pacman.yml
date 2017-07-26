@@ -79,14 +79,12 @@
   # browsers
   - chromium
   - firefox
-  # video
+  # media
   - vlc
-  # misc media
   - feh
   - gimp
   - gthumb
   - imagemagick
-  - mumble
   - gedit
   - gphoto2
   # filesystems
