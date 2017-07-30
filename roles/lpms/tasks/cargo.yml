@@ -28,6 +28,7 @@
   - racer
   - tokei
   - cargo-edit
+  - cargo-tarpaulin
 
 - name: install modules on rustup nightly
   shell: rustup run nightly cargo install clippy --force
