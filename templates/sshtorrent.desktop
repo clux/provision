@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=SshTorrent
-Exec=/home/{{ desktop_user }}/local/bin/magnet %u
+Exec=/home/{{ desktop_user }}/.local/bin/magnet %u
 Terminal=true
 Type=Application
-MimeType=x-scheme-handler/magnet;
+MimeType=x-scheme-handler/magnet
