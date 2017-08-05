@@ -22,6 +22,7 @@
   - { pkg: discord, dest: /sbin/discord }
   - { pkg: z, dest: /usr/share/z/z.sh }
   - { pkg: shellcheck-static, dest: /sbin/shellcheck }
+  - { pkg: alacritty-git, dest: /sbin/alacritty }
   # Commented out chrome as I'm trying to live with chromium instead
   #- { pkg: google-chrome, dest: /sbin/google-chrome-stable }
   # Commented out roccat drivers as Kone Pure Owleye is not recognized
