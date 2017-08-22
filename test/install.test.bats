@@ -4,13 +4,15 @@ exists() {
   hash "$1" 2> /dev/null
 }
 
-@test "locales" {
+@test "localisation" {
   locale -a | grep -q "en_GB.utf8"
   locale -a | grep -q "en_US.utf8"
   localectl status | grep -q "LANG=en_GB.UTF-8"
   localectl status | grep -q "X11 Layout: us"
   localectl status | grep -qE "X11 Model: pc10."
   localectl status | grep -q "X11 Variant: colemak"
+  timedatectl status | grep -q "Time zone: Europe/London"
+  timedatectl status | grep -q "NTP synchronized: yes"
 }
 
 @test "services" {
@@ -21,10 +23,23 @@ exists() {
 # Tests that expected stuff has been installed and are on PATH
 @test "pacman" {
   exists chromium
-  #exists google-chrome-stable
+  exists firefox
   exists guake
-  exists cmake
+  exists vlc
 }
+
+@test "aur" {
+  exists subl3
+  [ -d ~/.vim ]
+  [ -f ~/.vim/autoload/plug.vim ]
+  exists blackbox_cat
+  run man -w z
+  [ "$status" -eq 0 ]
+  run man -w bats
+  [ "$status" -eq 0 ]
+  exists shellcheck
+}
+
 
 @test "compilers" {
   exists clang++
@@ -70,7 +85,7 @@ exists() {
 
 @test "python" {
   # Python3 is default interpreter
-  ls -l $(which python3) | grep python3
+  ls -l $(which python) | grep python3
   exists pylint
   exists ipython
   exists ghp-import
@@ -78,17 +93,6 @@ exists() {
   run ansible --version
   echo "$output"
   echo "$output" | grep "ansible 2."
-}
-
-@test "hacks" {
-  exists subl3
-  [ -d ~/.vim ]
-  [ -f ~/.vim/autoload/plug.vim ]
-  exists blackbox_cat
-  run man -w z
-  [ "$status" -eq 0 ]
-  run man -w bats
-  [ "$status" -eq 0 ]
 }
 
 @test "nvidia" {
@@ -136,7 +140,7 @@ exists() {
 }
 
 @test "evars" {
-  [ "$CXX" = "clang++" ]
+  [ "$ANSIBLE_NOCOWS" = "1" ]
 }
 
 @test "dev" {
@@ -146,7 +150,6 @@ exists() {
 }
 
 @test "secrets" {
-  [ -r "$HOME/.config/Mumble/Mumble.conf" ]
   [ -d "$HOME/.ssh" ]
   [ -r "$HOME/.ssh/config" ]
   [ -d "$HOME/.ssh/.git" ]
