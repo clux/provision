@@ -2,7 +2,7 @@
 # install rust components via rustup and cargo
 
 - name: rustup updates
-  shell: rustup {{ item }}
+  command: rustup {{ item }}
   when: upgrade_tasks | default(false)
   register: command_result
   changed_when:
@@ -16,12 +16,12 @@
   - "component add rust-src --toolchain nightly"
 
 - name: rustup default stable
-  shell: rustup default stable
+  command: rustup default stable
   register: rustup_result
   changed_when: "'unchanged' not in rustup_result.stdout"
 
 - name: install modules on rustup stable
-  shell: cargo install {{ item }} --force
+  command: cargo install {{ item }} --force
   when: recompile_tasks | default(false)
   with_items:
   - rustfmt
@@ -31,7 +31,7 @@
   - cargo-tarpaulin
 
 - name: install modules on rustup nightly
-  shell: rustup run nightly cargo install clippy --force
+  command: rustup run nightly cargo install clippy --force
   when: recompile_tasks | default(false)
 
 - name: Link rustc-stable to rustup stable source location (I point racer there)

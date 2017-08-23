@@ -8,6 +8,7 @@
     key_file: /home/{{ desktop_user }}/.ssh/id_github
     update: "{{ upgrade_tasks | default(false) }}"
 
+# NB: this needs shell over command as it may ask for sudo mid item
 - name: Install personal packages
   shell: makepkg -si --noconfirm
   args:

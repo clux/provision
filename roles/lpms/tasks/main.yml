@@ -16,7 +16,7 @@
 - include: goget.yml
   tags: [lpms, go, core]
 
-- shell: vim -T dumb +PlugUpdate +qall
+- command: vim -T dumb +PlugUpdate +qall
   register: command_result
   changed_when:
   - "'files changed' in command_result.stdout"
