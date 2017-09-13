@@ -20,6 +20,7 @@
   - { pkg: sublime-text-dev, dest: /sbin/subl3 }
   - { pkg: terraform, dest: /sbin/terraform }
   - { pkg: ctop, dest: /sbin/ctop }
+  - { pkg: libc++, dest: /usr/lib/libc++.so }
   - { pkg: discord, dest: /sbin/discord }
   - { pkg: z, dest: /usr/share/z/z.sh }
   - { pkg: shellcheck-static, dest: /sbin/shellcheck }

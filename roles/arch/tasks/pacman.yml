@@ -37,7 +37,7 @@
   - llvm
   - lldb
   - go
-  - nodejs-lts-boron
+  - nodejs
   - npm
   - yarn
   - rustup
