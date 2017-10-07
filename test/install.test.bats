@@ -81,6 +81,12 @@ exists() {
   exists cargo-clippy
   exists racer
   exists cargo-add
+  exists cargo-fmt
+  exists rls
+  # New stable every 6th Thursday, ensure we're not more than 7 weeks behind
+  local -r stable=$(rustup run stable rustc --version | grep -oE "[0-9]{4}\-[0-9]{2}\-[0-9]{2}")
+  local -r olddate=$(date +"%Y-%m-%d" -d"-7 weeks")
+  [ "$(date -d $stable +%s)" -ge "$(date -d $olddate +%s)" ]
 }
 
 @test "python" {
