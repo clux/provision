@@ -20,7 +20,8 @@ fetch_secret_repos() {
   # Adding main_id to keychain - password please:
   keychain --timeout 30 --quiet --host agent ~/.ssh/main_id
   source ~/.keychain/agent-sh
-  ansible-playbook -i hosts -l "$(hostname)" secrets.yml -vv
+  #ansible-playbook -i hosts -l "$(hostname)" secrets.yml -vvv
+  #just git clone directly..
 }
 
 setup_dotfiles() {
