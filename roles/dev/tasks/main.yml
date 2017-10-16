@@ -4,7 +4,3 @@
 - include: repos.yml
   become: no
   tags: [dev, repos]
-
-- include: postgres.yml
-  become: yes
-  tags: [dev, postgres]

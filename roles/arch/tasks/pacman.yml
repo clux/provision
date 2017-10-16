@@ -36,6 +36,7 @@
   - clang-tools-extra
   - llvm
   - lldb
+  - postgresql-libs # for diesel cli
   - go
   - nodejs
   - npm
