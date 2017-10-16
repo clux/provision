@@ -28,7 +28,13 @@
   - racer
   - tokei
   - cargo-edit
+  - cargo-tree
+  - cargo-outdated
   - cargo-tarpaulin
+
+- name: diesel cli (assumes you have libpq)
+  command: cargo install diesel_cli --no-default-features --features postgres --force
+  when: recompile_tasks | default(false)
 
 - name: install modules on rustup nightly
   command: rustup run nightly cargo install clippy --force
