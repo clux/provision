@@ -15,7 +15,7 @@
   - ccze
   - tmux
   - xterm
-  - jshon
+  - jq
   - bash-bats
   - the_silver_searcher
   - ripgrep
