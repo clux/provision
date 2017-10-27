@@ -9,6 +9,7 @@
   - { role: arch, when: ansible_os_family == "Archlinux" }
   - disks
   - lpms
+  - docker
   - ssh
   - xdg
   - dev

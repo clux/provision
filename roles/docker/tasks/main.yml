@@ -1,0 +1,12 @@
+---
+# file system conditionals
+
+- include: clux.yml
+  when: inventory_hostname != "broxy"
+  become: no
+  tags: [docker, core]
+
+- include: broxy.yml
+  when: inventory_hostname == "broxy"
+  become: no
+  tags: [docker, core]

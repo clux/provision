@@ -1,0 +1,8 @@
+---
+# docker services for kjttks
+
+- name: docker login clux
+  docker_login:
+    username: clux
+    email: sszynrae@gmail.com
+    password: "{{ lookup('pipe', 'pass docker/clux')}}"
