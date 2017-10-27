@@ -63,8 +63,11 @@ exists() {
 @test "node" {
   exists node
   exists npm
-  [[ $(node -pe process.release.lts) != undefined ]]
+  # old npm/node pin logic
+  #[[ $(node -pe process.release.lts) != undefined ]]
   #npm --version | grep -E "^2\.*"
+  # using latest now
+  node --version | grep -E "^v8.*"
 }
 
 @test "npm-modules" {
