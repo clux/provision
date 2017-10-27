@@ -1,5 +1,5 @@
 ---
-# docker services for kjttks
+# docker services for clux's main pcs
 
 - name: docker login clux
   docker_login:

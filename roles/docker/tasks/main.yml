@@ -1,5 +1,5 @@
 ---
-# file system conditionals
+# docker conditionals
 
 - include: clux.yml
   when: inventory_hostname != "broxy"
