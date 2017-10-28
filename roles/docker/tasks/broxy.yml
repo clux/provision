@@ -8,7 +8,7 @@
     image: gogs/gogs
     state: started
     volumes:
-      - "/home/bro/gogs:/data"
+    - "/home/bro/gogs:/data"
     ports:
-      - "8722:22"
-      - "8880:3000"
+    - "8722:22"
+    - "8880:3000"
