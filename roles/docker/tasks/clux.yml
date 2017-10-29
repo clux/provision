@@ -5,4 +5,4 @@
   docker_login:
     username: clux
     email: sszynrae@gmail.com
-    password: "{{ lookup('pipe', 'pass docker/clux')}}"
+    password: "{{ lookup('passwordstore', 'docker/clux')}}"
