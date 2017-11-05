@@ -1,6 +1,6 @@
 ---
 # ssh + sshd
 
-- include: sshd.yml
+- import_tasks: sshd.yml
   become: yes
   tags: [ssh, core]

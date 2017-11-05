@@ -1,22 +1,22 @@
 ---
 # Core Arch Linux Setup
 
-- include: pacman.yml
+- import_tasks: pacman.yml
   when: ansible_os_family == "Archlinux"
   become: yes
   tags: [arch, core]
 
-- include: aur.yml
+- import_tasks: aur.yml
   when: ansible_os_family == "Archlinux"
   become: no
   tags: [arch, aur]
 
-- include: services.yml
+- import_tasks: services.yml
   when: ansible_os_family == "Archlinux"
   become: yes
   tags: [arch, core]
 
-- include: systemd.yml
+- import_tasks: systemd.yml
   when: ansible_os_family == "Archlinux"
   become: yes
   tags: [arch, core]

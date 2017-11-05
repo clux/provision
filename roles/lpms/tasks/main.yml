@@ -1,19 +1,19 @@
 ---
 # installs from language specific package managers
 
-- include: npm.yml
+- import_tasks: npm.yml
   tags: [lpms, npm, core]
 
-- include: pip.yml
+- import_tasks: pip.yml
   tags: [lpms, pip, core]
 
-- include: gem.yml
+- import_tasks: gem.yml
   tags: [lpms, gem, core]
 
-- include: cargo.yml
+- import_tasks: cargo.yml
   tags: [lpms, cargo, core]
 
-- include: goget.yml
+- import_tasks: goget.yml
   tags: [lpms, go, core]
 
 - command: vim -T dumb +PlugUpdate +qall

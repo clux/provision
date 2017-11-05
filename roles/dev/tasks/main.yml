@@ -1,6 +1,6 @@
 ---
 # Dev playbook - clone all active projects
 
-- include: repos.yml
+- import_tasks: repos.yml
   become: no
   tags: [dev, repos]

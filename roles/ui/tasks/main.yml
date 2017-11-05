@@ -1,5 +1,5 @@
 ---
 # configures ui things
 
-- include: gconf.yml
+- import_tasks: gconf.yml
   tags: [ui, gconf]

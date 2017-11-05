@@ -1,5 +1,5 @@
 ---
 # xdg
 
-- include: torrent.yml
+- import_tasks: torrent.yml
   tags: [xdg]
