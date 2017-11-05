@@ -12,7 +12,8 @@ exists() {
   localectl status | grep -qE "X11 Model: pc10."
   localectl status | grep -q "X11 Variant: colemak"
   timedatectl status | grep -q "Time zone: Europe/London"
-  timedatectl status | grep -q "NTP synchronized: yes"
+  timedatectl status | grep -q "systemd-timesyncd.service active: yes"
+  timedatectl status | grep -q "System clock synchronized: yes"
 }
 
 @test "services" {
@@ -107,9 +108,9 @@ exists() {
 @test "nvidia" {
   if [[ $(hostname) != ealbrigt-ws ]]; then
     exists nvidia-settings
-    run nvidia-settings -q CurrentMetaMode
-    echo "$output"
-    echo "$output" | grep "ForceFullCompositionPipeline=On"
+    #run nvidia-settings -q CurrentMetaMode
+    #echo "$output"
+    #echo "$output" | grep "ForceFullCompositionPipeline=On"
   fi
 }
 

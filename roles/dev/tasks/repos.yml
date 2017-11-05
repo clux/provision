@@ -1,7 +1,7 @@
 ---
 # Clone all active projects into ~/repos
 
-- file: path=/home/{{ desktop_user }}/{{ item }} state=directory
+- file: path=/home/{{ user }}/{{ item }} state=directory
   with_items:
   - repos
   - repos/tournament
@@ -11,8 +11,8 @@
 - name: Checkout general modules
   git:
     repo=git@github.com:clux/{{ item }}.git
-    dest=/home/{{ desktop_user }}/repos/{{ item }}
-    key_file=/home/{{ desktop_user }}/.ssh/id_github
+    dest=/home/{{ user }}/repos/{{ item }}
+    key_file=/home/{{ user }}/.ssh/id_github
     update=no
   with_items:
   - bandage
@@ -30,8 +30,8 @@
 - name: Checkout tournament modules
   git:
     repo=git@github.com:clux/{{ item }}.git
-    dest=/home/{{ desktop_user }}/repos/tournament/{{ item }}
-    key_file=/home/{{ desktop_user }}/.ssh/id_github
+    dest=/home/{{ user }}/repos/tournament/{{ item }}
+    key_file=/home/{{ user }}/.ssh/id_github
     update=no
   with_items:
   - duel
@@ -50,5 +50,5 @@
 
 - name: "Link node modules"
   command: symlink repos repos/tournament --execute
-    chdir=/home/{{ desktop_user }}
-    creates=/home/{{ desktop_user }}/repos/bandage/node_modules
+    chdir=/home/{{ user }}
+    creates=/home/{{ user }}/repos/bandage/node_modules

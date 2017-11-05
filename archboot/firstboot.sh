@@ -16,8 +16,8 @@ sleep 5
 curl -sSL https://github.com/clux/provision/archive/ansible.tar.gz | tar xz
 cd provision*
 
-# Ensure we have are listed in hosts and there's a corresponding desktop_user
-myuser=$(grep "$HOSTNAME" -r hosts | awk 'BEGIN {RS=" "}; /desktop_user/' | cut -d'=' -f2)
+# Ensure we have are listed in hosts and there's a corresponding user
+myuser=$(grep "$HOSTNAME" -r hosts | awk 'BEGIN {RS=" "}; /user/' | cut -d'=' -f2)
 ./DEPLOY bootstrap
 
 # Finalise user account

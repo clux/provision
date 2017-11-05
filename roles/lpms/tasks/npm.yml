@@ -3,9 +3,9 @@
 
 - name: npm config set prefix ~/.node_modules
   lineinfile:
-    dest: /home/{{ desktop_user }}/.npmrc
+    dest: /home/{{ user }}/.npmrc
     regexp: '^prefix='
-    line: 'prefix=/home/{{ desktop_user }}/.node_modules'
+    line: 'prefix=/home/{{ user }}/.node_modules'
 
 - name: Install global npm dependencies
   npm: name={{ item }} state=present global=true
@@ -29,7 +29,7 @@
   with_items:
   - pm2
 
-- file: path=/home/{{ desktop_user }}/.config/pkginit/ state=directory
+- file: path=/home/{{ user }}/.config/pkginit/ state=directory
 - template:
     src=templates/pkg.json
-    dest=/home/{{ desktop_user }}/.config/pkginit/default.json
+    dest=/home/{{ user }}/.config/pkginit/default.json

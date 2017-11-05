@@ -2,15 +2,15 @@
 - hosts: all
   connection: local
   user: root
-  gather_facts: no
+  gather_facts: false
 
   tasks:
   - name: sudo
     pacman: name=sudo state=installed
 
-  - name: ensure {{ desktop_user }} exists
+  - name: ensure {{ user }} exists
     user:
-      name={{ desktop_user }}
+      name={{ user }}
       state=present
       groups=audio,video,games,rfkill,uucp,wheel,sys
       append=yes
@@ -31,12 +31,12 @@
   - script: scripts/localectl.sh
     register: localectl_result
     changed_when: "localectl_result.rc != 0"
-    ignore_errors: True
+    ignore_errors: true
 
   - script: scripts/timedatectl.sh
     register: timedatectl_result
     changed_when: "timedatectl_result.rc != 0"
-    ignore_errors: True
+    ignore_errors: true
 
   - name: "Update cache after changing pacman settings"
     pacman: update_cache=yes
@@ -100,7 +100,7 @@
   - name: clone provision repo
     git:
       repo: https://github.com/clux/provision
-      dest: /home/{{ desktop_user }}/provision
+      dest: /home/{{ user }}/provision
       update: yes
-    become_user: "{{ desktop_user }}"
-    become: yes
+    become_user: "{{ user }}"
+    become: true

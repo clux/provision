@@ -4,15 +4,15 @@
 - name: Checkout personal pkgbuilds
   git:
     repo: git@github.com:clux/pkgbuilds.git
-    dest: /home/{{ desktop_user }}/repos/pkgbuilds
-    key_file: /home/{{ desktop_user }}/.ssh/id_github
+    dest: /home/{{ user }}/repos/pkgbuilds
+    key_file: /home/{{ user }}/.ssh/id_github
     update: "{{ upgrade_tasks | default(false) }}"
 
 # NB: this needs shell over command as it may ask for sudo mid item
 - name: Install personal packages
   shell: makepkg -si --noconfirm
   args:
-    chdir: /home/{{ desktop_user }}/repos/pkgbuilds/{{ item.pkg }}
+    chdir: /home/{{ user }}/repos/pkgbuilds/{{ item.pkg }}
     creates: "{{ item.dest }}"
     executable: /bin/bash
   with_items:

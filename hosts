@@ -1,9 +1,8 @@
 [arch]
-broxy       desktop_user=bro  display_driver=nvidia
-kjttks      desktop_user=clux display_driver=nvidia
-cluxw5      desktop_user=clux display_driver=mesa
-cluxx1      desktop_user=clux display_driver=mesa
-ealbrigt-ws desktop_user=clux display_driver=mesa
+broxy       user=bro  display_driver=nvidia
+kjttks      user=clux display_driver=nvidia
+cluxx1      user=clux display_driver=mesa
+ealbrigt-ws user=clux display_driver=mesa
 
 [arch:vars]
 ansible_python_interpreter="/sbin/python2"
