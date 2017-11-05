@@ -15,11 +15,11 @@
       groups=audio,video,games,rfkill,uucp,wheel,sys
       append=yes
 
-  - name: allow wheel users to sudo with pass
+  - name: allow wheel users to sudo without pass
     lineinfile:
-      dest=/etc/sudoers
-      line='%wheel ALL=(ALL) ALL'
-      validate='visudo -cf %s'
+      dest: /etc/sudoers
+      line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+      validate: 'visudo -cf %s'
 
   - name: enable multilib for steam
     lineinfile:
