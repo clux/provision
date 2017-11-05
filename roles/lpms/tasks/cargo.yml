@@ -1,15 +1,22 @@
 ---
 # install rust components via rustup and cargo
 
+
+- name: rustup update stable
+  command: rustup update stable
+  register: stable_output
+  changed_when:
+  - "'downloading' in stable_output.stderr"
+
 - name: rustup updates
   command: rustup {{ item }}
-  when: upgrade_tasks | default(false)
+  when:
+  - upgrade_tasks | default(false)
+  - stable_output.changed
   register: command_result
   changed_when:
   - "'downloading' in command_result.stderr"
   with_items:
-  - "update stable"
-  - "update nightly"
   - "component add rust-src"
   - "component add rls-preview --toolchain nightly"
   - "component add rust-analysis --toolchain nightly"
@@ -22,7 +29,9 @@
 
 - name: install modules on rustup stable
   command: cargo install {{ item }} --force
-  when: recompile_tasks | default(false)
+  when:
+  - recompile_tasks | default(false)
+  - stable_output.changed
   with_items:
   - rustfmt
   - racer
@@ -34,11 +43,24 @@
 
 - name: diesel cli (assumes you have libpq)
   command: cargo install diesel_cli --no-default-features --features postgres --force
+  when:
+  - recompile_tasks | default(false)
+  - stable_output.changed
+
+- name: rustup update nightly
+  command: rustup update nightly
   when: recompile_tasks | default(false)
+  register: nightly_output
+  changed_when:
+  - "'downloading' in nightly_output.stderr"
 
 - name: install modules on rustup nightly
-  command: rustup run nightly cargo install clippy --force
-  when: recompile_tasks | default(false)
+  command: rustup run nightly cargo install {{ item }} --force
+  with_items:
+  - clippy
+  when:
+  - upgrade_tasks | default(false)
+  - nightly_output.changed
 
 - name: Link rustc-stable to rustup stable source location (I point racer there)
   file:
@@ -46,3 +68,10 @@
     dest="/home/{{ user }}/.cargo/rustc-stable"
     state=link
     force=yes
+
+# standard place to put autocomplete right?
+# rustup comes from pacman and that has set up completion right at least..
+- name: bash completion for rustup
+  lineinfile:
+      dest="/home/{{ user }}/.bash_completion"
+      line="source ~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/etc/bash_completion.d/cargo"
