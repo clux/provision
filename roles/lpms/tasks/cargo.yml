@@ -73,5 +73,5 @@
 # rustup comes from pacman and that has set up completion right at least..
 - name: bash completion for rustup
   lineinfile:
-      dest="/home/{{ user }}/.bash_completion"
-      line="source ~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/etc/bash_completion.d/cargo"
+    dest="/home/{{ user }}/.bash_completion"
+    line="source ~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/etc/bash_completion.d/cargo"
