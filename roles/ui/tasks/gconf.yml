@@ -20,6 +20,7 @@
   #- { src: "local/clipboard_copy", bind: "<Control><Shift>"c }
   #- { src: "local/clipboard_paste", bind: "<Control><Shift>v" }
 
+# NB: this requires the powerline/fonts repo installed
 - name: guake style
   gconftool2:
     key="/apps/guake/style/{{ item.opt }}"
@@ -44,7 +45,8 @@
   - { opt: "use_popup", val: "false" }
   - { opt: "mouse_display", val: "false" }
   - { opt: "prompt_on_quit", val: "false" }
-  - { opt: "window_height_f", val: "92", type: int }
+  - { opt: "window_height", val: "93", type: int }
+  - { opt: "window_height_f", val: "93", type: float }
   - { opt: "window_tabbar", val: "true" }
   - { opt: "window_ontop", val: "false" }
   - { opt: "use_vte_titles", val: "false" }

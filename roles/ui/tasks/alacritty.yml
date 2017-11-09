@@ -1,0 +1,8 @@
+---
+# configure alacritty
+
+- name: alacritty style
+  lineinfile:
+    dest: /home/{{ desktop_user }}/.config/alacritty/alacritty.yml
+    regexp: '^background_opacity='
+    line: 'background_opacity=0.7'

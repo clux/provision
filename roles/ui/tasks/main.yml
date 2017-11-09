@@ -1,5 +1,8 @@
 ---
 # configures ui things
 
+- include: alacritty.yml
+  tags: [ui, alacritty]
+
 - include: gconf.yml
   tags: [ui, gconf]

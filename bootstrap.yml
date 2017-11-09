@@ -8,6 +8,13 @@
   - name: sudo
     pacman: name=sudo state=installed
 
+  - pacman: name=intel-ucode state=installed
+  - name: enable intel microcode updates
+    lineinfile:
+      dest=/boot/loader/entries/clux.conf
+      line='initrd /intel-ucode.img'
+    # TODO: mkinitcpio
+
   - name: ensure {{ desktop_user }} exists
     user:
       name={{ desktop_user }}
@@ -104,3 +111,9 @@
       update: yes
     become_user: "{{ desktop_user }}"
     become: yes
+
+  - name: accept broxy
+    known_hosts:
+      path: /etc/ssh/ssh_known_hosts
+      name: broxy
+      key: "{{ lookup('file', 'pubkeys/id_main') }}"
