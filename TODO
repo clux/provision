@@ -1,0 +1,4 @@
+ansible
+
+prefer `command` over `shell` when possible
+gconftool2 over dotfiles makefile
