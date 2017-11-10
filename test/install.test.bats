@@ -73,7 +73,7 @@ exists() {
 
 @test "npm-modules" {
   exists yarn
-  [[ $(hostname) == ealbrigt-ws ]] || exists badgify
+  exists badgify
   exists faucet
 }
 
@@ -106,7 +106,7 @@ exists() {
 }
 
 @test "nvidia" {
-  if [[ $(hostname) != ealbrigt-ws ]]; then
+  if [[ $(hostname) == kjttks ]]; then
     exists nvidia-settings
     #run nvidia-settings -q CurrentMetaMode
     #echo "$output"
@@ -115,7 +115,7 @@ exists() {
 }
 
 @test "cli-logins" {
-  [[ $(hostname) == ealbrigt-ws ]] || npm whoami
+  [[ $(hostname) == kjttks ]] || npm whoami
   docker info | grep Username
 }
 
