@@ -4,4 +4,4 @@ kjttks      user=clux display_driver=nvidia
 cluxxps     user=clux display_driver=nvidia
 
 [arch:vars]
-ansible_python_interpreter="/sbin/python2"
+ansible_python_interpreter="/sbin/python"

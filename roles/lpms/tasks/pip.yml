@@ -7,6 +7,7 @@
 - name: Install dependencies
   pip: name={{ item }} extra_args='--user' state=latest
   with_items:
+  - docker-py
   - ghp-import
   - pyflakes
   - pylint

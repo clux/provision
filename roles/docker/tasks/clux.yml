@@ -1,6 +1,14 @@
 ---
 # docker services for clux's main pcs
 
+# try to create the .docker dir before we start docker because docker runs as root
+# and then we can't change the ~/.docker/conf without root..
+# if this doesn't work, we could chown the directory non-recursively
+- file: path=/home/{{ user }}/.docker state=directory owner={{ user }} group={{ user }}
+  become: yes
+  become_user: root
+
+
 - name: docker login clux
   docker_login:
     username: clux
