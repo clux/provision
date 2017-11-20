@@ -18,7 +18,6 @@
   with_items:
   - { pkg: blackbox-vcs, dest: /sbin/blackbox_edit }
   - { pkg: sublime-text-dev, dest: /sbin/subl3 }
-  - { pkg: terraform, dest: /sbin/terraform }
   - { pkg: ctop, dest: /sbin/ctop }
   - { pkg: libc++, dest: /usr/lib/libc++.so }
   - { pkg: discord, dest: /sbin/discord }
