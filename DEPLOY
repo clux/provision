@@ -14,14 +14,12 @@ get_ssh_from_root() {
 }
 
 fetch_secret_repos() {
-  # Decrypting gogs.yml
-  echo "Provision password please"
+  echo "Unlocking gogs.gpg - 'library' password please"
   gpg -d vars/gogs.yml.gpg > vars/gogs.yml
-  # Adding main_id to keychain - password please:
+  echo "Unlocking main_id ssh key - password please"
   keychain --timeout 30 --quiet --host agent ~/.ssh/main_id
   source ~/.keychain/agent-sh
-  #ansible-playbook -i hosts -l "$(hostname)" secrets.yml -vvv
-  #just git clone directly..
+  ansible-playbook -i hosts -l "$(hostname)" -e 'host_key_checking=False' secrets.yml -vvv
 }
 
 setup_dotfiles() {
