@@ -59,7 +59,6 @@ main() {
     # Install repos we haven't yet installed
     [ -d ~/.gnupg/.git ] || ~/gpg/install.sh
     [ -f ~/.config/Mumble/Mumble.conf ] || ~/mumble/install.sh
-    [ -f ~/.ssh/work_id ] || ~/cisco/install.sh
     [ -d ~/.ssh/.git ] || ~/ssh/install.sh
     # Delete the rest
     rm -rf ~/ssh ~/gpg ~/mumble
