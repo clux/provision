@@ -7,8 +7,11 @@
     regexp: '^prefix='
     line: 'prefix=/home/{{ user }}/.node_modules'
 
+- set_fact:
+    npm_state: "{{ 'latest' if (upgrade_tasks | default(false)) else 'present' }}"
+
 - name: Install global npm dependencies
-  npm: name={{ item }} state=present global=true
+  npm: name={{ item }} state={{ npm_state }} global=true
   with_items:
   - badgify
   - faucet
@@ -25,7 +28,7 @@
 
 - name: broxy global modules
   when: inventory_hostname == "broxy"
-  npm: name={{ item }} state=present global=true
+  npm: name={{ item }} state={{ npm_state }} global=true
   with_items:
   - pm2
 

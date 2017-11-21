@@ -67,8 +67,9 @@ exists() {
   # old npm/node pin logic
   #[[ $(node -pe process.release.lts) != undefined ]]
   #npm --version | grep -E "^2\.*"
-  # using latest now
-  node --version | grep -E "^v8.*"
+  # just make sure we have a reasonably new node
+  nodemajor=$(node --version | grep -o "[[:digit:]]*" | head -n 1)
+  [[ $nodemajor -gt 8 ]]
 }
 
 @test "npm-modules" {

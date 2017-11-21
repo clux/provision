@@ -1,37 +1,61 @@
 ---
 # install rust components via rustup and cargo
 
-
+# fetch stable toolchain
 - name: rustup update stable
   command: rustup update stable
   register: stable_output
   changed_when:
   - "'downloading' in stable_output.stderr"
 
-- name: rustup updates
-  command: rustup {{ item }}
-  when:
-  - upgrade_tasks | default(false)
-  - stable_output.changed
-  register: command_result
-  changed_when:
-  - "'downloading' in command_result.stderr"
-  with_items:
-  - "component add rust-src"
-  - "component add rls-preview --toolchain nightly"
-  - "component add rust-analysis --toolchain nightly"
-  - "component add rust-src --toolchain nightly"
-
+# make sure it's set up properly before we use it
 - name: rustup default stable
   command: rustup default stable
   register: rustup_result
   changed_when: "'unchanged' not in rustup_result.stdout"
 
+# because we most frequently need to recompile nightly modules, do nightly stuff first
+- name: rustup update nightly
+  command: rustup update nightly
+  when: recompile_tasks | default(false)
+  register: nightly_output
+  changed_when:
+  - "'downloading' in nightly_output.stderr"
+
+- name: rustup update rls on nightly
+  command: rustup update nightly
+  when: recompile_tasks | default(false)
+  register: nightly_output
+  changed_when:
+  - "'downloading' in nightly_output.stderr"
+  with_items:
+  - "component add rls-preview --toolchain nightly"
+  - "component add rust-analysis --toolchain nightly"
+  - "component add rust-src --toolchain nightly"
+
+- name: install modules on rustup nightly
+  command: rustup run nightly cargo install {{ item }} --force
+  with_items:
+  - clippy
+  when:
+  - (recompile_tasks | default(false)) or nightly_output.changed
+
+# rls should use stable src
+- name: rustup updates
+  command: rustup {{ item }}
+  when:
+  - (upgrade_tasks | default(false)) or stable_output.changed
+  register: command_result
+  changed_when:
+  - "'downloading' in command_result.stderr"
+  with_items:
+  - "component add rust-src"
+
+# finally, do the large batch of stable modules (if needed)
 - name: install modules on rustup stable
   command: cargo install {{ item }} --force
   when:
-  - recompile_tasks | default(false)
-  - stable_output.changed
+  - (recompile_tasks | default(false)) or stable_output.changed
   with_items:
   - rustfmt
   - racer
@@ -44,23 +68,7 @@
 - name: diesel cli (assumes you have libpq)
   command: cargo install diesel_cli --no-default-features --features postgres --force
   when:
-  - recompile_tasks | default(false)
-  - stable_output.changed
-
-- name: rustup update nightly
-  command: rustup update nightly
-  when: recompile_tasks | default(false)
-  register: nightly_output
-  changed_when:
-  - "'downloading' in nightly_output.stderr"
-
-- name: install modules on rustup nightly
-  command: rustup run nightly cargo install {{ item }} --force
-  with_items:
-  - clippy
-  when:
-  - upgrade_tasks | default(false)
-  - nightly_output.changed
+  - (recompile_tasks | default(false)) or stable_output.changed
 
 - name: Link rustc-stable to rustup stable source location (I point racer there)
   file:
