@@ -36,9 +36,21 @@ exists() {
   exists blackbox_cat
   run man -w z
   [ "$status" -eq 0 ]
-  run man -w bats
-  [ "$status" -eq 0 ]
+  exists alacritty
+}
+
+@test "purge-haskell" {
+  # no haskell package spam:
+  pacman -Qsq | grep -v haskell
+
+  # no ghc
+  run which ghc
+  [ "$status" -eq 1 ]
+
+  # static shellcheck
   exists shellcheck
+  run ldd $(which shellcheck)
+  [ "$status" -eq 1 ]
 }
 
 
@@ -101,9 +113,7 @@ exists() {
   exists ipython
   exists ghp-import
   exists youtube-dl
-  run ansible --version
-  echo "$output"
-  echo "$output" | grep "ansible 2."
+  exists ansible
 }
 
 @test "nvidia" {
@@ -116,7 +126,9 @@ exists() {
 }
 
 @test "cli-logins" {
-  [[ $(hostname) == kjttks ]] || npm whoami
+  if [[ $(hostname) == kjttks ]]; then
+    npm whoami
+  fi
   docker info | grep Username
 }
 
@@ -156,8 +168,10 @@ exists() {
 
 @test "dev" {
   [ -d "$HOME/repos" ]
-  exists bndg
-  [ -L $(which bndg) ]
+  if [[ $(hostname) == kjttks ]]; then
+    exists bndg
+    [ -L $(which bndg) ]
+  fi
 }
 
 @test "secrets" {
