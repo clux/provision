@@ -81,7 +81,7 @@ main() {
     ansible-playbook -i hosts -l "$(hostname)" site.yml --tags="$1" "-vv${VERBOSE}" \
       $([ -n "$FULL" ] && echo "-e upgrade_tasks=1" || echo "") \
       $([ -n "$RECOMPILE" ] && echo "-e recompile_tasks=1" || echo "") \
-      $([ -n "$SUDO" ] && echo "--ask-become-pass" || echo "")
+      $([ -n "$SUDO" ] && echo "--become" || echo "")
     bats test
   fi
 }

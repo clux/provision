@@ -7,8 +7,8 @@ define green
 	@tput -T xterm sgr0
 	@echo -e "\t$2"
 endef
-define red
-	@tput -T xterm setaf 1
+define yellow
+	@tput -T xterm setaf 3
 	@echo -n "$1"
 	@tput -T xterm sgr0
 	@echo -e "\t$2"
@@ -16,14 +16,20 @@ endef
 
 .PHONY: help
 
+# yellow targets escalate with --become
 help:
 	@tput -T xterm bold
 	$(call green,"Main targets:")
-	$(call green," bootstrap", "root bootstrap configuration during first boot")
+	$(call yellow," bootstrap", "root bootstrap configuration during first boot")
 	$(call green," secrets", "check out and set up secrets")
-	$(call green," cargo", "upgrade/install rust modules")
-	$(call green," pip", "upgrade/install python modules")
-	$(call green," npm", "upgrade/install npm modules")
+	$(call yellow," core", "full provision")
+	$(call green," cargo", "upgrade rust packages")
+	$(call green," pip", "upgrade python packages")
+	$(call green," npm", "upgrade npm packages")
+	$(call yellow," pacman", "upgrade pacman packages")
+
+core:
+	@./DEPLOY core -fsc
 
 pip:
 	@./DEPLOY pip -f
@@ -32,7 +38,9 @@ npm:
 	@./DEPLOY npm -f
 
 cargo:
-	@./DEPLOY cargo -fc
+	@./DEPLOY cargo -f
 
+pacman:
+	@sudo pacman -Syu
 
 .PHONY: pip npm cargo
