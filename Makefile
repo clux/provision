@@ -43,4 +43,12 @@ cargo:
 pacman:
 	@sudo pacman -Syu
 
-.PHONY: pip npm cargo
+lint:
+	yamllint *.yml roles/ vars/
+	test -z "$(find roles/ -type f -iname '*.yaml')" && echo "Extensions OK"
+	shellcheck DEPLOY archboot/*.sh genprov.sh
+
+test: lint
+	bats test
+
+.PHONY: core pip npm cargo pacman lint test
