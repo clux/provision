@@ -15,3 +15,5 @@
   - requests
   - yamllint
   - youtube-dl
+  - awscli
+  - python-openstackclient
