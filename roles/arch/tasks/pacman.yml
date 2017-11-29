@@ -49,7 +49,7 @@
   - perf
   - lsof
   # network
-  - vpnc
+  - strongswan
   - nmap
   - net-tools # netstat
   - bind-tools  # contains dig
