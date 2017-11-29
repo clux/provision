@@ -17,3 +17,4 @@
   - youtube-dl
   - awscli
   - python-openstackclient
+  - pipenv
