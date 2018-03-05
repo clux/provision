@@ -12,6 +12,7 @@
   - pyflakes
   - pylint
   - pyaml
+  - yq
   - requests
   - yamllint
   - youtube-dl

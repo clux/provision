@@ -32,6 +32,7 @@
   - "component add rls-preview --toolchain nightly"
   - "component add rust-analysis --toolchain nightly"
   - "component add rust-src --toolchain nightly"
+  - "component add rustfmt-preview"
 
 - name: install modules on rustup nightly
   command: rustup run nightly cargo install {{ item }} --force
@@ -57,7 +58,6 @@
   when:
   - (recompile_tasks | default(false)) or stable_output.changed
   with_items:
-  - rustfmt
   - racer
   - tokei
   - cargo-edit
