@@ -56,7 +56,7 @@ exists() {
 
 @test "compilers" {
   exists clang++
-  clang++ --version | grep -q "clang version 5."
+  clang++ --version | grep -q "clang version 6."
   exists clang-tidy
   exists clang-format
   find /usr/lib/clang/ -iname libclang_rt* | grep -q asan

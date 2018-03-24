@@ -34,7 +34,7 @@
   - ipython
   - cmake
   - clang
-  - clang-tools-extra
+  - compiler-rt
   - llvm
   - lldb
   - postgresql-libs # for diesel cli
