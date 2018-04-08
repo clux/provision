@@ -12,7 +12,7 @@
     user:
       name={{ user }}
       state=present
-      groups=audio,video,games,rfkill,uucp,wheel,sys
+      groups=audio,video,games,rfkill,uucp,wheel,sys,lp
       append=yes
 
   - name: allow wheel users to sudo without pass
