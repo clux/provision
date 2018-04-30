@@ -59,7 +59,6 @@
   - (recompile_tasks | default(false)) or stable_output.changed
   with_items:
   - racer
-  - tokei
   - cargo-edit
   - cargo-tree
   - cargo-outdated

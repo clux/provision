@@ -19,6 +19,7 @@
   - bash-bats
   - the_silver_searcher
   - ripgrep
+  - tokei
   - fd
   - fzf
   - vim
