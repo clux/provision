@@ -64,6 +64,7 @@
   - cargo-outdated
   - cargo-tarpaulin
   - hyperfine
+  - bat
 
 - name: diesel cli (assumes you have libpq)
   command: cargo install diesel_cli --no-default-features --features postgres --force
