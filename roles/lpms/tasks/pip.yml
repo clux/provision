@@ -19,3 +19,8 @@
   - awscli
   - python-openstackclient
   - pipenv
+
+- name: Install from gemfury
+  pip: name={{ item }} extra_args='--user --extra-index-url={{ lookup('passwordstore', 'babylon/gemfury-index-url') }}' state=latest
+  with_items:
+  - kongtokens
