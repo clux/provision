@@ -59,6 +59,9 @@
   - bmon
   - nethogs
   - trickle
+  # wifi
+  - iw
+  - create_ap
   # dev services
   - docker
   - docker-compose
