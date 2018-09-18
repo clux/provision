@@ -10,3 +10,4 @@
   with_items:
   - { src: github.com/jessfraz/apk-file, bin: apk-file }
   - { src: github.com/sgreben/jp/cmd/jp, bin: jp }
+  - { src: gopkg.in/Netflix-Skunkworks/go-jira.v1/cmd/jira, bin: jira }
