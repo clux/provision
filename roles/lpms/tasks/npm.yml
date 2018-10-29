@@ -23,6 +23,8 @@
   - reveal-md
   - yr-cli
   - zalgolize
+  - ajv-cli
+  - yamljs
 
 - name: broxy global modules
   when: inventory_hostname == "broxy"
