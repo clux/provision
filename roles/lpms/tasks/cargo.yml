@@ -32,12 +32,10 @@
   - "component add rls-preview --toolchain nightly"
   - "component add rust-analysis --toolchain nightly"
   - "component add rust-src --toolchain nightly"
-  - "component add rustfmt-preview"
 
 - name: install modules on rustup nightly
   command: rustup run nightly cargo install {{ item }} --force
-  with_items:
-  - clippy
+  with_items: []
   when:
   - (recompile_tasks | default(false)) or nightly_output.changed
 
@@ -51,6 +49,10 @@
   - "'downloading' in command_result.stderr"
   with_items:
   - "component add rust-src"
+  - "component add rustfmt-preview"
+  - "component add clippy-preview"
+  - "component add rls-preview"
+  - "component add rust-analysis"
 
 # finally, do the large batch of stable modules (if needed)
 - name: install modules on rustup stable
