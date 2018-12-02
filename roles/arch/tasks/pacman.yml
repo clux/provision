@@ -127,3 +127,9 @@
   - steam
   - steam-native-runtime
   when: inventory_hostname == "kjttks"
+
+# Extra weird autocompletion stuff
+- name: Hugo completion
+  shell: hugo gen autocomplete --completionfile=/usr/share/bash-completion/completions/hugo
+  args:
+    creates: /usr/share/bash-completion/completions/hugo
