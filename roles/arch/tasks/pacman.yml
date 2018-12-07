@@ -67,6 +67,7 @@
   - docker-compose
   # ssh + secrets managers
   - keychain
+  - keybase
   - pass
   - openssh
   # music
