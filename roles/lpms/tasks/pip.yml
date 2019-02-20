@@ -18,6 +18,7 @@
   - awscli
   - python-openstackclient
   - pipenv
+  - pytest
 
 - name: Install from gemfury
   pip: name={{ item }} extra_args='--user --extra-index-url={{ lookup('passwordstore', 'babylon/gemfury-index-url') }}' state=latest
