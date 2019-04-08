@@ -65,6 +65,7 @@
   # dev services
   - docker
   - docker-compose
+  - minikube
   # ssh + secrets managers
   - keychain
   - keybase
