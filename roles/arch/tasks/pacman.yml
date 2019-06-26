@@ -18,6 +18,7 @@
   - jq
   - bash-bats
   - ripgrep
+  - exa
   - tokei
   - fd
   - fzf
