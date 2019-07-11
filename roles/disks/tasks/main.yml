@@ -1,7 +1,10 @@
 ---
 # file system conditionals
 
-- include_tasks: "{{ inventory_hostname }}.yml"
-  when: inventory_hostname in ["kjttks", "broxy"]
-  become: yes
+- include_tasks: kjttks.yml
+  when: inventory_hostname in ["kjttks"]
+  tags: [disks, core]
+
+- include_tasks: broxy.yml
+  when: inventory_hostname in ["broxy"]
   tags: [disks, core]
