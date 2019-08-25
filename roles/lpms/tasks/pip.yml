@@ -16,6 +16,6 @@
   - yamllint
   - youtube-dl
   - awscli
-  - python-openstackclient
   - pipenv
   - pytest
+  - magic-wormhole
