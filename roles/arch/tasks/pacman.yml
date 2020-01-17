@@ -59,6 +59,7 @@
   - bind-tools  # contains dig
   - traceroute
   - bmon
+  - bandwhich
   - nethogs
   - trickle
   # wifi
@@ -124,6 +125,7 @@
 # Linux capabilities so some apps can run sans-sudo
 - capabilities: path=/sbin/nethogs capability=cap_net_admin+ep
 - capabilities: path=/sbin/nethogs capability=cap_net_raw+ep
+- capabilities: path=/sbin/bandwhich capability=cap_net_raw,cap_net_admin+ep
 
 - name: Install dependencies
   pacman: name={{ item }} state=installed
