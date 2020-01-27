@@ -81,6 +81,9 @@
   # ebooks
   - poppler
   - calibre
+  # chromecast - see https://wiki.archlinux.org/index.php/VLC_media_player#Chromecast_support to enable mdns
+  - libmicrodns
+  - protobuf
   # X related
   - gnome-screenshot
   - redshift
