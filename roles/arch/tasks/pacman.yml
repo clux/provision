@@ -142,6 +142,3 @@
   shell: hugo gen autocomplete --completionfile=/usr/share/bash-completion/completions/hugo
   args:
     creates: /usr/share/bash-completion/completions/hugo
-
-- name: minikube one-offs
-  shell: sudo minikube config set vm-driver none
