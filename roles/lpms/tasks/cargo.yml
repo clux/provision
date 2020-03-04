@@ -66,6 +66,7 @@
   - cargo-outdated
   #- cargo-tarpaulin (nightly)
   - cargo-audit
+  - cargo-expand
   - hyperfine
   - bat
 
