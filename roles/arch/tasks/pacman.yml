@@ -109,6 +109,7 @@
   - imagemagick
   - gedit
   - gphoto2
+  - peek
   # filesystems
   - ntfs-3g
   - nemo-fileroller
