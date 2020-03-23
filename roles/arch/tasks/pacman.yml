@@ -21,6 +21,8 @@
   - exa
   - tokei
   - fd
+  - bat
+  - hyperfine
   - fzf
   - vim
   - asciinema
