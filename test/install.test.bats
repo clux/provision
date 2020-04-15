@@ -12,7 +12,7 @@ exists() {
   localectl status | grep -qE "X11 Model: pc10."
   localectl status | grep -q "X11 Variant: colemak"
   timedatectl status | grep -q "Time zone: Europe/London"
-  timedatectl status | grep -q "systemd-timesyncd.service active: yes"
+  systemctl is-active systemd-timesyncd.service | grep -q "active"
   timedatectl status | grep -q "System clock synchronized: yes"
 }
 
@@ -56,12 +56,10 @@ exists() {
 
 @test "compilers" {
   exists clang++
-  clang++ --version | grep -q "clang version 6."
   exists clang-tidy
   exists clang-format
   find /usr/lib/clang/ -iname libclang_rt* | grep -q asan
   exists gcc
-  gcc --version | grep -q "(GCC) 7"
 }
 
 @test "profanity" {
@@ -91,12 +89,9 @@ exists() {
 }
 
 @test "rust" {
-  [ -L "$HOME/.cargo/rustc-stable" ]
-  [ -d "$RUST_SRC_PATH" ]
   exists rustup
   rustup which cargo | grep stable-x86_64
   exists cargo-clippy
-  exists racer
   exists cargo-add
   exists cargo-fmt
   exists rls
@@ -148,7 +143,6 @@ exists() {
   [ -L "$HOME/.exports" ]
   [ -L "$HOME/.functions" ]
   [ -L "$HOME/.gitconfig" ]
-  [ -L "$HOME/.hgrc" ]
   [ -L "$HOME/.iface" ]
   [ -L "$HOME/.inputrc" ]
   [ -L "$HOME/.jshintrc" ]
