@@ -68,10 +68,11 @@
   # wifi
   - iw
   - create_ap
-  # dev services
+  # container services
   - docker
   - docker-compose
   - minikube
+  - kustomize
   # ssh + secrets managers
   - keychain
   - keybase
