@@ -50,6 +50,7 @@
   - npm
   - yarn
   - rustup
+  - rust-analyzer
   # system tools
   - htop
   - strace
