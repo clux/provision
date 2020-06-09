@@ -67,6 +67,7 @@
   #- cargo-tarpaulin (nightly)
   - cargo-audit
   - cargo-expand
+  - choose
 
 - name: diesel cli (assumes you have libpq)
   command: cargo install diesel_cli --no-default-features --features postgres --force
