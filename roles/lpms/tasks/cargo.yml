@@ -68,6 +68,8 @@
   - cargo-audit
   - cargo-expand
   - choose
+  - du-dust
+  - procs
 
 - name: diesel cli (assumes you have libpq)
   command: cargo install diesel_cli --no-default-features --features postgres --force

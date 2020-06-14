@@ -24,6 +24,8 @@
   - bat
   - hyperfine
   - fzf
+  - skim
+  - sd
   - vim
   - asciinema
   - terraform
