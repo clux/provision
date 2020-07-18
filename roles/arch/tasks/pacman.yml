@@ -75,6 +75,7 @@
   - docker
   - docker-compose
   - minikube
+  - conntrack-tools # k8s > 1.18 dependency
   - kustomize
   # ssh + secrets managers
   - keychain
