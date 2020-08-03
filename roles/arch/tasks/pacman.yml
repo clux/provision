@@ -55,7 +55,6 @@
   - rustup
   - rust-analyzer
   # system tools
-  - htop
   - strace
   - perf
   - lsof
