@@ -122,6 +122,7 @@
   - nemo-fileroller
   - nemo-share
   - samba
+  - gvfs-samba
   - mtpfs # kindle
   - android-file-transfer
   - gptfdisk
