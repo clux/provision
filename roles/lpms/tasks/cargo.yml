@@ -22,17 +22,6 @@
   changed_when:
   - "'downloading' in nightly_output.stderr"
 
-- name: rustup update rls on nightly
-  command: rustup update nightly
-  when: recompile_tasks | default(false)
-  register: nightly_output
-  changed_when:
-  - "'downloading' in nightly_output.stderr"
-  with_items:
-  - "component add rls-preview --toolchain nightly"
-  - "component add rust-analysis --toolchain nightly"
-  - "component add rust-src --toolchain nightly"
-
 - name: install modules on rustup nightly
   command: rustup run nightly cargo install {{ item }} --force
   with_items: []
@@ -49,9 +38,9 @@
   - "'downloading' in command_result.stderr"
   with_items:
   - "component add rust-src"
-  - "component add rustfmt-preview"
-  - "component add clippy-preview"
-  - "component add rls-preview"
+  - "component add rustfmt"
+  - "component add clippy"
+  - "component add rls"
   - "component add rust-analysis"
 
 # finally, do the large batch of stable modules (if needed)
