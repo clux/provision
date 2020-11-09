@@ -23,6 +23,7 @@
   - fd
   - bat
   - hyperfine
+  - vivid
   - fzf
   - skim
   - sd
