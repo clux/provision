@@ -146,7 +146,6 @@
   pacman: name={{ item }} state=installed
   with_items:
   - steam
-  - steam-native-runtime
   when: inventory_hostname == "kjttks"
 
 # Extra weird autocompletion stuff
