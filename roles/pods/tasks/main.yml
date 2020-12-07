@@ -1,12 +1,12 @@
 ---
-# docker conditionals
+# pods conditionals
 
 - import_tasks: clux.yml
   when: inventory_hostname != "broxy"
   become: no
-  tags: [docker, core]
+  tags: [pods, core]
 
 - import_tasks: broxy.yml
   when: inventory_hostname == "broxy"
   become: no
-  tags: [docker, core]
+  tags: [pods, core]

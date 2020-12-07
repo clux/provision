@@ -124,7 +124,7 @@ exists() {
   if [[ $(hostname) == kjttks ]]; then
     npm whoami
   fi
-  docker info | grep Username
+  podman login --get-login | grep clux
 }
 
 @test "dotfiles" {

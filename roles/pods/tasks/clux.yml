@@ -1,0 +1,9 @@
+---
+# podman stuff for clux's main pcs
+
+- name: podman login clux
+  # needs emulation layer atm - even though it's the same cmd
+  docker_login:
+    username: clux
+    email: sszynrae@gmail.com
+    password: "{{ lookup('passwordstore', 'docker/clux')}}"

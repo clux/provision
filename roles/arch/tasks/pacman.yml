@@ -74,8 +74,8 @@
   - iw
   - create_ap
   # container services
-  - docker
-  - docker-compose
+  - podman
+  - podman-docker # a few things here need it
   - minikube
   - conntrack-tools # k8s > 1.18 dependency
   - kustomize
