@@ -4,7 +4,7 @@ set -exuo pipefail
 # login as root (which has no passwd at this stage)
 
 # dhcpcd one last time (bootstrap enables NetworkManager)
-dhcpcd
+dhcpcd # needs to be installed in bootstrap, can be uninstalled later
 
 # set root pass
 passwd

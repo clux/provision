@@ -65,7 +65,7 @@ mkdir /mnt/boot
 mount /dev/nvme0n1p1 /mnt/boot
 
 # Bootstrat the chroot
-pacstrap /mnt base base-devel vim git sudo efibootmgr
+pacstrap /mnt base base-devel vim git sudo efibootmgr mkinitcpio lvm2 dhcpcd
 
 # Generate fstab
 genfstab -pU /mnt >> /mnt/etc/fstab
@@ -78,10 +78,14 @@ arch-chroot /mnt /bin/bash
 # The rest follows chroot.sh
 # but a few things that may need to change:
 
+passwd # set root password before booting (illegal to have empty)
+
 # vim /etc/mkinitcpio.conf
 ## Add 'ext4' to MODULES
 ## Add 'encrypt' and 'lvm2' to HOOKS before filesystems
 ## Add 'resume' after 'lvm2' (also has to be after 'udev')
+
+pacman -S linux linux-firmware # calls mkinitcpio via normal hooks
 
 ## Nvme boot loader settings need to grab a uuid in a weird way:
 #bootctl --path=/boot install
