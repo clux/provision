@@ -105,5 +105,10 @@
       repo: https://github.com/clux/provision
       dest: /home/{{ user }}/provision
       update: yes
-    become_user: "{{ user }}"
     become: true
+  - name: provision repo belonging to user
+    file:
+      path: /home/{{ user }}/provision
+      owner: {{ user }}
+      group: {{ user }}
+      recursive: yes
