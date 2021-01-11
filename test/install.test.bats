@@ -112,7 +112,7 @@ exists() {
 }
 
 @test "nvidia" {
-  if [[ $(hostname) == kjttks ]]; then
+  if [[ "${HOSTNAME}" == kjttks ]]; then
     exists nvidia-settings
     #run nvidia-settings -q CurrentMetaMode
     #echo "$output"
@@ -121,7 +121,7 @@ exists() {
 }
 
 @test "cli-logins" {
-  if [[ $(hostname) == kjttks ]]; then
+  if [[ "${HOSTNAME}" == kjttks ]]; then
     npm whoami
   fi
   docker info | grep Username
@@ -162,7 +162,7 @@ exists() {
 
 @test "dev" {
   [ -d "$HOME/repos" ]
-  if [[ $(hostname) == kjttks ]]; then
+  if [[ "${HOSTNAME}" == kjttks ]]; then
     exists bndg
     [ -L $(which bndg) ]
   fi

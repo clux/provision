@@ -19,7 +19,7 @@ fetch_secret_repos() {
   echo "Unlocking main_id ssh key - password please"
   keychain --timeout 30 --quiet --host agent ~/.ssh/main_id
   source ~/.keychain/agent-sh
-  ansible-playbook -i hosts -l "$(hostname)" -e 'host_key_checking=False' secrets.yml -vvv
+  ansible-playbook -i hosts -l "${HOSTNAME}" -e 'host_key_checking=False' secrets.yml -vvv
 }
 
 setup_dotfiles() {
@@ -41,7 +41,7 @@ main() {
       exit 1
     fi
     pacman -S --noconfirm ansible
-    ansible-playbook -i hosts -l "$(hostname)" bootstrap.yml -vv
+    ansible-playbook -i hosts -l "${HOSTNAME}" bootstrap.yml -vv
   elif [[ $1 == "secrets" ]]; then
     if [[ $EUID -eq 0 ]]; then
       echo "This role is not indended to be run as root"
@@ -76,7 +76,7 @@ main() {
     done
     set -x
     # shellcheck disable=SC2046
-    ansible-playbook -i hosts -l "$(hostname)" site.yml --tags="$1" "-v${VERBOSE}" \
+    ansible-playbook -i hosts -l "${HOSTNAME}" site.yml --tags="$1" "-v${VERBOSE}" \
       $([ -n "$FULL" ] && echo "-e upgrade_tasks=1" || echo "") \
       $([ -n "$RECOMPILE" ] && echo "-e recompile_tasks=1" || echo "") \
       $([ -n "$SUDO" ] && echo "--become" || echo "")
