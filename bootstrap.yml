@@ -101,14 +101,9 @@
     - tmux
 
   - name: clone provision repo
+    # TODO: needs a chown {{ user }}:{{ user }} -R /home/{{ user }}/provision
     git:
       repo: https://github.com/clux/provision
       dest: /home/{{ user }}/provision
       update: yes
     become: true
-  - name: provision repo belonging to user
-    file:
-      path: /home/{{ user }}/provision
-      owner: {{ user }}
-      group: {{ user }}
-      recursive: yes
