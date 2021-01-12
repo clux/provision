@@ -1,13 +1,10 @@
 #!/bin/bash
 set -exuo pipefail
 # For the first real boot after setting up the chroot
-# login as root (which has no passwd at this stage)
+# login as root (with password from arch-chroot)
 
 # dhcpcd one last time (bootstrap enables NetworkManager)
 dhcpcd # needs to be installed in bootstrap, can be uninstalled later
-
-# set root pass
-passwd
 
 # give dhcpcd some time
 sleep 5

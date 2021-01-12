@@ -82,7 +82,7 @@ passwd # set root password before booting (illegal to have empty)
 
 # vim /etc/mkinitcpio.conf
 ## Add 'ext4' to MODULES
-## Add 'encrypt' and 'lvm2' to HOOKS before filesystems
+## Add 'keymap' and 'encrypt' and 'lvm2' to HOOKS before filesystems
 ## Add 'resume' after 'lvm2' (also has to be after 'udev')
 
 pacman -S linux linux-firmware # calls mkinitcpio via normal hooks
