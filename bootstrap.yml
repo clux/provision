@@ -89,7 +89,7 @@
   - name: enable key services
     service: name={{ item }} enabled=yes
     with_items:
-    - lightdm
+    #- lightdm
     - NetworkManager
 
   - name: install deps to ease X setup
