@@ -28,11 +28,11 @@
       regexp="^\#\[multilib\]"
       line="[multilib]\nInclude = /etc/pacman.d/mirrorlist"
 
+  # NB: These scripts fails the first 2/3 times
   - script: scripts/localectl.sh
     register: localectl_result
     changed_when: "localectl_result.rc != 0"
     ignore_errors: true
-
   - script: scripts/timedatectl.sh
     register: timedatectl_result
     changed_when: "timedatectl_result.rc != 0"
@@ -42,32 +42,29 @@
     pacman: update_cache=yes
 
   - name: install NVIDIA display drivers and choice dependencies
-    pacman: name={{ item }} state=installed
+    pacman:
+      name: ['nvidia', 'nvidia-utils','nvidia-settings']
+      state: installed
     when: display_driver == "nvidia"
-    with_items:
-    - nvidia
-    - nvidia-utils
-    - nvidia-settings
 
   - name: install MESA display drivers and choice dependencies
-    pacman: name="mesa mesa-libgl xorg-server" state=installed
+    pacman:
+      name: ['mesa', 'mesa-libgl', 'xorg-server']
+      state: installed
     when: display_driver == "mesa"
 
   - name: install core packages
-    pacman: name={{ item }} state=installed
-    with_items:
-    - alsa-utils
-    - cinnamon
-    - lightdm
-    - lightdm-gtk-greeter
-    - ttf-dejavu
-    - ttf-liberation
-    - guake
-    - chromium
-    - networkmanager
-    - git
-    - openssh
-    - powerline-fonts
+    pacman:
+      name: ['alsa-utils', 'git', 'openssh', 'chromium', 'networkmanager']
+      state: installed
+  - name: install fonts
+    pacman:
+      name: ['ttf-dejavu', 'ttf-liberation',,  'powerline-fonts']
+      state: installed
+  - name: install window manager
+    pacman:
+      name: ['cinnamon', 'lightdm', 'lightdm-gtk-greeter', 'guake']
+      state: installed
 
   - name: enable lightdm gtk greeter
     lineinfile:
@@ -89,16 +86,13 @@
   - name: enable key services
     service: name={{ item }} enabled=yes
     with_items:
-    #- lightdm
+    #- lightdm (enable manually in case it fails)
     - NetworkManager
 
-  - name: install deps to ease X setup
-    pacman: name={{ item }} state=installed
-    with_items:
-    - keychain
-    - xclip
-    - lsb-release
-    - tmux
+  - name: install deps to ease setup
+    pacman:
+      name: ['keychain', 'pass', 'xclip', 'lsb-release', 'tmux']
+      state: installed
 
   - name: clone provision repo
     # TODO: needs a chown {{ user }}:{{ user }} -R /home/{{ user }}/provision

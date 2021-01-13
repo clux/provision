@@ -54,7 +54,7 @@
   - nodejs
   - npm
   - yarn
-  - rustup
+  # rustup
   - rust-analyzer
   # system tools
   - strace

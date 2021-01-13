@@ -28,22 +28,8 @@
   when:
   - (recompile_tasks | default(false)) or nightly_output.changed
 
-# rls should use stable src
-- name: rustup updates
-  command: rustup {{ item }}
-  when:
-  - (upgrade_tasks | default(false)) or stable_output.changed
-  register: command_result
-  changed_when:
-  - "'downloading' in command_result.stderr"
-  with_items:
-  - "component add rust-src"
-  - "component add rustfmt"
-  - "component add clippy"
-  - "component add rls"
-  - "component add rust-analysis"
 
-# finally, do the large batch of stable modules (if needed)
+# large batch of stable modules (if needed)
 - name: install modules on rustup stable
   command: cargo install {{ item }} --force
   when:
@@ -63,15 +49,3 @@
   - grex
   - hors
   - zoxide
-
-- name: diesel cli (assumes you have libpq)
-  command: cargo install diesel_cli --no-default-features --features postgres --force
-  when:
-  - (recompile_tasks | default(false)) or stable_output.changed
-
-- name: Link rustc-stable to rustup stable source location (I point racer there)
-  file:
-    src="/home/{{ user }}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust"
-    dest="/home/{{ user }}/.cargo/rustc-stable"
-    state=link
-    force=yes
