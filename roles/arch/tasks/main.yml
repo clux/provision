@@ -6,10 +6,10 @@
   become: yes
   tags: [arch, core]
 
-- import_tasks: aur.yml
-  when: ansible_os_family == "Archlinux"
-  become: no
-  tags: [arch, aur]
+#- import_tasks: aur.yml
+#  when: ansible_os_family == "Archlinux"
+#  become: no
+#  tags: [arch, aur]
 
 - import_tasks: services.yml
   when: ansible_os_family == "Archlinux"
