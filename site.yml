@@ -11,5 +11,5 @@
   - lpms
   - docker
   - ssh
-  - xdg
-  - dev
+  #- xdg
+  #- dev
