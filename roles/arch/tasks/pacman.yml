@@ -72,7 +72,7 @@
   - trickle
   # wifi
   - iw
-  - create_ap
+  #- create_ap (aur)
   # container services
   - docker
   - docker-compose
