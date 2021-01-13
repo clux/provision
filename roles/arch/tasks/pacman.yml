@@ -132,10 +132,10 @@
   - ttf-ubuntu-font-family
   - otf-ipafont # japanese
   - adobe-source-han-sans-kr-fonts # korean
-  - fonts-tlwg # thai
+  #- fonts-tlwg # thai AUR
   - wqy-microhei # chinese
   - noto-fonts-emoji # google's emoji font
-  - ttf-symbola # unicode font for github style emojis
+  #- ttf-symbola # unicode font for github style emojis AUR
 
 # Linux capabilities so some apps can run sans-sudo
 - capabilities: path=/sbin/nethogs capability=cap_net_admin+ep
