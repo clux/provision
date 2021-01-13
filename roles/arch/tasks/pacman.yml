@@ -69,7 +69,7 @@
   - bmon
   - bandwhich
   - nethogs
-  - trickle
+  #- trickle (aur)
   # wifi
   - iw
   #- create_ap (aur)
