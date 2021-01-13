@@ -123,8 +123,7 @@
   - ntfs-3g
   - nemo-fileroller
   - nemo-share
-  - samba
-  - gvfs-samba
+  - gvfs-smb
   - mtpfs # kindle
   - android-file-transfer
   - gptfdisk
