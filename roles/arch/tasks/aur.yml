@@ -9,25 +9,25 @@
     update: "{{ upgrade_tasks | default(false) }}"
 
 # NB: this needs shell over command as it may ask for sudo mid item
-- name: Install personal packages
-  shell: makepkg -si --noconfirm
-  args:
-    chdir: /home/{{ user }}/repos/pkgbuilds/{{ item.pkg }}
-    creates: "{{ item.dest }}"
-    executable: /bin/bash
-  with_items:
-  - { pkg: blackbox-vcs, dest: /sbin/blackbox_edit }
-  - { pkg: sublime-text-dev, dest: /sbin/subl3 }
-  - { pkg: ctop, dest: /sbin/ctop }
-  - { pkg: libc++, dest: /usr/lib/libc++.so }
-  - { pkg: discord, dest: /sbin/discord }
-  - { pkg: slack-desktop, dest: /sbin/slack }
-  - { pkg: z, dest: /usr/share/z/z.sh }
-  - { pkg: shellcheck-static, dest: /sbin/shellcheck }
-  - { pkg: alacritty-git, dest: /sbin/alacritty }
-  - { pkg: networkmanager-l2tp, dest: /etc/NetworkManager/VPN/nm-l2tp-service.name }
-  - { pkg: kubernetes, dest: /sbin/kubectl }
-  - { pkg: kubernetes-helm, dest: /sbin/helm }
+# - name: Install personal packages
+#   shell: makepkg -si --noconfirm
+#   args:
+#     chdir: /home/{{ user }}/repos/pkgbuilds/{{ item.pkg }}
+#     creates: "{{ item.dest }}"
+#     executable: /bin/bash
+#   with_items:
+#   - { pkg: blackbox-vcs, dest: /sbin/blackbox_edit }
+#   - { pkg: sublime-text-dev, dest: /sbin/subl3 }
+#   - { pkg: ctop, dest: /sbin/ctop }
+#   - { pkg: libc++, dest: /usr/lib/libc++.so }
+#   - { pkg: discord, dest: /sbin/discord }
+#   - { pkg: slack-desktop, dest: /sbin/slack }
+#   - { pkg: z, dest: /usr/share/z/z.sh }
+#   - { pkg: shellcheck-static, dest: /sbin/shellcheck }
+#   - { pkg: alacritty-git, dest: /sbin/alacritty }
+#   #- { pkg: networkmanager-l2tp, dest: /etc/NetworkManager/VPN/nm-l2tp-service.name }
+#   - { pkg: kubernetes, dest: /sbin/kubectl }
+#   - { pkg: kubernetes-helm, dest: /sbin/helm }
 
   # Commented out chrome as I'm trying to live with chromium instead
   #- { pkg: google-chrome, dest: /sbin/google-chrome-stable }
