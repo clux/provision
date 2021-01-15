@@ -98,7 +98,7 @@ pacman -S linux linux-firmware # calls mkinitcpio via normal hooks
 #title Arch Linux
 #linux /vmlinuz-linux
 #initrd /initramfs-linux.img
-#options cryptdevice=UUID=${cryptuid}:vg0 root=/dev/mapper/vg0-root resume=/dev/mapper/vg0-swap rw intel_pstate=no_hwp
+#options cryptdevice=UUID=${cryptuid}:vg0 root=/dev/mapper/vg0-root resume=/dev/mapper/vg0-swap rw intel_pstate=no_hwp mem_sleep_default=deep
 #EOF
 ## Exit new system and go into the cd shell
 exit
