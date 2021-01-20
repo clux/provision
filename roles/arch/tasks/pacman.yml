@@ -86,6 +86,8 @@
   - keybase
   - pass
   - openssh
+  - yubikey-manager
+  - yubikey-manager-qt
   # music
   - mpc
   - mpd
