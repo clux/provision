@@ -61,7 +61,8 @@
   - perf
   - lsof
   # network
-  - strongswan
+  - networkmanager-openvpn
+  - openvpn
   - nmap
   - net-tools # netstat
   - bind-tools  # contains dig
