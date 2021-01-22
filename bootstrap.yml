@@ -43,7 +43,10 @@
 
   - name: install NVIDIA display drivers and choice dependencies
     pacman:
-      name: ['nvidia', 'nvidia-utils','nvidia-settings']
+      name:
+      - 'nvidia'
+      - 'nvidia-utils'
+      - 'nvidia-settings'
       state: installed
     when: display_driver == "nvidia"
 
@@ -55,15 +58,27 @@
 
   - name: install core packages
     pacman:
-      name: ['alsa-utils', 'git', 'openssh', 'chromium', 'networkmanager']
+      name:
+      - alsa-utils
+      - git
+      - openssh
+      - chromium
+      - networkmanager
       state: installed
   - name: install fonts
     pacman:
-      name: ['ttf-dejavu', 'ttf-liberation',,  'powerline-fonts']
+      name:
+      - ttf-dejavu
+      - ttf-liberation
+      - powerline-fonts
       state: installed
   - name: install window manager
     pacman:
-      name: ['cinnamon', 'lightdm', 'lightdm-gtk-greeter', 'guake']
+      name:
+      - cinnamon
+      - lightdm
+      - lightdm-gtk-greeter
+      - guake
       state: installed
 
   - name: enable lightdm gtk greeter
@@ -91,7 +106,11 @@
 
   - name: install deps to ease setup
     pacman:
-      name: ['keychain', 'pass', 'xclip', 'lsb-release']
+      name:
+      - keychain
+      - pass
+      - xclip
+      - lsb-release
       state: installed
 
   - name: clone provision repo
