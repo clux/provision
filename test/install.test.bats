@@ -150,7 +150,6 @@ exists() {
   [ -d "$HOME/.ncmpcpp" ]
   [ -L "$HOME/.path" ]
   [ -d "$HOME/.templates" ]
-  [ -L "$HOME/.tmux.conf" ]
   [ -L "$HOME/.xprofile" ]
   [ -L "$HOME/.Xresources" ]
   [ -L "$HOME/.yrcli.json" ]

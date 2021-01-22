@@ -91,7 +91,7 @@
 
   - name: install deps to ease setup
     pacman:
-      name: ['keychain', 'pass', 'xclip', 'lsb-release', 'tmux']
+      name: ['keychain', 'pass', 'xclip', 'lsb-release']
       state: installed
 
   - name: clone provision repo
