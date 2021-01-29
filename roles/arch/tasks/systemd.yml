@@ -14,3 +14,9 @@
     dest: "/etc/systemd/system/{{ item.dest }}"
   with_items:
   - { src: docker.service.override, dest: docker.service.d/override.conf }
+
+- name: Enable pcscd service for yubikey
+  ansible.builtin.systemd:
+    name: pcscd
+    enabled: yes
+    state: started
