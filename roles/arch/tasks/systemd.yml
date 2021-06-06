@@ -20,3 +20,8 @@
     name: pcscd
     enabled: yes
     state: started
+- name: Enable systemd-resolved for openvpn
+  ansible.builtin.systemd:
+    name: systemd-resolved
+    enabled: yes
+    state: started

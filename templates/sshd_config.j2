@@ -13,7 +13,6 @@ LoginGraceTime 30
 
 # Privileges
 PermitRootLogin no
-UsePrivilegeSeparation sandbox
 {% if ansible_os_family == "Archlinux" %}
 Subsystem sftp /usr/lib/ssh/sftp-server
 {% elif ansible_os_family == "Debian" %}
