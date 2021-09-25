@@ -28,6 +28,8 @@
   - sd
   - zoxide
   - procs
+  - git-delta
+  - starship
   - vim
   - asciinema
   - terraform

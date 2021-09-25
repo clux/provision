@@ -29,15 +29,14 @@
   - (recompile_tasks | default(false)) or nightly_output.changed
 
 
-# large batch of stable modules (if needed)
-# NB: many of these are already installed via pacman:
-# sd,zoxide,ripgrep,exa,hyperfine,fd,bat,tokei,procs
+# command line tools we use everywhere
+# NB: many got moved to pacman.yml so don't add them back here; these include:
+# sd,zoxide,ripgrep,exa,hyperfine,fd,bat,tokei,procs,vivid,git-delta,bandwhich,starship
 - name: install modules on rustup stable
   command: cargo install {{ item }} --force
   when:
   - (recompile_tasks | default(false)) or stable_output.changed
   with_items:
-  - racer
   - cargo-edit
   - cargo-tree
   - cargo-outdated
@@ -48,5 +47,4 @@
   - du-dust
   - ytop
   - grex
-  - hors
   - xsv
