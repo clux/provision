@@ -26,6 +26,8 @@
   - fzf
   - skim
   - sd
+  - zoxide
+  - procs
   - vim
   - asciinema
   - terraform

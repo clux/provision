@@ -30,6 +30,8 @@
 
 
 # large batch of stable modules (if needed)
+# NB: many of these are already installed via pacman:
+# sd,zoxide,ripgrep,exa,hyperfine,fd,bat,tokei,procs
 - name: install modules on rustup stable
   command: cargo install {{ item }} --force
   when:
@@ -44,9 +46,7 @@
   - cargo-expand
   - choose
   - du-dust
-  - procs
   - ytop
   - grex
   - hors
-  - zoxide
   - xsv
