@@ -132,6 +132,7 @@
   - android-file-transfer
   - gptfdisk
   # fonts
+  - ttf-nerd-fonts-symbols-mono
   - ttf-ubuntu-font-family
   - otf-ipafont # japanese
   - adobe-source-han-sans-kr-fonts # korean
