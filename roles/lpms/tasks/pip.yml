@@ -15,7 +15,6 @@
   - requests
   - yamllint
   - youtube-dl
-  - awscli
   - pipenv
   - pytest
   - magic-wormhole

@@ -29,11 +29,9 @@
   - vim
   - asciinema
   - terraform
-  - task
   - datamash
   # social
   - profanity
-  - weechat
   - hugo
   - signal-desktop
   # music
@@ -45,8 +43,7 @@
   - cmake
   - clang
   - compiler-rt
-  - llvm
-  - lldb
+  #- llvm
   - musl
   - postgresql-libs # for diesel cli
   - go
@@ -75,8 +72,8 @@
   #- create_ap (aur)
   # container services
   - docker
-  - docker-compose
-  - minikube
+  #- docker-compose (can generally use tilt)
+
   - conntrack-tools # k8s > 1.18 dependency
   - kustomize
   # ssh + secrets managers
