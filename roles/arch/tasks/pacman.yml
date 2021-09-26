@@ -11,8 +11,6 @@
   - rsync
   - bash-completion
   - cowsay
-  - lolcat
-  - ccze
   - xterm
   - jq
   - bash-bats
