@@ -7,7 +7,6 @@
   # terminal tools
   - git
   - bc
-  - tig
   - rsync
   - bash-completion
   - cowsay
