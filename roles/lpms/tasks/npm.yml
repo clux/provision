@@ -13,26 +13,12 @@
 - name: Install global npm dependencies
   npm: name={{ item }} state={{ npm_state }} global=true
   with_items:
-  - badgify
   - faucet
   - eslint
   - jshint
-  - pkginit
   - asciify
   - marked-man
   - reveal-md
-  - yr-cli
   - zalgolize
   - ajv-cli
   - yamljs
-
-- name: broxy global modules
-  when: inventory_hostname == "broxy"
-  npm: name={{ item }} state={{ npm_state }} global=true
-  with_items:
-  - pm2
-
-- file: path=/home/{{ user }}/.config/pkginit/ state=directory
-- template:
-    src=templates/pkg.json
-    dest=/home/{{ user }}/.config/pkginit/default.json
