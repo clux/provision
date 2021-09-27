@@ -23,9 +23,7 @@
   - { pkg: discord, dest: /sbin/discord }
   - { pkg: slack-desktop, dest: /sbin/slack }
   - { pkg: z, dest: /usr/share/z/z.sh }
-  - { pkg: shellcheck-static, dest: /sbin/shellcheck }
-  - { pkg: alacritty-git, dest: /sbin/alacritty }
-  #- { pkg: networkmanager-l2tp, dest: /etc/NetworkManager/VPN/nm-l2tp-service.name }
+    #- { pkg: networkmanager-l2tp, dest: /etc/NetworkManager/VPN/nm-l2tp-service.name }
   - { pkg: kubernetes, dest: /sbin/kubectl }
   - { pkg: kubernetes-helm, dest: /sbin/helm }
 
@@ -35,3 +33,6 @@
   # Also, not really necessary as default settings are fine.
   #- { pkg: libgaminggear, dest: /sbin/gaminggearfxinfo } # needed for all roccat-tools*
   #- { pkg: roccat-tools-konepure, dest: /sbin/roccatkonepureconfig }
+
+# TODO: need a new thing for aur, pins are a little annoying
+# list for the future: shellcheck-bin

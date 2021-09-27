@@ -40,6 +40,7 @@
   # programming
   - python-pip
   - ipython
+  - pypy3
   - mypy
   - cmake
   - clang
@@ -66,6 +67,7 @@
   - traceroute
   - bmon
   - bandwhich
+  - trickle
   - nethogs
   #- trickle (aur)
   # wifi
