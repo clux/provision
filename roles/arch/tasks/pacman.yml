@@ -69,6 +69,7 @@
   - bandwhich
   - trickle
   - nethogs
+  - httpie
   #- trickle (aur)
   # wifi
   - iw
