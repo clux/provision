@@ -40,7 +40,7 @@
   - cargo-edit
   - cargo-tree
   - cargo-outdated
-  #- cargo-tarpaulin (nightly)
+  - cargo-tarpaulin
   - cargo-audit
   - cargo-expand
   - choose
@@ -49,3 +49,4 @@
   - grex
   - xsv
   - lolcat
+  - toml2json
