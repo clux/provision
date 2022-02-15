@@ -24,6 +24,7 @@
     #- { pkg: networkmanager-l2tp, dest: /etc/NetworkManager/VPN/nm-l2tp-service.name }
   - { pkg: kubernetes, dest: /sbin/kubectl }
   - { pkg: kubernetes-helm, dest: /sbin/helm }
+  - { pkg: dyff-bin, dest: /sbin/dyff }
 
   # Commented out chrome as I'm trying to live with chromium instead
   #- { pkg: google-chrome, dest: /sbin/google-chrome-stable }
