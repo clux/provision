@@ -5,6 +5,7 @@
   pacman: name={{ item }} state=installed
   with_items:
   # terminal tools
+  - alacritty
   - git
   - bc
   - rsync
@@ -80,6 +81,8 @@
   - ctop
   - conntrack-tools # k8s > 1.18 dependency
   - kustomize
+  - helm
+  #- vault
   # ssh + secrets managers
   - keychain
   - keybase-gui

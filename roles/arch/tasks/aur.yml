@@ -16,14 +16,12 @@
     creates: "{{ item.dest }}"
     executable: /bin/bash
   with_items:
-  - { pkg: blackbox-vcs, dest: /sbin/blackbox_edit }
-  - { pkg: sublime-text-dev, dest: /sbin/subl3 }
-  - { pkg: teleport, dest: /sbin/teleport }
+  #- { pkg: blackbox-vcs, dest: /sbin/blackbox_edit }
+  #- { pkg: sublime-text-dev, dest: /sbin/subl3 }
   - { pkg: discord, dest: /sbin/discord }
   - { pkg: slack-desktop, dest: /sbin/slack }
     #- { pkg: networkmanager-l2tp, dest: /etc/NetworkManager/VPN/nm-l2tp-service.name }
   - { pkg: kubernetes, dest: /sbin/kubectl }
-  - { pkg: kubernetes-helm, dest: /sbin/helm }
   - { pkg: dyff-bin, dest: /sbin/dyff }
 
   # Commented out chrome as I'm trying to live with chromium instead
