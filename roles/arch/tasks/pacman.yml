@@ -27,6 +27,7 @@
   - zoxide
   - procs
   - git-delta
+  - github-cli
   - starship
   - vim
   - asciinema
@@ -36,6 +37,7 @@
   - profanity
   - hugo
   - signal-desktop
+  - discord
   # music
   - musescore
   # programming
