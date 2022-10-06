@@ -43,7 +43,6 @@
   - cargo-tarpaulin
   - cargo-audit
   - cargo-expand
-  - choose
   - du-dust
   - ytop
   - grex

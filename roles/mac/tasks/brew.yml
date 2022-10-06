@@ -52,6 +52,8 @@
   - starship
   - procs
   - zoxide
+  - choose-rust
+  - fastmod
   # python modules (because mac is bad at python)
   - youtube-dl
   - yamllint
