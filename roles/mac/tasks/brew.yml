@@ -3,7 +3,7 @@
 
 - name: Install casks
   community.general.homebrew:
-    name: homebrew/casks/{{ item }}
+    name: "homebrew/casks/{{ item }}"
     state: present
   with_items:
   - docker
@@ -16,7 +16,7 @@
 
 - name: Install formulas
   community.general.homebrew:
-    name: {{ item }}
+    name: "{{ item }}"
     state: present
   with_items:
   # gnu tools are massively outdated on mac
