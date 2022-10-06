@@ -1,0 +1,57 @@
+---
+# brew interface
+
+- name: Install casks
+  community.general.homebrew:
+    name: homebrew/casks/{{ item }}
+    state: present
+  with_items:
+  - docker
+  - firefox
+  - google-chrome
+  - iterm2
+  - alacritty
+  - slack
+  - visual-studio-code
+
+- name: Install formulas
+  community.general.homebrew:
+    name: {{ item }}
+    state: present
+  with_items:
+  # gnu tools are massively outdated on mac
+  - bash
+  - bash-completion@2
+  - binutils
+  - coreutils
+  - diffutils
+  - findutils
+  - gnu-sed
+  - gnu-tar
+  - gpatch
+  - grep
+  - less
+  - make
+  - rsync
+  - vim
+  - watch
+  - ssh-copy-id
+  # cli
+  - jq
+  - fzf
+  - hyperfine
+  - exa
+  - tree
+  - terraform
+  - tokei
+  - bat
+  - fd
+  - ripgrep
+  - starship
+  - procs
+  - zoxide
+  # python modules (because mac is bad at python)
+  - youtube-dl
+  - yamllint
+  - pyyaml
+  - python-yq
