@@ -3,6 +3,8 @@ set -eux
 
 if ! which brew > /dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.bash_profile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 brew install bash
@@ -13,5 +15,6 @@ if [ -f /opt/homebrew/bin/bash ]; then
 fi
 
 brew install ansible
+ansible-galaxy collection install community.general
 brew install visual-studio-code --cask
 brew install google-chrome --cask
