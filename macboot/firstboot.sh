@@ -22,9 +22,16 @@ fi
 brew install ansible
 ansible-galaxy collection install community.general
 
-# casks currently don't install through the module
-brew install visual-studio-code --cask
-brew install google-chrome --cask
+# casks currently don't install properly through the module
+brew install --cask \
+    alacritty \
+    firefox \
+    docker \
+    google-chrome \
+    iterm2 \
+    slack \
+    visual-studio-code \
+    vlc \
 
-# can then use module
+# but can use ansible for the rest
 ansible-playbook -i hosts -l "cluxm1" --tags=mac -v site.yml

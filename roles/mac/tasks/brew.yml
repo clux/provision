@@ -1,19 +1,20 @@
 ---
 # brew interface
 
-- name: Install casks
-  community.general.homebrew:
-    name: "{{ item }}"
-    upgrade_options: "--cask"
-    state: present
-  with_items:
-  - docker
-  - firefox
-  - google-chrome
-  - iterm2
-  - alacritty
-  - slack
-  - visual-studio-code
+# NB: currently does not work, inlined in firstboot.sh
+# - name: Install casks
+#   community.general.homebrew:
+#     name: "{{ item }}"
+#     upgrade_options: "--cask"
+#     state: present
+#   with_items:
+#   - docker
+#   - firefox
+#   - google-chrome
+#   - iterm2
+#   - alacritty
+#   - slack
+#   - visual-studio-code
 
 - name: Install formulas
   community.general.homebrew:
