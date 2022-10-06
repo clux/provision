@@ -2,7 +2,11 @@
 broxy       user=bro  display_driver=nvidia
 kjttks      user=clux display_driver=nvidia
 cluxxps     user=clux display_driver=nvidia
+
+[mac]
 cluxm1      user=cluxm1
 
 [arch:vars]
 ansible_python_interpreter="/sbin/python"
+
+[mac:vars]
