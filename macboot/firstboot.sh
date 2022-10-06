@@ -21,5 +21,10 @@ fi
 
 brew install ansible
 ansible-galaxy collection install community.general
+
+# casks currently don't install through the module
 brew install visual-studio-code --cask
 brew install google-chrome --cask
+
+# can then use module
+ansible-playbook -i hosts -l "cluxm1" --tags=mac -v site.yml
