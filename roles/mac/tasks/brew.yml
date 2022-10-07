@@ -21,7 +21,7 @@
     formula: "{{ item }}"
     state: present
   with_items:
-  # gnu tools are massively outdated on mac
+  # gnu tools are massively outdated or missing on mac
   - bash
   - bash-completion@2
   - binutils
@@ -31,6 +31,7 @@
   - gnu-sed
   - gnu-tar
   - gpatch
+  - gnupg
   - grep
   - less
   - make
