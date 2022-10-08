@@ -42,6 +42,7 @@
   # cli
   - jq
   - fzf
+  - pass
   - hyperfine
   - exa
   - tree
