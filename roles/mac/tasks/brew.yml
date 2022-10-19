@@ -57,6 +57,7 @@
   - zoxide
   - choose-rust
   - fastmod
+  - keychain
   # python modules (because mac is bad at python)
   - youtube-dl
   - yamllint
