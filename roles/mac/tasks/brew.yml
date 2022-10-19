@@ -15,6 +15,7 @@
 #   - alacritty
 #   - slack
 #   - visual-studio-code
+#   - tuple
 
 - name: Install formulas
   community.general.homebrew:
