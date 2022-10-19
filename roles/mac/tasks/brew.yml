@@ -62,3 +62,6 @@
   - yamllint
   - pyyaml
   - python-yq
+  # cloud
+  - kubectl
+  - k3d
