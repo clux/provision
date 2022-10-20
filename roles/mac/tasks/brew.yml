@@ -51,6 +51,7 @@
   - tokei
   - bat
   - fd
+  - sd
   - ripgrep
   - starship
   - procs
