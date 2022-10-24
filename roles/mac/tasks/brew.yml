@@ -54,6 +54,7 @@
   - sd
   - ripgrep
   - starship
+  - genact
   - procs
   - zoxide
   - choose-rust
