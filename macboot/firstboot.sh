@@ -26,6 +26,7 @@ ansible-galaxy collection install community.general
 brew install --cask \
     alacritty \
     firefox \
+    discord \
     docker \
     google-chrome \
     iterm2 \

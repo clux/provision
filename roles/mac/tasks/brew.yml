@@ -58,6 +58,7 @@
   - procs
   - zoxide
   - choose-rust
+  - git-delta
   - fastmod
   - keychain
   # python modules (because mac is bad at python)
