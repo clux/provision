@@ -29,6 +29,7 @@ brew install --cask \
     discord \
     docker \
     google-chrome \
+    openvpn-connect \
     iterm2 \
     slack \
     visual-studio-code \
