@@ -69,3 +69,4 @@
   # cloud
   - kubectl
   - k3d
+  - helm
