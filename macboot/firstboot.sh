@@ -29,6 +29,7 @@ brew install --cask \
     discord \
     docker \
     google-chrome \
+    karabiner-elements \
     openvpn-connect \
     iterm2 \
     slack \
