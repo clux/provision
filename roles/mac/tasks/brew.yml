@@ -46,6 +46,7 @@
   - pass
   - hyperfine
   - exa
+  - just
   - tree
   - terraform
   - tokei
