@@ -54,6 +54,7 @@
   - fd
   - sd
   - ripgrep
+  - shellcheck
   - starship
   - genact
   - procs
