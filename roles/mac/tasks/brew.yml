@@ -51,6 +51,7 @@
   - terraform
   - tokei
   - bat
+  - bats-core
   - fd
   - sd
   - ripgrep
