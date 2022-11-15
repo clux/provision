@@ -62,6 +62,7 @@
   - zoxide
   - choose-rust
   - git-delta
+  - homeport/tap/dyff
   - fastmod
   - keychain
   # python modules (because mac is bad at python)
