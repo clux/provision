@@ -63,6 +63,7 @@
   - choose-rust
   - git-delta
   - homeport/tap/dyff
+  - fluxcd/tap/flux
   - fastmod
   - keychain
   # python modules (because mac is bad at python)
