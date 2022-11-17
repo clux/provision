@@ -32,6 +32,7 @@ brew install --cask \
     karabiner-elements \
     openvpn-connect \
     iterm2 \
+    signal \
     slack \
     visual-studio-code \
     vlc \
