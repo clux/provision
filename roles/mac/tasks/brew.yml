@@ -49,7 +49,6 @@
   - exa
   - just
   - tree
-  - terraform
   - tokei
   - bat
   - bats-core
@@ -63,10 +62,9 @@
   - zoxide
   - choose-rust
   - git-delta
-  - homeport/tap/dyff
-  - fluxcd/tap/flux
   - fastmod
   - keychain
+  - zola
   # python modules (because mac is bad at python)
   - youtube-dl
   - yamllint
@@ -76,3 +74,7 @@
   - kubectl
   - k3d
   - helm
+  - kdash-rs/kdash/kdash
+  - homeport/tap/dyff
+  - fluxcd/tap/flux
+  - terraform
