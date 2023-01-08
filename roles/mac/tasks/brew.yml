@@ -57,7 +57,9 @@
   - ripgrep
   - shellcheck
   - starship
+  - helix
   - genact
+  - pwgen
   - procs
   - zoxide
   - choose-rust
@@ -75,6 +77,7 @@
   - k3d
   - helm
   - kdash-rs/kdash/kdash
+  - k9s
   - homeport/tap/dyff
   - fluxcd/tap/flux
   - terraform
