@@ -27,12 +27,10 @@ exists() {
   exists firefox
   exists guake
   exists vlc
+  exists hx
 }
 
 @test "aur" {
-  exists subl3
-  [ -d ~/.vim ]
-  [ -f ~/.vim/autoload/plug.vim ]
   exists blackbox_cat
   run man -w z
   [ "$status" -eq 0 ]
@@ -134,9 +132,9 @@ exists() {
   [ -L "$HOME/.bash_profile" ]
   [ -L "$HOME/.prompt" ]
   [ -L "$HOME/.bashrc" ]
-  [ -d "$HOME/.config/sublime-text-3/Packages/User" ]
-  [ -L "$HOME/.config/sublime-text-3/Packages/User" ]
-  [ -r "$HOME/.config/sublime-text-3/Packages/User/SublimeLinter.sublime-settings" ]
+  #[ -d "$HOME/.config/sublime-text-3/Packages/User" ]
+  #[ -L "$HOME/.config/sublime-text-3/Packages/User" ]
+  #[ -r "$HOME/.config/sublime-text-3/Packages/User/SublimeLinter.sublime-settings" ]
   [ -L "$HOME/.clang-format" ]
   [ -L "$HOME/.dircolors" ]
   [ -L "$HOME/.eslintrc" ]

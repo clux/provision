@@ -27,9 +27,6 @@ setup_dotfiles() {
   git clone git@github.com:clux/dotfiles.git
   cd dotfiles
   make config
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  make vim
   make ui
 }
 

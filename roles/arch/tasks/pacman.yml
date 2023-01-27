@@ -30,7 +30,7 @@
   - git-delta
   - github-cli
   - starship
-  - vim
+  - helix
   - asciinema
   - terraform
   - datamash
