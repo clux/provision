@@ -4,39 +4,48 @@ exists() {
   hash "$1" 2> /dev/null
 }
 
+@test "localisation" {
+  if [[ "${OSTYPE}" =~ "darwin" ]]; then
+    skip
+  fi
+  locale -a | grep -q "en_GB.utf8"
+  locale -a | grep -q "en_US.utf8"
+  localectl status | grep -q "LANG=en_GB.UTF-8"
+  localectl status | grep -q "X11 Layout: us"
+  localectl status | grep -qE "X11 Model: pc10."
+  localectl status | grep -q "X11 Variant: colemak"
+  timedatectl status | grep -q "Time zone: Europe/London"
+  systemctl is-active systemd-timesyncd.service | grep -q "active"
+  timedatectl status | grep -q "System clock synchronized: yes"
+}
 
-if [[ "${OSTYPE}" =~ "linux" ]]; then
-  @test "localisation" {
-    locale -a | grep -q "en_GB.utf8"
-    locale -a | grep -q "en_US.utf8"
-    localectl status | grep -q "LANG=en_GB.UTF-8"
-    localectl status | grep -q "X11 Layout: us"
-    localectl status | grep -qE "X11 Model: pc10."
-    localectl status | grep -q "X11 Variant: colemak"
-    timedatectl status | grep -q "Time zone: Europe/London"
-    systemctl is-active systemd-timesyncd.service | grep -q "active"
-    timedatectl status | grep -q "System clock synchronized: yes"
-  }
+@test "services" {
+  if [[ "${OSTYPE}" =~ "darwin" ]]; then
+    skip
+  fi
+  systemctl is-enabled redshift-gtk --user -q
+  systemctl is-enabled mpd --user -q
+}
 
-  @test "services" {
-    systemctl is-enabled redshift-gtk --user -q
-    systemctl is-enabled mpd --user -q
-  }
+@test "linux-guis" {
+  if [[ "${OSTYPE}" =~ "darwin" ]]; then
+    skip
+  fi
+  exists guake
+  exists chrome
+  exists firefox
+  exists vlc
+}
 
-  @test "linux-guis" {
-    exists guake
-    exists chrome
-    exists firefox
-    exists vlc
-  }
-
-  @test "aur" {
-    exists blackbox_cat
-    run man -w z
-    [ "$status" -eq 0 ]
-    exists alacritty
-  }
-fi
+@test "aur" {
+  if [[ "${OSTYPE}" =~ "darwin" ]]; then
+    skip
+  fi
+  exists blackbox_cat
+  run man -w z
+  [ "$status" -eq 0 ]
+  exists alacritty
+}
 
 # Tests that core tools have been installed and are on PATH
 @test "clis" {
@@ -61,7 +70,6 @@ fi
   exists just
   exists gpg
 }
-
 
 @test "gnu" {
   exists grep

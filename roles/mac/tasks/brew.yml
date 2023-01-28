@@ -58,6 +58,7 @@
   - starship
   - vivid
   - helix
+  - rust-analyzer
   - genact
   - pwgen
   - procs
