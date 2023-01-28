@@ -4,53 +4,93 @@ exists() {
   hash "$1" 2> /dev/null
 }
 
-@test "localisation" {
-  locale -a | grep -q "en_GB.utf8"
-  locale -a | grep -q "en_US.utf8"
-  localectl status | grep -q "LANG=en_GB.UTF-8"
-  localectl status | grep -q "X11 Layout: us"
-  localectl status | grep -qE "X11 Model: pc10."
-  localectl status | grep -q "X11 Variant: colemak"
-  timedatectl status | grep -q "Time zone: Europe/London"
-  systemctl is-active systemd-timesyncd.service | grep -q "active"
-  timedatectl status | grep -q "System clock synchronized: yes"
-}
 
-@test "services" {
-  systemctl is-enabled redshift-gtk --user -q
-  systemctl is-enabled mpd --user -q
-}
+if [[ "${OSTYPE}" =~ "linux" ]]; then
+  @test "localisation" {
+    locale -a | grep -q "en_GB.utf8"
+    locale -a | grep -q "en_US.utf8"
+    localectl status | grep -q "LANG=en_GB.UTF-8"
+    localectl status | grep -q "X11 Layout: us"
+    localectl status | grep -qE "X11 Model: pc10."
+    localectl status | grep -q "X11 Variant: colemak"
+    timedatectl status | grep -q "Time zone: Europe/London"
+    systemctl is-active systemd-timesyncd.service | grep -q "active"
+    timedatectl status | grep -q "System clock synchronized: yes"
+  }
 
-# Tests that expected stuff has been installed and are on PATH
-@test "pacman" {
-  exists chromium
-  exists firefox
-  exists guake
-  exists vlc
+  @test "services" {
+    systemctl is-enabled redshift-gtk --user -q
+    systemctl is-enabled mpd --user -q
+  }
+
+  @test "linux-guis" {
+    exists guake
+    exists chrome
+    exists firefox
+    exists vlc
+  }
+
+  @test "aur" {
+    exists blackbox_cat
+    run man -w z
+    [ "$status" -eq 0 ]
+    exists alacritty
+  }
+fi
+
+# Tests that core tools have been installed and are on PATH
+@test "clis" {
+  exists zoxide
   exists hx
+  exists fd
+  exists exa
+  exists rg
+  exists choose
+  exists vivid
+  exists kubectl
+  exists helm
+  exists alacritty
+  exists jq
+  exists starship
+  exists pwgen
+  exists bat
+  exists procs
+  exists delta
+  exists fastmod
+  exists keychain
+  exists just
+  exists gpg
 }
 
-@test "aur" {
-  exists blackbox_cat
-  run man -w z
-  [ "$status" -eq 0 ]
-  exists alacritty
+
+@test "gnu" {
+  exists grep
+  exists patch
+  exists diff
+  exists rsync
+  exists make
+  exists bash
+  if [[ "${OSTYPE}" =~ "darwin" ]]; then
+    # TODO: tests these point to that mac brew gnu folders...
+    # --version and check for BSD?
+    echo notdone
+  fi
 }
 
 @test "purge-haskell" {
-  # no haskell package spam:
-  pacman -Qsq | grep -v haskell
-
   # no ghc
   run which ghc
   [ "$status" -eq 1 ]
-
-  # static shellcheck
   exists shellcheck
-  run ldd $(which shellcheck)
-  [ "$status" -eq 1 ]
-}
 
+  if [[ "${OSTYPE}" =~ "linux" ]]; then
+    # no haskell package spam:
+    pacman -Qsq | grep -v haskell
+    # static shellcheck
+    run ldd $(which shellcheck)
+    [ "$status" -eq 1 ]
+  fi
+}
 
 @test "compilers" {
   exists clang++
@@ -58,15 +98,6 @@ exists() {
   exists clang-format
   find /usr/lib/clang/ -iname libclang_rt* | grep -q asan
   exists gcc
-}
-
-@test "profanity" {
-  exists profanity
-  run profanity --version
-  [ "$status" -eq 0 ]
-  echo "$output"
-  echo "$output" | grep "OTR support\: Enabled"
-  echo "$output" | grep "Desktop notification support\: Enabled"
 }
 
 @test "node" {
@@ -88,25 +119,35 @@ exists() {
 
 @test "rust" {
   exists rustup
-  rustup which cargo | grep stable-x86_64
+  rustup which cargo | grep stable
   exists cargo-clippy
   exists cargo-add
   exists cargo-fmt
   exists rls
   # New stable every 6th Thursday, ensure we're not more than 7 weeks behind
+  if [[ "${OSTYPE}" =~ "darwin" ]]; then
+    date="$(which gdate)" # for some reason not being picked up in tests
+  else
+    date="$(which date)"
+  fi
   local -r stable=$(rustup run stable rustc --version | grep -oE "[0-9]{4}\-[0-9]{2}\-[0-9]{2}")
-  local -r olddate=$(date +"%Y-%m-%d" -d"-7 weeks")
-  [ "$(date -d $stable +%s)" -ge "$(date -d $olddate +%s)" ]
+  local -r olddate=$($date +"%Y-%m-%d" -d"-7 weeks")
+  [ "$($date -d $stable +%s)" -ge "$($date -d $olddate +%s)" ]
 }
 
 @test "python" {
   # Python3 is default interpreter
-  ls -l $(which python) | grep python3
+  if [[ "${OSTYPE}" =~ "darwin" ]]; then
+    exists python3
+  else
+    ls -l $(which python) | grep python3
+  fi
   exists pylint
   exists ipython
   exists ghp-import
   exists youtube-dl
   exists ansible
+  exists yq # TODO: ensure it's not the go one
 }
 
 @test "nvidia" {
@@ -122,6 +163,8 @@ exists() {
   if [[ "${HOSTNAME}" == kjttks ]]; then
     npm whoami
   fi
+  [ -f "$HOME/.cargo/credentials" ]
+  # TODO: only if daemon is running...
   docker info | grep Username
 }
 
@@ -136,7 +179,6 @@ exists() {
   #[ -L "$HOME/.config/sublime-text-3/Packages/User" ]
   #[ -r "$HOME/.config/sublime-text-3/Packages/User/SublimeLinter.sublime-settings" ]
   [ -L "$HOME/.clang-format" ]
-  [ -L "$HOME/.dircolors" ]
   [ -L "$HOME/.eslintrc" ]
   [ -L "$HOME/.exports" ]
   [ -L "$HOME/.functions" ]
@@ -144,12 +186,12 @@ exists() {
   [ -L "$HOME/.iface" ]
   [ -L "$HOME/.inputrc" ]
   [ -L "$HOME/.jshintrc" ]
-  [ -L "$HOME/.mpdconf" ]
-  [ -d "$HOME/.ncmpcpp" ]
   [ -L "$HOME/.path" ]
   [ -d "$HOME/.templates" ]
-  [ -L "$HOME/.xprofile" ]
-  [ -L "$HOME/.Xresources" ]
+  if [[ "${OSTYPE}" =~ "linux" ]]; then
+    [ -L "$HOME/.xprofile" ]
+    [ -L "$HOME/.Xresources" ]
+  fi
   [ -L "$HOME/.yrcli.json" ]
 }
 
