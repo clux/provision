@@ -132,6 +132,10 @@ exists() {
   exists cargo-add
   exists cargo-fmt
   exists rls
+  # TODO: get rust-analyzer rustup on linux: https://rust-analyzer.github.io/manual.html#arch-linux
+  exists rust-analyzer
+  hx --health rust | grep Binary | grep "rust-analyzer"
+
   # New stable every 6th Thursday, ensure we're not more than 7 weeks behind
   if [[ "${OSTYPE}" =~ "darwin" ]]; then
     date="$(which gdate)" # for some reason not being picked up in tests
