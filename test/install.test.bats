@@ -170,8 +170,10 @@ exists() {
     npm whoami
   fi
   [ -f "$HOME/.cargo/credentials" ]
-  # TODO: only if daemon is running...
-  docker info | grep Username
+  # only checking docker if daemon is running...
+  if command -v docker &> /dev/null; then
+    docker info | grep Username
+  fi
 }
 
 @test "dotfiles" {

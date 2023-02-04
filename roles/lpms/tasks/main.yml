@@ -2,17 +2,14 @@
 # installs from language specific package managers
 
 - import_tasks: npm.yml
-  tags: [lpms, npm, core]
+  tags: [lpms, npm]
 
 - import_tasks: pip.yml
   tags: [lpms, pip, core]
-
-- import_tasks: gem.yml
-  tags: [lpms, gem, core]
 
 - import_tasks: cargo.yml
   become: no
   tags: [lpms, cargo, core]
 
 - import_tasks: goget.yml
-  tags: [lpms, go, core]
+  tags: [lpms, go]

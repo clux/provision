@@ -17,7 +17,7 @@ First argument is tags. Most stuff is tagged by `core`, but you can pass comma-s
 ```sh
 sudo pacman -Syu # kept out of ansible specificially
 ./DEPLOY arch -fs # needs sudo
-./DEPLOY npm
+./DEPLOY pip
 ./DEPLOY cargo -fc # recompile modules
 ```
 
