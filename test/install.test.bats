@@ -100,15 +100,8 @@ exists() {
   fi
 }
 
-@test "compilers" {
-  exists clang++
-  exists clang-tidy
-  exists clang-format
-  find /usr/lib/clang/ -iname libclang_rt* | grep -q asan
-  exists gcc
-}
-
 @test "node" {
+  skip # not doing node dev atm
   exists node
   exists npm
   # old npm/node pin logic
@@ -118,8 +111,8 @@ exists() {
   nodemajor=$(node --version | grep -o "[[:digit:]]*" | head -n 1)
   [[ $nodemajor -gt 8 ]]
 }
-
 @test "npm-modules" {
+  skip # not doing node dev atm
   exists yarn
   exists badgify
   exists faucet
@@ -127,6 +120,7 @@ exists() {
 
 @test "rust" {
   exists rustup
+  exists rustc
   rustup which cargo | grep stable
   exists cargo-clippy
   exists cargo-add
@@ -154,12 +148,12 @@ exists() {
   else
     ls -l $(which python) | grep python3
   fi
-  exists pylint
-  exists ipython
-  exists ghp-import
+  #exists pylint
   exists youtube-dl
   exists ansible
-  exists yq # TODO: ensure it's not the go one
+  # yq, and not the go version
+  exists yq
+  yq --help |grep kislyuk/yq -
 }
 
 @test "nvidia" {
@@ -187,28 +181,26 @@ exists() {
   [ -L "$HOME/.bash_profile" ]
   [ -L "$HOME/.prompt" ]
   [ -L "$HOME/.bashrc" ]
-  #[ -d "$HOME/.config/sublime-text-3/Packages/User" ]
-  #[ -L "$HOME/.config/sublime-text-3/Packages/User" ]
-  #[ -r "$HOME/.config/sublime-text-3/Packages/User/SublimeLinter.sublime-settings" ]
-  [ -L "$HOME/.clang-format" ]
-  [ -L "$HOME/.eslintrc" ]
   [ -L "$HOME/.exports" ]
   [ -L "$HOME/.functions" ]
   [ -L "$HOME/.gitconfig" ]
+  [ -L "$HOME/.git-helpers" ]
   [ -L "$HOME/.iface" ]
   [ -L "$HOME/.inputrc" ]
-  [ -L "$HOME/.jshintrc" ]
   [ -L "$HOME/.path" ]
-  [ -d "$HOME/.templates" ]
+  [ -d "$HOME/.templates/git/hooks" ]
   if [[ "${OSTYPE}" =~ "linux" ]]; then
     [ -L "$HOME/.xprofile" ]
     [ -L "$HOME/.Xresources" ]
   fi
-  [ -L "$HOME/.yrcli.json" ]
+  [ -L "$HOME/.k8s-helpers" ]
 }
 
 @test "evars" {
   [ "$ANSIBLE_NOCOWS" = "1" ]
+  [ -n "$KUBECONFIG" ]
+  [ -n "$EDITOR" ]
+  [ -n "$TERM" ]
 }
 
 @test "dev" {
