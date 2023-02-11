@@ -68,6 +68,7 @@
   - fastmod
   - keychain
   - zola
+  - zinit
   # python modules (because mac is bad at python)
   - youtube-dl
   - yamllint
@@ -81,6 +82,7 @@
   - k9s
   - homeport/tap/dyff
   - fluxcd/tap/flux
+  - int128/kubelogin/kubelogin
   - terraform
   # fonts
   - font-inconsolata-nerd-font
