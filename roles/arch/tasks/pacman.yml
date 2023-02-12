@@ -34,8 +34,8 @@
   - terraform
   - datamash
   - genact
-  - zsh-autosuggestions
-  - zsh-syntax-highlighting
+  #- zsh-autosuggestions #zinit
+  #- zsh-fast-syntax-highlighting #aur atm
   # social
   - hugo
   - signal-desktop
