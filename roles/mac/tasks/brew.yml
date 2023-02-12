@@ -62,6 +62,7 @@
   - genact
   - pwgen
   - procs
+  - direnv
   - zoxide
   - choose-rust
   - git-delta
