@@ -9,7 +9,6 @@
   - git
   - bc
   - rsync
-  - bash-completion
   - cowsay
   - choose
   - xterm
@@ -35,6 +34,8 @@
   - terraform
   - datamash
   - genact
+  - zsh-autosuggestions
+  - zsh-syntax-highlighting
   # social
   - hugo
   - signal-desktop

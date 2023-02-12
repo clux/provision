@@ -68,7 +68,8 @@
   - fastmod
   - keychain
   - zola
-  - zinit
+  - zsh-fast-syntax-highlighting
+  - zsh-autosuggestions
   # python modules (because mac is bad at python)
   - youtube-dl
   - yamllint
