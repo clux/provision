@@ -58,7 +58,7 @@ elif [[ $(echo "$disk > 75" | bc) -eq 1 ]]; then
 fi
 
 
-echo -e "${HOSTNAME}\n$(lsb_release -si) $(lsb_release -sr)" | cowsay -n -f eyes | lolcat
+echo -e "${HOSTNAME}\n$(lsb_release -si) $(lsb_release -sr)"
 echo -e "$R======================================================="
 echo -e "  $R KERNEL$W   $KERNEL"
 echo -e "  $R CPU$W      $CPU"

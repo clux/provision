@@ -39,7 +39,6 @@
   - rsync
   - watch
   - ssh-copy-id
-  - protobuf
   # cli
   - jq
   - fzf
@@ -49,6 +48,7 @@
   - just
   - tree
   - tokei
+  - protobuf
   - bat
   - bats-core
   - fd
