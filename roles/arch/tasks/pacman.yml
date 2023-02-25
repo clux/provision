@@ -25,6 +25,7 @@
   - sd
   - zoxide
   - procs
+  - dust
   - git-delta
   - github-cli
   - starship
@@ -45,6 +46,7 @@
   - python-pip
   - ipython
   - pypy3
+  - ruff
   - mypy
   - cmake
   - clang

@@ -46,7 +46,6 @@
   - hyperfine
   - exa
   - just
-  - tree
   - tokei
   - protobuf
   - bat
@@ -63,6 +62,8 @@
   - pwgen
   - procs
   - direnv
+  - dust
+  - ruff
   - zoxide
   - choose-rust
   - git-delta
