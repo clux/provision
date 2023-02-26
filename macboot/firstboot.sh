@@ -32,11 +32,14 @@ brew install --cask \
     hammerspoon \
     karabiner-elements \
     openvpn-connect \
-    iterm2 \
     signal \
     slack \
     visual-studio-code \
-    vlc \
+    background-music \
+    vlc
 
 # but can use ansible for the rest
 ansible-playbook -i hosts -l "cluxm1" --tags=mac -v site.yml
+
+# points to fix manually;
+# background music needs to set default sound device to the generated one
