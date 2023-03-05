@@ -8,13 +8,11 @@
   pip: name={{ item }} extra_args='--user' state=latest
   with_items:
   - ghp-import
-  - pyflakes
-  - pylint
   - pyaml
   - yq
   - requests
   - yamllint
   - youtube-dl
-  - pipenv
-  - pytest
+  #- pipenv
+  #- pytest
   - magic-wormhole
