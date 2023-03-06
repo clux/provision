@@ -180,16 +180,12 @@ exists() {
   # Verify that directories are created and dotfiles are linked
   [ -d "$HOME/repos/dotfiles" ]
   [ -L "$HOME/.aliases" ]
-  [ -L "$HOME/.bash_profile" ]
-  [ -L "$HOME/.prompt" ]
-  [ -L "$HOME/.bashrc" ]
-  [ -L "$HOME/.exports" ]
+  [ -L "$HOME/.zshrc" ]
+  [ -L "$HOME/.zshenv" ]
   [ -L "$HOME/.functions" ]
   [ -L "$HOME/.gitconfig" ]
   [ -L "$HOME/.git-helpers" ]
   [ -L "$HOME/.iface" ]
-  [ -L "$HOME/.inputrc" ]
-  [ -L "$HOME/.path" ]
   [ -d "$HOME/.templates/git/hooks" ]
   if [[ "${OSTYPE}" =~ "linux" ]]; then
     [ -L "$HOME/.xprofile" ]
@@ -199,7 +195,6 @@ exists() {
 }
 
 @test "evars" {
-  [ "$ANSIBLE_NOCOWS" = "1" ]
   [ -n "$KUBECONFIG" ]
   [ -n "$EDITOR" ]
   [ -n "$TERM" ]

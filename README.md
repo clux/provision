@@ -58,3 +58,8 @@ Then boot to a passwordless `root` user and configure `X` with:
 ```
 
 This will ask for a new `root` passwd at start, then your `$USER` password at the end.
+
+## Editors
+### VS Code
+
+The `vscode` justfile recipe installs a [snapshot of extensions](https://github.com/clux/provision/blob/ansible/vscode/extensions) and themes via `code --list-extensions`.
