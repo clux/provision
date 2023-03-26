@@ -200,10 +200,7 @@ exists() {
 
 @test "dev" {
   [ -d "$HOME/repos" ]
-  if [[ "${HOSTNAME}" == kjttks ]]; then
-    exists bndg
-    [ -L $(which bndg) ]
-  fi
+  [ -d "$HOME/kube" ]
 }
 
 @test "secrets" {

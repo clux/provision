@@ -70,7 +70,7 @@
       name:
       - ttf-dejavu
       - ttf-liberation
-      - powerline-fonts
+      - ttf-inconsolata-nerd
       state: installed
   - name: install window manager
     pacman:
