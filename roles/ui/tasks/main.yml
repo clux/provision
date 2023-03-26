@@ -1,5 +1,0 @@
----
-# configures ui things
-
-- import_tasks: gconf.yml
-  tags: [ui, gconf]

@@ -78,7 +78,7 @@
       - cinnamon
       - lightdm
       - lightdm-gtk-greeter
-      - guake
+      - alacritty
       state: installed
 
   - name: enable lightdm gtk greeter

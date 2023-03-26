@@ -31,7 +31,6 @@ exists() {
   if [[ "${OSTYPE}" =~ "darwin" ]]; then
     skip
   fi
-  exists guake
   exists chrome
   exists firefox
   exists vlc
@@ -44,7 +43,6 @@ exists() {
   exists blackbox_cat
   run man -w z
   [ "$status" -eq 0 ]
-  exists alacritty
 }
 
 # Tests that core tools have been installed and are on PATH
