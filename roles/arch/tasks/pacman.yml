@@ -34,6 +34,8 @@
   - terraform
   - datamash
   - genact
+  - zellij
+  - zsh
   #- zsh-autosuggestions #zinit
   #- zsh-fast-syntax-highlighting #aur atm
   # social
@@ -88,6 +90,7 @@
   - conntrack-tools # k8s > 1.18 dependency
   - kustomize
   - helm
+  - k9s
   #- vault
   # ssh + secrets managers
   - keychain
@@ -115,6 +118,7 @@
   - xorg-xrandr
   - xorg-xinput
   - xorg-xrdb
+  - wmctrl
   # gtk compat
   - gtk-engines
   - gtk-engine-murrine
