@@ -10,7 +10,6 @@
   - bc
   - rsync
   - choose
-  - xterm
   - jq
   - bash-bats
   - ripgrep
@@ -145,7 +144,6 @@
   - android-file-transfer
   - gptfdisk
   # fonts
-  - ttf-nerd-fonts-symbols-mono
   - ttf-ubuntu-font-family
   - ttf-inconsolata-nerd
   - otf-ipafont # japanese
