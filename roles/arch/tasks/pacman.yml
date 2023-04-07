@@ -84,6 +84,7 @@
   #- create_ap (aur)
   # container services
   - docker
+  - docker-buildx
   #- docker-compose (can generally use tilt)
   - ctop
   - conntrack-tools # k8s > 1.18 dependency
