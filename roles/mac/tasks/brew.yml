@@ -67,6 +67,7 @@
   - zoxide
   - choose-rust
   - git-delta
+  - gh
   - fastmod
   - ncspot
   - keychain
