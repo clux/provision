@@ -164,3 +164,11 @@
   with_items:
   - steam
   when: inventory_hostname == "kjttks"
+
+- name: Link hx -> helix
+  ansible.builtin.file:
+    src: /sbin/helix
+    dest: /usr/local/bin/hx
+    owner: clux
+    group: clux
+    state: link

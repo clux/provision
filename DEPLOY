@@ -73,7 +73,7 @@ main() {
     done
     set -x
     # shellcheck disable=SC2046
-    ansible-playbook -i hosts -l "${HOSTNAME}" site.yml --tags="$1" "-v${VERBOSE}" \
+    ansible-playbook -i hosts -l "${HOST}" site.yml --tags="$1" "-v${VERBOSE}" \
       $([ -n "$FULL" ] && echo "-e upgrade_tasks=1" || echo "") \
       $([ -n "$RECOMPILE" ] && echo "-e recompile_tasks=1" || echo "") \
       $([ -n "$SUDO" ] && echo "--become" || echo "")
