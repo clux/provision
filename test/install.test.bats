@@ -3,6 +3,10 @@
 exists() {
   hash "$1" 2> /dev/null
 }
+exists_any() {
+  which "$1" > /dev/null
+  # doesn't work because this runs in bash not zsh
+}
 
 @test "localisation" {
   if [[ "${OSTYPE}" =~ "darwin" ]]; then
@@ -24,14 +28,14 @@ exists() {
     skip
   fi
   systemctl is-enabled redshift-gtk --user -q
-  systemctl is-enabled mpd --user -q
+  systemctl is-active docker -q
 }
 
 @test "linux-guis" {
   if [[ "${OSTYPE}" =~ "darwin" ]]; then
     skip
   fi
-  exists chrome
+  exists google-chrome-stable
   exists firefox
   exists vlc
 }
@@ -40,8 +44,11 @@ exists() {
   if [[ "${OSTYPE}" =~ "darwin" ]]; then
     skip
   fi
-  exists blackbox_cat
-  run man -w z
+  # see pacman -Qm
+  exists code
+  exists sysz
+  exists dyff
+  run man -w zinit
   [ "$status" -eq 0 ]
 }
 
