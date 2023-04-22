@@ -60,12 +60,11 @@
   - name: install core packages
     pacman:
       name:
-      #- alsa-utils
-      #- pipewire
       - git
       - openssh
       - chromium
       - networkmanager
+      - alacritty
       state: installed
   - name: install fonts
     pacman:
@@ -74,15 +73,33 @@
       - ttf-liberation
       - ttf-inconsolata-nerd
       state: installed
+
   - name: install window manager
     pacman:
       name:
-      #- cinnamon
-      #- hyprland
+      - hyprland # wayland compositor (deps below picked for this)
+      - mako # lightweight Wayland notification daemon
+      - pipewire
+      - polkit-kde-agent # there is also a polkit-gnome
+      - qt6-wayland # qt support, and for xdg-desktop-portal-hyprland
+      #- waybar-hyprland # customizable Wayland bar TODO: from AUR
+      #- xdg-desktop-portal-hyprland-git # TODO: from aur (main is behind)
+      - grim # Grab images from a Wayland compositor
+      - slurp # Select a region in a Wayland compositor
+      - hyprpaper # Wayland wallpaper utility with IPC controls
+      - rofi # A window switcher, application launcher and dmenu replacement
+      - wireplumber
+    when: display_driver == "mesa"
+
+  - name: install window manager
+    pacman:
+      name:
+      - cinnamon
       - lightdm
       - lightdm-gtk-greeter
-      - alacritty
+      - alsa-utils
       state: installed
+    when: display_driver == "nvidia"
 
   - name: enable lightdm gtk greeter
     lineinfile:
