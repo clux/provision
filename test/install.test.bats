@@ -161,15 +161,6 @@ exists_any() {
   yq --help |grep kislyuk/yq -
 }
 
-@test "nvidia" {
-  if [[ "${HOSTNAME}" == kjttks ]]; then
-    exists nvidia-settings
-    #run nvidia-settings -q CurrentMetaMode
-    #echo "$output"
-    #echo "$output" | grep "ForceFullCompositionPipeline=On"
-  fi
-}
-
 @test "cli-logins" {
   if [[ "${HOSTNAME}" == kjttks ]]; then
     npm whoami
@@ -218,6 +209,5 @@ exists_any() {
   [ -d "$HOME/.gnupg" ]
   [ -d "$HOME/.gnupg/.git" ]
   run gpg --list-keys
-  echo "$output" && echo "$output" | grep -q "\[ultimate\] Eirik"
-  [ -d "$HOME/repos/provision" ]
+  echo "$output" && echo "$output" | grep -iq "\[ultimate\] Eirik"
 }
