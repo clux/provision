@@ -26,8 +26,13 @@ echo "KEYMAP=colemak" > /etc/vconsole.conf
 
 # Tweak mkinitcpio.conf and trigger it via a kernel install
 _mkinitcpio_conf='/etc/mkinitcpio.conf'
+# Need to ensure we have keymap, encrypt, lvm2, resume
+# Note: keymap before encrypt (for prompt) + encrypt/lvm2 before crypt
+if ! grep '^HOOKS=.*keymap' "${_mkinitcpio_conf}"; then
+  sed -i '/^HOOKS=/ s/keyboard/keyboard\ keymap/' "${_mkinitcpio_conf}"
+fi
 if ! grep '^HOOKS=.*encrypt' "${_mkinitcpio_conf}"; then
-    sed -i '/^HOOKS=/ s/filesystem/keymap\ encrypt\ lvm2\ resume\ filesystem/' "${_mkinitcpio_conf}"
+  sed -i '/^HOOKS=/ s/filesystems/encrypt\ lvm2\ resume\ filesystems/' "${_mkinitcpio_conf}"
 fi
 mkinitcpio -p linux
 
