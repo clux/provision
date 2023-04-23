@@ -37,6 +37,7 @@ main() {
       echo "Must run bootstrap role as root"
       exit 1
     fi
+    pacman -Syu
     pacman -S --noconfirm ansible
     ansible-playbook -i hosts -l "${HOSTNAME}" bootstrap.yml -vv
   elif [[ $1 == "secrets" ]]; then
