@@ -99,6 +99,7 @@
         name:
         - waybar-hyprland # customizable Wayland bar
         #- xdg-desktop-portal-hyprland-git # NB: with -gtk option (compile error, went for outdated main pkg)
+        - wlsunset # redshift replacement
       when: display_driver == "mesa"
 
   - name: install window manager

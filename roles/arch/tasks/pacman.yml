@@ -113,7 +113,6 @@
   - libmicrodns
   - protobuf
   # Window manager related
-  #- redshift TODO: try gammastep for wayland
   - wmctrl
   # browsers
   - chromium
