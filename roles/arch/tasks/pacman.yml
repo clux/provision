@@ -82,6 +82,8 @@
   # wifi
   - iw
   #- create_ap (aur)
+  # other hardware
+  - lm_sensors
   # container services
   - docker
   - docker-buildx
@@ -110,20 +112,9 @@
   # chromecast - see https://wiki.archlinux.org/index.php/VLC_media_player#Chromecast_support to enable mdns
   - libmicrodns
   - protobuf
-  # X related
-  - gnome-screenshot
-  - redshift
-  - xclip
-  - xdotool
-  - xorg-xrandr
-  - xorg-xinput
-  - xorg-xrdb
+  # Window manager related
+  #- redshift TODO: try gammastep for wayland
   - wmctrl
-  # gtk compat
-  - gtk-engines
-  - gtk-engine-murrine
-  # cinnamon addons
-  - dconf-editor
   # browsers
   - chromium
   - firefox
