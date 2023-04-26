@@ -53,7 +53,7 @@
   - name: install MESA display drivers and choice dependencies
     pacman:
       # NB: may want mesa-git
-      name: ['mesa', 'mesa-libgl', 'wayland']
+      name: ['mesa', 'mesa-libgl', 'wayland', 'lib32-vulkan-radeon', 'vulkan-radeon', 'amdvlk', 'lib32-amdvlk']
       state: installed
     when: display_driver == "mesa"
 
@@ -90,6 +90,7 @@
       - rofi # A window switcher, application launcher and dmenu replacement
       - wofi # haven't decided yet...
       - wireplumber
+      - gammastep # redshift replacement
       - sddm # guide said sddm-git but old bug they pointed to. pulls in qt5 tho
     when: display_driver == "mesa"
 
@@ -99,7 +100,6 @@
         name:
         - waybar-hyprland # customizable Wayland bar
         #- xdg-desktop-portal-hyprland-git # NB: with -gtk option (compile error, went for outdated main pkg)
-        - wlsunset # redshift replacement
       when: display_driver == "mesa"
 
   - name: install window manager
