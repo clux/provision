@@ -21,12 +21,18 @@
       line: '%wheel ALL=(ALL) NOPASSWD: ALL'
       validate: 'visudo -cf %s'
 
-  - name: enable multilib for steam
+  - name: pacman enable multilib for steam
     lineinfile:
-      dest=/etc/pacman.conf
-      backrefs=yes
-      regexp="^\#\[multilib\]"
-      line="[multilib]\nInclude = /etc/pacman.d/mirrorlist"
+      path: /etc/pacman.conf
+      backrefs: yes
+      regexp: '^\#\[multilib\]'
+      line: '[multilib]\nInclude = /etc/pacman.d/mirrorlist'
+
+  - name: pacman enable parallel downloads
+    lineinfile:
+      path: /etc/pacman.conf
+      regexp: '^#ParalllelDownloads ='
+      line: 'ParallelDownloads = 5'
 
   # NB: These scripts fails the first 2/3 times
   - script: scripts/localectl.sh
@@ -69,8 +75,8 @@
     pacman:
       name:
       - ttf-dejavu
-      - ttf-liberation
-      - ttf-inconsolata-nerd
+      - ttf-liberation # steam
+      - ttf-inconsolata-nerd # terminal
       state: installed
 
   # TODO: aur install paru-bin as first install?
@@ -83,12 +89,12 @@
       - mako # lightweight Wayland notification daemon
       - pipewire
       - polkit-kde-agent # pulls in qt5..
-      - qt6-wayland # qt support, and for xdg-desktop-portal-hyprland
+      - qt6-wayland # qt support
+      - xdg-desktop-portal-hyprland
       - grim # Grab images from a Wayland compositor
       - slurp # Select a region in a Wayland compositor
       - hyprpaper # Wayland wallpaper utility with IPC controls
-      - rofi # A window switcher, application launcher and dmenu replacement
-      - wofi # haven't decided yet...
+      - wofi # wayland lancher
       - wireplumber
       - gammastep # redshift replacement
       - sddm # guide said sddm-git but old bug they pointed to. pulls in qt5 tho
@@ -99,7 +105,6 @@
       aur:
         name:
         - waybar-hyprland # customizable Wayland bar
-        #- xdg-desktop-portal-hyprland-git # NB: with -gtk option (compile error, went for outdated main pkg)
       when: display_driver == "mesa"
 
   - name: install window manager

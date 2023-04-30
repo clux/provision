@@ -84,6 +84,8 @@
   #- create_ap (aur)
   # other hardware
   - lm_sensors
+  - udisks2
+  - udiskie
   # container services
   - docker
   - docker-buildx
