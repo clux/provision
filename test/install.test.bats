@@ -27,7 +27,10 @@ exists_any() {
   if [[ "${OSTYPE}" =~ "darwin" ]]; then
     skip
   fi
-  systemctl is-enabled redshift-gtk --user -q
+  systemctl is-enabled xdg-desktop-portal-hyprland --user -q
+  systemctl is-enabled xdg-desktop-portal --user -q
+  systemctl is-enabled wireplumber --user -q
+  systemctl is-enabled pipewire --user -q
   systemctl is-active docker -q
 }
 
@@ -37,7 +40,8 @@ exists_any() {
   fi
   exists google-chrome-stable
   exists firefox
-  exists vlc
+  exists alacritty
+  exists waybar
 }
 
 @test "aur" {
@@ -48,6 +52,9 @@ exists_any() {
   exists code
   exists sysz
   exists dyff
+  exists wleave
+  exists shellcheck
+  exists k3d
   run man -w zinit
   [ "$status" -eq 0 ]
 }
@@ -63,7 +70,6 @@ exists_any() {
   exists vivid
   exists kubectl
   exists helm
-  exists alacritty
   exists jq
   exists starship
   exists pwgen
@@ -153,8 +159,9 @@ exists_any() {
   else
     ls -l $(which python) | grep python3
   fi
-  #exists pylint
-  exists youtube-dl
+  exists ruff
+  exists yamllint
+  exists yt-dlp
   exists ansible
   # yq, and not the go version
   exists yq
@@ -181,11 +188,9 @@ exists_any() {
   [ -L "$HOME/.functions" ]
   [ -L "$HOME/.gitconfig" ]
   [ -L "$HOME/.git-helpers" ]
-  [ -L "$HOME/.iface" ]
-  [ -d "$HOME/.templates/git/hooks" ]
+  [ -d "$HOME/repos/dotfiles/git/hooks" ] # gitconfig just points it straight in here
   if [[ "${OSTYPE}" =~ "linux" ]]; then
-    [ -L "$HOME/.xprofile" ]
-    [ -L "$HOME/.Xresources" ]
+    [ -L "$HOME/.wayinit" ]
   fi
   [ -L "$HOME/.k8s-helpers" ]
 }

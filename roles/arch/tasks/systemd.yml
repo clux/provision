@@ -15,13 +15,13 @@
   with_items:
   - { src: docker.service.override, dest: docker.service.d/override.conf }
 
-- name: Enable pcscd service for yubikey
-  ansible.builtin.systemd:
-    name: pcscd
-    enabled: yes
-    state: started
-- name: Enable systemd-resolved for openvpn
-  ansible.builtin.systemd:
-    name: systemd-resolved
-    enabled: yes
-    state: started
+#- name: Enable pcscd service for yubikey
+#  ansible.builtin.systemd:
+#    name: pcscd
+#    enabled: yes
+#    state: started
+#- name: Enable systemd-resolved for openvpn
+#  ansible.builtin.systemd:
+#    name: systemd-resolved
+#    enabled: yes
+#    state: started

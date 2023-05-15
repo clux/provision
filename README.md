@@ -1,5 +1,5 @@
 # provision
-[![build status](https://secure.travis-ci.org/clux/provision.svg)](http://travis-ci.org/clux/provision)
+[![ci status](https://github.com/clux/provision/actions/workflows/lint.yml/badge.svg)](https://github.com/clux/provision/actions/workflows/lint.yml)
 
 Arch Linux provisioning scripts.
 

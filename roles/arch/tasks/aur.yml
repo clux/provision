@@ -20,7 +20,6 @@
   #- { pkg: sublime-text-dev, dest: /sbin/subl3 }
   - { pkg: slack-desktop, dest: /sbin/slack }
     #- { pkg: networkmanager-l2tp, dest: /etc/NetworkManager/VPN/nm-l2tp-service.name }
-  - { pkg: kubernetes, dest: /sbin/kubectl }
   - { pkg: dyff-bin, dest: /sbin/dyff }
 
   # Commented out chrome as I'm trying to live with chromium instead

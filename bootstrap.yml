@@ -86,7 +86,7 @@
     pacman:
       name:
       - hyprland # wayland compositor (deps below picked for this)
-      - mako # lightweight Wayland notification daemon
+      - dunst # lightweight, customizable notification daemon
       - pipewire
       - polkit-kde-agent # pulls in qt5..
       - qt6-wayland # qt support
@@ -100,12 +100,13 @@
       - sddm # guide said sddm-git but old bug they pointed to. pulls in qt5 tho
     when: display_driver == "mesa"
 
-    # AUR DEPS FOR HYPRLAND
-    - name: install aur extras
-      aur:
-        name:
-        - waybar-hyprland # customizable Wayland bar
-      when: display_driver == "mesa"
+  # AUR DEPS FOR HYPRLAND
+  - name: install aur extras
+    aur:
+      name:
+      - waybar-hyprland # customizable Wayland bar
+      - wleave-git # wlogout fork
+    when: display_driver == "mesa"
 
   - name: install window manager
     pacman:

@@ -1,6 +1,5 @@
 [arch]
 broxy       user=bro  display_driver=nvidia
-kjttks      user=clux display_driver=nvidia
 hprks       user=clux display_driver=mesa
 
 [mac]

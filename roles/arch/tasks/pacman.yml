@@ -20,9 +20,11 @@
   - hyperfine
   - vivid
   - fzf
-  - skim
+  #- skim
   - sd
   - zoxide
+  - man-pages
+  - man-db
   - procs
   - dust
   - git-delta
@@ -40,102 +42,104 @@
   # social
   - hugo
   - signal-desktop
-  - discord
+  #- discord (webcord on wayland)
   # music
-  - musescore
+  #- musescore
   - ncspot
   # programming
   - python-pip
-  - ipython
-  - pypy3
+  #- ipython
+  #- pypy3
   - ruff
   - mypy
   - cmake
   - clang
   - compiler-rt
   #- llvm
-  - musl
-  - postgresql-libs # for diesel cli
+  #- musl
+  #- postgresql-libs # for diesel cli
   - go
-  - nodejs
-  - npm
-  - yarn
-  # rustup
+  #- nodejs
+  #- npm
+  #- yarn
+  - rustup
   - rust-analyzer
   # system tools
   - strace
   - perf
   - lsof
   # network
-  - networkmanager-openvpn
-  - openvpn
-  - nmap
-  - net-tools # netstat
-  - bind-tools  # contains dig
-  - traceroute
-  - bmon
+  #- networkmanager-openvpn
+  #- openvpn
+  #- nmap
+  #- net-tools # netstat
+  #- bind-tools  # contains dig
+  #- traceroute
+  #- bmon
   - bandwhich
-  - trickle
+  #- trickle
   - nethogs
-  - httpie
   #- trickle (aur)
   # wifi
-  - iw
+  #- iwd
   #- create_ap (aur)
   # other hardware
-  - lm_sensors
-  - udisks2
-  - udiskie
+  - lm_sensors # temperature/sensor dump from motherboard
+  - udisks2 # easy usb mount
+  - udiskie # auto udisk2
   # container services
   - docker
   - docker-buildx
   #- docker-compose (can generally use tilt)
-  - ctop
-  - conntrack-tools # k8s > 1.18 dependency
+  #- ctop
+  #- conntrack-tools # k8s > 1.18 dependency
   - kustomize
+  - kubectl
   - helm
   - k9s
   #- vault
   # ssh + secrets managers
   - keychain
-  - keybase-gui
-  - keybase
+  #- keybase-gui
+  #- keybase
   - pass
+  - pwgen
   - openssh
-  - yubikey-manager
-  - yubikey-manager-qt
+  #- yubikey-manager
+  #- yubikey-manager-qt
   # music
-  - mpc
-  - mpd
-  - ncmpcpp
+  #- mpd
+  #- ncmpcpp
+  - playerctl
   # ebooks
-  - poppler
-  - calibre
+  #- poppler
+  #- calibre
   # chromecast - see https://wiki.archlinux.org/index.php/VLC_media_player#Chromecast_support to enable mdns
   - libmicrodns
   - protobuf
-  # Window manager related
-  - wmctrl
   # browsers
   - chromium
   - firefox
   # media
-  - vlc
+  #- vlc
+  - mpv
+  #- mpv-mpris (maybe.. aur)
   - feh
-  - gimp
-  - gthumb
+  #- gimp
+  #- gthumb (lots of deps..)
   - imagemagick
-  - gedit
-  - gphoto2
-  - peek
+  #- gedit
+  #- gphoto2
   # filesystems
-  - ntfs-3g
-  - nemo-fileroller
-  - nemo-share
-  - gvfs-smb
-  - mtpfs # kindle
-  - android-file-transfer
-  - gptfdisk
+  #- ntfs-3g
+  #- nemo-fileroller
+  #- nemo-share
+  - ranger
+  #- joshuto (maybe.. ranger replacement on aur)
+  #- gvfs-smb
+  #- mtpfs # kindle
+  #- android-file-transfer
+  #- gptfdisk
   # fonts
   - ttf-ubuntu-font-family
   - ttf-inconsolata-nerd
@@ -144,11 +148,9 @@
   #- fonts-tlwg # thai AUR
   - wqy-microhei # chinese
   - noto-fonts-emoji # google's emoji font
-  #- ttf-symbola # unicode font for github style emojis AUR
 
-# Linux capabilities so some apps can run sans-sudo
-- capabilities: path=/sbin/nethogs capability=cap_net_admin+ep
-- capabilities: path=/sbin/nethogs capability=cap_net_raw+ep
+# Net Caps on networking tools
+- capabilities: path=/sbin/nethogs capability=cap_net_raw+ep,cap_net_admin+ep
 - capabilities: path=/sbin/bandwhich capability=cap_net_raw,cap_net_admin+ep
 
 - name: Install dependencies

@@ -12,7 +12,7 @@
   - yq
   - requests
   - yamllint
-  - youtube-dl
+  - yt-dlp
   #- pipenv
   #- pytest
   - magic-wormhole
