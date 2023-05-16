@@ -19,6 +19,7 @@
 # https://www.phoronix.com/news/Fedora-39-VM-Max-Map-Count
 - name: sysctl vm.max_map_count
   tags: [arch, core]
+  become: yes
   ansible.posix.sysctl:
     name: vm.max_map_count
     value: '2147483642'
@@ -26,6 +27,7 @@
 
 - name: Link hx -> helix
   tags: [arch, core]
+  become: yes
   ansible.builtin.file:
     src: /sbin/helix
     dest: /usr/local/bin/hx
