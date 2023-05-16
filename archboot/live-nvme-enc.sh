@@ -47,7 +47,6 @@ cryptsetup luksOpen /dev/nvme0n1p2 cryptlvm
 cryptsetup --perf-no_write_workqueue --perf-no_read-workqueue --persistent cryptlvm
 # can verify later that 'cryptsetup luksDump /dev/nvme0n1p2 | grep Flags' contains the flags
 
-
 # Physical volume on top of LUKS container
 pvcreate /dev/mapper/cryptlvm
 pvdisplay
@@ -72,7 +71,7 @@ mount /dev/nvme0n1p1 /mnt/boot
 
 # Bootstrat the chroot
 # vim /etc/pacman.d/mirrorlist - put an in-country mirror on top
-pacstrap /mnt base base-devel helix linux linux-firmware networkmanager bash git sudo efibootmgr mkinitcpio lvm2 dhcpcd
+pacstrap /mnt base base-devel helix networkmanager bash git sudo efibootmgr mkinitcpio lvm2 dhcpcd just
 
 # Generate fstab
 genfstab -pU /mnt >> /mnt/etc/fstab
@@ -85,6 +84,7 @@ arch-chroot /mnt /bin/bash
 # The rest follows chroot.sh
 # but a few things that may need to change:
 
+# YOU MUST DO THIS IN CHROOT
 passwd # set root password before booting (illegal to have empty)
 
 # vim /etc/mkinitcpio.conf

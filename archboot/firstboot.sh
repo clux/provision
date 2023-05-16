@@ -3,14 +3,12 @@ set -exuo pipefail
 # For the first real boot after setting up the chroot
 # login as root (with password from arch-chroot)
 
-# dhcpcd one last time if wired
-dhcpcd # needs to be installed in bootstrap, can be uninstalled later
-# if on wlan:
+# NEED NETWORK PRE START
+# 1. if wired:
+# dhcpcd
+# 2. if wifi:
 #systemctl start NetworkManager
 #nmcli device wifi connect MyWifi-SSID password PASSWORD
-
-# give dhcpcd some time
-sleep 5
 
 # Fetch bootstrap role
 curl -sSL https://github.com/clux/provision/archive/ansible.tar.gz | tar xz
@@ -18,14 +16,11 @@ cd provision*
 
 # Ensure we have are listed in hosts and there's a corresponding user
 myuser=$(grep "$HOSTNAME" -r hosts | awk 'BEGIN {RS=" "}; /user/' | cut -d'=' -f2)
-./DEPLOY bootstrap
+just bootstrap
 
 # Finalise user account
 loadkeys colemak # localectl screws up locales temporarily
 passwd "$myuser"
 
-if pacman -Ss nvidia | grep -q installed; then
-  echo "bootstrap completed - boot to blacklist nouveau"
-else
-  systemctl start lightdm
-fi
+cd
+echo "Run ./.wayinit if you are ready."

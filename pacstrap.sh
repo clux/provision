@@ -15,7 +15,6 @@ term=(
   alacritty
   git
   bc
-  rsync
   choose
   jq
   bash-bats
@@ -24,6 +23,8 @@ term=(
   tokei
   fd
   bat
+  grex
+  xsv
   hyperfine
   vivid
   fzf
@@ -58,6 +59,7 @@ social=(
 install_tools "social" "${social[@]}"
 
 media=(
+  #AUDIO/VIDEO RELATED
   #musescore
   ncspot
   #mpd
@@ -66,8 +68,9 @@ media=(
   #vlc
   mpv
   #mpv-mpris (maybe.. aur)
+  #IMAGE RELATED
   feh
-  #gimp
+  gimp
   #gthumb (lots of deps..)
   imagemagick
   #gedit
@@ -75,13 +78,13 @@ media=(
 )
 install_tools "media" "${media[@]}"
 
-gui=(
+browser=(
   chromium
   firefox
   #chrome from aur
   steam
 )
-install_tools "gui" "${gui[@]}"
+install_tools "browser/electron" "${browser[@]}"
 
 fonts=(
   ttf-ubuntu-font-family
@@ -98,19 +101,22 @@ sec=(
   keychain
   pass
   pwgen
-  openssh
   #yubikey-manager
   #yubikey-manager-qt
 )
 install_tools "sec" "${sec[@]}"
 
-netsys=(
-  # system:
+system=(
+  openssh
+  rsync
   strace
   perf
   lsof
   lm_sensors # temperature/sensor dump from motherboard
-  # network
+)
+install_tools "system" "${system[@]}"
+
+network=(
   #networkmanager-openvpn
   #openvpn
   #nmap
@@ -122,19 +128,18 @@ netsys=(
   #trickle
   nethogs
   #trickle (aur)
+  #libmicrodns # vlc cast: https://wiki.archlinux.org/index.php/VLC_media_player#Chromecast_support to enable mdns
   # wifi
   #iwd
   #create_ap (aur)
-  # chromecast - see https://wiki.archlinux.org/index.php/VLC_media_player#Chromecast_support to enable mdns
-  #libmicrodns
 )
-install_tools "netsys" "${netsys[@]}"
+install_tools "network" "${network[@]}"
 
 programming=(
-  # rust
+  # RUST
   rustup
   rust-analyzer
-  # python
+  # PYTHON
   python-pip
   #ipython
   pypy3
@@ -146,7 +151,7 @@ programming=(
   compiler-rt
   #llvm
   #musl
-  # cursed languages
+  # CURSED
   go
   #nodejs
   #npm

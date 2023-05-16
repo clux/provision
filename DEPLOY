@@ -26,21 +26,13 @@ setup_dotfiles() {
   mkdir -p ~/repos && cd ~/repos
   git clone git@github.com:clux/dotfiles.git
   cd dotfiles
-  make config
-  make ui
+  just link
+  just system
 }
 
 main() {
   set -e
-  if [[ $1 == "bootstrap" ]]; then
-    if [[ $EUID -ne 0 ]]; then
-      echo "Must run bootstrap role as root"
-      exit 1
-    fi
-    pacman -Syu
-    pacman -S --noconfirm ansible
-    ansible-playbook -i hosts -l "${HOSTNAME}" bootstrap.yml -vv
-  elif [[ $1 == "secrets" ]]; then
+  if [[ $1 == "secrets" ]]; then
     if [[ $EUID -eq 0 ]]; then
       echo "This role is not indended to be run as root"
       exit 1
@@ -54,7 +46,6 @@ main() {
     [ -f ~/.ssh/work_id ] || fetch_secret_repos
     # Install repos we haven't yet installed
     [ -d ~/.gnupg/.git ] || ~/gpg/install.sh
-    [ -f ~/.config/Mumble/Mumble.conf ] || ~/mumble/install.sh
     [ -d ~/.ssh/.git ] || ~/ssh/install.sh
     # Delete the rest
     rm -rf ~/ssh ~/gpg ~/mumble
@@ -63,10 +54,9 @@ main() {
   else
     # arg parse
     OPTIND=2 # getopts start
-    while getopts ":fcvs" opt; do
+    while getopts ":fvs" opt; do
       case $opt in
         f) FULL=1 ;;
-        c) RECOMPILE=1 ;;
         v) VERBOSE="v" ;;
         s) SUDO=1 ;;
         \?) echo Invalid option -"$OPTARG"; exit 1 ;;
@@ -74,9 +64,8 @@ main() {
     done
     set -x
     # shellcheck disable=SC2046
-    ansible-playbook -i hosts -l "${HOST}" site.yml --tags="$1" "-v${VERBOSE}" \
+    ansible-playbook -i hosts -l "${HOSTNAME}" site.yml --tags="$1" "-v${VERBOSE}" \
       $([ -n "$FULL" ] && echo "-e upgrade_tasks=1" || echo "") \
-      $([ -n "$RECOMPILE" ] && echo "-e recompile_tasks=1" || echo "") \
       $([ -n "$SUDO" ] && echo "--become" || echo "")
   fi
 }

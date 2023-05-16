@@ -60,6 +60,7 @@
       - git
       - openssh
       - chromium
+      - dhcpd
       - alacritty
       - wl-clipboard
       - lsb-release

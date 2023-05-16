@@ -6,26 +6,22 @@ SHELLCHECKED_FILES := "archboot/*.sh genprov.sh pacstrap.sh DEPLOY"
 default:
   @just --list --unsorted
 
+
 # full provision
 core:
-    @./DEPLOY core -fsc
+  @./DEPLOY core -fsc
 
 # upgrade python packages
 pip:
-    @./DEPLOY pip -f
+  @./DEPLOY pip -f
 
 # upgrade npm packages
 npm:
-    @./DEPLOY npm -f
+  @./DEPLOY npm -f
 
 # upgrade rust packages
 cargo:
-    @./DEPLOY cargo -f
-
-# upgrade pacman packages
-[linux]
-pacman:
-    @sudo pacman -Syu
+  @./DEPLOY cargo -f
 
 # install vs code plugins
 vscode:
@@ -34,13 +30,26 @@ vscode:
 
 # run local shellcheck + yamllint + sanity lints
 lint:
-    yamllint *.yml roles/ vars/
-    test -z "$(find roles/ -type f -iname '*.yaml')" && echo "Extensions OK"
-    SHELLCHECK_OPTS="{{SHELLCHECK_OPTS}}" shellcheck {{SHELLCHECKED_FILES}}
+  yamllint *.yml roles/ vars/
+  test -z "$(find roles/ -type f -iname '*.yaml')" && echo "Extensions OK"
+  SHELLCHECK_OPTS="{{SHELLCHECK_OPTS}}" shellcheck {{SHELLCHECKED_FILES}}
 
 # run full lint plus bats test
 test: lint
-    bats test
+  bats test
+
+# bootstrap (root only)
+bootstrap:
+  #!/bin/bash
+  if [[ $EUID -ne 0 ]]; then
+    echo "Must run bootstrap role as root"
+    exit 1
+  fi
+  pacman -Syu
+  ./pacstrap.sh
+  pacman -S --noconfirm ansible
+  ansible-playbook -i hosts -l "${HOSTNAME}" bootstrap.yml -vv
+
 
 # mode: makefile
 # End:

@@ -8,34 +8,11 @@
   changed_when:
   - "'downloading' in stable_output.stderr"
 
-# make sure it's set up properly before we use it
-- name: rustup default stable
-  command: rustup default stable
-  register: rustup_result
-  changed_when: "'unchanged' not in rustup_result.stdout"
+- set_fact:
+    cargo_state: "{{ 'latest' if (upgrade_tasks | default(false)) else 'present' }}"
 
-# because we most frequently need to recompile nightly modules, do nightly stuff first
-- name: rustup update nightly
-  command: rustup update nightly
-  when: recompile_tasks | default(false)
-  register: nightly_output
-  changed_when:
-  - "'downloading' in nightly_output.stderr"
-
-- name: install modules on rustup nightly
-  command: rustup run nightly cargo install {{ item }} --force
-  with_items: []
-  when:
-  - (recompile_tasks | default(false)) or nightly_output.changed
-
-
-# command line tools we use everywhere
-# NB: many got moved to pacman.yml so don't add them back here; these include:
-# sd,zoxide,ripgrep,exa,hyperfine,fd,bat,tokei,procs,vivid,git-delta,bandwhich,starship
-- name: install modules on rustup stable
-  command: cargo install {{ item }} --force
-  when:
-  - (recompile_tasks | default(false)) or stable_output.changed
+- name: install cargo modules
+  community.general.cargo: name={{ item }} state={{cargo_state}}
   with_items:
   - cargo-edit
   - cargo-tree
@@ -44,7 +21,5 @@
   - cargo-audit
   - cargo-expand
   - ytop
-  - grex
-  - xsv
   - toml2json
   - fastmod
