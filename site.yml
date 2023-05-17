@@ -1,8 +1,6 @@
 ---
 - connection: local
   hosts: all
-  vars_files:
-  - vars/versions.yml
   user: "{{ user }}"
   gather_facts: true
   roles:
