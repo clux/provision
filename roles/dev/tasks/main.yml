@@ -1,6 +1,0 @@
----
-# Dev playbook - clone all active projects
-
-- import_tasks: js.yml
-  become: no
-  tags: [dev, repos]

@@ -12,5 +12,4 @@
   - docker
   - ssh
   #- xdg
-  #- dev
   - { role: mac, when: ansible_os_family == "Darwin" }
