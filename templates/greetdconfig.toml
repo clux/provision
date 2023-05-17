@@ -1,3 +1,10 @@
 [initial_session]
-command = "~./.wayinit"
+command = "/home/clux/.wayinit"
 user = "clux"
+
+[default_session]
+command = "agreety --cmd $SHELL"
+user = "clux"
+
+[terminal]
+vt = 1
