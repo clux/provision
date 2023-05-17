@@ -1,6 +1,0 @@
----
-# Core Darwin Setup
-
-- import_tasks: brew.yml
-  when: ansible_os_family == "Darwin"
-  tags: [mac, core]
