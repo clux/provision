@@ -17,6 +17,7 @@ cd provision*
 # Ensure we have are listed in hosts and there's a corresponding user
 myuser=$(grep "$HOSTNAME" -r hosts | awk 'BEGIN {RS=" "}; /user/' | cut -d'=' -f2)
 pacman -S --noconfirm --needed ansible
+# TODO: pip install --user setuptools if ansible complains below
 
 # Finalise user account
 loadkeys colemak # localectl screws up locales temporarily

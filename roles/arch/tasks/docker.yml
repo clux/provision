@@ -1,0 +1,26 @@
+---
+# Docker configuration (systemd config + group add)
+
+- name: Ensure Configuration Directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+  - /etc/systemd/system/docker.service.d
+
+# Tweak a few lines in config - shows up in systemctl show docker
+- name: docker system config override
+  template:
+    src: "templates/{{ item.src }}"
+    dest: "/etc/systemd/system/{{ item.dest }}"
+  with_items:
+  - { src: docker.service.override, dest: docker.service.d/override.conf }
+
+# Docker - create the docker group (gpasswd -a $USER docker)
+# NB: this requires `newgrp docker` or logout
+# DONT DO NEWGRP AS IT WILL SCREW WITH YOUR PRIMARY GROUP
+- name: Add user to docker group
+  user: name={{ user }} groups=docker append=yes
+
+- name: systemctl enable docker --user --now
+  systemd: name=docker state=started enabled=yes

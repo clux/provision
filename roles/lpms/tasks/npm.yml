@@ -13,10 +13,10 @@
 - name: Install global npm dependencies
   npm: name={{ item }} state={{ npm_state }} global=true
   with_items:
-  - faucet
-  - eslint
-  - jshint
-  - asciify
-  - marked-man
+  #- faucet
+  #- eslint
+  #- jshint
+  #- asciify
+  #- marked-man
   - reveal-md
   - zalgolize

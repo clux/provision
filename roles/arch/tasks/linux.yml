@@ -1,0 +1,28 @@
+---
+
+# Misc linux tweaks
+
+# https://www.phoronix.com/news/Fedora-39-VM-Max-Map-Count
+- name: sysctl vm.max_map_count
+  become: yes
+  sysctl:
+    name: vm.max_map_count
+    value: '2147483642'
+    sysctl_set: true
+
+- name: symlink hx -> helix
+  become: yes
+  ansible.builtin.file:
+    src: /sbin/helix
+    dest: /usr/local/bin/hx
+    owner: clux
+    group: clux
+    state: link
+
+- name: net capabilities on nethogs
+  capabilities: path=/sbin/nethogs capability={{ item }}
+  with_items:
+  - "cap_net_admin+ep"
+  - "cap_net_raw+ep"
+- name: net capabilities on bandwhich
+  capabilities: path=/sbin/bandwhich capability=cap_net_raw,cap_net_admin+ep

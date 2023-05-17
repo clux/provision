@@ -10,12 +10,12 @@
 - name: Install dependencies
   pip: name={{ item }} extra_args='--user' state={{pip_state}}
   with_items:
-  - ghp-import
-  - pyaml
+  #- ghp-import
+  #- pyaml
   - yq
   - requests
   - yamllint
   - yt-dlp
   #- pipenv
   #- pytest
-  - magic-wormhole
+  #- magic-wormhole

@@ -1,27 +1,20 @@
 ---
-# systemd overrides
+# systemd
 
-- name: Ensure Configuration Directories
-  file:
-    path: "{{ item }}"
-    state: directory
-  with_items:
-  - /etc/systemd/system/docker.service.d
-
-- name: systemd overrides
-  template:
-    src: "templates/{{ item.src }}"
-    dest: "/etc/systemd/system/{{ item.dest }}"
-  with_items:
-  - { src: docker.service.override, dest: docker.service.d/override.conf }
+# Services that can run as --user (that haven't auto-started)
+- name: systemctl enable user services
+  systemd: name={{ item }} state=started enabled=yes user=yes
+  become: no
+  with_items: []
+  #- mpd
 
 #- name: Enable pcscd service for yubikey
-#  ansible.builtin.systemd:
+#  systemd:
 #    name: pcscd
 #    enabled: yes
 #    state: started
 #- name: Enable systemd-resolved for openvpn
-#  ansible.builtin.systemd:
+#  systemd:
 #    name: systemd-resolved
 #    enabled: yes
 #    state: started

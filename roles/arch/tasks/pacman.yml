@@ -1,5 +1,5 @@
 ---
-# pacman interface
+# pacman config
 
 - name: pacman parallel downloads
   lineinfile:
@@ -12,8 +12,3 @@
     path: /etc/pacman.conf
     regexp: '#Color'
     line: 'Color'
-
-# Net Caps on networking tools
-- capabilities: path=/sbin/nethogs capability=cap_net_admin+ep
-- capabilities: path=/sbin/nethogs capability=cap_net_raw+ep
-- capabilities: path=/sbin/bandwhich capability=cap_net_raw,cap_net_admin+ep

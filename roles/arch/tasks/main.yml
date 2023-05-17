@@ -6,7 +6,7 @@
   become: yes
   tags: [arch, core]
 
-- import_tasks: services.yml
+- import_tasks: docker.yml
   when: ansible_os_family == "Archlinux"
   become: yes
   tags: [arch, core]
@@ -16,21 +16,7 @@
   become: yes
   tags: [arch, core]
 
-# https://www.phoronix.com/news/Fedora-39-VM-Max-Map-Count
-- name: sysctl vm.max_map_count
-  tags: [arch, core]
+- import_tasks: linux.yml
+  when: ansible_os_family == "Archlinux"
   become: yes
-  ansible.posix.sysctl:
-    name: vm.max_map_count
-    value: '2147483642'
-    sysctl_set: true
-
-- name: Link hx -> helix
   tags: [arch, core]
-  become: yes
-  ansible.builtin.file:
-    src: /sbin/helix
-    dest: /usr/local/bin/hx
-    owner: clux
-    group: clux
-    state: link
