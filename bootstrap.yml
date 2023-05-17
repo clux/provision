@@ -68,6 +68,7 @@
       - dunst # lightweight, customizable notification daemon
       - pipewire
       - polkit-kde-agent # pulls in qt5..
+      - util-linux # contains agetty for autologin
       - qt6-wayland # qt support
       - xdg-desktop-portal-hyprland
       - grim # Grab images from a Wayland compositor

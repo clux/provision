@@ -12,7 +12,7 @@
 
 - name: symlink hx -> helix
   become: yes
-  ansible.builtin.file:
+  file:
     src: /sbin/helix
     dest: /usr/local/bin/hx
     owner: clux
