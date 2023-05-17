@@ -28,20 +28,20 @@ You need two USB sticks for the arch deployment.
 Boot into the live environment using EFI boot, mount the provisioning stick on `/prov`, and start the show:
 
 ```sh
-export DCHOSTNAME=cluxx1
-export DCDISK=/dev/sda
+export DCHOSTNAME="hprks" # host we are installing to
+export DCDISK=/dev/sda # disk we are re-partitioning (and wiping) for installation
 /prov/live.sh # 3 minutes unattended after setting of crypt pass
 ```
 
 Note that `$DCHOSTNAME` must exist in [hosts](./hosts).
 
-Then boot to a passwordless `root` user and configure `X` with:
+Then boot to a `root` user (with pass set in prompt) then run bootstap:
 
 ```sh
 ./firstboot.sh # 5 min unattended middle
 ```
 
-This will ask for a new `root` passwd at start, then your `$USER` password at the end.
+This will ask for a new `$USER` password at the end, and ask you to run the first ansible role.
 
 ## Editors
 ### VS Code

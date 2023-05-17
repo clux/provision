@@ -13,16 +13,20 @@ apply tags *FLAGS:
   # Available tags can be found via 'rg tags roles/'
   ansible-playbook -i hosts -l "${HOSTNAME}" site.yml --tags="{{tags}}" {{FLAGS}}
 
-# arch-specific provision
+# arch specific provision
 [linux]
 arch:
+  #!/bin/bash
+  sudo pacman -Syu
   ./scripts/pacstrap.sh
   just apply arch "-e upgrade_tasks=1 --become"
-# mac specific provision
+# macos specific provision
 [macos]
 mac:
+  #!/bin/bash
+  brew upgrade
   brew bundle --no-lock --file scripts/Brewfile
-  just apply mac -v
+  just apply mac "-e upgrade_tasks=1 -v"
 
 # Ansible core provision (everything except ssh/xgd)
 core:
@@ -54,19 +58,6 @@ lint:
 # run full lint plus bats test
 test: lint
   bats test
-
-# bootstrap (root only)
-bootstrap:
-  #!/bin/bash
-  if [[ $EUID -ne 0 ]]; then
-    echo "Must run bootstrap role as root"
-    exit 1
-  fi
-  pacman -Syu
-  ./pacstrap.sh
-  pacman -S --noconfirm ansible
-  ansible-playbook -i hosts -l "${HOSTNAME}" bootstrap.yml -vv
-
 
 # mode: makefile
 # End:
