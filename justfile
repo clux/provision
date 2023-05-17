@@ -58,7 +58,3 @@ lint:
 # run full lint plus bats test
 test: lint
   bats test
-
-# mode: makefile
-# End:
-# vim: set ft=make :
