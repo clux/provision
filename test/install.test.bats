@@ -2,10 +2,8 @@
 
 exists() {
   hash "$1" 2> /dev/null
-}
-exists_any() {
-  which "$1" > /dev/null
-  # doesn't work because this runs in bash not zsh
+  # NB: would be nice to check if aliases existsed as well
+  # but afaict not possible on bash, and this runs through bash
 }
 
 @test "localisation" {
@@ -34,29 +32,34 @@ exists_any() {
   systemctl is-active docker -q
 }
 
-@test "linux-guis" {
+@test "guis" {
   if [[ "${OSTYPE}" =~ "darwin" ]]; then
-    skip
+    mdfind "kMDItemKind == 'Application'" | grep Firefox
+    mdfind "kMDItemKind == 'Application'" | grep Chrome
+    mdfind "kMDItemKind == 'Application'" | grep Discord
+    exists alacritty
+  else
+    exists google-chrome-stable
+    exists firefox
+    exists alacritty
+    exists waybar
+    exists webcord
   fi
-  exists google-chrome-stable
-  exists firefox
-  exists alacritty
-  exists waybar
 }
 
-@test "aur" {
-  if [[ "${OSTYPE}" =~ "darwin" ]]; then
-    skip
-  fi
-  # see pacman -Qm
+@test "aur/brew" {
+  # common pks first
   exists code
-  exists sysz
   exists dyff
-  exists wleave
   exists shellcheck
   exists k3d
   run man -w zinit
-  [ "$status" -eq 0 ]
+  if [[ "${OSTYPE}" =~ "linux" ]] then
+    # aur only: pacman -Qemt
+    exists sysz
+    exists wleave
+    [ "$status" -eq 0 ]
+  fi
 }
 
 # Tests that core tools have been installed and are on PATH
@@ -96,12 +99,11 @@ exists_any() {
   fi
 }
 
-@test "purge-haskell" {
+@test "haskell" {
+  exists shellcheck
   # no ghc
   run which ghc
   [ "$status" -eq 1 ]
-  exists shellcheck
-
   if [[ "${OSTYPE}" =~ "linux" ]]; then
     # no haskell package spam:
     pacman -Qsq | grep -v haskell
@@ -169,7 +171,7 @@ exists_any() {
 }
 
 @test "cli-logins" {
-  if [[ "${HOSTNAME}" == kjttks ]]; then
+  if [[ "${HOSTNAME}" == hprks ]]; then
     npm whoami
   fi
   [ -f "$HOME/.cargo/credentials" ]
@@ -189,9 +191,7 @@ exists_any() {
   [ -L "$HOME/.gitconfig" ]
   [ -L "$HOME/.git-helpers" ]
   [ -d "$HOME/repos/dotfiles/git/hooks" ] # gitconfig just points it straight in here
-  if [[ "${OSTYPE}" =~ "linux" ]]; then
-    [ -L "$HOME/.wayinit" ]
-  fi
+  [ -L "$HOME/.wayinit" ]
   [ -L "$HOME/.k8s-helpers" ]
 }
 
