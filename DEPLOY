@@ -54,9 +54,9 @@ main() {
   else
     # arg parse
     OPTIND=2 # getopts start
-    while getopts ":fvs" opt; do
+    while getopts ":vsu" opt; do
       case $opt in
-        f) FULL=1 ;;
+        u) UPGRADE=1 ;;
         v) VERBOSE="v" ;;
         s) SUDO=1 ;;
         \?) echo Invalid option -"$OPTARG"; exit 1 ;;
@@ -65,7 +65,7 @@ main() {
     set -x
     # shellcheck disable=SC2046
     ansible-playbook -i hosts -l "${HOSTNAME}" site.yml --tags="$1" "-v${VERBOSE}" \
-      $([ -n "$FULL" ] && echo "-e upgrade_tasks=1" || echo "") \
+      $([ -n "$UPGRADE" ] && echo "-e upgrade_tasks=1" || echo "") \
       $([ -n "$SUDO" ] && echo "--become" || echo "")
   fi
 }

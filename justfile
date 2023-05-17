@@ -9,19 +9,19 @@ default:
 
 # full provision
 core:
-  @./DEPLOY core -fsc
+  @./DEPLOY core -su
 
 # upgrade python packages
 pip:
-  @./DEPLOY pip -f
+  @./DEPLOY pip -u
 
 # upgrade npm packages
 npm:
-  @./DEPLOY npm -f
+  @./DEPLOY npm -u
 
 # upgrade rust packages
 cargo:
-  @./DEPLOY cargo -f
+  @./DEPLOY cargo -u
 
 # install vs code plugins
 vscode:

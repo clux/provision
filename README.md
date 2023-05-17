@@ -8,7 +8,7 @@ Once you have gotten a desktop, set up secrets and deploy core roles later.
 
 ```sh
 ./DEPLOY secrets # answer all password prompts
-./DEPLOY core -fs # make lunch
+./DEPLOY core -su # make lunch
 ```
 
 ## Tags
@@ -16,9 +16,9 @@ First argument is tags. Most stuff is tagged by `core`, but you can pass comma-s
 
 ```sh
 sudo pacman -Syu # kept out of ansible specificially
-./DEPLOY arch -fs # needs sudo
-./DEPLOY pip
-./DEPLOY cargo -fc # recompile modules
+./DEPLOY arch -su # needs sudo
+./DEPLOY pip # ensure pip module exists in local site
+./DEPLOY cargo -u # upgrade cargo installed modules
 ```
 
 Note that the only roles not provisioned by `core` are `ssh,xdg,dev`, which may be restructured quite a bit.
@@ -26,9 +26,8 @@ Note that the only roles not provisioned by `core` are `ssh,xdg,dev`, which may 
 ## Flags
 The `DEPLOY` script has a few optional flags for the normal deploy:
 
-- `-f` run full provisioning (enables upgrade tasks)
+- `-u` run upgrade tasks
 - `-s` instructs ansible to ask for sudo password
-- `-c` enable recompile tasks (extra heavy upgrade tasks - mostly for lpms)
 - `-v` increases ansible verbosity
 
 ## Initial Setup
