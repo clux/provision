@@ -139,7 +139,6 @@ exists() {
   exists cargo-add
   exists cargo-fmt
   exists rls
-  # TODO: get rust-analyzer rustup on linux: https://rust-analyzer.github.io/manual.html#arch-linux
   exists rust-analyzer
   hx --health rust | grep Binary | grep "rust-analyzer"
 
