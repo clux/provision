@@ -12,6 +12,7 @@ cask "slack"
 cask "visual-studio-code"
 cask "background-music"
 cask "vlc"
+cask "font-inconsolata-nerd-font"
 
 # gnu tools are massively outdated or missing on mac
 brew "bash"
@@ -67,9 +68,6 @@ brew "zola"
 brew "zinit"
 #zsh-fast-syntax-highlighting
 #zsh-autosuggestions
-
-# fonts
-brew "font-inconsolata-nerd-font"
 
 # python bootstrap
 brew "ansible"
