@@ -7,21 +7,15 @@ Arch Linux provisioning scripts with some Mac bolt-ons.
 If you already have a desktop, then you can just run tag specific runners:
 
 ```sh
-./DEPLOY core -su # generally everything, ask for sudo
-./DEPLOY arch -su # arch specific only, ask for sudo
-./DEPLOY pip # first time pip installs (no upgrade)
-./DEPLOY cargo -u # idempotent cargo install (upgrades if out-of-date)
+just core # generally everything, ask for sudo
+just arch # arch specific only, ask for sudo
+just pip # python only
+just cargo # cargo only
 ```
-Note that the only roles not provisioned by `core` are `ssh,xdg`, which may be restructured quite a bit.
 
-## Flags
-The `DEPLOY` script has a few optional flags for the normal deploy:
+Note that apart from language specific package managers (lpms) we install OS packages out-of-band via either [pacstrap](./scripts/pacstrap.sh) or [macstrap](./scripts/macstrap.sh).
 
-- `-u` run upgrade tasks
-- `-s` instructs ansible to ask for sudo password
-- `-v` increases ansible verbosity
-
-## Initial Setup
+## Initial Arch Setup
 This repository also contains a bunch of experimental scripts to set up a machine from scratch. Use at own caution, your mileage may vary.
 
 ## Prerequisites

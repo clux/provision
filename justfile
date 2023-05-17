@@ -6,22 +6,29 @@ SHELLCHECKED_FILES := "scripts/archboot/*.sh scripts/*.sh DEPLOY"
 default:
   @just --list --unsorted
 
+apply tags *FLAGS:
+  #/bin/bash
+  ansible-playbook -i hosts -l "${HOSTNAME}" site.yml --tags="{{tags}}" {{FLAGS}}
 
-# full provision
+# core provision (everything except ssh/xgd)
 core:
-  @./DEPLOY core -su
+  just apply core "-e upgrade_tasks=1 --become"
+
+# arch-specific provision
+arch:
+  just apply arch "-e upgrade_tasks=1 --become"
 
 # upgrade python packages
 pip:
-  @./DEPLOY pip -u
+  just apply pip "-e upgrade_tasks=1"
 
 # upgrade npm packages
 npm:
-  @./DEPLOY npm -u
+  just apply npm "-e upgrade_tasks=1"
 
 # upgrade rust packages
 cargo:
-  @./DEPLOY cargo -u
+  just apply cargo "-e upgrade_tasks=1"
 
 # install vs code plugins
 vscode:
