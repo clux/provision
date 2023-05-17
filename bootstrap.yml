@@ -66,9 +66,9 @@
       name:
       - hyprland # wayland compositor (deps below picked for this)
       - dunst # lightweight, customizable notification daemon
+      - greetd # login manager configured with autologin
       - pipewire
       - polkit-kde-agent # pulls in qt5..
-      - util-linux # contains agetty for autologin
       - qt6-wayland # qt support
       - xdg-desktop-portal-hyprland
       - grim # Grab images from a Wayland compositor

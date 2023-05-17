@@ -19,14 +19,8 @@
 #    enabled: yes
 #    state: started
 
-# getty (autologin)
-- name: getty config dir
-  file:
-    path: /etc/systemd/system/getty@tty1.service.d
-    state: directory
-
-# Tweak a few lines in config - shows up in systemctl show docker
-- name: getty autologin
-  template:
-    src: "templates/gettyautologin.conf"
-    dest: "/etc/systemd/system/getty@tty1.service.d/autologin.conf"
+# greetd (autologin)
+- name: greetd config dir
+  file: path=/etc/greetd/ state=directory
+- name: greetd config with autologin
+  template: src=templates/greetdconfig.toml dest=/etc/greetd/config.toml

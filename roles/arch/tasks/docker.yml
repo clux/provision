@@ -9,7 +9,7 @@
 # Tweak a few lines in config - shows up in systemctl show docker
 - name: docker system config override
   template:
-    src: "templates/docker.service.override}"
+    src: "templates/docker.service.override"
     dest: "/etc/systemd/system/docker.service.d/override.conf"
 
 # Docker - create the docker group (gpasswd -a $USER docker)
