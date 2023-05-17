@@ -1,27 +1,18 @@
 # provision
 [![ci status](https://github.com/clux/provision/actions/workflows/lint.yml/badge.svg)](https://github.com/clux/provision/actions/workflows/lint.yml)
 
-Arch Linux provisioning scripts.
+Arch Linux provisioning scripts with some Mac bolt-ons.
 
 ## Usage
-Once you have gotten a desktop, set up secrets and deploy core roles later.
+If you already have a desktop, then you can just run tag specific runners:
 
 ```sh
-./DEPLOY secrets # answer all password prompts
-./DEPLOY core -su # make lunch
+./DEPLOY core -su # generally everything, ask for sudo
+./DEPLOY arch -su # arch specific only, ask for sudo
+./DEPLOY pip # first time pip installs (no upgrade)
+./DEPLOY cargo -u # idempotent cargo install (upgrades if out-of-date)
 ```
-
-## Tags
-First argument is tags. Most stuff is tagged by `core`, but you can pass comma-separated sets of tags for specifics.
-
-```sh
-sudo pacman -Syu # kept out of ansible specificially
-./DEPLOY arch -su # needs sudo
-./DEPLOY pip # ensure pip module exists in local site
-./DEPLOY cargo -u # upgrade cargo installed modules
-```
-
-Note that the only roles not provisioned by `core` are `ssh,xdg,dev`, which may be restructured quite a bit.
+Note that the only roles not provisioned by `core` are `ssh,xdg`, which may be restructured quite a bit.
 
 ## Flags
 The `DEPLOY` script has a few optional flags for the normal deploy:
@@ -34,7 +25,7 @@ The `DEPLOY` script has a few optional flags for the normal deploy:
 This repository also contains a bunch of experimental scripts to set up a machine from scratch. Use at own caution, your mileage may vary.
 
 ## Prerequisites
-You need two USB sticks for this deployment.
+You need two USB sticks for the arch deployment.
 
 1. [live environment](https://www.archlinux.org/download/)
 2. [genprov](./genprov.sh) generated volume

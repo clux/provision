@@ -1,6 +1,6 @@
 # See https://just.systems/man/
 SHELLCHECK_OPTS := "-e SC1091 -e SC1090 -e SC1117 -e SC2317 -s bash"
-SHELLCHECKED_FILES := "archboot/*.sh genprov.sh scripts/*.sh DEPLOY"
+SHELLCHECKED_FILES := "scripts/archboot/*.sh scripts/*.sh DEPLOY"
 
 [private]
 default:

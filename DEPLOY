@@ -48,7 +48,7 @@ main() {
     [ -d ~/.gnupg/.git ] || ~/gpg/install.sh
     [ -d ~/.ssh/.git ] || ~/ssh/install.sh
     # Delete the rest
-    rm -rf ~/ssh ~/gpg ~/mumble
+    rm -rf ~/ssh ~/gpg
     # Set up dotfiles
     [ -L ~/.functions ] || setup_dotfiles
   else
