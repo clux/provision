@@ -19,14 +19,14 @@ arch:
   #!/bin/bash
   sudo pacman -Syu
   ./scripts/pacstrap.sh
-  just apply arch -e upgrade_tasks=1 --become
+  just apply arch --become
 # macos specific provision
 [macos]
 mac:
   #!/bin/bash
   brew upgrade
   brew bundle --no-lock --file scripts/Brewfile
-  just apply mac -e upgrade_tasks=1 -v
+  just apply mac -v
 
 # Ansible core provision (everything except ssh/xgd)
 core:
