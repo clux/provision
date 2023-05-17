@@ -21,19 +21,6 @@
       line: '%wheel ALL=(ALL) NOPASSWD: ALL'
       validate: 'visudo -cf %s'
 
-  - name: pacman enable multilib for steam
-    lineinfile:
-      path: /etc/pacman.conf
-      backrefs: yes
-      regexp: '^\#\[multilib\]'
-      line: '[multilib]\nInclude = /etc/pacman.d/mirrorlist'
-
-  - name: pacman enable parallel downloads
-    lineinfile:
-      path: /etc/pacman.conf
-      regexp: '^#ParalllelDownloads ='
-      line: 'ParallelDownloads = 5'
-
   # NB: These scripts fails the first 2/3 times
   - script: scripts/localectl.sh
     register: localectl_result
@@ -43,9 +30,6 @@
     register: timedatectl_result
     changed_when: "timedatectl_result.rc != 0"
     ignore_errors: true
-
-  - name: "Update cache after changing pacman settings"
-    pacman: update_cache=yes
 
   - name: install MESA display drivers and choice dependencies
     pacman:
@@ -92,7 +76,6 @@
       - wofi # wayland lancher
       - wireplumber
       - gammastep # redshift replacement
-      - sddm # guide said sddm-git but old bug they pointed to. pulls in qt5 tho
     when: display_driver == "mesa"
 
   # AUR DEPS FOR HYPRLAND
@@ -101,15 +84,14 @@
       name:
       - waybar-hyprland # customizable Wayland bar
       - wleave-git # wlogout fork
+      - mpvpaper # video wallpaper for wlroots
+      - webcord-bin # discord
+      - google-chrome
+      # theming
+      - catppuccin-gtk-theme-mocha
+      - catppuccin-cursors-mocha
+      - nwg-look
     when: display_driver == "mesa"
-
-  # TODO: window manager here
-
-  - name: install deps to ease setup
-    pacman:
-      name:
-
-      state: installed
 
   - name: clone provision repo
     # TODO: needs a chown {{ user }}:{{ user }} -R /home/{{ user }}/provision

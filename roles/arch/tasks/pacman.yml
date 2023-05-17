@@ -12,3 +12,10 @@
     path: /etc/pacman.conf
     regexp: '#Color'
     line: 'Color'
+
+- name: pacman enable multilib for steam
+  lineinfile:
+    path: /etc/pacman.conf
+    backrefs: yes
+    regexp: '^\#\[multilib\]'
+    line: '[multilib]\nInclude = /etc/pacman.d/mirrorlist'
