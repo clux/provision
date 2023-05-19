@@ -16,6 +16,11 @@
   become: yes
   tags: [arch, core]
 
+- import_tasks: wayland.yml
+  when: ansible_os_family == "Archlinux"
+  become: yes
+  tags: [arch, core]
+
 - import_tasks: linux.yml
   when: ansible_os_family == "Archlinux"
   become: yes

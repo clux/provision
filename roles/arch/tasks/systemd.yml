@@ -18,11 +18,3 @@
 #    name: systemd-resolved
 #    enabled: yes
 #    state: started
-
-# greetd (autologin)
-- name: greetd config dir
-  file: path=/etc/greetd/ state=directory
-- name: greetd config with autologin
-  template: src=templates/greetdconfig.toml dest=/etc/greetd/config.toml
-- name: systemctl enable greetd
-  systemd: name=greetd enabled=yes
