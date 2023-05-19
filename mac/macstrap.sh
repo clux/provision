@@ -10,6 +10,6 @@ if ! which rustup > /dev/null; then
 fi
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
-brew bundle --no-lock --file scripts/Brewfile
+brew bundle --no-lock --file mac/Brewfile
 
 ansible-galaxy collection install community.general

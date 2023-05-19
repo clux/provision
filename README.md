@@ -13,16 +13,16 @@ just pip # python only
 just cargo # cargo only
 ```
 
-Note that apart from language specific package managers (lpms) we install OS packages out-of-band via either [pacstrap](./scripts/pacstrap.sh) or [macstrap](./scripts/macstrap.sh).
+Note that apart from language specific package managers (lpms) we install OS packages out-of-band via either [pacstrap](./arch/pacstrap.sh) or [macstrap](./arch/macstrap.sh).
 
 ## Initial Arch Setup
-This repository also contains a bunch of experimental scripts to set up a machine from scratch. Use at own caution, your mileage may vary.
+This repository also contains a [bunch of experimental scripts](./arch) to set up an arch machine from scratch. Use at own caution, your mileage may vary.
 
 ## Prerequisites
 You need two USB sticks for the arch deployment.
 
 1. [live environment](https://www.archlinux.org/download/)
-2. [genprov](./genprov.sh) generated volume
+2. [genprov](./arch/genprov.sh) generated volume
 
 ## Bootstrap
 Boot into the live environment using EFI boot, mount the provisioning stick on `/prov`, and start the show:

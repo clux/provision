@@ -27,7 +27,7 @@ if [ ! -f ~/.ssh/main_id.gpg ]; then
   echo "Encrypting ssh key"
   gpg -c ~/.ssh/main_id
 fi
-cp archboot/* stick/
+cp arch/* stick/
 cp ~/.ssh/main_id.{pub,gpg} stick/
 sudo umount "${disk}1" || true
 rm -r stick/

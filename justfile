@@ -1,6 +1,6 @@
 # See https://just.systems/man/
 SHELLCHECK_OPTS := "-e SC1091 -e SC1090 -e SC1117 -e SC2317 -s bash"
-SHELLCHECKED_FILES := "scripts/archboot/*.sh scripts/*.sh"
+SHELLCHECKED_FILES := "arch/*.sh mac/*.sh scripts/*.sh"
 
 [private]
 default:
@@ -18,14 +18,14 @@ apply tags *FLAGS:
 arch:
   #!/bin/bash
   sudo pacman -Syu
-  ./scripts/pacstrap.sh
+  ./arch/pacstrap.sh
   just apply arch --become
 # macos specific provision
 [macos]
 mac:
   #!/bin/bash
   brew upgrade
-  brew bundle --no-lock --file scripts/Brewfile
+  brew bundle --no-lock --file mac/Brewfile
   just apply mac -v
 
 # Ansible core provision (everything except ssh/xgd)
