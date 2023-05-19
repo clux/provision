@@ -27,6 +27,7 @@ mac:
   brew upgrade
   brew bundle --no-lock --file mac/Brewfile
   just apply mac -v
+  ./mac/defaults.sh
 
 # Ansible core provision (everything except ssh/xgd)
 core:
