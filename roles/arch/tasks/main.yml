@@ -3,25 +3,25 @@
 
 - import_tasks: pacman.yml
   when: ansible_os_family == "Archlinux"
-  become: yes
+  become: true
   tags: [arch, core]
 
 - import_tasks: docker.yml
   when: ansible_os_family == "Archlinux"
-  become: yes
+  become: true
   tags: [arch, core]
 
 - import_tasks: systemd.yml
   when: ansible_os_family == "Archlinux"
-  become: yes
+  become: true
   tags: [arch, core]
 
 - import_tasks: wayland.yml
   when: ansible_os_family == "Archlinux"
-  become: yes
+  become: true
   tags: [arch, core]
 
 - import_tasks: linux.yml
   when: ansible_os_family == "Archlinux"
-  become: yes
+  become: true
   tags: [arch, core]

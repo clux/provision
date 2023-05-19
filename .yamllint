@@ -11,8 +11,9 @@ rules:
   brackets: # dont care about [a,b,c] vs [ a, b, c ]
     min-spaces-inside: 0
     max-spaces-inside: 1
-  comments: # allow "only" one space before a comment
-    min-spaces-from-content: 1
+  comments: disable
+  comments-indentation: disable
+  document-start: disable
   new-line-at-end-of-file: enable
   new-lines:
     type: unix

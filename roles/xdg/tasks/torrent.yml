@@ -2,7 +2,7 @@
 # xdg
 
 - template: src=templates/sshtorrent.desktop dest=/usr/share/applications/
-  become: yes
+  become: true
   notify: xdg-mime sshtorrent
 
 - template:

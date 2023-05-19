@@ -2,5 +2,5 @@
 # ssh + sshd
 
 - import_tasks: sshd.yml
-  become: yes
+  become: true
   tags: [ssh, core]

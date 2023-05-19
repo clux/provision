@@ -99,5 +99,5 @@
     git:
       repo: https://github.com/clux/provision
       dest: /home/{{ user }}/provision
-      update: yes
+      update: true
     become: true

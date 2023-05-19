@@ -22,8 +22,8 @@
     fstype: "cifs"
     opts: "user={{archbox.user}},password={{archbox.password}},nofail,noauto"
     state: "mounted"
-    boot: no
-  become: yes
+    boot: false
+  become: true
   with_items:
   - music
   - music2

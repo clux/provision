@@ -16,7 +16,7 @@
 # NB: this requires `newgrp docker` or logout
 # DONT DO NEWGRP AS IT WILL SCREW WITH YOUR PRIMARY GROUP
 - name: Add user to docker group
-  user: name={{ user }} groups=docker append=yes
+  user: name={{ user }} groups=docker append=true
 
 - name: systemctl enable docker --user --now
-  systemd: name=docker state=started enabled=yes
+  systemd: name=docker state=started enabled=true

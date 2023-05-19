@@ -4,17 +4,17 @@
 # Services that can run as --user (that haven't auto-started)
 - name: systemctl enable user services
   systemd: name={{ item }} state=started enabled=yes user=yes
-  become: no
+  become: false
   with_items: []
   #- mpd
 
 #- name: Enable pcscd service for yubikey
 #  systemd:
 #    name: pcscd
-#    enabled: yes
+#    enabled: true
 #    state: started
 #- name: Enable systemd-resolved for openvpn
 #  systemd:
 #    name: systemd-resolved
-#    enabled: yes
+#    enabled: true
 #    state: started

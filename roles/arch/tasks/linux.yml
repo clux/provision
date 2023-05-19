@@ -4,14 +4,14 @@
 
 # https://www.phoronix.com/news/Fedora-39-VM-Max-Map-Count
 - name: sysctl vm.max_map_count
-  become: yes
+  become: true
   sysctl:
     name: vm.max_map_count
     value: '2147483642'
     sysctl_set: true
 
 - name: symlink hx -> helix
-  become: yes
+  become: true
   file:
     src: /sbin/helix
     dest: /usr/local/bin/hx

@@ -16,6 +16,6 @@
 - name: pacman enable multilib for steam
   lineinfile:
     path: /etc/pacman.conf
-    backrefs: yes
+    backrefs: true
     regexp: '^\#\[multilib\]'
     line: '[multilib]\nInclude = /etc/pacman.d/mirrorlist'
