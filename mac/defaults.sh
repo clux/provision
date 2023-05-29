@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 set -euo pipefail
 
 osascript -e 'tell application "System Preferences" to quit'
@@ -39,6 +39,7 @@ defaults write com.apple.dock static-only -bool true
 
 defaults write NSGlobalDomain AppleLanguages -array "en-GB"
 defaults write NSGlobalDomain AppleLocale -string "en_GB"
+defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
 defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
 defaults write NSGlobalDomain AppleMetricUnits -bool true
 
