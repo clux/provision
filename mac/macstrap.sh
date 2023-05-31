@@ -12,6 +12,7 @@ fi
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew bundle --no-lock --file mac/Brewfile
+# https://docs.brew.sh/Shell-Completion
 chmod -R go-w "$(brew --prefix)/share"
 
 ansible-galaxy collection install community.general
