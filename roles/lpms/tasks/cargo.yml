@@ -18,6 +18,7 @@
   - cargo-tree
   - cargo-outdated
   - cargo-tarpaulin
+  - cargo-release
   - cargo-audit
   - cargo-expand
   - ytop
