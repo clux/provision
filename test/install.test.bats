@@ -172,7 +172,7 @@ exists() {
   if [[ "${HOSTNAME}" == hprks ]]; then
     npm whoami
   fi
-  [ -f "$HOME/.cargo/credentials" ]
+  [ -f "$HOME/.cargo/credentials.toml" ]
   # only checking docker if daemon is running...
   if command -v docker &> /dev/null; then
     docker info | grep Username
