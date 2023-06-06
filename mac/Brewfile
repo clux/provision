@@ -13,6 +13,7 @@ cask "visual-studio-code"
 cask "background-music"
 cask "vlc"
 cask "font-inconsolata-nerd-font"
+brew "font-liberation" # mostly for linux compat
 
 # gnu tools are massively outdated or missing on mac
 brew "bash"

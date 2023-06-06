@@ -24,6 +24,9 @@ defaults write com.apple.dock autohide-time-modifier -float 0
 # less offensive minimisation effect than genie
 defaults write com.apple.dock mineffect -string "scale"
 
+# show dock on all monitors (might take a few boots)
+defaults write com.apple.dock appswitcher-all-displays -bool true
+
 # don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
 
@@ -102,3 +105,7 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 chflags nohidden ~/Library
 
 ###############################################################################
+
+killall SystemUIServer || true
+killall Finder || true
+killall Dock || true
