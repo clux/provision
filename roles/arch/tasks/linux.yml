@@ -27,7 +27,7 @@
 - name: net capabilities on bandwhich
   capabilities: path=/sbin/bandwhich capability=cap_net_raw,cap_net_admin+ep
 
-- name: pulse reduce idle timeout
+- name: pulseaudio disable source/sink idle suspend
   become: true
   lineinfile:
     path: /etc/pulse/default.pa
