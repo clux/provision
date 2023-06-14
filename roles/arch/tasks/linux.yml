@@ -26,3 +26,10 @@
   - "cap_net_raw+ep"
 - name: net capabilities on bandwhich
   capabilities: path=/sbin/bandwhich capability=cap_net_raw,cap_net_admin+ep
+
+- name: pulse reduce idle timeout
+  become: true
+  lineinfile:
+    path: /etc/pulse/default.pa
+    regexp: 'load-module module-suspend-on-idle'
+    line: '###load-module module-suspend-on-idle'
