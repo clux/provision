@@ -77,6 +77,7 @@
       - wofi # wayland lancher
       - wireplumber
       - gammastep # redshift replacement
+      - xdg-user-dirs # run xdg-user-dirs-update if insufficient
     when: display_driver == "mesa"
 
   # AUR DEPS FOR HYPRLAND
