@@ -214,3 +214,9 @@ exists() {
   run gpg --list-keys
   echo "$output" && echo "$output" | grep -iq "\[ultimate\] Eirik"
 }
+
+@test "ssh" {
+  # verify sshd works against a keychain loaded private key
+  run ssh -q localhost -i ~/.ssh/main_id -p 8702 -o StrictHostKeyChecking=no echo ok
+  echo "$output" | grep "ok"
+}

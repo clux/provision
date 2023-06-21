@@ -1,20 +1,14 @@
 # Security - public keys only
 PasswordAuthentication no
-ChallengeResponseAuthentication no
+KbdInteractiveAuthentication no
 AuthenticationMethods publickey
 AuthorizedKeysFile .ssh/authorized_keys
+PermitRootLogin no
 X11Forwarding no
-AllowTcpForwarding yes
 
 # Misc
 Port 8702
 PrintMotd no
 LoginGraceTime 30
-
-# Privileges
-PermitRootLogin no
-{% if ansible_os_family == "Archlinux" %}
-Subsystem sftp /usr/lib/ssh/sftp-server
-{% elif ansible_os_family == "Debian" %}
-Subsystem sftp /usr/lib/openssh/sftp-server
-{% endif %}
+AllowTcpForwarding yes
+Subsystem sftp internal-sftp
