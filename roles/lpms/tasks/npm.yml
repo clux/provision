@@ -1,6 +1,9 @@
 ---
 # npm playbook - install cli tools globally
 
+# We generally do not develop js anymore so this is currently empty
+# For CLIs, prefer stable versions from pacman/brew.
+
 - name: npm config set prefix ~/.node_modules
   lineinfile:
     dest: /home/{{ user }}/.npmrc
@@ -12,11 +15,11 @@
 
 - name: Install global npm dependencies
   npm: name={{ item }} state={{ npm_state }} global=true
-  with_items:
+  with_items: []
   #- faucet
   #- eslint
   #- jshint
   #- asciify
   #- marked-man
-  - reveal-md
-  - zalgolize
+  #- reveal-md
+  #- zalgolize

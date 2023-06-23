@@ -1,21 +1,23 @@
 ---
 # pip playbook - install cli tools in pip user dir
 
-# NB: pip is managed by pacman
+# We generally do not develop much with python so this is currently empty
+# For CLIs, prefer stable versions from pacman/brew.
+
+# Generally there is a tradeoff to put things in --user packages
+# (provided import precedence allows for this)
+# to have a faster upgrade cadence than pacman.
+# However, after the --break-system-packages change in https://peps.python.org/pep-0668/
+# it is generally recommended not to do this, and don't care that much about this.
+# If we find out that we need a more up-to-date yt-dlp then we can always override later.
 
 - set_fact:
     pip_state: "{{ 'latest' if (upgrade_tasks | default(false)) else 'present' }}"
 
 # Some of these technically do exist as well in pacman, but want some updates faster
 - name: Install dependencies
-  pip: name={{ item }} extra_args='--user' state={{pip_state}}
-  with_items:
-  #- ghp-import
-  #- pyaml
-  - yq
-  - requests
-  - yamllint
-  - yt-dlp
-  #- pipenv
-  #- pytest
-  #- magic-wormhole
+  pip: name={{ item }} extra_args='--user --break-system-packages' state={{pip_state}}
+  with_items: []
+  #- yq
+  #- requests
+  #- yt-dlp

@@ -9,8 +9,7 @@ If you already have a desktop, then you can just run tag specific runners:
 ```sh
 just core # generally everything, ask for sudo
 just arch # arch specific only, ask for sudo
-just pip # python only
-just cargo # cargo only
+just cargo # install cargo clis not in package mangers
 ```
 
 Note that apart from language specific package managers (lpms) we install OS packages out-of-band via either [pacstrap](./arch/pacstrap.sh) or [macstrap](./arch/macstrap.sh).

@@ -40,7 +40,6 @@ term=(
   github-cli
   starship
   helix
-  asciinema
   terraform
   datamash
   genact
@@ -50,6 +49,27 @@ term=(
   #zsh-fast-syntax-highlighting #aur atm
 )
 install_tools "term" "${term[@]}"
+
+# partial dev deps + python tooling evacuated from pip install --user
+# after the --break-system-packages change
+python=(
+  # tools
+  asciinema
+  yamllint
+  yt-dlp
+  yq
+  ranger
+  # development
+  python-pip
+  #python-pipenv
+  python-requests
+  #python-pytest
+  #ipython
+  pypy3
+  ruff
+  mypy
+)
+install_tools "python" "${python[@]}"
 
 social=(
   hugo
@@ -176,7 +196,6 @@ filesystem=(
   #ntfs-3g
   #nemo-fileroller
   #nemo-share
-  ranger
   #joshuto (maybe.. ranger replacement on aur)
   #gvfs-smb
   #mtpfs # kindle

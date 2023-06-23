@@ -33,14 +33,6 @@ mac:
 core:
   just apply core -e upgrade_tasks=1 --become
 
-# Ansible upgrade python packages
-pip:
-  just apply pip -e upgrade_tasks=1
-
-# Ansible upgrade npm packages
-npm:
-  just apply npm -e upgrade_tasks=1
-
 # Ansible upgrade rust packages
 cargo:
   just apply cargo -e upgrade_tasks=1
