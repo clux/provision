@@ -2,3 +2,4 @@
 
 - name: xdg-mime sshtorrent
   command: xdg-mime default sshtorrent.desktop x-scheme-handler/magnet
+  changed_when: true # TODO: fixme

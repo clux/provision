@@ -20,5 +20,5 @@ rules:
   trailing-spaces: enable
   indentation: # lists start with hyphen on the same indentation level as parent
     spaces: 2
-    indent-sequences: no
-    check-multi-line-strings: no
+    indent-sequences: false
+    check-multi-line-strings: false

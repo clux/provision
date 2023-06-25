@@ -1,20 +1,23 @@
 ---
 # xdg
 
-- template: src=templates/sshtorrent.desktop dest=/usr/share/applications/
+- template:
+    src: templates/sshtorrent.desktop
+    dest: /usr/share/applications/
+    mode: 0644
   become: true
   notify: xdg-mime sshtorrent
 
 - template:
-    src=templates/magnet
-    dest=/home/{{ user }}/.local/bin/magnet
-    owner={{ user }}
-    mode="u+rwx"
+    src: templates/magnet
+    dest: /home/{{ user }}/.local/bin/magnet
+    owner: '{{ user }}'
+    mode: "u+rwx"
   when: inventory_hostname != "broxy"
 
 - template:
-    src=templates/magnet.local
-    dest=/home/{{ user }}/.local/bin/magnet
-    owner={{ user }}
-    mode="u+rwx"
+    src: templates/magnet.local
+    dest: /home/{{ user }}/.local/bin/magnet
+    owner: '{{ user }}'
+    mode: "u+rwx"
   when: inventory_hostname == "broxy"

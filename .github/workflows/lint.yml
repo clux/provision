@@ -19,5 +19,3 @@ jobs:
     - run: env | grep SHELLCHECK
     - run: just lint
     - uses: ansible/ansible-lint-action@v6
-      with:
-        path: 'site.yml bootstrap.yml'
