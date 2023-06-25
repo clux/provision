@@ -50,4 +50,5 @@ lint:
 
 # run full lint plus bats test
 test: lint
+  ansible-lint site.yml bootstrap.yml
   bats test

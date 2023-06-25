@@ -2,7 +2,7 @@
 # fstab for kjttks
 
 - name: mount ntfs disks
-  mount:
+  ansible.posix.mount:
     name: "/media/{{ item.name }}"
     src: "{{ item.src }}"
     fstype: ntfs-3g
@@ -13,7 +13,7 @@
   - { src: /dev/sdd3, name: zorn }
 
 - name: mount ext4 disks
-  mount:
+  ansible.posix.mount:
     name: "/media/{{ item.name }}"
     src: "{{ item.src }}"
     fstype: ext4

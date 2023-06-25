@@ -5,7 +5,7 @@
 # https://www.phoronix.com/news/Fedora-39-VM-Max-Map-Count
 - name: sysctl vm.max_map_count
   become: true
-  sysctl:
+  ansible.posix.sysctl:
     name: vm.max_map_count
     value: '2147483642'
     sysctl_set: true
@@ -20,12 +20,16 @@
     state: link
 
 - name: net capabilities on nethogs
-  capabilities: path=/sbin/nethogs capability={{ item }}
+  community.general.capabilities:
+    path: '/sbin/nethogs'
+    capability: '{{ item }}'
   with_items:
   - "cap_net_admin+ep"
   - "cap_net_raw+ep"
 - name: net capabilities on bandwhich
-  capabilities: path=/sbin/bandwhich capability=cap_net_raw,cap_net_admin+ep
+  community.general.capabilities:
+    path: /sbin/bandwhich
+    capability: cap_net_raw,cap_net_admin+ep
 
 - name: pulseaudio disable source/sink idle suspend
   become: true

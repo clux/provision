@@ -6,7 +6,7 @@ on:
       - ansible
 
 jobs:
-  shellcheck:
+  lint:
     runs-on: ubuntu-latest
     env:
       SHELLCHECK_OPTS: "-e SC1091 -e SC1090 -e SC1117 -s bash"
@@ -18,3 +18,6 @@ jobs:
     - run: shellcheck --version
     - run: env | grep SHELLCHECK
     - run: just lint
+    - uses: ansible/ansible-lint-action@v6
+      with:
+        path: 'site.yml bootstrap.yml'

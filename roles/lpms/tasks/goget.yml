@@ -6,7 +6,8 @@
 
 - name: install binary packages
   command: go get -u -v {{ item.src }}
-  #creates: "/home/{{ user }}/.go/bin/{{ item.bin }}"
+  args:
+    creates: "/home/{{ user }}/.go/bin/{{ item.bin }}"
   when: upgrade_tasks | default(false)
   with_items: []
   #- { src: github.com/genuinetools/apk-file, bin: apk-file }

@@ -3,7 +3,11 @@
 
 # Services that can run as --user (that haven't auto-started)
 - name: systemctl enable user services
-  systemd: name={{ item }} state=started enabled=yes user=yes
+  systemd:
+    name: '{{ item }}'
+    state: started
+    enabled: true
+    scope: 'user'
   become: false
   with_items: []
   #- mpd

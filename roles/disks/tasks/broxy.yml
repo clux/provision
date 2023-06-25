@@ -2,7 +2,7 @@
 # fstab for broxy
 
 - name: mount ntfs disks
-  mount:
+  ansible.posix.mount:
     name: "/media/{{ item.name }}"
     src: "{{ item.src }}"
     fstype: ntfs-3g
@@ -16,11 +16,11 @@
 - include_vars: vars/archbox.yml
 
 - name: archbox mounts
-  mount:
+  ansible.posix.mount:
     name: "/media/archbox/{{ item }}"
     src: "//192.168.100.3/{{ item }}"
     fstype: "cifs"
-    opts: "user={{archbox.user}},password={{archbox.password}},nofail,noauto"
+    opts: "user={{ archbox.user }},password={{ archbox.password }},nofail,noauto"
     state: "mounted"
     boot: false
   become: true

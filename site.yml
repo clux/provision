@@ -1,5 +1,6 @@
 ---
-- connection: local
+- name: provision machine post-bootstrap
+  connection: local
   hosts: all
   user: "{{ user }}"
   gather_facts: true

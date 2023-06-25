@@ -5,18 +5,26 @@
   file:
     path: /etc/systemd/system/docker.service.d
     state: directory
+    mode: 0755
 
 # Tweak a few lines in config - shows up in systemctl show docker
 - name: docker system config override
   template:
     src: "templates/docker.service.override"
     dest: "/etc/systemd/system/docker.service.d/override.conf"
+    mode: 0644
 
 # Docker - create the docker group (gpasswd -a $USER docker)
 # NB: this requires `newgrp docker` or logout
 # DONT DO NEWGRP AS IT WILL SCREW WITH YOUR PRIMARY GROUP
 - name: Add user to docker group
-  user: name={{ user }} groups=docker append=true
+  user:
+    name: '{{ user }}'
+    groups: docker
+    append: true
 
 - name: systemctl enable docker --user --now
-  systemd: name=docker state=started enabled=true
+  systemd:
+    name: docker
+    state: started
+    enabled: true

@@ -14,7 +14,10 @@
     npm_state: "{{ 'latest' if (upgrade_tasks | default(false)) else 'present' }}"
 
 - name: Install global npm dependencies
-  npm: name={{ item }} state={{ npm_state }} global=true
+  community.general.npm:
+    name: '{{ item }}'
+    state: '{{ npm_state }}'
+    global: true
   with_items: []
   #- faucet
   #- eslint

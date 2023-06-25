@@ -3,8 +3,16 @@
 
 # greetd (autologin)
 - name: greetd config dir
-  file: path=/etc/greetd/ state=directory
+  file:
+    path: /etc/greetd/
+    state: directory
+    mode: 0755
 - name: greetd config with autologin
-  template: src=templates/greetdconfig.toml dest=/etc/greetd/config.toml
+  template:
+    src: templates/greetdconfig.toml
+    dest: /etc/greetd/config.toml
+    mode: 0644
 - name: systemctl enable greetd
-  systemd: name=greetd enabled=yes
+  systemd:
+    name: greetd
+    enabled: true
