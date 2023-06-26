@@ -3,7 +3,7 @@ broxy           user=bro  display_driver=nvidia
 hprks           user=clux display_driver=mesa
 
 [mac]
-cluxm1.local    user=cluxm1
+cluxm1.local    user=clux
 
 [arch:vars]
 ansible_python_interpreter="/sbin/python"
