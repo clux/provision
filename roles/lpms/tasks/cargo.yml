@@ -13,13 +13,8 @@
     name: '{{ item }}'
     state: "{{ pkg_state }}"
   with_items:
-  - cargo-edit
-  - cargo-tree
-  - cargo-outdated
-  - cargo-tarpaulin
-  - cargo-release
-  - cargo-audit
-  - cargo-expand
+  - cargo-tarpaulin # not in brew (bad mac support?)
+  - cargo-expand # not in brew
   - ytop
   - toml2json
-  - fastmod
+  - fastmod # not in pacman, but in brew
