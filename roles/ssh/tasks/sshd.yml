@@ -5,15 +5,12 @@
     src: templates/motd.sh
     dest: '/etc/profile.d/motd.sh'
     mode: 0644
+    validate: 'shellcheck %s'
 
 - template:
     src: templates/sshd_config.j2
     dest: '/etc/ssh/sshd_config'
     mode: 0644
+    validate: 'sshd -T -f %s'
   notify:
   - restart sshd
-
-- ansible.builtin.service:
-    name: sshd
-    state: started
-    enabled: true
