@@ -136,7 +136,7 @@ exists() {
   exists rustc
   rustup which cargo | grep stable
   exists cargo-clippy
-  exists cargo-add
+  exists cargo-expand
   exists cargo-fmt
   exists rust-analyzer
   hx --health rust | grep Binary | grep "rust-analyzer"
