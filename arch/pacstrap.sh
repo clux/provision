@@ -11,44 +11,52 @@ install_tools() {
   sudo pacman -S --needed ${@:2}
 }
 
-term=(
-  alacritty
-  git
-  bc
-  choose
-  jq
+shell=(
   bash-bats
-  ripgrep
-  exa
-  tokei
-  fd
-  bat
-  grex
-  xsv
-  hyperfine
-  vivid
-  fzf
-  #skim
-  sd
-  zoxide
-  protobuf
+  keychain
+  pass
+  pwgen
   man-pages
   man-db
-  procs
-  dust
-  git-delta
-  github-cli
-  starship
-  helix
-  terraform
-  datamash
-  genact
-  zellij
   zsh
   #zsh-autosuggestions #zinit
   #zsh-fast-syntax-highlighting #aur atm
 )
-install_tools "term" "${term[@]}"
+install_tools "shell" "${shell[@]}"
+
+# collecting tools by language
+rust=(
+  # tools
+  alacritty
+  bat
+  choose
+  ripgrep
+  exa
+  tokei
+  fd
+  grex
+  git-delta
+  xsv
+  hyperfine
+  vivid
+  sd
+  procs
+  dust
+  starship
+  zoxide
+  bandwhich
+  # skim
+  #joshuto (maybe.. ranger rust replacement on aur)
+  ncspot
+  helix
+  genact
+  zellij
+  # development
+  rustup
+  rust-analyzer
+)
+install_tools "rust" "${rust[@]}"
+
 
 # partial dev deps + python tooling evacuated from pip install --user
 # after the --break-system-packages change
@@ -71,24 +79,66 @@ python=(
 )
 install_tools "python" "${python[@]}"
 
-social=(
+go=(
+  # tools
+  fzf
+  docker
+  docker-buildx
   hugo
+  #docker-compose (can generally use tilt)
+  #ctop
+  kustomize
+  kubectl
+  helm
+  k9s
+  github-cli
+  terraform
+  # development
+  go
+)
+install_tools "go" "${go[@]}"
+
+ccpp=(
+  # tools
+  bc
+  btop
+  datamash
+  git
+  jq
+  powertop
+  protobuf
+  # audio
+  mpv
+  playerctl
+  #mpv-mpris (maybe.. aur)
+  #mpd - using mpris/playerctl in general
+  #ncmpcpp - ditto, replaced by ncspot
+  #vlc
+  # development
+  cmake
+  clang
+  compiler-rt
+  #llvm
+  #musl
+)
+install_tools "ccpp" "${ccpp[@]}"
+
+# -----------------------------------------------------------------------------
+# misc desktop related that's not classified by language (generally c/cpp)
+# -----------------------------------------------------------------------------
+
+biggui=(
+  chromium
+  firefox
+  #chrome from aur
+  musescore
+  steam
   signal-desktop
   #discord (webcord on wayland)
 )
-install_tools "social" "${social[@]}"
+install_tools "biggui" "${biggui[@]}"
 
-media=(
-  #AUDIO/VIDEO RELATED
-  #musescore
-  ncspot
-  #mpd
-  #ncmpcpp
-  playerctl
-  #vlc
-  mpv
-  #mpv-mpris (maybe.. aur)
-  #IMAGE RELATED
+gfx=(
   feh
   gimp
   #gthumb (lots of deps..)
@@ -96,15 +146,7 @@ media=(
   #gedit
   #gphoto2
 )
-install_tools "media" "${media[@]}"
-
-browser=(
-  chromium
-  firefox
-  #chrome from aur
-  steam
-)
-install_tools "browser/electron" "${browser[@]}"
+install_tools "gfx" "${gfx[@]}"
 
 fonts=(
   ttf-ubuntu-font-family
@@ -117,15 +159,6 @@ fonts=(
 )
 install_tools "fonts" "${fonts[@]}"
 
-sec=(
-  keychain
-  pass
-  pwgen
-  #yubikey-manager
-  #yubikey-manager-qt
-)
-install_tools "sec" "${sec[@]}"
-
 system=(
   openssh
   rsync
@@ -133,6 +166,8 @@ system=(
   perf
   lsof
   lm_sensors # temperature/sensor dump from motherboard
+  #yubikey-manager
+  #yubikey-manager-qt
 )
 install_tools "system" "${system[@]}"
 
@@ -144,7 +179,6 @@ network=(
   #bind-tools  # contains dig
   #traceroute
   #bmon
-  bandwhich
   #trickle
   nethogs
   #trickle (aur)
@@ -155,54 +189,16 @@ network=(
 )
 install_tools "network" "${network[@]}"
 
-programming=(
-  # RUST
-  rustup
-  rust-analyzer
-  # PYTHON
-  python-pip
-  #ipython
-  pypy3
-  ruff
-  mypy
-  # C/C++
-  cmake
-  clang
-  compiler-rt
-  #llvm
-  #musl
-  # CURSED
-  go
-  #nodejs
-  #npm
-  #yarn
-)
-install_tools "programming" "${programming[@]}"
-
-cloud=(
-  docker
-  docker-buildx
-  #docker-compose (can generally use tilt)
-  #ctop
-  #conntrack-tools # k8s > 1.18 dependency
-  kustomize
-  kubectl
-  helm
-  k9s
-)
-install_tools "cloud" "${cloud[@]}"
-
 filesystem=(
   #ntfs-3g
   #nemo-fileroller
   #nemo-share
-  #joshuto (maybe.. ranger replacement on aur)
   #gvfs-smb
   #mtpfs # kindle
   #android-file-transfer
   #gptfdisk
   udisks2 # easy usb mount
-  udiskie # auto udisk2
+  udiskie # auto udisk2 - python!
   # ebooks
   #poppler
   #calibre
