@@ -1,21 +1,20 @@
 ---
 # pacman config
 
-- name: pacman parallel downloads
+- name: pacman configuration
   lineinfile:
     path: /etc/pacman.conf
-    regexp: '^#ParalllelDownloads ='
+    line: "{{ item.line }}"
+    regexp: "{{ item.regexp }}"
+  with_items:
+  - regexp: '^#ParalllelDownloads ='
     line: 'ParallelDownloads = 5'
-
-- name: pacman colors
-  lineinfile:
-    path: /etc/pacman.conf
-    regexp: '#Color'
+  - regexp: '#Color'
     line: 'Color'
 
-- name: pacman enable multilib for steam
+- name: pacman multilib
   lineinfile:
     path: /etc/pacman.conf
-    backrefs: true
     regexp: '^\#\[multilib\]'
     line: '[multilib]\nInclude = /etc/pacman.d/mirrorlist'
+    backrefs: true

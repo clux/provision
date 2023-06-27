@@ -13,7 +13,7 @@
   notify:
   - restart sshd
 
-- service:
+- ansible.builtin.service:
     name: sshd
     state: started
     enabled: true
