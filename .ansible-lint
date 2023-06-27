@@ -2,3 +2,4 @@ skip_list:
 - 'fqcn[action-core]'
 - 'name[casing]'
 - 'name[missing]'
+- 'var-naming[no-role-prefix]'

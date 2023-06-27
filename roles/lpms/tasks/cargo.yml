@@ -4,9 +4,9 @@
 # fetch stable toolchain
 - name: rustup update stable
   command: rustup update stable
-  register: stable_output
+  register: stable_rust_output
   changed_when:
-  - "'downloading' in stable_output.stderr"
+  - "'downloading' in stable_rust_output.stderr"
 
 - name: install cargo modules
   community.general.cargo:
