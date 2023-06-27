@@ -4,6 +4,8 @@
   hosts: all
   user: "{{ user }}"
   gather_facts: true
+  vars:
+    pkg_state: "{{ 'latest' if (upgrade_tasks | default(false)) else 'present' }}"
   roles:
   - { role: arch, when: ansible_os_family == "Archlinux" }
   - disks

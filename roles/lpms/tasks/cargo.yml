@@ -8,13 +8,10 @@
   changed_when:
   - "'downloading' in stable_output.stderr"
 
-- ansible.builtin.set_fact:
-    cargo_state: "{{ 'latest' if (upgrade_tasks | default(false)) else 'present' }}"
-
 - name: install cargo modules
   community.general.cargo:
     name: '{{ item }}'
-    state: '{{ cargo_state }}'
+    state: "{{ pkg_state }}"
   with_items:
   - cargo-edit
   - cargo-tree

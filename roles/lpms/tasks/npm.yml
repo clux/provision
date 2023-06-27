@@ -10,13 +10,10 @@
     regexp: '^prefix='
     line: 'prefix=/home/{{ user }}/.node_modules'
 
-- ansible.builtin.set_fact:
-    npm_state: "{{ 'latest' if (upgrade_tasks | default(false)) else 'present' }}"
-
 - name: Install global npm dependencies
   community.general.npm:
     name: '{{ item }}'
-    state: '{{ npm_state }}'
+    state: "{{ pkg_state }}"
     global: true
   with_items: []
   #- faucet
