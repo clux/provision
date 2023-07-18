@@ -37,3 +37,9 @@
     path: /etc/pulse/default.pa
     regexp: 'load-module module-suspend-on-idle'
     line: '###load-module module-suspend-on-idle'
+
+- name: make cargo link with mold
+  template:
+    src: templates/cargo-config.toml
+    dest: /home/{{ user }}/.cargo/config.toml
+    mode: 0644
