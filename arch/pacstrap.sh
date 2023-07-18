@@ -122,6 +122,7 @@ ccpp=(
   cmake
   clang
   compiler-rt
+  mold
   #llvm
   #musl
 )
