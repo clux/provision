@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 # One time pacman dependency install script
 # Meant to run after a fresh arch install
@@ -58,6 +59,7 @@ rust=(
   cargo-outdated
   cargo-edit
   cargo-audit
+  cargo-deny
 )
 install_tools "rust" "${rust[@]}"
 
