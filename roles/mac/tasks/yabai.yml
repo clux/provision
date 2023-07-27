@@ -1,0 +1,13 @@
+---
+# yabai tasks
+
+- name: hash yabai executable
+  command: shasum -a 256 {{ brewbin }}/yabai
+  register: yabai_hash
+
+# https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
+- name: allow yabai to sudo without pass
+  lineinfile:
+    dest: /etc/sudoers
+    line: '{{ user }} ALL=(root) NOPASSWD: sha256:{{ yabai_hash.stdout | first }} {{ brewbin }}/yabai --load-sa'
+    validate: 'visudo -cf %s'

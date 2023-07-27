@@ -1,0 +1,12 @@
+---
+# Core Mac Setup
+
+- import_tasks: system.yml
+  when: ansible_os_family == "Darwin"
+  become: true
+  tags: [mac, core]
+
+- import_tasks: yabai.yml
+  when: ansible_os_family == "Darwin"
+  become: true
+  tags: [mac, core]
