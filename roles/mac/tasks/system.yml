@@ -1,5 +1,13 @@
 ---
 
+
+- name: allow admin users to sudo without pass
+  lineinfile:
+    dest: /etc/sudoers
+    line: '%admin ALL=(ALL) NOPASSWD: ALL'
+    regexp: '^%admin'
+    validate: 'visudo -cf %s'
+
 # sysctl stuff
 # requires a bit of faff on mac
 # https://gist.github.com/pythoninthegrass/8073e5e3b24f385c9d9b712f6f243982
