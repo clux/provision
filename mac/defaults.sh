@@ -37,6 +37,13 @@ defaults write com.apple.dock show-recents -bool false
 defaults write com.apple.dock static-only -bool true
 
 ###############################################################################
+# accessibility
+###############################################################################
+
+defaults write com.apple.universalaccess reduceMotion -bool true
+defaults write com.apple.universalaccess slowKey -bool false
+
+###############################################################################
 # locale                                                                      #
 ###############################################################################
 
