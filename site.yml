@@ -6,8 +6,10 @@
   gather_facts: true
   vars:
     pkg_state: "{{ 'latest' if (upgrade_tasks | default(false)) else 'present' }}"
+    brewbin: /opt/homebrew/bin
   roles:
   - { role: arch, when: ansible_os_family == "Archlinux" }
+  - { role: mac, when: ansible_os_family == "Darwin" }
   - disks
   - lpms
   - docker

@@ -62,6 +62,7 @@ brew "zoxide"
 brew "choose-rust"
 brew "git-delta"
 brew "gh"
+brew "gum"
 brew "ncspot"
 brew "keychain"
 brew "zola"
@@ -92,4 +93,4 @@ brew "kdash-rs/kdash/kdash"
 brew "homeport/tap/dyff"
 brew "fluxcd/tap/flux"
 brew "int128/kubelogin/kubelogin"
-brew "koekeishiya/formulae/yabai" # NB: yabai --install-service + add accessibility + startup perms as needed
+brew "koekeishiya/formulae/yabai" # see roles/mac/tasks/yabai

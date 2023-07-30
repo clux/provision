@@ -22,6 +22,7 @@
     lineinfile:
       dest: /etc/sudoers
       line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+      regexp: '^%wheel'
       validate: 'visudo -cf %s'
 
   # NB: These scripts fails the first 2/3 times

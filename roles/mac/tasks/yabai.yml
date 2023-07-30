@@ -1,0 +1,27 @@
+---
+# yabai tasks
+
+- name: hash yabai executable
+  shell: shasum -a 256 {{ brewbin }}/yabai
+  register: yabai_hash # sha256 hash + path to yabai
+
+# https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
+# might need limiting SIP + setting nvram boot params to work - but we're adding it anyway
+# https://github.com/koekeishiya/yabai/wiki/Disabling-System-Integrity-Protection
+- name: allow yabai to sudo without pass
+  lineinfile:
+    dest: /etc/sudoers
+    line: '{{ user }} ALL=(root) NOPASSWD: sha256:{{ yabai_hash.stdout }} --load-sa'
+    regexp: 'yabai --load-sa$'
+    validate: 'visudo -cf %s'
+  register: yabai_sudo_updated
+
+- name: "Stop service yabai (if started)"
+  command: yabai --stop-service
+  ignore_errors: true
+  when: yabai_sudo_updated
+
+# NB: this needs accessbility + startup perms added first time
+- name: "Start service yabai"
+  command: yabai --start-service
+  when: yabai_sudo_updated
