@@ -4,3 +4,7 @@ skip_list:
 - 'name[missing]'
 - 'var-naming[no-role-prefix]'
 - 'no-handler'
+# make these not fail ci because github actions lint the workflow yamls...
+warn_list:
+- 'yaml[indentation]'
+- 'yaml[truthy]'
