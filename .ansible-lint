@@ -3,3 +3,4 @@ skip_list:
 - 'name[casing]'
 - 'name[missing]'
 - 'var-naming[no-role-prefix]'
+- 'no-handler'

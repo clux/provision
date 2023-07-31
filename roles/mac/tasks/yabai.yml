@@ -2,8 +2,10 @@
 # yabai tasks
 
 - name: hash yabai executable
-  shell: shasum -a 256 {{ brewbin }}/yabai
+  command:
+    cmd: shasum -a 256 {{ brewbin }}/yabai
   register: yabai_hash # sha256 hash + path to yabai
+  changed_when: false
 
 # https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
 # might need limiting SIP + setting nvram boot params to work - but we're adding it anyway
@@ -14,14 +16,19 @@
     line: '{{ user }} ALL=(root) NOPASSWD: sha256:{{ yabai_hash.stdout }} --load-sa'
     regexp: 'yabai --load-sa$'
     validate: 'visudo -cf %s'
-  register: yabai_sudo_updated
+  register: yabai_sudoers
 
 - name: "Stop service yabai (if started)"
   command: yabai --stop-service
-  ignore_errors: true
-  when: yabai_sudo_updated
+  register: stop_result
+  failed_when:
+  - stop_result.rc != 0
+  - '"Could not find service" not in stop_result.stdout'
+  when: yabai_sudoers.changed
+  changed_when: true
 
 # NB: this needs accessbility + startup perms added first time
 - name: "Start service yabai"
   command: yabai --start-service
-  when: yabai_sudo_updated
+  when: yabai_sudoers.changed
+  changed_when: true
