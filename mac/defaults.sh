@@ -24,7 +24,7 @@ defaults write com.apple.dock autohide-time-modifier -float 0
 # less offensive minimisation effect than genie
 defaults write com.apple.dock mineffect -string "scale"
 
-# show dock on all monitors (might take a few boots)
+# show dock on all monitors (sometimes works after some boots, but stopped for me)
 defaults write com.apple.dock appswitcher-all-displays -bool true
 
 # don’t automatically rearrange Spaces based on most recent use
