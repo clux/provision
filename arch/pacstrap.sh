@@ -211,3 +211,9 @@ filesystem=(
   #calibre
 )
 install_tools "filesystem" "${filesystem[@]}"
+
+# TODO: aur
+# shellcheck disable=SC2034
+aur=(
+  marksman-bin # f# markdown helper for helix
+)

@@ -140,6 +140,7 @@ exists() {
   exists cargo-fmt
   exists rust-analyzer
   hx --health rust | grep Binary | grep "rust-analyzer"
+  hx --health markdown | grep marksman
 
   # New stable every 6th Thursday, ensure we're not more than 7 weeks behind
   if [[ "${OSTYPE}" =~ "darwin" ]]; then
