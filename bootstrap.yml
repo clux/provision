@@ -88,6 +88,7 @@
       - wofi # wayland lancher
       - wireplumber
       - gammastep # redshift replacement
+      - waybar
       - xdg-user-dirs # run xdg-user-dirs-update if insufficient
     when: display_driver == "mesa"
 
@@ -95,7 +96,6 @@
   #- name: install aur extras
   #   aur:
   #   name:
-  #   - waybar-hyprland # customizable Wayland bar
   #   - wleave-git # wlogout fork
   #   - mpvpaper # video wallpaper for wlroots
   #   - webcord-bin # discord
