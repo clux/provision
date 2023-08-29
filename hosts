@@ -1,9 +1,9 @@
 [arch]
-broxy           user=bro  display_driver=nvidia
-hprks           user=clux display_driver=mesa
+broxy     user=bro  display_driver=nvidia
+hprks     user=clux display_driver=mesa
 
 [mac]
-cluxm1.local    user=clux
+cluxm1    user=clux
 
 [arch:vars]
 ansible_python_interpreter="/sbin/python"
