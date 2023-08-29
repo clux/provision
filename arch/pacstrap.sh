@@ -46,6 +46,7 @@ rust=(
   starship
   zoxide
   bandwhich
+  lychee
   # skim
   #joshuto (maybe.. ranger rust replacement on aur)
   ncspot
