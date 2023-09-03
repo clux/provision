@@ -1,6 +1,7 @@
 # See https://just.systems/man/
 SHELLCHECK_OPTS := "-e SC1091 -e SC1090 -e SC1117 -e SC2317 -s bash"
 SHELLCHECKED_FILES := "arch/*.sh mac/*.sh scripts/*.sh"
+HOST := if os() == "macos" { `scutil --get LocalHostName` } else { "$HOSTNAME" }
 
 [private]
 default:
@@ -8,10 +9,9 @@ default:
 
 # Ansible provision with arbitrary tags and flags.
 apply tags *FLAGS:
-  #/bin/bash
   @# Available flags: -v -e upgrade_tasks=1 --become
   @# Available tags: see 'rg tags roles/'
-  ansible-playbook -i hosts -l "${HOSTNAME}" site.yml --tags="{{tags}}" {{FLAGS}}
+  ansible-playbook -i hosts -l "{{HOST}}" site.yml --tags="{{tags}}" {{FLAGS}}
 
 # arch specific provision
 [linux]
