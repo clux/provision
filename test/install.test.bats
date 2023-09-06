@@ -138,19 +138,22 @@ exists() {
   exists cargo-clippy
   exists cargo-expand
   exists cargo-fmt
+  exists yq # yq is not go, and polyfills the old python one
+  yq --help | rg "Rust implementation"
+
   exists rust-analyzer
-  hx --health rust | grep Binary | grep "rust-analyzer"
-  hx --health markdown | grep marksman
+  hx --health rust | rg "rust-analyzer"
+  hx --health markdown | rg marksman
 
   # New stable every 6th Thursday, ensure we're not more than 7 weeks behind
   if [[ "${OSTYPE}" =~ "darwin" ]]; then
-    date="$(which gdate)" # for some reason not being picked up in tests
+    DATE="$(which gdate)" # for some reason not being picked up in tests
   else
-    date="$(which date)"
+    DATE="$(which date)"
   fi
-  local -r stable=$(rustup run stable rustc --version | grep -oE "[0-9]{4}\-[0-9]{2}\-[0-9]{2}")
-  local -r olddate=$($date +"%Y-%m-%d" -d"-7 weeks")
-  [ "$($date -d $stable +%s)" -ge "$($date -d $olddate +%s)" ]
+  local -r stable=$(rustup run stable rustc --version | grep -oE "[0-9]{4}-[0-9]{2}-[0-9]{2}")
+  local -r olddate=$(${DATE} +"%Y-%m-%d" -d"-7 weeks")
+  [ "$(${DATE} -d $stable +%s)" -ge "$(${DATE} -d $olddate +%s)" ]
 }
 
 @test "python" {
@@ -164,9 +167,6 @@ exists() {
   exists yamllint
   exists yt-dlp
   exists ansible
-  # yq, and not the go version
-  exists yq
-  yq --help |grep kislyuk/yq -
 }
 
 @test "cli-logins" {

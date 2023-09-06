@@ -48,7 +48,6 @@ rust=(
   bandwhich
   lychee
   # skim
-  #joshuto (maybe.. ranger rust replacement on aur)
   ncspot
   helix
   genact
@@ -217,4 +216,6 @@ install_tools "filesystem" "${filesystem[@]}"
 
 # TODO: aur
 # shellcheck disable=SC2034
-aur=()
+aur=(
+  #joshuto (maybe.. ranger rust replacement on aur)
+)
