@@ -61,6 +61,7 @@ rust=(
   cargo-edit
   cargo-audit
   cargo-deny
+  cargo-binstall
 )
 install_tools "rust" "${rust[@]}"
 

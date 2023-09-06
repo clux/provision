@@ -75,6 +75,7 @@ brew "cargo-edit"
 brew "cargo-audit"
 brew "cargo-outdated"
 brew "cargo-deny"
+brew "cargo-binstall"
 
 # python
 brew "ansible"
