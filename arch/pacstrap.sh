@@ -106,7 +106,7 @@ go=(
 )
 install_tools "go" "${go[@]}"
 
-ccpp=(
+ccppdf=(
   # tools
   bc
   btop
@@ -115,6 +115,7 @@ ccpp=(
   jq
   powertop
   protobuf
+  marksman # f# language server for markdown
   # audio
   mpv
   playerctl
@@ -130,7 +131,7 @@ ccpp=(
   #llvm
   #musl
 )
-install_tools "ccpp" "${ccpp[@]}"
+install_tools "ccppdf" "${ccppdf[@]}"
 
 # -----------------------------------------------------------------------------
 # misc desktop related that's not classified by language (generally c/cpp)
@@ -216,6 +217,4 @@ install_tools "filesystem" "${filesystem[@]}"
 
 # TODO: aur
 # shellcheck disable=SC2034
-aur=(
-  marksman-bin # f# markdown helper for helix
-)
+aur=()
