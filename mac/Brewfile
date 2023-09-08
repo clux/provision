@@ -52,7 +52,6 @@ brew "starship"
 brew "vivid"
 brew "helix"
 brew "rust-analyzer"
-brew "marksman"
 brew "genact"
 brew "pwgen"
 brew "procs"
@@ -76,6 +75,12 @@ brew "cargo-audit"
 brew "cargo-outdated"
 brew "cargo-deny"
 brew "cargo-binstall"
+
+# language servers
+brew "yaml-language-server"
+brew "marksman"
+brew "bash-language-server"
+brew "terraform-ls"
 
 # python
 brew "ansible"
