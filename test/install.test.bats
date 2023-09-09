@@ -67,7 +67,7 @@ exists() {
   exists zoxide
   exists hx
   exists fd
-  exists exa
+  exists eza
   exists rg
   exists choose
   exists vivid

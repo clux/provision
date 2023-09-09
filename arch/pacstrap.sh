@@ -32,7 +32,7 @@ rust=(
   bat
   choose
   ripgrep
-  exa
+  eza
   tokei
   fd
   grex
