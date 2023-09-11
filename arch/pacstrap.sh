@@ -222,4 +222,6 @@ install_tools "filesystem" "${filesystem[@]}"
 # shellcheck disable=SC2034
 aur=(
   #joshuto (maybe.. ranger rust replacement on aur)
+  slides # terminal presentation framework
+  yazi-bin # rust ranger replacement
 )
