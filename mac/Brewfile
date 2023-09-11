@@ -88,7 +88,6 @@ brew "ansible-lint"
 brew "yamllint"
 brew "yt-dlp"
 brew "ranger"
-brew "python-yq"
 
 # cloud
 brew "kubectl"

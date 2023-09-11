@@ -44,8 +44,8 @@
       - wayland
       - lib32-vulkan-radeon
       - vulkan-radeon
-      - amdvlk
-      - lib32-amdvlk
+      #- amdvlk
+      #- lib32-amdvlk
       state: installed
     when: display_driver == "mesa"
 

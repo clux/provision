@@ -72,7 +72,6 @@ python=(
   asciinema
   yamllint
   yt-dlp
-  yq
   ranger
   # development
   python-pip
@@ -105,7 +104,7 @@ go=(
 )
 install_tools "go" "${go[@]}"
 
-ccppdf=(
+ccpp=(
   # tools
   bc
   btop
@@ -114,7 +113,6 @@ ccppdf=(
   jq
   powertop
   protobuf
-  marksman # f# language server for markdown
   # audio
   mpv
   playerctl
@@ -130,8 +128,14 @@ ccppdf=(
   #llvm
   #musl
 )
-install_tools "ccppdf" "${ccppdf[@]}"
+install_tools "ccpp" "${ccpp[@]}"
 
+lang=(
+  bash-language-server
+  marksman # f# language server for markdown
+  yaml-language-server
+)
+install_tools "language servers" "${lang[@]}"
 # -----------------------------------------------------------------------------
 # misc desktop related that's not classified by language (generally c/cpp)
 # -----------------------------------------------------------------------------

@@ -145,7 +145,9 @@ exists() {
   hx --health rust | rg "Binary" | rg -v "not found"
   hx --health markdown | rg "Binary" | rg -v "not found"
   hx --health bash | rg "Binary" | rg -v "not found"
-  hx --health hcl | rg "Binary" | rg -v "not found"
+  if [[ "${OSTYPE}" =~ "darwin" ]]; then
+    hx --health hcl | rg "Binary" | rg -v "not found"
+  fi
   hx --health yaml | rg "Binary" | rg -v "not found"
 
   # New stable every 6th Thursday, ensure we're not more than 7 weeks behind
@@ -206,6 +208,8 @@ exists() {
 @test "dev" {
   [ -d "$HOME/repos" ]
   [ -d "$HOME/kube" ]
+  exists kopium
+  exists yq
 }
 
 @test "secrets" {
