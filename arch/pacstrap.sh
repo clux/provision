@@ -119,6 +119,7 @@ ccpp=(
   #mpv-mpris (maybe.. aur)
   #mpd - using mpris/playerctl in general
   #ncmpcpp - ditto, replaced by ncspot
+  wf-recorder
   #vlc
   # development
   cmake
