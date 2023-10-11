@@ -15,7 +15,7 @@ just cargo # install cargo clis not in package mangers
 Note that apart from language specific package managers (lpms) we install OS packages out-of-band via either [pacstrap](./arch/pacstrap.sh) or [macstrap](./arch/macstrap.sh).
 
 ## Initial Arch Setup
-This repository also contains a [bunch of experimental scripts](./arch) to set up an arch machine from scratch. Use at own caution, your mileage may vary.
+This repository also contains a [bunch of experimental scripts](./arch) to set up an arch machine from scratch. Use at own caution.
 
 ## Prerequisites
 You need two USB sticks for the arch deployment.
@@ -42,7 +42,10 @@ Then boot to a `root` user (with pass set in prompt) then run bootstap:
 
 This will ask for a new `$USER` password at the end, and ask you to run the first ansible role.
 
-## Editors
-### VS Code
+## Unsafe Packaging
 
-The `vscode` justfile recipe installs a [snapshot of extensions](https://github.com/clux/provision/blob/ansible/vscode/extensions) and themes via `code --list-extensions`.
+The goal is to remove all of these:
+
+- [x] `vim` plug install [replaced by helix](https://github.com/clux/provision/commit/fad5f0f4f5797dc1c013f5926711a4e2e0d98b0b)
+- [ ] `vscode` [extensions snapshot](https://github.com/clux/provision/blob/ansible/vscode/extensions) legacy [installation](./justfile) (bottom)
+- [ ] `aur` packages through [pacstrap](./arch/pacstrap.sh)

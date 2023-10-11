@@ -145,6 +145,7 @@ biggui=(
   chromium
   firefox
   #chrome from aur
+  browserpass
   musescore
   steam
   signal-desktop
@@ -156,9 +157,11 @@ gfx=(
   feh
   gimp
   #gthumb (lots of deps..)
-  imagemagick
   #gedit
-  #gphoto2
+  imagemagick
+  # image optimizers
+  pngquant
+  oxipng
 )
 install_tools "gfx" "${gfx[@]}"
 
@@ -224,5 +227,6 @@ install_tools "filesystem" "${filesystem[@]}"
 aur=(
   slides # terminal presentation framework
   yazi-bin # rust ranger replacement
+  browserpass-chrome
   ueberzugpp # image rendering needed for yazi
 )
