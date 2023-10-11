@@ -145,11 +145,10 @@ biggui=(
   chromium
   firefox
   #chrome from aur
-  browserpass
   musescore
   steam
   signal-desktop
-  #discord (webcord on wayland)
+  discord
 )
 install_tools "biggui" "${biggui[@]}"
 
@@ -222,11 +221,13 @@ filesystem=(
 )
 install_tools "filesystem" "${filesystem[@]}"
 
-# TODO: aur
+# Non-wayland bootstrap AUR deps.
+# Not automated, just listing here.
 # shellcheck disable=SC2034
 aur=(
   slides # terminal presentation framework
   yazi-bin # rust ranger replacement
-  browserpass-chrome
-  ueberzugpp # image rendering needed for yazi
+  ueberzugpp # image rendering for yazi + alacritty
+  dyff # kubernetes GVK aware diffing
+  rancher-k3d-bin # k3d from rancher's own repo: https://github.com/k3d-io/k3d/blob/main/deploy-aur.sh
 )

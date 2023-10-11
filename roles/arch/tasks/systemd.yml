@@ -22,3 +22,11 @@
 #    name: systemd-resolved
 #    enabled: true
 #    state: started
+
+# Remove inconsequential service responsible for 7s at boot
+# Found via systemd-analyze critical-chain
+- name: disable NetworkManager-wait-online
+  systemd:
+    name: "NetworkManager-wait-online.service"
+    state: stopped
+    enabled: false
