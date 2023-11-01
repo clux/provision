@@ -103,6 +103,7 @@
   #   # theming
   #   - catppuccin-gtk-theme-mocha
   #   - catppuccin-cursors-mocha
+  #   - swaylock-effects
   #   - nwg-look
   #   when: display_driver == "mesa"
 

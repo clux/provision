@@ -45,6 +45,7 @@ rust=(
   dust
   starship
   zoxide
+  yazi
   bandwhich
   lychee
   # skim
@@ -192,7 +193,7 @@ network=(
   #openvpn
   #nmap
   net-tools # netstat
-  #bind-tools  # contains dig
+  bind-tools  # contains dig / nslookup
   #traceroute
   #bmon
   #trickle
@@ -226,7 +227,6 @@ install_tools "filesystem" "${filesystem[@]}"
 # shellcheck disable=SC2034
 aur=(
   slides # terminal presentation framework
-  yazi-bin # rust ranger replacement
   ueberzugpp # image rendering for yazi + alacritty
   dyff # kubernetes GVK aware diffing
   rancher-k3d-bin # k3d from rancher's own repo: https://github.com/k3d-io/k3d/blob/main/deploy-aur.sh
