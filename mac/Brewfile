@@ -12,6 +12,7 @@ cask "slack"
 cask "visual-studio-code"
 cask "background-music"
 cask "font-inconsolata-nerd-font"
+cask "spaceid" # workspace id widget
 #brew "font-liberation" # mostly for linux compat
 brew "mpv"
 
