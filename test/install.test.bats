@@ -142,13 +142,14 @@ exists() {
   yq --help | rg "Rust implementation"
 
   exists rust-analyzer
-  hx --health rust | rg "Binary" | rg -v "not found"
-  hx --health markdown | rg "Binary" | rg -v "not found"
-  hx --health bash | rg "Binary" | rg -v "not found"
+  hx --health rust | rg -A1 "language servers" | rg -q "✓"
+  hx --health markdown | rg -A1 "language servers" | rg -q "✓"
+  hx --health bash | rg -A1 "language servers" | rg -q "✓"
+
   if [[ "${OSTYPE}" =~ "darwin" ]]; then
-    hx --health hcl | rg "Binary" | rg -v "not found"
+    hx --health hcl | rg -A1 "language servers" | rg -q "✓"
   fi
-  hx --health yaml | rg "Binary" | rg -v "not found"
+  hx --health yaml | rg -A1 "language servers" | rg -q "✓"
 
   # New stable every 6th Thursday, ensure we're not more than 7 weeks behind
   if [[ "${OSTYPE}" =~ "darwin" ]]; then
