@@ -124,14 +124,34 @@ defaults write com.apple.finder FXPreferredGroupBy -string "None"
 # Show hidden files
 defaults write com.apple.finder "AppleShowAllFiles" -bool "true"
 
-# Avoid creating .DS_Store files on network volumes
+# Avoid creating .DS_Store files on network volumes or USB drives
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
 # Show the ~/Library folder
 chflags nohidden ~/Library
+
+###############################################################################
+# UI                                                                          #
+###############################################################################
+
+# Jump to the spot that's clicked on the scroll bar
+defaults write -g AppleScrollerPagingBehavior -bool true
+
+# Manual TODO: unbind ~everything from "Keyboard Shortcuts"
 
 ###############################################################################
 
 killall SystemUIServer || true
 killall Finder || true
 killall Dock || true
+
+###############################################################################
+# Power Management (cross ref with 'pmset -g' + 'man pmset')                  #
+###############################################################################
+
+# Disable auto update, auto backup when sleeping
+sudo pmset -a powernap 0
+
+# Disable wake by network
+sudo pmset -a womp 0
