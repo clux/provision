@@ -54,11 +54,30 @@ defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
 defaults write NSGlobalDomain AppleMetricUnits -bool true
 
 ###############################################################################
+# Crash Reporter                                                              #
+###############################################################################
+
+defaults write com.apple.CrashReporter DialogType -string none
+
+
+###############################################################################
+# AdLib                                                                       #
+###############################################################################
+
+defaults write com.apple.AdLib forceLimitAdTracking -bool true
+defaults write com.apple.AdLib allowApplePersonalizedAdvertising -bool false
+defaults write com.apple.AdLib allowIdentifierForAdvertising -bool false
+defaults write com.apple.AdLib StocksEnabled -bool false
+
+###############################################################################
 # Apps                                                                       #
 ###############################################################################
 
 # put hammerspoon config dir under ~/.config
 defaults write org.hammerspoon.Hammerspoon MJConfigFile ~/.config/hammerspoon/init.lua
+
+# Allow opening apps from any source
+sudo spctl --master-disable
 
 ###############################################################################
 # Screen                                                                      #
