@@ -91,7 +91,6 @@ go=(
   fzf
   docker
   docker-buildx
-  hugo
   #docker-compose (can generally use tilt)
   #ctop
   kustomize
