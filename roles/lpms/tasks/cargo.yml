@@ -15,6 +15,5 @@
   with_items:
   - cargo-tarpaulin # not in brew (bad mac support?)
   - cargo-expand # not in brew
-  - ytop
   - toml2json
   - fastmod # not in pacman, but in brew
