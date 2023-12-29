@@ -1,6 +1,6 @@
 [arch]
 broxy     user=bro  display_driver=nvidia
-hprks     user=clux display_driver=mesa
+hprks     user=clux display_driver=amd
 
 [mac]
 cluxm1    user=clux

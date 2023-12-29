@@ -35,7 +35,7 @@
     changed_when: "timedatectl_result.rc != 0"
     ignore_errors: true
 
-  - name: install MESA display drivers and choice dependencies
+  - name: install AMD display drivers and choice dependencies
     community.general.pacman:
       # NB: may want mesa-git
       name:
@@ -47,7 +47,7 @@
       #- amdvlk
       #- lib32-amdvlk
       state: installed
-    when: display_driver == "mesa"
+    when: display_driver == "amd"
 
   - name: install core packages
     community.general.pacman:
@@ -90,7 +90,7 @@
       - gammastep # redshift replacement
       - waybar
       - xdg-user-dirs # run xdg-user-dirs-update if insufficient
-    when: display_driver == "mesa"
+    when: display_driver == "amd"
 
   # AUR DEPS FOR HYPRLAND
   #- name: install aur extras
@@ -105,7 +105,7 @@
   #   - catppuccin-cursors-mocha
   #   - swaylock-effects
   #   - nwg-look
-  #   when: display_driver == "mesa"
+  #   when: display_driver == "amd"
 
   - name: clone provision repo
     # TODO: needs a chown {{ user }}:{{ user }} -R /home/{{ user }}/provision
