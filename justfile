@@ -37,11 +37,6 @@ core:
 cargo:
   just apply cargo -e upgrade_tasks=1
 
-# install vs code plugins
-vscode:
-  cat vscode/extensions | xargs -n 1 code --install-extension
-  cat vscode/themes | xargs -n 1 code --install-extension
-
 # run local shellcheck + yamllint + sanity lints
 lint:
   yamllint *.yml roles/ vars/

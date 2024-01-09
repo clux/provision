@@ -9,7 +9,6 @@ cask "karabiner-elements"
 cask "openvpn-connect"
 cask "signal"
 cask "slack"
-cask "visual-studio-code"
 cask "background-music"
 cask "font-inconsolata-nerd-font"
 cask "spaceid" # workspace id widget

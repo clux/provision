@@ -49,7 +49,6 @@ exists() {
 
 @test "aur/brew" {
   # common pks first
-  exists code
   exists dyff
   exists shellcheck
   exists k3d
