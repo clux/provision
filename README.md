@@ -47,5 +47,5 @@ This will ask for a new `$USER` password at the end, and ask you to run the firs
 The goal is to remove all of these:
 
 - [x] `vim` plug install [replaced by helix](https://github.com/clux/provision/commit/fad5f0f4f5797dc1c013f5926711a4e2e0d98b0b)
-- [ ] `vscode` [extensions snapshot](https://github.com/clux/provision/blob/ansible/vscode/extensions) legacy [installation](./justfile) (bottom)
+- [x] `vscode` and its extensions [removed](https://github.com/clux/provision/commit/71c72ba2a7c07352c95f4d5e7e869a64db550bc6)
 - [ ] `aur` packages through [pacstrap](./arch/pacstrap.sh)
