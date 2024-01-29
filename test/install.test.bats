@@ -178,10 +178,14 @@ exists() {
   if [[ "${HOSTNAME}" == hprks ]]; then
     npm whoami
   fi
-  [ -f "$HOME/.cargo/credentials.toml" ]
+  [ -f "$HOME/.cargo/credentials" ]
   # only checking docker if daemon is running...
-  if command -v docker &> /dev/null; then
-    docker info | grep Username
+  if [[ "${OSTYPE}" =~ "darwin" ]]; then
+    jq -r '.credsStore' ~/.docker/config.json | grep -q "desktop"
+  else
+    if command -v docker &> /dev/null; then
+      docker info | grep Username
+    fi
   fi
 }
 
@@ -224,6 +228,9 @@ exists() {
 }
 
 @test "ssh" {
+  if [[ "${OSTYPE}" =~ "darwin" ]]; then
+    skip
+  fi
   # verify sshd works against a keychain loaded private key
   run ssh -q localhost -i ~/.ssh/main_id -p 8702 -o StrictHostKeyChecking=no echo ok
   echo "$output" | grep "ok"
