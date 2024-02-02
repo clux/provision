@@ -188,8 +188,6 @@ system=(
 install_tools "system" "${system[@]}"
 
 network=(
-  #networkmanager-openvpn
-  #openvpn
   #nmap
   net-tools # netstat
   bind-tools  # contains dig / nslookup
