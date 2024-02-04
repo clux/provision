@@ -13,7 +13,7 @@ install_tools() {
 }
 
 shell=(
-  bash-bats
+  bats
   keychain
   pass
   pwgen
@@ -145,6 +145,7 @@ biggui=(
   chromium
   firefox
   #chrome from aur
+  browserpass
   musescore
   steam
   signal-desktop
@@ -172,6 +173,7 @@ fonts=(
   #fonts-tlwg # thai AUR
   wqy-microhei # chinese
   noto-fonts-emoji # google's emoji font
+  anthy # japanese input method
 )
 install_tools "fonts" "${fonts[@]}"
 
@@ -227,4 +229,7 @@ aur=(
   ueberzugpp # image rendering for yazi + alacritty
   dyff # kubernetes GVK aware diffing
   rancher-k3d-bin # k3d from rancher's own repo: https://github.com/k3d-io/k3d/blob/main/deploy-aur.sh
+  browserpass-chrome
+  #ckb-next # corsair mouse things
+  uim # japanese input method
 )
