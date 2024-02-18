@@ -52,12 +52,10 @@ exists() {
   exists dyff
   exists shellcheck
   exists k3d
-  run man -w zinit
   if [[ "${OSTYPE}" =~ "linux" ]]; then
     # aur only: pacman -Qemt
     exists sysz
     exists wleave
-    [ "$status" -eq 0 ]
   fi
 }
 

@@ -20,8 +20,9 @@ shell=(
   man-pages
   man-db
   zsh
-  #zsh-autosuggestions #zinit
-  #zsh-fast-syntax-highlighting #aur atm
+  # avoiding zinit in favour of common main plugins
+  zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 install_tools "shell" "${shell[@]}"
 
