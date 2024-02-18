@@ -48,4 +48,5 @@ The goal is to remove all of these:
 
 - [x] `vim` plug install [replaced by helix](https://github.com/clux/provision/commit/fad5f0f4f5797dc1c013f5926711a4e2e0d98b0b)
 - [x] `vscode` and its extensions [removed](https://github.com/clux/provision/commit/71c72ba2a7c07352c95f4d5e7e869a64db550bc6)
+- [x] `zinit` for [two modules](https://github.com/clux/provision/commit/a164c46c112c69f28fce96b241eef10a343ee41d) now working on both [linux](https://github.com/clux/dotfiles/commit/b7ddab12ddc0011e97f3dd16c390d1e779acc4cf) / [mac](https://github.com/clux/dotfiles/commit/ab7e2fa62772636b15bea884b6784a54d280baac) without aur
 - [ ] `aur` packages through [pacstrap](./arch/pacstrap.sh)
