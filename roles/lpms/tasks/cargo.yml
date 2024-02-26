@@ -17,3 +17,4 @@
   - cargo-expand # not in brew
   - toml2json
   - fastmod # not in pacman, but in brew
+  - jira-terminal
