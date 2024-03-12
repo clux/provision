@@ -16,5 +16,6 @@
   - cargo-tarpaulin # not in brew (bad mac support?)
   - cargo-expand # not in brew
   - toml2json
+  - cargo-features-manager # cargo features
   - fastmod # not in pacman, but in brew
   - jira-terminal
