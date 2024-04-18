@@ -3,6 +3,7 @@
 # Misc linux tweaks
 
 # https://www.phoronix.com/news/Fedora-39-VM-Max-Map-Count
+# bumped in arch since 2024: https://archlinux.org/news/increasing-the-default-vmmax_map_count-value/
 - name: sysctl vm.max_map_count
   become: true
   ansible.posix.sysctl:
