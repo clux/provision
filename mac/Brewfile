@@ -88,6 +88,7 @@ brew "yaml-language-server"
 brew "marksman"
 brew "bash-language-server"
 brew "terraform-ls"
+brew "helm-ls"
 
 # python
 brew "ansible"
