@@ -64,6 +64,7 @@ rust=(
   cargo-deny
   cargo-binstall
   cargo-tarpaulin
+  samply
 )
 install_tools "rust" "${rust[@]}"
 
