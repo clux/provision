@@ -1,6 +1,5 @@
 #!/bin/bash
-PATH=/sbin:/usr/games:$PATH
-PATH=/usr/local/node/bin:$PATH
+PATH=/sbin:$PATH
 
 cpu5=$(awk '{printf("%3.1f", $2*100/'"$(nproc)"') }' < /proc/loadavg)
 
@@ -18,11 +17,6 @@ swap=$(free -m | tail -n 1 | awk '{print $3}')
 # Memory
 memtotal=$(free -t -m | grep "Mem" | awk '{print $2" MB";}')
 memusage=$(free -t | grep Mem | awk '{ printf("%3.1f", $3*100/$2)}')
-
-if pgrep PM2 > /dev/null; then
-  pm2total=$(pm2 jlist | json -a pm2_env.status | wc -l)
-  pm2online=$(pm2 jlist | json -a pm2_env.status | grep -c online)
-fi
 
 #System uptime
 uptime=$(cut -f1 -d. < /proc/uptime)
@@ -68,9 +62,6 @@ echo -e "  $R Load$W     ${cpu5}% (5 min)"
 echo -e "  $R Memory$W   ${memusage}% of $memtotal"
 if [ "$swap" -ne 0 ]; then
 echo -e "  $R Swap$W     $swap MB"
-fi
-if [[ $pm2total -ne 0 ]]; then
-echo -e "  $R Jobs$W     $pm2online online out of $pm2total total"
 fi
 #echo -e "  $R Processes$W You run $PSU out of $PSA total processes"
 if [ "$RECV" != "0.0GB" ]; then
