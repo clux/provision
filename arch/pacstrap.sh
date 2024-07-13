@@ -116,6 +116,7 @@ ccpp=(
   git
   jq
   powertop
+  fastfetch
   protobuf
   # audio
   mpv
