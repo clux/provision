@@ -43,7 +43,7 @@ exists() {
     exists firefox
     exists alacritty
     exists waybar
-    exists webcord
+    exists discord
   fi
 }
 
@@ -54,7 +54,6 @@ exists() {
   exists k3d
   if [[ "${OSTYPE}" =~ "linux" ]]; then
     # aur only: pacman -Qemt
-    exists sysz
     exists wleave
   fi
 }
@@ -176,7 +175,7 @@ exists() {
   if [[ "${HOSTNAME}" == hprks ]]; then
     npm whoami
   fi
-  [ -f "$HOME/.cargo/credentials" ]
+  [ -f "$HOME/.cargo/credentials.toml" ]
   # only checking docker if daemon is running...
   if [[ "${OSTYPE}" =~ "darwin" ]]; then
     jq -r '.credsStore' ~/.docker/config.json | grep -q "desktop"
