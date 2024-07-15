@@ -98,7 +98,6 @@
   #   name:
   #   - wleave-git # wlogout fork
   #   - mpvpaper # video wallpaper for wlroots
-  #   - webcord-bin # discord
   #   - google-chrome
   #   # theming
   #   - catppuccin-gtk-theme-mocha
