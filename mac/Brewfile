@@ -82,6 +82,7 @@ brew "cargo-audit"
 brew "cargo-outdated"
 brew "cargo-deny"
 brew "cargo-binstall"
+brew "taiki-e/tap/cargo-hack"
 #brew "cargo-tarpaulin" not yet there, use binstall
 
 # language servers
