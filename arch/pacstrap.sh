@@ -151,7 +151,6 @@ biggui=(
   chromium
   firefox
   #chrome from aur
-  browserpass
   musescore
   steam
   signal-desktop
@@ -234,9 +233,8 @@ aur=(
   slides # terminal presentation framework
   ueberzugpp # image rendering for yazi + alacritty
   dyff # kubernetes GVK aware diffing
-  helm-ls # helm aware yaml language server
+  helm-ls-bin # helm aware yaml language server
   rancher-k3d-bin # k3d from rancher's own repo: https://github.com/k3d-io/k3d/blob/main/deploy-aur.sh
-  browserpass-chrome
   #ckb-next # corsair mouse things
   #uim # japanese input method
 )
