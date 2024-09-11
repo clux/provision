@@ -3,12 +3,12 @@ cask "alacritty"
 cask "firefox"
 cask "discord"
 cask "docker"
-cask "google-chrome"
+#cask "google-chrome" # provisioned
 cask "hammerspoon"
 cask "karabiner-elements"
 cask "cloudflare-warp"
 cask "signal"
-cask "slack"
+#cask "slack"
 cask "background-music"
 cask "font-inconsolata-nerd-font"
 cask "spaceid" # workspace id widget
@@ -112,4 +112,4 @@ brew "kdash-rs/kdash/kdash"
 brew "homeport/tap/dyff"
 brew "fluxcd/tap/flux"
 brew "int128/kubelogin/kubelogin"
-brew "koekeishiya/formulae/yabai" # see roles/mac/tasks/yabai
+#brew "koekeishiya/formulae/yabai" # see roles/mac/tasks/yabai
