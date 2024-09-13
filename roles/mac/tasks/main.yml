@@ -6,7 +6,8 @@
   become: true
   tags: [mac, core]
 
+# good yabai, setup but don't have SIP bypass atm.
 - import_tasks: yabai.yml
-  when: ansible_os_family == "Darwin"
+  when: (ansible_os_family == "Darwin") and inventory_hostname in ["cluxm1"]
   become: true
   tags: [mac, core]
