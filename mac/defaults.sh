@@ -36,6 +36,10 @@ defaults write com.apple.dock show-recents -bool false
 # show only open applications in the Dock
 defaults write com.apple.dock static-only -bool true
 
+# group windows by applications to help aerospace
+# https://nikitabobko.github.io/AeroSpace/guide#a-note-on-mission-control
+defaults write com.apple.dock static-only -bool true
+
 ###############################################################################
 # accessibility
 ###############################################################################
