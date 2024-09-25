@@ -8,8 +8,9 @@ cask "karabiner-elements"
 cask "cloudflare-warp"
 cask "signal"
 cask "background-music"
+cask "anki"
 cask "font-inconsolata-nerd-font"
-#brew "font-liberation" # mostly for linux compat
+brew "font-liberation" # mostly for linux compat
 brew "mpv"
 
 # gnu tools are massively outdated or missing on mac
@@ -102,12 +103,12 @@ brew "ranger"
 brew "kubectl"
 brew "k3d"
 brew "helm"
-brew "k9s"
+#brew "k9s"
 brew "terraform"
 brew "lychee"
 
 # taps
-brew "kdash-rs/kdash/kdash"
+#brew "kdash-rs/kdash/kdash"
 brew "homeport/tap/dyff"
 brew "fluxcd/tap/flux"
 brew "int128/kubelogin/kubelogin"
