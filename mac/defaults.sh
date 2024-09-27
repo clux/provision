@@ -38,7 +38,7 @@ defaults write com.apple.dock static-only -bool true
 
 # group windows by applications to help aerospace
 # https://nikitabobko.github.io/AeroSpace/guide#a-note-on-mission-control
-defaults write com.apple.dock static-only -bool true
+defaults write com.apple.dock expose-group-apps -bool true
 
 ###############################################################################
 # accessibility
@@ -78,7 +78,7 @@ defaults write com.apple.AdLib StocksEnabled -bool false
 ###############################################################################
 
 # put hammerspoon config dir under ~/.config
-defaults write org.hammerspoon.Hammerspoon MJConfigFile ~/.config/hammerspoon/init.lua
+defaults write org.hammerspoon.Hammerspoon MJConfigFile "${HOME}/.config/hammerspoon/init.lua"
 
 # Allow opening apps from any source
 sudo spctl --master-disable
