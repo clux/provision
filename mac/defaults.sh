@@ -44,8 +44,8 @@ defaults write com.apple.dock expose-group-apps -bool true
 # accessibility
 ###############################################################################
 
-defaults write com.apple.universalaccess reduceMotion -bool true
-defaults write com.apple.universalaccess slowKey -bool false
+# seems to have been removed at some point around Sonoma
+#defaults write com.apple.universalaccess reduceMotion -bool true
 
 ###############################################################################
 # locale                                                                      #
