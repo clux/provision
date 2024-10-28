@@ -134,8 +134,6 @@ exists() {
   exists cargo-clippy
   exists cargo-expand
   exists cargo-fmt
-  exists yq # yq is not go, and polyfills the old python one
-  yq --help | rg "Rust implementation"
 
   exists rust-analyzer
   hx --health rust | rg -A1 "language servers" | rg -q "✓"
@@ -210,7 +208,8 @@ exists() {
   [ -d "$HOME/repos" ]
   [ -d "$HOME/kube" ]
   exists kopium
-  exists yq
+  exists lq # clux/lq
+  # cannot check aliases in bash
 }
 
 @test "secrets" {
