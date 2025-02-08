@@ -141,6 +141,8 @@ lang=(
   bash-language-server
   marksman # f# language server for markdown
   yaml-language-server
+  neovim
+  luarocks
 )
 install_tools "language servers" "${lang[@]}"
 # -----------------------------------------------------------------------------
@@ -235,6 +237,7 @@ aur=(
   dyff # kubernetes GVK aware diffing
   helm-ls-bin # helm aware yaml language server
   rancher-k3d-bin # k3d from rancher's own repo: https://github.com/k3d-io/k3d/blob/main/deploy-aur.sh
+  tilt-bin # tilt from built releases: https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=tilt-bin
   #ckb-next # corsair mouse things
   #uim # japanese input method
 )
