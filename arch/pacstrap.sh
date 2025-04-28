@@ -58,7 +58,6 @@ rust=(
   rustup
   rust-analyzer
   cargo-release
-  cargo-outdated
   cargo-edit
   cargo-audit
   cargo-deny
