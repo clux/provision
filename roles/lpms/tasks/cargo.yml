@@ -14,6 +14,7 @@
     state: "{{ pkg_state }}"
   with_items:
   - cargo-expand # not in brew
+  - cargo-info # not anywhere
   - cargo-features-manager # cargo features
   - fastmod # not in pacman, but in brew
   - jira-terminal
