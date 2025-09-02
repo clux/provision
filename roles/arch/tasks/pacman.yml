@@ -18,3 +18,5 @@
     regexp: '^\#\[multilib\]'
     line: '[multilib]\nInclude = /etc/pacman.d/mirrorlist'
     backrefs: true
+
+# NB: mirror lists change slowly enough to just run the reflector service once every N years...

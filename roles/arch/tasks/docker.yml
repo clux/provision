@@ -14,6 +14,13 @@
     dest: "/etc/systemd/system/docker.service.d/override.conf"
     mode: 0644
 
+# Add some http proxy matches # Environment="HTTPS_PROXY=http://localhost:3128"
+- name: docker proxy
+  template:
+    src: "templates/docker.service.override"
+    dest: "/etc/systemd/system/docker.service.d/http-proxy.conf"
+    mode: 0644
+
 # Docker - create the docker group (gpasswd -a $USER docker)
 # NB: this requires `newgrp docker` or logout
 # DONT DO NEWGRP AS IT WILL SCREW WITH YOUR PRIMARY GROUP

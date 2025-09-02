@@ -142,6 +142,7 @@ lang=(
   yaml-language-server
   neovim
   luarocks
+  taplo-cli # toml language server
 )
 install_tools "language servers" "${lang[@]}"
 # -----------------------------------------------------------------------------
