@@ -44,8 +44,8 @@
       - wayland
       - lib32-vulkan-radeon
       - vulkan-radeon
-      #- amdvlk
-      #- lib32-amdvlk
+      # NB: amdvlk replaced by vulkan-radeon
+      # https://github.com/GPUOpen-Drivers/AMDVLK/discussions/416
       state: installed
     when: display_driver == "amd"
 
