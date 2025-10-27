@@ -23,6 +23,7 @@ brew "findutils"
 brew "uutils-coreutils"
 # brew "uutils-diffutils"
 # brew "uutils-findutils" # alpha atm
+brew "util-linux"
 brew "gnu-sed"
 brew "gnu-tar"
 brew "gpatch"
