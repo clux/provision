@@ -8,6 +8,7 @@ cask "karabiner-elements"
 cask "cloudflare-warp"
 cask "signal"
 cask "background-music"
+cask "tailscale-app"
 cask "anki"
 cask "font-inconsolata-nerd-font"
 brew "font-liberation" # mostly for linux compat
