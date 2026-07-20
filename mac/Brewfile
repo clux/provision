@@ -114,11 +114,12 @@ brew "helm"
 brew "terraform"
 brew "lychee"
 brew "linkerd"
+brew "kubelogin"
 
 # taps
+brew "cloudsmith-io/cloudsmith-cli"
 #brew "kdash-rs/kdash/kdash"
 brew "homeport/tap/dyff"
 brew "fluxcd/tap/flux"
-brew "int128/kubelogin/kubelogin"
 #brew "koekeishiya/formulae/yabai" # see roles/mac/tasks/yabai
 cask "nikitabobko/tap/aerospace"
