@@ -14,7 +14,7 @@ cask "font-inconsolata-nerd-font"
 brew "font-liberation" # mostly for linux compat
 brew "mpv"
 
-# gnu tools are massively outdated or missing on mac
+# gnu tools / standard linux tools are massively outdated or missing on mac
 brew "bash"
 brew "bash-completion@2"
 brew "binutils"
@@ -37,6 +37,7 @@ brew "make"
 brew "rsync"
 brew "watch"
 brew "ssh-copy-id"
+brew "curl"
 
 # cli
 brew "jq"
